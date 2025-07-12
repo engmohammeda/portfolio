@@ -1,12 +1,57 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState, useEffect } from 'react';
+import { Navigation } from '@/components/Navigation';
+import { HeroSection } from '@/components/HeroSection';
+import { AboutSection } from '@/components/AboutSection';
+import { ProjectsSection } from '@/components/ProjectsSection';
+import { SkillsSection } from '@/components/SkillsSection';
+import { ContactSection } from '@/components/ContactSection';
+import { Footer } from '@/components/Footer';
+import { translations } from '@/data/translations';
 
 const Index = () => {
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+  const [currentLang, setCurrentLang] = useState<'en' | 'ar'>('en');
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    // Simulate loading and set initial state
+    const timer = setTimeout(() => setIsLoaded(true), 500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleLanguageToggle = () => {
+    setCurrentLang(prev => prev === 'en' ? 'ar' : 'en');
+  };
+
+  const currentTranslations = translations[currentLang];
+
+  if (!isLoaded) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background">
+        <div className="text-center">
+          <div className="w-16 h-16 border-4 border-primary/20 border-t-primary rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-muted-foreground">Loading Digital Engineering Nexus...</p>
+        </div>
       </div>
+    );
+  }
+
+  return (
+    <div className={`min-h-screen bg-background ${currentLang === 'ar' ? 'rtl' : 'ltr'}`}>
+      <Navigation
+        currentLang={currentLang}
+        onLanguageToggle={handleLanguageToggle}
+        translations={currentTranslations}
+      />
+      
+      <main>
+        <HeroSection translations={currentTranslations} />
+        <AboutSection translations={currentTranslations} />
+        <ProjectsSection translations={currentTranslations} />
+        <SkillsSection translations={currentTranslations} />
+        <ContactSection translations={currentTranslations} />
+      </main>
+
+      <Footer />
     </div>
   );
 };
