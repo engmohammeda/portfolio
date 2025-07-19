@@ -1,7 +1,7 @@
 import { ProjectCard } from './ProjectCard';
-import roadDesignImage from '@/assets/road-design-project.jpg';
-import smartCityImage from '@/assets/smart-city-blueprint.jpg';
-import urbanMappingImage from '@/assets/urban-mapping-project.jpg';
+import highwayDesignImage from '@/assets/highway-design.jpg';
+import smartCityTechImage from '@/assets/smart-city-tech.jpg';
+import roadSurveyorImage from '@/assets/road-surveyor.jpg';
 
 interface ProjectsSectionProps {
   translations: any;
@@ -13,7 +13,7 @@ export const ProjectsSection = ({ translations }: ProjectsSectionProps) => {
       title: translations.projects.items[0].title,
       description: translations.projects.items[0].description,
       technologies: translations.projects.items[0].technologies,
-      image: roadDesignImage,
+      image: highwayDesignImage,
       githubUrl: "#",
       liveUrl: "#"
     },
@@ -21,7 +21,7 @@ export const ProjectsSection = ({ translations }: ProjectsSectionProps) => {
       title: translations.projects.items[1].title,
       description: translations.projects.items[1].description,
       technologies: translations.projects.items[1].technologies,
-      image: smartCityImage,
+      image: smartCityTechImage,
       githubUrl: "#",
       liveUrl: "#"
     },
@@ -29,7 +29,7 @@ export const ProjectsSection = ({ translations }: ProjectsSectionProps) => {
       title: translations.projects.items[2].title,
       description: translations.projects.items[2].description,
       technologies: translations.projects.items[2].technologies,
-      image: urbanMappingImage,
+      image: roadSurveyorImage,
       githubUrl: "#",
       liveUrl: "#"
     }

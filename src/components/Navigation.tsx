@@ -2,6 +2,7 @@ import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { LanguageToggle } from './LanguageToggle';
+import { ThemeToggle } from './ThemeToggle';
 
 interface NavigationProps {
   currentLang: 'en' | 'ar';
@@ -43,8 +44,9 @@ export const Navigation = ({ currentLang, onLanguageToggle, translations }: Navi
             ))}
           </div>
 
-          {/* Language Toggle & Mobile Menu */}
+          {/* Theme, Language Toggle & Mobile Menu */}
           <div className="flex items-center space-x-4">
+            <ThemeToggle />
             <LanguageToggle currentLang={currentLang} onToggle={onLanguageToggle} />
             
             <Button

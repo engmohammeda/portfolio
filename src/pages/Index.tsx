@@ -4,10 +4,10 @@ import { HeroSection } from '@/components/HeroSection';
 import { AboutSection } from '@/components/AboutSection';
 import { ProjectsSection } from '@/components/ProjectsSection';
 import { SkillsSection } from '@/components/SkillsSection';
-import { EngineeringTools } from '@/components/EngineeringTools';
 import { ExperienceSection } from '@/components/ExperienceSection';
 import { ContactSection } from '@/components/ContactSection';
 import { Footer } from '@/components/Footer';
+import { ThreeBackground } from '@/components/ThreeBackground';
 import { translations } from '@/data/translations';
 
 const Index = () => {
@@ -39,18 +39,18 @@ const Index = () => {
 
   return (
     <div className={`min-h-screen bg-background ${currentLang === 'ar' ? 'rtl' : 'ltr'}`}>
+      <ThreeBackground />
       <Navigation
         currentLang={currentLang}
         onLanguageToggle={handleLanguageToggle}
         translations={currentTranslations}
       />
       
-      <main>
+      <main className="relative z-10">
         <HeroSection translations={currentTranslations} />
         <AboutSection translations={currentTranslations} />
         <ExperienceSection />
         <ProjectsSection translations={currentTranslations} />
-        <EngineeringTools />
         <SkillsSection translations={currentTranslations} />
         <ContactSection translations={currentTranslations} />
       </main>

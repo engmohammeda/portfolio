@@ -2,15 +2,15 @@ export const translations = {
   en: {
     nav: {
       home: "Home",
-      about: "About",
+      about: "About", 
       projects: "Projects",
       skills: "Skills",
       contact: "Contact"
     },
     hero: {
-      name: "Mohammed Albukaiti",
-      title: "Digital Engineering Nexus",
-      description: "Bridging the physical and digital worlds through innovative engineering solutions. I combine civil engineering expertise with cutting-edge programming and AI technologies to create intelligent infrastructure systems.",
+      name: "Mohammed Al-Bukhaiti",
+      title: "Civil Engineer & Digital Innovation Expert",
+      description: "Pioneering the future of infrastructure through advanced engineering, cutting-edge technology, and intelligent design solutions. Specializing in road engineering, urban planning, and digital transformation.",
       cta: {
         primary: "Explore My Work",
         secondary: "Download CV"
@@ -29,25 +29,25 @@ export const translations = {
     },
     projects: {
       title: "Featured Projects",
-      subtitle: "Digital Engineering Solutions",
+      subtitle: "Professional Engineering Solutions",
       items: [
         {
-          title: "Smart Highway Design System",
-          description: "Advanced road design system with AI-powered traffic flow optimization and real-time data visualization for highway interchange planning.",
-          technologies: ["AI/ML", "React", "Python", "CAD Integration"],
-          image: "/src/assets/road-design-project.jpg"
+          title: "Advanced Highway Design System",
+          description: "Comprehensive highway design and analysis system integrating modern CAD technologies, traffic flow optimization, and safety standards compliance for large-scale infrastructure projects.",
+          technologies: ["AutoCAD Civil 3D", "Traffic Analysis", "Safety Engineering", "Project Management"],
+          image: "/src/assets/highway-design.jpg"
         },
         {
-          title: "Construction Quantity Calculator",
-          description: "Intelligent tool for automated quantity surveying and cost estimation using advanced algorithms and 3D modeling integration.",
-          technologies: ["Vue.js", "Three.js", "Python", "BIM"],
-          image: "/src/assets/smart-city-blueprint.jpg"
+          title: "Urban Infrastructure Planning",
+          description: "Smart city infrastructure planning with integrated utilities, sustainable design principles, and comprehensive traffic management systems for modern urban environments.",
+          technologies: ["Urban Planning", "GIS Systems", "Sustainable Design", "Traffic Engineering"],
+          image: "/src/assets/smart-city-tech.jpg"
         },
         {
-          title: "Urban Data Mapping Platform",
-          description: "Comprehensive platform for urban planning and infrastructure management with real-time data visualization and predictive analytics.",
-          technologies: ["React", "GIS", "Machine Learning", "Node.js"],
-          image: "/src/assets/urban-mapping-project.jpg"
+          title: "Road Construction Management",
+          description: "Complete project management solution for road construction including material optimization, quality control, and construction scheduling with real-time monitoring capabilities.",
+          technologies: ["Project Management", "Quality Control", "Construction Planning", "Site Supervision"],
+          image: "/src/assets/road-surveyor.jpg"
         }
       ]
     },
@@ -99,9 +99,9 @@ export const translations = {
       contact: "التواصل"
     },
     hero: {
-      name: "محمد البكيتي",
-      title: "مركز الهندسة الرقمية",
-      description: "ربط العالم المادي والرقمي من خلال حلول هندسية مبتكرة. أجمع بين خبرة الهندسة المدنية وتقنيات البرمجة والذكاء الاصطناعي المتطورة لإنشاء أنظمة بنية تحتية ذكية.",
+      name: "محمد البخيتي",
+      title: "مهندس مدني وخبير الابتكار الرقمي",
+      description: "رائد في مستقبل البنية التحتية من خلال الهندسة المتقدمة والتكنولوجيا المتطورة وحلول التصميم الذكي. متخصص في هندسة الطرق والتخطيط الحضري والتحول الرقمي.",
       cta: {
         primary: "استكشف أعمالي",
         secondary: "تحميل السيرة الذاتية"
@@ -123,22 +123,22 @@ export const translations = {
       subtitle: "حلول الهندسة الرقمية",
       items: [
         {
-          title: "نظام تصميم الطرق السريعة الذكي",
-          description: "نظام تصميم طرق متقدم مع تحسين تدفق المرور بالذكاء الاصطناعي وتصور البيانات في الوقت الفعلي لتخطيط تقاطعات الطرق السريعة.",
-          technologies: ["الذكاء الاصطناعي", "React", "Python", "تكامل CAD"],
-          image: "/src/assets/road-design-project.jpg"
+          title: "نظام تصميم الطرق السريعة المتقدم",
+          description: "نظام شامل لتصميم وتحليل الطرق السريعة يدمج تقنيات الكاد الحديثة وتحسين تدفق المرور ومعايير الامتثال للسلامة للمشاريع الكبيرة للبنية التحتية.",
+          technologies: ["AutoCAD Civil 3D", "تحليل المرور", "هندسة السلامة", "إدارة المشاريع"],
+          image: "/src/assets/highway-design.jpg"
         },
         {
-          title: "حاسبة كميات البناء",
-          description: "أداة ذكية لحساب الكميات الآلي وتقدير التكاليف باستخدام خوارزميات متقدمة وتكامل النمذجة ثلاثية الأبعاد.",
-          technologies: ["Vue.js", "Three.js", "Python", "BIM"],
-          image: "/src/assets/smart-city-blueprint.jpg"
+          title: "تخطيط البنية التحتية الحضرية",
+          description: "تخطيط البنية التحتية للمدن الذكية مع المرافق المتكاملة ومبادئ التصميم المستدام وأنظمة إدارة المرور الشاملة للبيئات الحضرية الحديثة.",
+          technologies: ["التخطيط الحضري", "أنظمة GIS", "التصميم المستدام", "هندسة المرور"],
+          image: "/src/assets/smart-city-tech.jpg"
         },
         {
-          title: "منصة رسم خرائط البيانات الحضرية",
-          description: "منصة شاملة للتخطيط الحضري وإدارة البنية التحتية مع تصور البيانات في الوقت الفعلي والتحليل التنبؤي.",
-          technologies: ["React", "GIS", "تعلم الآلة", "Node.js"],
-          image: "/src/assets/urban-mapping-project.jpg"
+          title: "إدارة مشاريع بناء الطرق",
+          description: "حل شامل لإدارة المشاريع لبناء الطرق يشمل تحسين المواد ومراقبة الجودة وجدولة البناء مع قدرات المراقبة في الوقت الفعلي.",
+          technologies: ["إدارة المشاريع", "مراقبة الجودة", "تخطيط البناء", "إشراف الموقع"],
+          image: "/src/assets/road-surveyor.jpg"
         }
       ]
     },

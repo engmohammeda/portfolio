@@ -89,16 +89,23 @@ export const HeroSection = ({ translations }: HeroSectionProps) => {
               <Button 
                 size="lg" 
                 className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-glow hover:shadow-aqua-glow transition-all duration-300 group"
+                onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                <Download className="w-4 h-4 mr-2 group-hover:animate-bounce" />
+                <Code className="w-4 h-4 mr-2 group-hover:rotate-12 transition-transform" />
                 {translations.hero.cta.primary}
               </Button>
               <Button 
                 variant="outline" 
                 size="lg"
                 className="border-border/50 hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 group"
+                onClick={() => {
+                  const link = document.createElement('a');
+                  link.href = '/Mohammed-Al-Bukhaiti-CV.pdf';
+                  link.download = 'Mohammed-Al-Bukhaiti-CV.pdf';
+                  link.click();
+                }}
               >
-                <Code className="w-4 h-4 mr-2 group-hover:rotate-12 transition-transform" />
+                <Download className="w-4 h-4 mr-2 group-hover:animate-bounce" />
                 {translations.hero.cta.secondary}
               </Button>
             </div>

@@ -74,13 +74,13 @@ export const AboutSection = ({ translations }: AboutSectionProps) => {
                 {translations.about.highlights.map((highlight: string, index: number) => (
                   <div 
                     key={index} 
-                    className="flex items-center space-x-4 p-4 bg-card/30 backdrop-blur-sm border border-border/30 rounded-xl hover:border-primary/50 hover:bg-card/50 transition-all duration-300 group animate-float"
+                    className="flex items-center space-x-4 p-4 bg-card/30 backdrop-blur-sm border border-border/30 rounded-xl hover:border-primary/50 hover:bg-card/50 transition-all duration-500 group animate-float hover:scale-105 hover:-translate-y-2"
                     style={{ animationDelay: `${index * 0.1}s` }}
                   >
-                    <div className="w-8 h-8 bg-gradient-primary rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                    <div className="w-8 h-8 bg-gradient-primary rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
                       <CheckCircle className="h-4 w-4 text-primary-foreground" />
                     </div>
-                    <span className="text-foreground font-medium flex-1">{highlight}</span>
+                    <span className="text-foreground font-medium flex-1 group-hover:text-primary transition-colors duration-300">{highlight}</span>
                     <Badge variant="outline" className="opacity-0 group-hover:opacity-100 transition-opacity text-primary border-primary/30">
                       ✓
                     </Badge>

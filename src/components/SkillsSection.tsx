@@ -115,23 +115,23 @@ export const SkillsSection = ({ translations }: SkillsSectionProps) => {
                 
                 <CardContent className="pt-0 relative z-10">
                   <div className="space-y-3">
-                    {category.skills.map((skill: string, skillIndex: number) => (
-                      <div
-                        key={skillIndex}
-                        className="flex items-center space-x-3 p-3 rounded-xl bg-space-gray/30 hover:bg-gradient-tech border border-border/20 hover:border-primary/30 transition-all duration-300 group/skill"
-                      >
-                        <div className="w-2 h-2 bg-primary rounded-full animate-pulse-glow group-hover/skill:scale-125 transition-transform"></div>
-                        <span className="text-sm text-foreground/90 group-hover/skill:text-foreground transition-colors font-medium">
-                          {skill}
-                        </span>
-                        <Badge 
-                          variant="outline" 
-                          className="ml-auto text-xs border-primary/30 text-primary/80 opacity-0 group-hover/skill:opacity-100 transition-opacity"
-                        >
-                          Expert
-                        </Badge>
-                      </div>
-                    ))}
+                {category.skills.map((skill: string, skillIndex: number) => (
+                  <div
+                    key={skillIndex}
+                    className="flex items-center space-x-3 p-3 rounded-xl bg-space-gray/30 hover:bg-gradient-tech border border-border/20 hover:border-primary/30 transition-all duration-500 group/skill hover:scale-105 hover:-translate-y-1"
+                  >
+                    <div className="w-2 h-2 bg-primary rounded-full animate-pulse-glow group-hover/skill:scale-125 transition-transform"></div>
+                    <span className="text-sm text-foreground/90 group-hover/skill:text-foreground transition-colors font-medium">
+                      {skill}
+                    </span>
+                    <Badge 
+                      variant="outline" 
+                      className="ml-auto text-xs border-primary/30 text-primary/80 opacity-0 group-hover/skill:opacity-100 transition-opacity"
+                    >
+                      Expert
+                    </Badge>
+                  </div>
+                ))}
                   </div>
                 </CardContent>
 
