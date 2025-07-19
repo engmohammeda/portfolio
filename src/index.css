@@ -39,19 +39,25 @@
 
     --radius: 0.75rem;
 
-    /* Custom Portfolio Colors */
-    --glow-cyan: 203 100% 50%;
-    --glow-aqua: 160 100% 50%;
-    --deep-space: 220 25% 6%;
-    --space-gray: 220 15% 15%;
-    --tech-blue: 210 100% 45%;
-    --neural-purple: 280 60% 50%;
+  /* Custom Portfolio Colors */
+  --glow-cyan: 203 100% 50%;
+  --glow-aqua: 160 100% 50%;
+  --deep-space: 220 25% 6%;
+  --space-gray: 220 15% 15%;
+  --tech-blue: 210 100% 45%;
+  --neural-purple: 280 60% 50%;
+  --hologram-blue: 200 100% 60%;
+  --matrix-green: 120 100% 40%;
 
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(203 100% 50%), hsl(160 100% 50%));
-    --gradient-space: linear-gradient(180deg, hsl(220 25% 6%), hsl(220 20% 10%));
-    --gradient-tech: linear-gradient(90deg, hsl(203 100% 50% / 0.1), hsl(160 100% 50% / 0.1));
-    --gradient-neural: linear-gradient(45deg, hsl(280 60% 50% / 0.2), hsl(203 100% 50% / 0.2));
+  /* Advanced Gradients */
+  --gradient-primary: linear-gradient(135deg, hsl(203 100% 50%), hsl(160 100% 50%));
+  --gradient-space: linear-gradient(180deg, hsl(220 25% 6%), hsl(220 20% 10%));
+  --gradient-tech: linear-gradient(90deg, hsl(203 100% 50% / 0.1), hsl(160 100% 50% / 0.1));
+  --gradient-neural: linear-gradient(45deg, hsl(280 60% 50% / 0.2), hsl(203 100% 50% / 0.2));
+  --gradient-hero: radial-gradient(ellipse at center, hsl(220 20% 12%) 0%, hsl(220 25% 6%) 100%);
+  --gradient-matrix: linear-gradient(45deg, hsl(120 100% 40% / 0.1), hsl(203 100% 50% / 0.1));
+  --gradient-hologram: linear-gradient(90deg, hsl(200 100% 60% / 0.2), hsl(280 60% 50% / 0.2));
+  --gradient-particle: radial-gradient(circle, hsl(203 100% 50% / 0.8) 0%, transparent 70%);
 
     /* Shadows & Glows */
     --shadow-glow: 0 0 20px hsl(203 100% 50% / 0.3);
@@ -135,13 +141,106 @@
     background-size: 20px 20px;
   }
 
-  /* Animation utilities */
+  /* Advanced Animation utilities */
   .animate-pulse-slow {
     animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
 
   .animate-bounce-slow {
     animation: bounce 3s infinite;
+  }
+
+  .animate-matrix {
+    animation: matrix-rain 4s linear infinite;
+  }
+
+  .animate-hologram {
+    animation: hologram-flicker 3s ease-in-out infinite;
+  }
+
+  .animate-particle {
+    animation: particle-float 6s ease-in-out infinite;
+  }
+
+  .animate-glow-pulse {
+    animation: glow-pulse 2s ease-in-out infinite alternate;
+  }
+
+  /* 3D Background Effects */
+  .neural-network {
+    background: 
+      radial-gradient(circle at 20% 50%, hsl(203 100% 50% / 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, hsl(160 100% 50% / 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 40% 80%, hsl(280 60% 50% / 0.1) 0%, transparent 50%),
+      var(--gradient-space);
+    background-size: 800px 800px, 600px 600px, 700px 700px, 100% 100%;
+    animation: neural-drift 20s ease-in-out infinite;
+  }
+
+  .matrix-particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .matrix-particles::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background-image: 
+      radial-gradient(2px 2px at 20px 30px, hsl(203 100% 50% / 0.3), transparent),
+      radial-gradient(2px 2px at 40px 70px, hsl(160 100% 50% / 0.3), transparent),
+      radial-gradient(1px 1px at 90px 40px, hsl(280 60% 50% / 0.3), transparent),
+      radial-gradient(1px 1px at 130px 80px, hsl(200 100% 60% / 0.3), transparent);
+    background-repeat: repeat;
+    background-size: 200px 200px;
+    animation: matrix-drift 15s linear infinite;
+  }
+
+  @keyframes matrix-rain {
+    0% { transform: translateY(-100%); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(100vh); opacity: 0; }
+  }
+
+  @keyframes hologram-flicker {
+    0%, 100% { opacity: 1; filter: hue-rotate(0deg); }
+    25% { opacity: 0.8; filter: hue-rotate(90deg); }
+    50% { opacity: 0.9; filter: hue-rotate(180deg); }
+    75% { opacity: 0.7; filter: hue-rotate(270deg); }
+  }
+
+  @keyframes particle-float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    33% { transform: translateY(-20px) rotate(120deg); }
+    66% { transform: translateY(10px) rotate(240deg); }
+  }
+
+  @keyframes glow-pulse {
+    0% { 
+      box-shadow: 0 0 5px hsl(var(--primary) / 0.3);
+      transform: scale(1);
+    }
+    100% { 
+      box-shadow: 0 0 20px hsl(var(--primary) / 0.6), 0 0 40px hsl(var(--primary) / 0.3);
+      transform: scale(1.02);
+    }
+  }
+
+  @keyframes neural-drift {
+    0%, 100% { transform: translateX(0) translateY(0); }
+    33% { transform: translateX(-20px) translateY(-30px); }
+    66% { transform: translateX(20px) translateY(30px); }
+  }
+
+  @keyframes matrix-drift {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(-200px, -200px); }
   }
 
   /* RTL Support */

@@ -58,13 +58,19 @@ export default {
 				'deep-space': 'hsl(var(--deep-space))',
 				'space-gray': 'hsl(var(--space-gray))',
 				'tech-blue': 'hsl(var(--tech-blue))',
-				'neural-purple': 'hsl(var(--neural-purple))'
+				'neural-purple': 'hsl(var(--neural-purple))',
+				'hologram-blue': 'hsl(var(--hologram-blue))',
+				'matrix-green': 'hsl(var(--matrix-green))'
 			},
 			backgroundImage: {
 				'gradient-primary': 'var(--gradient-primary)',
 				'gradient-space': 'var(--gradient-space)',
 				'gradient-tech': 'var(--gradient-tech)',
-				'gradient-neural': 'var(--gradient-neural)'
+				'gradient-neural': 'var(--gradient-neural)',
+				'gradient-hero': 'var(--gradient-hero)',
+				'gradient-matrix': 'var(--gradient-matrix)',
+				'gradient-hologram': 'var(--gradient-hologram)',
+				'gradient-particle': 'var(--gradient-particle)'
 			},
 			boxShadow: {
 				'glow': 'var(--shadow-glow)',
@@ -76,7 +82,11 @@ export default {
 				'float': 'float 6s ease-in-out infinite',
 				'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
 				'neural-pulse': 'neural-pulse 3s ease-in-out infinite',
-				'data-stream': 'data-stream 4s linear infinite'
+				'data-stream': 'data-stream 4s linear infinite',
+				'matrix': 'matrix-rain 4s linear infinite',
+				'hologram': 'hologram-flicker 3s ease-in-out infinite',
+				'particle': 'particle-float 6s ease-in-out infinite',
+				'glow-pulse': 'glow-pulse 2s ease-in-out infinite alternate'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -108,14 +118,6 @@ export default {
 					'0%': { transform: 'translateX(-100%)' },
 					'100%': { transform: 'translateX(100%)' }
 				}
-			},
-			animation: {
-				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out',
-				'float': 'float 6s ease-in-out infinite',
-				'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
-				'neural-pulse': 'neural-pulse 3s ease-in-out infinite',
-				'data-stream': 'data-stream 4s linear infinite'
 			}
 		}
 	},
