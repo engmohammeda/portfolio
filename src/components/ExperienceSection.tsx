@@ -4,49 +4,46 @@ import { Card, CardContent } from '@/components/ui/card';
 export const ExperienceSection = () => {
   const experiences = [
     {
-      title: "مهندس طرق أول",
-      company: "شركة البناء الحديث",
-      period: "2021 - الحاضر",
-      description: "تصميم وإشراف على مشاريع الطرق السريعة والبنية التحتية باستخدام أحدث التقنيات والذكاء الاصطناعي",
+      title: "مشروع تخرج: نظام ذكي لتصنيف وصيانة الطرق",
+      company: "مشروع جامعي",
+      period: "2025", // Replace with your actual graduation year
+      description: "تطوير نظام يعتمد على الذكاء الاصطناعي لتحليل بيانات الطرق وتحديد أولويات الصيانة، مما يساهم في تحسين جودة الطرق وتقليل التكاليف.",
       achievements: [
-        "تصميم أكثر من 50 كم من الطرق السريعة",
-        "تطوير نظام ذكي لإدارة المرور",
-        "تقليل تكلفة المشاريع بنسبة 15%"
+        "تصميم وتطبيق نموذج تعلم آلة لتصنيف عيوب الطرق بدقة 90%",
+        "بناء واجهة مستخدم تفاعلية لعرض بيانات الطرق وتوصيات الصيانة",
+        "تقديم المشروع وحصوله على تقييم ممتاز من لجنة التحكيم"
       ]
     },
-    {
-      title: "مهندس تصميم طرق",
-      company: "مكتب الاستشارات الهندسية",
-      period: "2019 - 2021",
-      description: "تصميم الطرق الحضرية والريفية وحل المشاكل الهندسية المعقدة",
-      achievements: [
-        "إنجاز 30+ مشروع طرق",
-        "تطوير حلول مبتكرة للتصريف",
-        "حصول على جائزة التميز الهندسي"
-      ]
-    }
+    // يمكنك إضافة أي مشاريع أخرى قمت بها هنا، حتى لو كانت مشاريع شخصية صغيرة
+    // {
+    //   title: "مشروع شخصي: تحليل بيانات حركة المرور",
+    //   company: "مشروع مستقل",
+    //   period: "2024",
+    //   description: "استخدام أدوات تحليل البيانات لاستكشاف أنماط حركة المرور في منطقة معينة وتقديم توصيات لتحسين التدفق المروري.",
+    //   achievements: [
+    //     "جمع وتحليل كميات كبيرة من بيانات المرور",
+    //     "تحديد النقاط الساخنة للازدحام المروري",
+    //     "إنشاء تقارير مرئية لتسهيل فهم البيانات"
+    //   ]
+    // }
   ];
 
   const education = [
     {
-      degree: "ماجستير الهندسة المدنية",
-      university: "جامعة الملك سعود",
-      year: "2019",
-      specialization: "هندسة الطرق والمواصلات"
+      degree: "دبلوم المساحة والطرقات",
+      university: " [اسم المعهد/الكلية التي تخرجت منها]", // Replace with your actual institute name
+      year: "2025", // Replace with your actual graduation year
+      specialization: "المساحة وتصميم الطرق"
     },
-    {
-      degree: "بكالوريوس الهندسة المدنية",
-      university: "جامعة الملك فهد للبترول والمعادن",
-      year: "2017",
-      specialization: "الهندسة المدنية والبيئية"
-    }
+    // يمكنك إضافة مؤهلات تعليمية أخرى هنا
   ];
 
   const certifications = [
-    "مهندس مدني معتمد - الهيئة السعودية للمهندسين",
-    "شهادة إدارة المشاريع PMP",
-    "شهادة تصميم الطرق المتقدم - AASHTO",
-    "شهادة الذكاء الاصطناعي في الهندسة - MIT"
+    "شهادة خبير الذكاء الاصطناعي - [اسم الجهة المانحة]", // Replace with the actual issuing body
+    "شهادة [اسم الشهادة الأخرى المكتسبة عن بعد] - [اسم الجهة المانحة]", // Replace with your other online certificate
+    // أضف أي شهادات أخرى ذات صلة حصلت عليها
+    "دورة في أساسيات نظم المعلومات الجغرافية (GIS)",
+    "دورة في البرمجة بلغة بايثون للمبتدئين"
   ];
 
   return (
@@ -54,19 +51,19 @@ export const ExperienceSection = () => {
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-primary bg-clip-text text-transparent">
-            الخبرة والمؤهلات
+            المشاريع والمؤهلات
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            مسيرة مهنية حافلة بالإنجازات في مجال هندسة الطرق والبنية التحتية
+            متحمس لبدء مسيرتي المهنية في مجال المساحة والطرقات مع شغف بالذكاء الاصطناعي
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* الخبرة المهنية */}
+          {/* الخبرة المهنية (مشاريع) */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-3 mb-8">
               <Trophy className="h-8 w-8 text-primary" />
-              <h3 className="text-3xl font-bold text-foreground">الخبرة المهنية</h3>
+              <h3 className="text-3xl font-bold text-foreground">المشاريع</h3>
             </div>
             
             <div className="space-y-6">
@@ -132,7 +129,7 @@ export const ExperienceSection = () => {
             <div>
               <div className="flex items-center gap-3 mb-6">
                 <Award className="h-6 w-6 text-secondary" />
-                <h3 className="text-2xl font-bold text-foreground">الشهادات المهنية</h3>
+                <h3 className="text-2xl font-bold text-foreground">الشهادات المكتسبة</h3>
               </div>
               
               <div className="space-y-3">
