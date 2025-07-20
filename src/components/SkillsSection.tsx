@@ -26,12 +26,12 @@ export const SkillsSection = ({ translations }: SkillsSectionProps) => {
       <div className="container mx-auto px-6 relative z-10">
         {/* Enhanced Header */}
         <div className="text-center mb-20">
-          <div className="inline-flex items-center space-x-2 bg-primary/10 border border-primary/20 rounded-full px-6 py-2 mb-6 animate-glow-pulse">
+          <div className="inline-flex items-center space-x-2 bg-primary/10 border border-primary/20 rounded-full px-6 py-2 mb-6 animate-smooth-glow">
             <Zap className="w-4 h-4 text-primary" />
             <span className="text-sm text-primary font-medium">Core Expertise</span>
           </div>
           
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-primary bg-clip-text text-transparent animate-float">
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-primary bg-clip-text text-transparent animate-gentle-float">
             {translations.skills.title}
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
@@ -54,7 +54,7 @@ export const SkillsSection = ({ translations }: SkillsSectionProps) => {
                 
                 <CardContent className="p-6 relative z-10">
                   <div className="text-center space-y-4">
-                    <div className="w-16 h-16 mx-auto bg-gradient-primary rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-500 animate-glow-pulse">
+                    <div className="w-16 h-16 mx-auto bg-gradient-primary rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-500 animate-smooth-glow">
                       <Icon className="w-8 h-8 text-primary-foreground" />
                     </div>
                     
@@ -104,7 +104,7 @@ export const SkillsSection = ({ translations }: SkillsSectionProps) => {
 
                 <CardHeader className="pb-4 relative z-10">
                   <div className="flex items-center justify-center mb-4">
-                    <div className="w-12 h-12 bg-gradient-tech rounded-xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 animate-glow-pulse">
+                    <div className="w-12 h-12 bg-gradient-tech rounded-xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 animate-smooth-glow">
                       <IconComponent className="w-6 h-6 text-primary" />
                     </div>
                   </div>
@@ -118,9 +118,9 @@ export const SkillsSection = ({ translations }: SkillsSectionProps) => {
                 {category.skills.map((skill: string, skillIndex: number) => (
                   <div
                     key={skillIndex}
-                    className="flex items-center space-x-3 p-3 rounded-xl bg-space-gray/30 hover:bg-gradient-tech border border-border/20 hover:border-primary/30 transition-all duration-500 group/skill hover:scale-105 hover:-translate-y-1"
+                    className="flex items-center space-x-3 p-3 rounded-xl bg-space-gray/30 hover:bg-gradient-tech border border-border/20 hover:border-primary/30 transition-all duration-300 group/skill hover:shadow-tech"
                   >
-                    <div className="w-2 h-2 bg-primary rounded-full animate-pulse-glow group-hover/skill:scale-125 transition-transform"></div>
+                    <div className="w-2 h-2 bg-primary rounded-full animate-pulse-slow group-hover/skill:scale-125 transition-transform"></div>
                     <span className="text-sm text-foreground/90 group-hover/skill:text-foreground transition-colors font-medium">
                       {skill}
                     </span>
@@ -154,7 +154,7 @@ export const SkillsSection = ({ translations }: SkillsSectionProps) => {
             ].map(({ icon: Icon, text, delay }) => (
               <div
                 key={text}
-                className="flex items-center space-x-2 bg-gradient-neural border border-primary/20 rounded-full px-6 py-3 animate-float hover:scale-105 transition-transform duration-300"
+                className="flex items-center space-x-2 bg-gradient-neural border border-primary/20 rounded-full px-6 py-3 animate-gentle-float hover:scale-105 transition-transform duration-300"
                 style={{ animationDelay: delay }}
               >
                 <Icon className="w-4 h-4 text-primary" />
