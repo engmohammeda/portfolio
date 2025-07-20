@@ -1,8 +1,10 @@
+// src/data/translations.ts
+
 export const translations = {
   en: {
     nav: {
       home: "Home",
-      about: "About", 
+      about: "About",
       projects: "Projects",
       skills: "Skills",
       contact: "Contact"
@@ -84,9 +86,41 @@ export const translations = {
         submit: "Send Message"
       },
       info: {
-        email: "mohammed.albukaiti@example.com",
-        phone: "+966 XXX XXX XXXX",
-        location: "Saudi Arabia"
+        email: "mohammedalbkhyty@gmail.com", // Updated email
+        phone: "+967 772791169", // Updated phone number (Yemen)
+        location: "Yemen", // Changed from Saudi Arabia to Yemen
+        github: "engmohammeda", // Added GitHub username
+        twitter: "engalbukhaiti" // Added Twitter username
+      }
+    },
+    experienceSection: {
+      sectionTitle: "Projects & Qualifications",
+      sectionSubtitle: "Eager to start my career in surveying and roads with a passion for AI",
+      projectsTitle: "Projects",
+      educationTitle: "Education",
+      certificationsTitle: "Acquired Certifications",
+      keyAchievements: "Key Achievements:",
+
+      graduationProject: {
+        title: "Graduation Project: Local Road Survey & Mapping",
+        company: "University Project",
+        description: "Main graduation project involving complete surveying and mapping of a local road with necessary studies, quantity calculations, and technical report preparation using specialized surveying software. This project, discussed in the 'Journal of Surveying and Mapping', showcases practical application of surveying principles and software proficiency.",
+        achievements: [
+          "Successfully completed comprehensive surveying and mapping of a local road.",
+          "Prepared detailed technical reports and accurate quantity calculations.",
+          "Demonstrated proficiency in specialized surveying software for data analysis and reporting."
+        ]
+      },
+
+      educationDetails: {
+        diploma: "Diploma in Surveying & Roads",
+        institute: "Technical Institute, College of Engineering",
+        specialization: "Surveying & Road Design"
+      },
+      certificationDetails: {
+        aiExpert: "AI Expert Certificate",
+        gisFundamentals: "Fundamentals of GIS Course",
+        pythonBeginner: "Python Programming for Beginners Course",
       }
     }
   },
@@ -175,10 +209,45 @@ export const translations = {
         submit: "إرسال الرسالة"
       },
       info: {
-        email: "mohammed.albukaiti@example.com",
-        phone: "+966 XXX XXX XXXX",
-        location: "المملكة العربية السعودية"
+        email: "mohammedalbkhyty@gmail.com", // Updated email
+        phone: "+967 772791169", // Updated phone number (Yemen)
+        location: "اليمن", // Changed from Saudi Arabia to Yemen
+        github: "engmohammeda", // Added GitHub username
+        twitter: "engalbukhaiti" // Added Twitter username
+      }
+    },
+    experienceSection: {
+      sectionTitle: "المشاريع والمؤهلات",
+      sectionSubtitle: "متحمس لبدء مسيرتي المهنية في مجال المساحة والطرقات مع شغف بالذكاء الاصطناعي",
+      projectsTitle: "المشاريع",
+      educationTitle: "التعليم",
+      certificationsTitle: "الشهادات المكتسبة",
+      keyAchievements: "الإنجازات الرئيسية:",
+
+      graduationProject: {
+        title: "مشروع التخرج: مسح ورفع طريق محلي",
+        company: "مشروع جامعي",
+        description: "مشروع التخرج الرئيسي شمل مسح ورفع طريق محلي كامل مع إجراء الدراسات اللازمة وحساب الكميات وإعداد التقارير الفنية باستخدام برامج المساحة المتخصصة. هذا المشروع، الذي نوقش في 'مجلة المساحة والخرائط'، يعرض التطبيق العملي لمبادئ المساحة وإتقان البرامج.",
+        achievements: [
+          "إتمام أعمال المسح والرفع الشاملة لطريق محلي.",
+          "إعداد التقارير الفنية المفصلة وحسابات الكميات الدقيقة.",
+          "إظهار الكفاءة في استخدام برامج المساحة المتخصصة لتحليل البيانات وإعداد التقارير."
+        ]
+      },
+
+      educationDetails: {
+        diploma: "دبلوم المساحة والطرقات",
+        institute: "المعهد التقني، كلية الهندسة",
+        specialization: "المساحة وتصميم الطرق"
+      },
+      certificationDetails: {
+        aiExpert: "شهادة خبير الذكاء الاصطناعي",
+        gisFundamentals: "دورة في أساسيات نظم المعلومات الجغرافية (GIS)",
+        pythonBeginner: "دورة في البرمجة بلغة بايثون للمبتدئين",
       }
     }
   }
 };
+
+export type Translations = typeof translations;
+export type Language = keyof Translations;
