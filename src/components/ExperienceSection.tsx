@@ -10,8 +10,8 @@ interface ExperienceSectionProps {
 
 export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ currentLanguage }) => {
 
-  // Helper function to get translated text
-  const t = (path: string): string | string[] => {
+  // CORRECTED Helper function to get translated text
+  const t = (path: string, fallback?: string): string => {
     const keys = path.split('.');
     let result: any = translations[currentLanguage];
 
@@ -19,49 +19,69 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ currentLan
       if (result && typeof result === 'object' && key in result) {
         result = result[key];
       } else {
-        // Fallback for missing keys, especially for nested arrays like achievements
-        // This will return the path itself if not found, or an empty array for achievement lists
-        if (path.includes('achievements')) return []; // Return empty array for missing achievements
-        return path; // Return the path for other missing strings
+        // If a key is not found, return the fallback or the path itself
+        return fallback || path;
       }
     }
-    return result;
+    // Ensure the returned value is always a string.
+    // This is important if an array (like achievements) is accessed this way,
+    // though for achievements we will iterate directly on the array in render.
+    if (Array.isArray(result)) {
+        return result.join(', '); // Join array elements if somehow an array is returned to a string context
+    }
+    return String(result); // Convert to string just in case
   };
+
+  // Helper for arrays, specifically for achievements
+  const getTranslatedArray = (path: string): string[] => {
+    const keys = path.split('.');
+    let result: any = translations[currentLanguage];
+
+    for (const key of keys) {
+      if (result && typeof result === 'object' && key in result) {
+        result = result[key];
+      } else {
+        return []; // Return empty array if path not found
+      }
+    }
+    return Array.isArray(result) ? result : [];
+  };
+
 
   const experiences = [
     {
-      title: t('experienceSection.graduationProject.title') as string,
-      company: t('experienceSection.graduationProject.company') as string,
+      title: t('experienceSection.graduationProject.title'),
+      company: t('experienceSection.graduationProject.company'),
       period: "2025", // Your actual graduation year
-      description: t('experienceSection.graduationProject.description') as string,
-      achievements: t('experienceSection.graduationProject.achievements') as string[]
+      description: t('experienceSection.graduationProject.description'),
+      achievements: getTranslatedArray('experienceSection.graduationProject.achievements') // Using the new helper for arrays
     },
     // You can add more projects here by defining them in experienceSection.projects in translations.ts
     // For example, if you add another project:
     // {
-    //   title: t('experienceSection.otherProject1.title') as string,
-    //   company: t('experienceSection.otherProject1.company') as string,
+    //   title: t('experienceSection.otherProject1.title'),
+    //   company: t('experienceSection.otherProject1.company'),
     //   period: "2024",
-    //   description: t('experienceSection.otherProject1.description') as string,
-    //   achievements: t('experienceSection.otherProject1.achievements') as string[]
+    //   description: t('experienceSection.otherProject1.description'),
+    //   achievements: getTranslatedArray('experienceSection.otherProject1.achievements')
     // }
   ];
 
   const education = [
     {
-      degree: t('experienceSection.educationDetails.diploma') as string,
-      university: t('experienceSection.educationDetails.institute') as string,
+      degree: t('experienceSection.educationDetails.diploma'),
+      university: t('experienceSection.educationDetails.institute'),
       year: "2025", // Your actual graduation year
-      specialization: t('experienceSection.educationDetails.specialization') as string
+      specialization: t('experienceSection.educationDetails.specialization')
     }
   ];
 
   const certifications = [
-    t('experienceSection.certificationDetails.aiExpert') as string,
-    t('experienceSection.certificationDetails.gisFundamentals') as string,
-    t('experienceSection.certificationDetails.pythonBeginner') as string,
+    t('experienceSection.certificationDetails.aiExpert'),
+    t('experienceSection.certificationDetails.gisFundamentals'),
+    t('experienceSection.certificationDetails.pythonBeginner'),
     // Add other certifications here from translations.ts if you have them
-    // t('experienceSection.certificationDetails.otherOnlineCert') as string,
+    // t('experienceSection.certificationDetails.otherOnlineCert'),
   ];
 
   return (
