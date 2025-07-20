@@ -238,8 +238,6 @@
   .animate-particle {
     animation: particle-float 8s infinite linear;
   }
-    66% { transform: translateY(10px) rotate(240deg); }
-  }
 
   @keyframes glow-pulse {
     0% { 
