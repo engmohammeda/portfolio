@@ -36,7 +36,14 @@ export const Navigation = ({ currentLang, onLanguageToggle, translations }: Navi
               <a
                 key={item.key}
                 href={item.href}
-                className="text-foreground/80 hover:text-primary transition-colors duration-300 relative group"
+                className="text-foreground/80 hover:text-primary transition-colors duration-300 relative group scroll-smooth"
+                onClick={(e) => {
+                  e.preventDefault();
+                  const target = document.querySelector(item.href);
+                  if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }
+                }}
               >
                 {translations.nav[item.key]}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
@@ -69,7 +76,14 @@ export const Navigation = ({ currentLang, onLanguageToggle, translations }: Navi
                   key={item.key}
                   href={item.href}
                   className="text-foreground/80 hover:text-primary transition-colors duration-300 py-2"
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setIsMenuOpen(false);
+                    const target = document.querySelector(item.href);
+                    if (target) {
+                      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                  }}
                 >
                   {translations.nav[item.key]}
                 </a>

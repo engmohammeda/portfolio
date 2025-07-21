@@ -8,10 +8,10 @@ interface AboutSectionProps {
 
 export const AboutSection = ({ translations }: AboutSectionProps) => {
   const achievements = [
-    { icon: Building2, number: '50+', text: 'مشروع هندسي', color: 'primary' },
-    { icon: Code, number: '15+', text: 'تطبيق تقني', color: 'secondary' },
-    { icon: Users, number: '100+', text: 'عميل راضي', color: 'hologram-blue' },
-    { icon: Award, number: '10+', text: 'جائزة وتقدير', color: 'matrix-green' },
+    { icon: Building2, number: '2+', text: 'مشروع هندسي', color: 'primary' },
+    { icon: Code, number: '4+', text: 'تطبيق تقني', color: 'secondary' },
+    { icon: Users, number: '5+', text: 'مشروع مكتمل', color: 'hologram-blue' },
+    { icon: Award, number: '1+', text: 'جائزة تخرج', color: 'matrix-green' },
   ];
 
   return (

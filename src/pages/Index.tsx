@@ -49,13 +49,11 @@ const Index = () => {
       <main className="relative z-10">
         <HeroSection translations={currentTranslations} />
         <AboutSection translations={currentTranslations} />
-        <ExperienceSection />
+        <ExperienceSection currentLanguage={currentLang} />
         <ProjectsSection translations={currentTranslations} />
         <SkillsSection translations={currentTranslations} />
         <ContactSection translations={currentTranslations} />
       </main>
-
-      <Footer />
     </div>
   );
 };
