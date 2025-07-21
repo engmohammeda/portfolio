@@ -86,12 +86,13 @@ export const translations = {
         submit: "Send Message"
       },
       info: {
-        email: "mohammedalbkhyty@gmail.com", // Updated email
-        phone: "+967 772791169", // Updated phone number (Yemen)
-        location: "Yemen", // Changed from Saudi Arabia to Yemen
-        github: "engmohammeda", // Added GitHub username
-        twitter: "engalbukhaiti" // Added Twitter username
+        email: "mohammedalbkhyty@gmail.com",
+        phone: "+967 772791169",
+        location: "Yemen"
       }
+    },
+    footer: {
+      copyright: "© 2024 All rights reserved to Mohammed Al-Bukhaiti"
     },
     experienceSection: {
       sectionTitle: "Projects & Qualifications",
@@ -209,12 +210,13 @@ export const translations = {
         submit: "إرسال الرسالة"
       },
       info: {
-        email: "mohammedalbkhyty@gmail.com", // Updated email
-        phone: "+967 772791169", // Updated phone number (Yemen)
-        location: "اليمن", // Changed from Saudi Arabia to Yemen
-        github: "engmohammeda", // Added GitHub username
-        twitter: "engalbukhaiti" // Added Twitter username
+        email: "mohammedalbkhyty@gmail.com",
+        phone: "+967 772791169",
+        location: "اليمن"
       }
+    },
+    footer: {
+      copyright: "© 2024 جميع الحقوق محفوظة لمحمد البخيتي"
     },
     experienceSection: {
       sectionTitle: "المشاريع والمؤهلات",

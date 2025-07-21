@@ -54,6 +54,8 @@ const Index = () => {
         <SkillsSection translations={currentTranslations} />
         <ContactSection translations={currentTranslations} />
       </main>
+      
+      <Footer translations={currentTranslations} />
     </div>
   );
 };
