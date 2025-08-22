@@ -30,7 +30,7 @@ export const ContactFormEmail = ({ translations }: ContactFormEmailProps) => {
         from_name: formData.name,
         from_email: formData.email,
         message: formData.message,
-        to_email: 'mohammedalbukhaiti@gmail.com'
+        to_email: 'engmohammedalbukhaiti@gmail.com'
       };
 
       // Initialize EmailJS with your public key
