@@ -34,11 +34,11 @@ export const ContactFormEmail = ({ translations }: ContactFormEmailProps) => {
       };
 
       // Initialize EmailJS with your public key
-      emailjs.init('YOUR_PUBLIC_KEY'); // Replace with your EmailJS public key
+      emailjs.init('D2ZqUkntJrKsqwq2xAsyi'); // Replace with your EmailJS public key
       
       await emailjs.send(
-        'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
-        'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
+        'service_6iz9zgu', // Replace with your EmailJS service ID
+        'template_xh1e9kq', // Replace with your EmailJS template ID
         templateParams
       );
 
