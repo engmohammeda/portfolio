@@ -11,8 +11,8 @@ export const translations = {
     },
     hero: {
       name: "Mohammed Al-Bukhaiti",
-      title: "Fresh Graduate Surveying & Roads Engineer",
-      description: "Seeking opportunities to apply my surveying and programming skills to create innovative engineering solutions. Combining traditional surveying expertise with modern AI technologies.",
+      title: "Surveying & Roads Technician",
+      description: "Detail-oriented and motivated Surveying & Roads Technician with technical diploma and certified expertise in operating Total Station, GPS, and Level instruments. Proficient in transforming field data into comprehensive survey drawings using AutoCAD, Civil 3D, and Global Mapper.",
       cta: {
         primary: "Explore My Work",
         secondary: "Download CV"
@@ -20,13 +20,13 @@ export const translations = {
     },
     about: {
       title: "About Me",
-      subtitle: "Fresh Graduate Engineer",
-      description: "Fresh graduate with a 2-year diploma in Surveying and Roads Engineering, actively seeking employment opportunities to apply my acquired skills and gain practical experience. I have a strong passion for technology and artificial intelligence, with programming skills that enable me to integrate modern technologies with engineering work.",
+      subtitle: "Surveying & Roads Technician",
+      description: "Detail-oriented and motivated Surveying & Roads Technician, holding a technical diploma and certified expertise in operating Total Station, GPS, and Level instruments. Proficient in transforming field data into comprehensive survey drawings using AutoCAD, Civil 3D, and Global Mapper. Proven success in project execution through the surveying and design of a 3 km mountain road. Seeking to apply comprehensive field-to-finish skills to deliver precision and efficiency on challenging infrastructure projects.",
       highlights: [
-        "Fresh Graduate + Programming Skills",
-        "Surveying & Roads Engineering",
-        "AI & Automation Enthusiast",
-        "Smart Engineering Solutions"
+        "Certified Surveying Equipment Operation",
+        "AutoCAD & Civil 3D Proficiency", 
+        "Field Data Processing Expert",
+        "3km Mountain Road Project Leader"
       ]
     },
     projects: {
@@ -34,21 +34,21 @@ export const translations = {
       subtitle: "Real Projects & Academic Work",
       items: [
         {
-          title: "Graduation Project: Local Road Survey & Mapping",
-          description: "Main graduation project involving complete surveying and mapping of a local road with necessary studies, quantity calculations, and technical report preparation using specialized surveying software.",
-          technologies: ["Google Earth", "AutoCAD Civil", "Field Surveying", "Quantity Calculation"],
+          title: "3km Mountain Road Design (Graduation Project)",
+          description: "Led the complete preliminary study phase, analyzing terrain and influential factors to define the optimal road alignment. Executed topographic surveys using Total Station, collecting and processing extensive field data for design accuracy. Engineered the comprehensive road model in Civil 3D, developing horizontal/vertical alignments, corridors, and cross-sections. Calculated precise earthwork quantities (cut & fill), delivering a complete, cost-estimated, and ready-for-implementation design package.",
+          technologies: ["Total Station", "Civil 3D", "AutoCAD", "Field Surveying", "GPS/GNSS"],
           image: "/src/assets/road-surveyor.jpg"
         },
         {
-          title: "Smart English Learning System",
-          description: "Interactive web platform for English language learning using artificial intelligence, including student level assessment and personalized educational content.",
-          technologies: ["Python", "AI", "Web Development", "Natural Language Processing"],
+          title: "Practical Surveying Field Projects",
+          description: "Conducted as-built surveys for buildings, successfully mapping property boundaries and adjacent structures. Performed construction layout (setting-out) of structural columns from engineering blueprints, ensuring precise placement for construction. Executed detailed topographic surveys and boundary mapping using advanced surveying equipment.",
+          technologies: ["Total Station", "GPS/GNSS", "Automatic Level", "Global Mapper", "Boundary Mapping"],
           image: "/src/assets/smart-city-tech.jpg"
         },
         {
-          title: "Surveying Process Automation",
-          description: "Tools for automating surveying operations and data classification through automatic processing and analysis of surveying points to accelerate fieldwork.",
-          technologies: ["Python", "Data Analysis", "Process Automation", "Point Processing"],
+          title: "Survey Data Processing & Analysis",
+          description: "Specialized in transforming raw field survey data into comprehensive technical drawings and reports. Proficient in processing point clouds, coordinate transformations, and creating detailed survey maps. Advanced skills in quantity calculations and cost estimation for infrastructure projects.",
+          technologies: ["Civil 3D", "AutoCAD", "Global Mapper", "Python", "Google Earth Pro"],
           image: "/src/assets/highway-design.jpg"
         }
       ]
@@ -58,20 +58,20 @@ export const translations = {
       subtitle: "Surveying & Programming Expertise",
       categories: [
         {
-          title: "Surveying & Roads",
-          skills: ["Land Surveying", "Road Mapping", "Quantity Calculation", "Technical Reports", "Field Surveying"]
+          title: "Surveying Software",
+          skills: ["Civil 3D", "AutoCAD", "Global Mapper", "ArcGIS", "Survey Processing"]
         },
         {
-          title: "Engineering Software",
-          skills: ["Google Earth Pro", "AutoCAD Civil", "ArcGIS", "Global Mapper", "Advanced MS Office"]
+          title: "Field Equipment", 
+          skills: ["Total Station", "GPS/GNSS", "Automatic Level", "Digital Theodolite", "Field Data Collection"]
         },
         {
-          title: "Programming & AI",
-          skills: ["Python Development", "Web Development", "AI & Machine Learning", "Data Analysis", "Process Automation"]
+          title: "Programming & Tools",
+          skills: ["Python (Process Automation)", "Google Earth Pro", "Microsoft Office", "Data Analysis", "Technical Documentation"]
         },
         {
-          title: "Smart Tools",
-          skills: ["Smart Calculators", "Data Processing", "Automation Tools", "AI Integration", "Cost Analysis"]
+          title: "Technical Skills",
+          skills: ["Topographic Surveys", "Construction Layout", "Boundary Mapping", "Quantity Calculations", "Cost Estimation"]
         }
       ]
     },
@@ -86,9 +86,10 @@ export const translations = {
         submit: "Send Message"
       },
       info: {
-        email: "mohammedalbkhyty@gmail.com",
+        email: "Mohammedlbkhyty@gmail.com",
         phone: "+967 772791169",
-        location: "Yemen"
+        whatsapp: "+967 714403583",
+        location: "Sana'a, Yemen"
       }
     },
     footer: {
@@ -103,25 +104,26 @@ export const translations = {
       keyAchievements: "Key Achievements:",
 
       graduationProject: {
-        title: "Graduation Project: Local Road Survey & Mapping",
-        company: "University Project",
-        description: "Main graduation project involving complete surveying and mapping of a local road with necessary studies, quantity calculations, and technical report preparation using specialized surveying software. This project, discussed in the 'Journal of Surveying and Mapping', showcases practical application of surveying principles and software proficiency.",
+        title: "Lead Surveyor & Designer | 3km Mountain Road Design",
+        company: "Graduation Project",
+        description: "Led the complete preliminary study phase, analyzing terrain and influential factors to define the optimal road alignment. Executed topographic surveys using Total Station, collecting and processing extensive field data for design accuracy. Engineered the comprehensive road model in Civil 3D, developing horizontal/vertical alignments, corridors, and cross-sections.",
         achievements: [
-          "Successfully completed comprehensive surveying and mapping of a local road.",
-          "Prepared detailed technical reports and accurate quantity calculations.",
-          "Demonstrated proficiency in specialized surveying software for data analysis and reporting."
+          "Led complete preliminary study phase, analyzing terrain and influential factors to define optimal road alignment",
+          "Executed topographic surveys using Total Station, collecting and processing extensive field data for design accuracy",
+          "Engineered comprehensive road model in Civil 3D, developing horizontal/vertical alignments, corridors, and cross-sections",
+          "Calculated precise earthwork quantities (cut & fill), delivering complete, cost-estimated, ready-for-implementation design package"
         ]
       },
 
       educationDetails: {
-        diploma: "Diploma in Surveying & Roads",
-        institute: "Technical Institute, College of Engineering",
-        specialization: "Surveying & Road Design"
+        diploma: "Diploma in Surveying & Roads | 2025",
+        institute: "Technical Commercial Institute, Ibb, Yemen",
+        specialization: "Surveying & Road Engineering"
       },
       certificationDetails: {
-        aiExpert: "AI Expert Certificate",
-        gisFundamentals: "Fundamentals of GIS Course",
-        pythonBeginner: "Python Programming for Beginners Course",
+        surveyorQualification: "Certified Surveyor Qualification Course",
+        practicalTraining: "Intensive, project-based training on Total Station, GPS, and Level for practical application in leveling, topographic surveys, and construction layout (roads & buildings)",
+        languages: "Languages: Arabic (Native), English (Intermediate)"
       }
     }
   },
@@ -135,8 +137,8 @@ export const translations = {
     },
     hero: {
       name: "محمد البخيتي",
-      title: "مهندس مساحة وطرق حديث التخرج",
-      description: "أسعى لتطبيق مهاراتي في المساحة والبرمجة لخلق حلول هندسية مبتكرة. أدمج خبرة المساحة التقليدية مع تقنيات الذكاء الاصطناعي الحديثة.",
+      title: "فني مساحة وطرق",
+      description: "فني مساحة وطرق موجه بالتفاصيل ومتحفز، حاصل على دبلوم فني وخبرة معتمدة في تشغيل محطة التوتال، نظام تحديد المواقع GPS، وأجهزة التسوية. ماهر في تحويل البيانات الميدانية إلى رسومات مساحية شاملة باستخدام الأوتوكاد، سيفيل ثري دي، وجلوبال مابر.",
       cta: {
         primary: "استكشف أعمالي",
         secondary: "تحميل السيرة الذاتية"
@@ -144,13 +146,13 @@ export const translations = {
     },
     about: {
       title: "نبذة عني",
-      subtitle: "مهندس حديث التخرج",
-      description: "حديث التخرج بدبلوم عامين في هندسة المساحة والطرق، أبحث بنشاط عن فرص عمل لتطبيق مهاراتي المكتسبة واكتساب خبرة عملية. لدي شغف قوي بالتكنولوجيا والذكاء الاصطناعي، مع مهارات برمجية تمكنني من دمج التقنيات الحديثة مع العمل الهندسي.",
+      subtitle: "فني مساحة وطرق",
+      description: "فني مساحة وطرق موجه بالتفاصيل ومتحفز، حاصل على دبلوم فني وخبرة معتمدة في تشغيل محطة التوتال، نظام تحديد المواقع GPS، وأجهزة التسوية. ماهر في تحويل البيانات الميدانية إلى رسومات مساحية شاملة باستخدام الأوتوكاد، سيفيل ثري دي، وجلوبال مابر. أثبت النجاح في تنفيذ المشاريع من خلال مسح وتصميم طريق جبلي بطول 3 كم. أسعى لتطبيق مهارات شاملة في العمليات الميدانية لتحقيق الدقة والكفاءة في مشاريع البنية التحتية الصعبة.",
       highlights: [
-        "حديث التخرج + مهارات برمجية",
-        "هندسة المساحة والطرق",
-        "متحمس للذكاء الاصطناعي والأتمتة",
-        "حلول هندسية ذكية"
+        "خبرة معتمدة في تشغيل معدات المساحة",
+        "إتقان الأوتوكاد وسيفيل ثري دي",
+        "خبير في معالجة البيانات الميدانية",
+        "قائد مشروع طريق جبلي 3 كم"
       ]
     },
     projects: {
@@ -158,21 +160,21 @@ export const translations = {
       subtitle: "مشاريع حقيقية وأعمال أكاديمية",
       items: [
         {
-          title: "مشروع التخرج: مسح ورفع طريق محلي",
-          description: "مشروع التخرج الرئيسي شمل مسح ورفع طريق محلي كامل مع إجراء الدراسات اللازمة وحساب الكميات وإعداد التقارير الفنية باستخدام برامج المساحة المتخصصة.",
-          technologies: ["جوجل إيرث", "أوتوكاد سيفيل", "المسح الميداني", "حساب الكميات"],
+          title: "تصميم طريق جبلي 3 كم (مشروع التخرج)",
+          description: "قدت مرحلة الدراسة التمهيدية الكاملة، مع تحليل التضاريس والعوامل المؤثرة لتحديد المسار الأمثل للطريق. نفذت المسوحات الطبوغرافية باستخدام محطة التوتال، وجمعت ومعالجت بيانات ميدانية واسعة لدقة التصميم. هندست النموذج الشامل للطريق في سيفيل ثري دي، مع تطوير المحاور الأفقية/العمودية والممرات والمقاطع العرضية. حسبت كميات الحفر والردم بدقة، وقدمت حزمة تصميم كاملة ومقدرة التكلفة وجاهزة للتنفيذ.",
+          technologies: ["محطة التوتال", "سيفيل ثري دي", "أوتوكاد", "المسح الميداني", "GPS/GNSS"],
           image: "/src/assets/road-surveyor.jpg"
         },
         {
-          title: "نظام تعليم ذكي للغة الإنجليزية",
-          description: "منصة ويب تفاعلية لتعليم اللغة الإنجليزية باستخدام الذكاء الاصطناعي، تشمل تقييم مستوى الطالب وتخصيص المحتوى التعليمي.",
-          technologies: ["بايثون", "ذكاء اصطناعي", "تطوير ويب", "معالجة اللغة الطبيعية"],
+          title: "مشاريع المساحة الميدانية العملية",
+          description: "أجريت مسوحات كما هو مبني للمباني، ونجحت في رسم حدود الممتلكات والهياكل المجاورة. نفذت تخطيط البناء (التوقيع) للأعمدة الإنشائية من المخططات الهندسية، مع ضمان الوضع الدقيق للبناء. نفذت مسوحات طبوغرافية مفصلة ورسم الحدود باستخدام معدات مساحية متطورة.",
+          technologies: ["محطة التوتال", "GPS/GNSS", "جهاز التسوية الآلي", "جلوبال مابر", "رسم الحدود"],
           image: "/src/assets/smart-city-tech.jpg"
         },
         {
-          title: "أتمتة الإجراءات المساحية",
-          description: "أدوات لأتمتة العمليات المساحية وتصنيف البيانات من خلال معالجة وتحليل النقاط المساحية آلياً لتسريع العمل الميداني.",
-          technologies: ["بايثون", "تحليل البيانات", "أتمتة العمليات", "معالجة النقاط"],
+          title: "معالجة وتحليل بيانات المسح",
+          description: "تخصصت في تحويل بيانات المسح الميداني الخام إلى رسومات فنية وتقارير شاملة. ماهر في معالجة سحب النقاط، وتحويلات الإحداثيات، وإنشاء خرائط مساحية مفصلة. مهارات متقدمة في حسابات الكميات وتقدير التكاليف لمشاريع البنية التحتية.",
+          technologies: ["سيفيل ثري دي", "أوتوكاد", "جلوبال مابر", "بايثون", "جوجل إيرث برو"],
           image: "/src/assets/highway-design.jpg"
         }
       ]
@@ -182,20 +184,20 @@ export const translations = {
       subtitle: "خبرة في المساحة والبرمجة",
       categories: [
         {
-          title: "المساحة والطرق",
-          skills: ["مسح الأراضي", "خرائط الطرق", "حساب الكميات", "التقارير الفنية", "المسح الميداني"]
+          title: "برامج المساحة",
+          skills: ["سيفيل ثري دي", "أوتوكاد", "جلوبال مابر", "آرك جي آي إس", "معالجة المسوحات"]
         },
         {
-          title: "برامج الهندسة",
-          skills: ["جوجل إيرث برو", "أوتوكاد سيفيل", "آرك جي آي إس", "جلوبال مابر", "مايكروسوفت أوفيس المتقدم"]
+          title: "المعدات الميدانية",
+          skills: ["محطة التوتال", "GPS/GNSS", "جهاز التسوية الآلي", "الثيودوليت الرقمي", "جمع البيانات الميدانية"]
         },
         {
-          title: "البرمجة والذكاء الاصطناعي",
-          skills: ["تطوير بايثون", "تطوير ويب", "ذكاء اصطناعي وتعلم آلة", "تحليل البيانات", "أتمتة العمليات"]
+          title: "البرمجة والأدوات",
+          skills: ["بايثون (أتمتة العمليات)", "جوجل إيرث برو", "مايكروسوفت أوفيس", "تحليل البيانات", "التوثيق الفني"]
         },
         {
-          title: "الأدوات الذكية",
-          skills: ["حاسبات ذكية", "معالجة البيانات", "أدوات الأتمتة", "تكامل الذكاء الاصطناعي", "تحليل التكاليف"]
+          title: "المهارات التقنية",
+          skills: ["المسوحات الطبوغرافية", "تخطيط البناء", "رسم الحدود", "حسابات الكميات", "تقدير التكاليف"]
         }
       ]
     },
@@ -210,9 +212,10 @@ export const translations = {
         submit: "إرسال الرسالة"
       },
       info: {
-        email: "mohammedalbkhyty@gmail.com",
+        email: "Mohammedlbkhyty@gmail.com",
         phone: "+967 772791169",
-        location: "اليمن"
+        whatsapp: "+967 714403583",
+        location: "صنعاء، اليمن"
       }
     },
     footer: {
@@ -227,25 +230,26 @@ export const translations = {
       keyAchievements: "الإنجازات الرئيسية:",
 
       graduationProject: {
-        title: "مشروع التخرج: مسح ورفع طريق محلي",
-        company: "مشروع جامعي",
-        description: "مشروع التخرج الرئيسي شمل مسح ورفع طريق محلي كامل مع إجراء الدراسات اللازمة وحساب الكميات وإعداد التقارير الفنية باستخدام برامج المساحة المتخصصة. هذا المشروع، الذي نوقش في 'مجلة المساحة والخرائط'، يعرض التطبيق العملي لمبادئ المساحة وإتقان البرامج.",
+        title: "مساح رئيسي ومصمم | تصميم طريق جبلي 3 كم",
+        company: "مشروع التخرج",
+        description: "قدت مرحلة الدراسة التمهيدية الكاملة، مع تحليل التضاريس والعوامل المؤثرة لتحديد المسار الأمثل للطريق. نفذت المسوحات الطبوغرافية باستخدام محطة التوتال، وجمعت ومعالجت بيانات ميدانية واسعة لدقة التصميم. هندست النموذج الشامل للطريق في سيفيل ثري دي، مع تطوير المحاور الأفقية/العمودية والممرات والمقاطع العرضية.",
         achievements: [
-          "إتمام أعمال المسح والرفع الشاملة لطريق محلي.",
-          "إعداد التقارير الفنية المفصلة وحسابات الكميات الدقيقة.",
-          "إظهار الكفاءة في استخدام برامج المساحة المتخصصة لتحليل البيانات وإعداد التقارير."
+          "قدت مرحلة الدراسة التمهيدية الكاملة، مع تحليل التضاريس والعوامل المؤثرة لتحديد المسار الأمثل للطريق",
+          "نفذت المسوحات الطبوغرافية باستخدام محطة التوتال، وجمعت ومعالجت بيانات ميدانية واسعة لدقة التصميم",
+          "هندست النموذج الشامل للطريق في سيفيل ثري دي، مع تطوير المحاور الأفقية/العمودية والممرات والمقاطع العرضية",
+          "حسبت كميات الحفر والردم بدقة، وقدمت حزمة تصميم كاملة ومقدرة التكلفة وجاهزة للتنفيذ"
         ]
       },
 
       educationDetails: {
-        diploma: "دبلوم المساحة والطرقات",
-        institute: "المعهد التقني، كلية الهندسة",
-        specialization: "المساحة وتصميم الطرق"
+        diploma: "دبلوم المساحة والطرق | 2025",
+        institute: "المعهد التجاري التقني، إب، اليمن",
+        specialization: "هندسة المساحة والطرق"
       },
       certificationDetails: {
-        aiExpert: "شهادة خبير الذكاء الاصطناعي",
-        gisFundamentals: "دورة في أساسيات نظم المعلومات الجغرافية (GIS)",
-        pythonBeginner: "دورة في البرمجة بلغة بايثون للمبتدئين",
+        surveyorQualification: "دورة تأهيل مساح معتمد",
+        practicalTraining: "تدريب مكثف وقائم على المشاريع على محطة التوتال ونظام تحديد المواقع وأجهزة التسوية للتطبيق العملي في التسوية والمسوحات الطبوغرافية وتخطيط البناء (الطرق والمباني)",
+        languages: "اللغات: العربية (الأم)، الإنجليزية (متوسط)"
       }
     }
   }
