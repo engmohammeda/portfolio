@@ -52,31 +52,31 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				/* Futuristic Portfolio Colors */
-				'glow-cyan': 'hsl(var(--glow-cyan))',
-				'glow-aqua': 'hsl(var(--glow-aqua))',
-				'deep-space': 'hsl(var(--deep-space))',
-				'space-gray': 'hsl(var(--space-gray))',
-				'tech-blue': 'hsl(var(--tech-blue))',
-				'neural-purple': 'hsl(var(--neural-purple))',
-				'hologram-blue': 'hsl(var(--hologram-blue))',
-				'matrix-green': 'hsl(var(--matrix-green))'
+				/* Professional Surveying Colors */
+				'survey-orange': 'hsl(var(--survey-orange))',
+				'survey-blue': 'hsl(var(--survey-blue))',
+				'earth-brown': 'hsl(var(--earth-brown))',
+				'precision-gray': 'hsl(var(--precision-gray))',
+				'mapping-green': 'hsl(var(--mapping-green))',
+				'steel-blue': 'hsl(var(--steel-blue))',
+				'field-orange': 'hsl(var(--field-orange))',
+				'tech-slate': 'hsl(var(--tech-slate))'
 			},
 			backgroundImage: {
 				'gradient-primary': 'var(--gradient-primary)',
-				'gradient-space': 'var(--gradient-space)',
-				'gradient-tech': 'var(--gradient-tech)',
-				'gradient-neural': 'var(--gradient-neural)',
+				'gradient-surveyor': 'var(--gradient-surveyor)',
+				'gradient-field': 'var(--gradient-field)',
+				'gradient-precision': 'var(--gradient-precision)',
 				'gradient-hero': 'var(--gradient-hero)',
-				'gradient-matrix': 'var(--gradient-matrix)',
-				'gradient-hologram': 'var(--gradient-hologram)',
-				'gradient-particle': 'var(--gradient-particle)'
+				'gradient-earth': 'var(--gradient-earth)',
+				'gradient-mapping': 'var(--gradient-mapping)',
+				'gradient-professional': 'var(--gradient-professional)'
 			},
 			boxShadow: {
-				'glow': 'var(--shadow-glow)',
-				'aqua-glow': 'var(--shadow-aqua-glow)',
+				'survey': 'var(--shadow-survey)',
+				'precision': 'var(--shadow-precision)',
 				'deep': 'var(--shadow-deep)',
-				'tech': 'var(--shadow-tech)'
+				'professional': 'var(--shadow-professional)'
 			},
 			animation: {
 				'float': 'float 6s ease-in-out infinite',

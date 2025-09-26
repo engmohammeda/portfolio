@@ -6,64 +6,52 @@
 
 @layer base {
   :root {
-    /* Deep Space Color Palette */
-    --background: 220 25% 6%;
-    --foreground: 200 100% 90%;
-
-    --card: 220 20% 8%;
-    --card-foreground: 200 100% 95%;
-
-    --popover: 220 20% 8%;
-    --popover-foreground: 200 100% 95%;
-
-    /* Cyan Primary (#00aeff) */
-    --primary: 203 100% 50%;
-    --primary-foreground: 220 25% 6%;
-
-    /* Aqua Green Secondary (#00ffaa) */
-    --secondary: 160 100% 50%;
-    --secondary-foreground: 220 25% 6%;
-
+    --background: 220 15% 8%;
+    --foreground: 35 15% 95%;
+    --card: 220 15% 10%;
+    --card-foreground: 35 15% 95%;
+    --popover: 220 15% 10%;
+    --popover-foreground: 35 15% 95%;
+    --primary: 25 95% 55%;
+    --primary-foreground: 220 15% 8%;
+    --secondary: 35 25% 75%;
+    --secondary-foreground: 220 15% 15%;
     --muted: 220 15% 15%;
-    --muted-foreground: 200 50% 70%;
-
-    --accent: 160 100% 50%;
-    --accent-foreground: 220 25% 6%;
-
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 98%;
-
+    --muted-foreground: 35 15% 65%;
+    --accent: 200 85% 60%;
+    --accent-foreground: 220 15% 8%;
+    --destructive: 0 65% 50%;
+    --destructive-foreground: 35 15% 95%;
     --border: 220 15% 20%;
-    --input: 220 15% 20%;
-    --ring: 203 100% 50%;
-
+    --input: 220 15% 15%;
+    --ring: 25 95% 55%;
     --radius: 0.75rem;
 
-  /* Custom Portfolio Colors */
-  --glow-cyan: 203 100% 50%;
-  --glow-aqua: 160 100% 50%;
-  --deep-space: 220 25% 6%;
-  --space-gray: 220 15% 15%;
-  --tech-blue: 210 100% 45%;
-  --neural-purple: 280 60% 50%;
-  --hologram-blue: 200 100% 60%;
-  --matrix-green: 120 100% 40%;
+    /* Professional Surveying Colors */
+    --survey-orange: 25 95% 55%;
+    --survey-blue: 200 85% 60%;
+    --earth-brown: 35 45% 35%;
+    --precision-gray: 220 15% 45%;
+    --mapping-green: 120 60% 50%;
+    --steel-blue: 210 50% 40%;
+    --field-orange: 35 85% 65%;
+    --tech-slate: 220 15% 25%;
 
-  /* Advanced Gradients */
-  --gradient-primary: linear-gradient(135deg, hsl(203 100% 50%), hsl(160 100% 50%));
-  --gradient-space: linear-gradient(180deg, hsl(220 25% 6%), hsl(220 20% 10%));
-  --gradient-tech: linear-gradient(90deg, hsl(203 100% 50% / 0.1), hsl(160 100% 50% / 0.1));
-  --gradient-neural: linear-gradient(45deg, hsl(280 60% 50% / 0.2), hsl(203 100% 50% / 0.2));
-  --gradient-hero: radial-gradient(ellipse at center, hsl(220 20% 12%) 0%, hsl(220 25% 6%) 100%);
-  --gradient-matrix: linear-gradient(45deg, hsl(120 100% 40% / 0.1), hsl(203 100% 50% / 0.1));
-  --gradient-hologram: linear-gradient(90deg, hsl(200 100% 60% / 0.2), hsl(280 60% 50% / 0.2));
-  --gradient-particle: radial-gradient(circle, hsl(203 100% 50% / 0.8) 0%, transparent 70%);
+    /* Professional Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(25 95% 55%), hsl(35 85% 65%));
+    --gradient-surveyor: linear-gradient(135deg, hsl(200 85% 60%), hsl(210 50% 40%));
+    --gradient-field: linear-gradient(135deg, hsl(25 95% 55%), hsl(120 60% 50%));
+    --gradient-precision: linear-gradient(135deg, hsl(220 15% 25%), hsl(220 15% 35%));
+    --gradient-hero: linear-gradient(135deg, hsl(220 15% 8%) 0%, hsla(25 95% 55% / 0.1) 50%, hsl(220 15% 15%) 100%);
+    --gradient-earth: linear-gradient(180deg, hsl(35 45% 35% / 0.2), hsl(35 45% 35% / 0.1));
+    --gradient-mapping: linear-gradient(45deg, hsl(120 60% 50% / 0.2), hsl(200 85% 60% / 0.2));
+    --gradient-professional: radial-gradient(circle at 30% 70%, hsl(25 95% 55% / 0.1), transparent 50%);
 
-    /* Shadows & Glows */
-    --shadow-glow: 0 0 20px hsl(203 100% 50% / 0.3);
-    --shadow-aqua-glow: 0 0 20px hsl(160 100% 50% / 0.3);
-    --shadow-deep: 0 10px 40px hsl(220 25% 6% / 0.8);
-    --shadow-tech: 0 5px 15px hsl(203 100% 50% / 0.2);
+    /* Professional Shadows */
+    --shadow-survey: 0 0 30px hsl(25 95% 55% / 0.2), 0 0 60px hsl(25 95% 55% / 0.1);
+    --shadow-precision: 0 0 30px hsl(200 85% 60% / 0.2), 0 0 60px hsl(200 85% 60% / 0.1);
+    --shadow-deep: 0 25px 50px -12px hsl(220 15% 8% / 0.6);
+    --shadow-professional: 0 20px 40px -10px hsl(25 95% 55% / 0.15), 0 0 20px hsl(25 95% 55% / 0.1);
 
     /* Animations */
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -72,47 +60,51 @@
   }
 
   .light {
-    /* Light Theme Colors */
-    --background: 210 40% 98%;
-    --foreground: 220 25% 15%;
+    --background: 35 15% 98%;
+    --foreground: 220 15% 15%;
+    --card: 35 15% 96%;
+    --card-foreground: 220 15% 15%;
+    --popover: 35 15% 96%;
+    --popover-foreground: 220 15% 15%;
+    --primary: 25 95% 50%;
+    --primary-foreground: 35 15% 98%;
+    --secondary: 35 25% 85%;
+    --secondary-foreground: 220 15% 15%;
+    --muted: 35 15% 92%;
+    --muted-foreground: 220 15% 45%;
+    --accent: 200 85% 55%;
+    --accent-foreground: 35 15% 98%;
+    --destructive: 0 65% 50%;
+    --destructive-foreground: 35 15% 98%;
+    --border: 35 15% 88%;
+    --input: 35 15% 88%;
+    --ring: 25 95% 50%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 220 25% 15%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 220 25% 15%;
-
-    --primary: 203 100% 50%;
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 160 100% 45%;
-    --secondary-foreground: 0 0% 100%;
-
-    --muted: 210 40% 92%;
-    --muted-foreground: 215 16% 47%;
-
-    --accent: 160 100% 45%;
-    --accent-foreground: 0 0% 100%;
-
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 203 100% 50%;
+    /* Light mode professional colors */
+    --survey-orange: 25 95% 50%;
+    --survey-blue: 200 85% 55%;
+    --earth-brown: 35 45% 40%;
+    --precision-gray: 220 15% 55%;
+    --mapping-green: 120 60% 45%;
+    --steel-blue: 210 50% 45%;
+    --field-orange: 35 85% 60%;
+    --tech-slate: 220 15% 65%;
 
     /* Light Theme Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(203 100% 50%), hsl(160 100% 45%));
-    --gradient-space: linear-gradient(180deg, hsl(210 40% 98%), hsl(210 40% 95%));
-    --gradient-tech: linear-gradient(90deg, hsl(203 100% 50% / 0.05), hsl(160 100% 45% / 0.05));
-    --gradient-neural: linear-gradient(45deg, hsl(280 60% 50% / 0.1), hsl(203 100% 50% / 0.1));
-    --gradient-hero: radial-gradient(ellipse at center, hsl(210 40% 95%) 0%, hsl(210 40% 98%) 100%);
+    --gradient-primary: linear-gradient(135deg, hsl(25 95% 50%), hsl(35 85% 60%));
+    --gradient-surveyor: linear-gradient(135deg, hsl(200 85% 55%), hsl(210 50% 45%));
+    --gradient-field: linear-gradient(135deg, hsl(25 95% 50%), hsl(120 60% 45%));
+    --gradient-precision: linear-gradient(135deg, hsl(220 15% 65%), hsl(220 15% 75%));
+    --gradient-hero: linear-gradient(135deg, hsl(35 15% 98%) 0%, hsla(25 95% 50% / 0.05) 50%, hsl(35 15% 95%) 100%);
+    --gradient-earth: linear-gradient(180deg, hsl(35 45% 40% / 0.1), hsl(35 45% 40% / 0.05));
+    --gradient-mapping: linear-gradient(45deg, hsl(120 60% 45% / 0.1), hsl(200 85% 55% / 0.1));
+    --gradient-professional: radial-gradient(circle at 30% 70%, hsl(25 95% 50% / 0.05), transparent 50%);
 
     /* Light Theme Shadows */
-    --shadow-glow: 0 0 20px hsl(203 100% 50% / 0.15);
-    --shadow-aqua-glow: 0 0 20px hsl(160 100% 45% / 0.15);
-    --shadow-deep: 0 10px 40px hsl(220 25% 15% / 0.1);
-    --shadow-tech: 0 5px 15px hsl(203 100% 50% / 0.1);
+    --shadow-survey: 0 0 30px hsl(25 95% 50% / 0.15);
+    --shadow-precision: 0 0 30px hsl(200 85% 55% / 0.15);
+    --shadow-deep: 0 25px 50px -12px hsl(220 15% 15% / 0.1);
+    --shadow-professional: 0 20px 40px -10px hsl(25 95% 50% / 0.1), 0 0 20px hsl(25 95% 50% / 0.05);
   }
 
   .dark {

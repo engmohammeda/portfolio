@@ -10,13 +10,11 @@ export const translations = {
       contact: "Contact"
     },
     hero: {
-      name: "Mohammed Al-Bukhaiti",
-      title: "Surveying & Roads Technician",
-      description: "Detail-oriented and motivated Surveying & Roads Technician with technical diploma and certified expertise in operating Total Station, GPS, and Level instruments. Proficient in transforming field data into comprehensive survey drawings using AutoCAD, Civil 3D, and Global Mapper.",
-      cta: {
-        primary: "Explore My Work",
-        secondary: "Download CV"
-      }
+      title: "Mohammed Al-Bukhaiti",
+      subtitle: "Surveyor and Roadway Technician",
+      description: "Specialized in transforming field data into precise engineering solutions with practical experience acquired from leading a graduation project for designing a 3 km mountain road",
+      downloadCV: "Download CV",
+      contactMe: "Contact Me"
     },
     about: {
       title: "About Me",
@@ -54,25 +52,32 @@ export const translations = {
       ]
     },
     skills: {
-      title: "Technical Skills",
-      subtitle: "Surveying & Programming Expertise",
+      title: "Skills & Expertise",
       categories: [
         {
-          title: "Surveying Software",
-          skills: ["Civil 3D", "AutoCAD", "Global Mapper", "ArcGIS", "Survey Processing"]
+          title: "Surveying & Design Software",
+          skills: ["Civil 3D", "AutoCAD", "ArcGIS Pro", "Global Mapper", "SAS.Plane"]
         },
         {
-          title: "Field Equipment", 
-          skills: ["Total Station", "GPS/GNSS", "Automatic Level", "Digital Theodolite", "Field Data Collection"]
+          title: "Surveying Instruments",
+          skills: ["Total Station", "GPS/RTK", "Level", "Modern Surveying Equipment"]
         },
         {
-          title: "Programming & Tools",
-          skills: ["Python (Process Automation)", "Google Earth Pro", "Microsoft Office", "Data Analysis", "Technical Documentation"]
-        },
-        {
-          title: "Technical Skills",
-          skills: ["Topographic Surveys", "Construction Layout", "Boundary Mapping", "Quantity Calculations", "Cost Estimation"]
+          title: "Road Design",
+          skills: ["Route Design", "Cross Sections", "Earthwork Calculations", "Horizontal & Vertical Alignment"]
         }
+      ],
+      expertise: [
+        { skill: "Civil 3D", level: 90, color: "bg-survey-orange" },
+        { skill: "AutoCAD", level: 85, color: "bg-survey-blue" },
+        { skill: "Total Station", level: 88, color: "bg-mapping-green" },
+        { skill: "Road Design", level: 87, color: "bg-field-orange" }
+      ],
+      achievements: [
+        { icon: "🛣️", title: "Road Projects", value: "2+" },
+        { icon: "📏", title: "Survey Accuracy", value: "99%" },
+        { icon: "⚡", title: "Fresh Graduate", value: "2025" },
+        { icon: "🎯", title: "Practical Training", value: "Complete" }
       ]
     },
     contact: {
@@ -103,28 +108,23 @@ export const translations = {
       certificationsTitle: "Acquired Certifications",
       keyAchievements: "Key Achievements:",
 
-      graduationProject: {
-        title: "Lead Surveyor & Designer | 3km Mountain Road Design",
-        company: "Graduation Project",
-        description: "Led the complete preliminary study phase, analyzing terrain and influential factors to define the optimal road alignment. Executed topographic surveys using Total Station, collecting and processing extensive field data for design accuracy. Engineered the comprehensive road model in Civil 3D, developing horizontal/vertical alignments, corridors, and cross-sections.",
-        achievements: [
-          "Led complete preliminary study phase, analyzing terrain and influential factors to define optimal road alignment",
-          "Executed topographic surveys using Total Station, collecting and processing extensive field data for design accuracy",
-          "Engineered comprehensive road model in Civil 3D, developing horizontal/vertical alignments, corridors, and cross-sections",
-          "Calculated precise earthwork quantities (cut & fill), delivering complete, cost-estimated, ready-for-implementation design package"
-        ]
-      },
-
-      educationDetails: {
-        diploma: "Diploma in Surveying & Roads | 2025",
-        institute: "Technical Commercial Institute, Ibb, Yemen",
-        specialization: "Surveying & Road Engineering"
-      },
-      certificationDetails: {
-        surveyorQualification: "Certified Surveyor Qualification Course",
-        practicalTraining: "Intensive, project-based training on Total Station, GPS, and Level for practical application in leveling, topographic surveys, and construction layout (roads & buildings)",
-        languages: "Languages: Arabic (Native), English (Intermediate)"
-      }
+    experience: {
+      title: "Projects and Professional Experience",
+      jobs: [
+        {
+          title: "Surveyor and Lead Designer | Design of a 3 km Mountain Road (Capstone Project)",
+          company: "Applied Project",
+          period: "2024 - 2025",
+          description: "I directed the extensive preliminary research phase, evaluating the terrain and contributing factors to identify the most advantageous route for the road. I performed topographic surveys utilizing a total station and gathered and analyzed extensive field data to guarantee design precision"
+        },
+        {
+          title: "Trainee Surveyor (Practical Qualification Course)",
+          company: "Practical Training",
+          period: "2024",
+          description: "I underwent comprehensive practical training in the utilization of contemporary surveying instruments, including Total Station, GPS, and Level. I conducted the setting-out and surveying operations for the columns and axes of a training facility"
+        }
+      ]
+    },
     }
   },
   ar: {
@@ -136,13 +136,11 @@ export const translations = {
       contact: "التواصل"
     },
     hero: {
-      name: "محمد البخيتي",
-      title: "فني مساحة وطرق",
-      description: "فني مساحة وطرق موجه بالتفاصيل ومتحفز، حاصل على دبلوم فني وخبرة معتمدة في تشغيل محطة التوتال، نظام تحديد المواقع GPS، وأجهزة التسوية. ماهر في تحويل البيانات الميدانية إلى رسومات مساحية شاملة باستخدام الأوتوكاد، سيفيل ثري دي، وجلوبال مابر.",
-      cta: {
-        primary: "استكشف أعمالي",
-        secondary: "تحميل السيرة الذاتية"
-      }
+      title: "محمد البخيتي",
+      subtitle: "فني مساحة وطرق",
+      description: "متخصص في تحويل البيانات الميدانية إلى حلول هندسية دقيقة خبرة عملية مكتسبة من قيادة مشروع تخرج لتصميم طريق جبلي بطول 3 كم",
+      downloadCV: "تحميل السيرة الذاتية",
+      contactMe: "تواصل معي"
     },
     about: {
       title: "نبذة عني",
@@ -180,25 +178,32 @@ export const translations = {
       ]
     },
     skills: {
-      title: "المهارات التقنية",
-      subtitle: "خبرة في المساحة والبرمجة",
+      title: "المهارات والخبرات",
       categories: [
         {
-          title: "برامج المساحة",
-          skills: ["سيفيل ثري دي", "أوتوكاد", "جلوبال مابر", "آرك جي آي إس", "معالجة المسوحات"]
+          title: "برامج المساحة والتصميم",
+          skills: ["Civil 3D", "AutoCAD", "ArcGIS Pro", "Global Mapper", "SAS.Plane"]
         },
         {
-          title: "المعدات الميدانية",
-          skills: ["محطة التوتال", "GPS/GNSS", "جهاز التسوية الآلي", "الثيودوليت الرقمي", "جمع البيانات الميدانية"]
+          title: "أجهزة المساحة",
+          skills: ["Total Station", "GPS/RTK", "Level", "أجهزة المساحة الحديثة"]
         },
         {
-          title: "البرمجة والأدوات",
-          skills: ["بايثون (أتمتة العمليات)", "جوجل إيرث برو", "مايكروسوفت أوفيس", "تحليل البيانات", "التوثيق الفني"]
-        },
-        {
-          title: "المهارات التقنية",
-          skills: ["المسوحات الطبوغرافية", "تخطيط البناء", "رسم الحدود", "حسابات الكميات", "تقدير التكاليف"]
+          title: "تصميم الطرق",
+          skills: ["تصميم المسارات", "المقاطع العرضية", "حساب كميات الحفر والردم", "التسوية الطولية والعرضية"]
         }
+      ],
+      expertise: [
+        { skill: "Civil 3D", level: 90, color: "bg-survey-orange" },
+        { skill: "AutoCAD", level: 85, color: "bg-survey-blue" },
+        { skill: "Total Station", level: 88, color: "bg-mapping-green" },
+        { skill: "تصميم الطرق", level: 87, color: "bg-field-orange" }
+      ],
+      achievements: [
+        { icon: "🛣️", title: "مشاريع طرق", value: "2+" },
+        { icon: "📏", title: "دقة المساحة", value: "99%" },
+        { icon: "⚡", title: "خريج جديد", value: "2025" },
+        { icon: "🎯", title: "تدريب عملي", value: "مكتمل" }
       ]
     },
     contact: {
@@ -229,28 +234,23 @@ export const translations = {
       certificationsTitle: "الشهادات المكتسبة",
       keyAchievements: "الإنجازات الرئيسية:",
 
-      graduationProject: {
-        title: "مساح رئيسي ومصمم | تصميم طريق جبلي 3 كم",
-        company: "مشروع التخرج",
-        description: "قدت مرحلة الدراسة التمهيدية الكاملة، مع تحليل التضاريس والعوامل المؤثرة لتحديد المسار الأمثل للطريق. نفذت المسوحات الطبوغرافية باستخدام محطة التوتال، وجمعت ومعالجت بيانات ميدانية واسعة لدقة التصميم. هندست النموذج الشامل للطريق في سيفيل ثري دي، مع تطوير المحاور الأفقية/العمودية والممرات والمقاطع العرضية.",
-        achievements: [
-          "قدت مرحلة الدراسة التمهيدية الكاملة، مع تحليل التضاريس والعوامل المؤثرة لتحديد المسار الأمثل للطريق",
-          "نفذت المسوحات الطبوغرافية باستخدام محطة التوتال، وجمعت ومعالجت بيانات ميدانية واسعة لدقة التصميم",
-          "هندست النموذج الشامل للطريق في سيفيل ثري دي، مع تطوير المحاور الأفقية/العمودية والممرات والمقاطع العرضية",
-          "حسبت كميات الحفر والردم بدقة، وقدمت حزمة تصميم كاملة ومقدرة التكلفة وجاهزة للتنفيذ"
-        ]
-      },
-
-      educationDetails: {
-        diploma: "دبلوم المساحة والطرق | 2025",
-        institute: "المعهد التجاري التقني، إب، اليمن",
-        specialization: "هندسة المساحة والطرق"
-      },
-      certificationDetails: {
-        surveyorQualification: "دورة تأهيل مساح معتمد",
-        practicalTraining: "تدريب مكثف وقائم على المشاريع على محطة التوتال ونظام تحديد المواقع وأجهزة التسوية للتطبيق العملي في التسوية والمسوحات الطبوغرافية وتخطيط البناء (الطرق والمباني)",
-        languages: "اللغات: العربية (الأم)، الإنجليزية (متوسط)"
-      }
+    experience: {
+      title: "الخبرة العملية والمشاريع",
+      jobs: [
+        {
+          title: "مساح ومصمم رئيسي | تصميم طريق جبلي 3 كم (مشروع التخرج)",
+          company: "مشروع تطبيقي",
+          period: "2024 - 2025",
+          description: "قدت مرحلة البحث الأولي الشامل، وتقييم التضاريس والعوامل المؤثرة لتحديد أفضل مسار للطريق. أجريت مسوحات طبوغرافية باستخدام Total Station وجمعت وحللت بيانات ميدانية شاملة لضمان دقة التصميم"
+        },
+        {
+          title: "متدرب مساح (دورة تأهيلية عملية)",
+          company: "التدريب العملي",
+          period: "2024",
+          description: "تدربت بشكل عملي على استخدام أجهزة المساحة الحديثة، بما في ذلك Total Station وGPS وLevel. نفذت عمليات التوقيع والمساحة للأعمدة والمحاور لمنشأة تدريبية"
+        }
+      ]
+    },
     }
   }
 };

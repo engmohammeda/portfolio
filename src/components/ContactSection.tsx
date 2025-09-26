@@ -40,25 +40,25 @@ export const ContactSection = ({ translations }: ContactSectionProps) => {
   ];
 
   return (
-    <section id="contact" className="py-20">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-primary bg-clip-text text-transparent">
+    <section id="contact" className="py-16 lg:py-20 bg-gradient-mapping">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="text-center mb-12 lg:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 bg-gradient-primary bg-clip-text text-transparent">
             {translations.contact.title}
           </h2>
-          <h3 className="text-xl text-secondary mb-4">
+          <h3 className="text-lg sm:text-xl text-survey-orange mb-4">
             {translations.contact.subtitle}
           </h3>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
             {translations.contact.description}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Contact Form */}
-          <Card className="bg-card/50 backdrop-blur-sm border-border/50 hover:shadow-tech transition-all duration-500">
+          <Card className="bg-card/50 backdrop-blur-sm border-border/50 hover:shadow-professional transition-all duration-500">
             <CardHeader>
-              <CardTitle className="text-2xl text-center">Send a Message</CardTitle>
+              <CardTitle className="text-xl sm:text-2xl text-center">إرسال رسالة</CardTitle>
             </CardHeader>
             <CardContent>
               <ContactFormEmail translations={translations} />
@@ -66,23 +66,23 @@ export const ContactSection = ({ translations }: ContactSectionProps) => {
           </Card>
 
           {/* Contact Info */}
-          <div className="space-y-6">
+          <div className="space-y-4 lg:space-y-6">
             {contactInfo.map((info, index) => (
               <Card
                 key={index}
-                className="bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 hover:shadow-tech transition-all duration-500 group animate-float"
+                className="bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 hover:shadow-professional transition-all duration-500 group animate-float"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <CardContent className="p-6">
-                  <div className="flex items-center space-x-4">
-                    <div className="p-3 rounded-full bg-primary/10 border border-primary/20 group-hover:bg-primary/20 transition-colors duration-300">
-                      <info.icon className="h-6 w-6 text-primary" />
+                <CardContent className="p-4 sm:p-6">
+                  <div className="flex items-center space-x-4 rtl:space-x-reverse">
+                    <div className="p-3 rounded-full bg-primary/10 border border-primary/20 group-hover:bg-primary/20 transition-colors duration-300 flex-shrink-0">
+                      <info.icon className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
                     </div>
-                    <div>
-                      <h4 className="font-semibold text-foreground">{info.label}</h4>
+                    <div className="flex-1 min-w-0">
+                      <h4 className="font-semibold text-foreground text-sm sm:text-base">{info.label}</h4>
                       <a
                         href={info.href}
-                        className="text-muted-foreground hover:text-primary transition-colors duration-300"
+                        className="text-muted-foreground hover:text-primary transition-colors duration-300 text-sm sm:text-base break-all"
                       >
                         {info.value}
                       </a>
