@@ -15,12 +15,11 @@ export const AboutSection = ({ translations }: AboutSectionProps) => {
   ];
 
   return (
-    <section id="about" className="py-20 relative overflow-hidden">
-      {/* Advanced Background Effects */}
-      <div className="absolute inset-0 neural-network opacity-30"></div>
-      <div className="absolute inset-0 bg-gradient-hero"></div>
+    <section id="about" className="py-20 w-full relative overflow-hidden">
+      {/* Clean Professional Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-background via-background/95 to-background"></div>
       
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center space-x-2 bg-secondary/10 border border-secondary/20 rounded-full px-6 py-2 mb-6 animate-glow-pulse">

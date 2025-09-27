@@ -40,8 +40,8 @@ export const ContactSection = ({ translations }: ContactSectionProps) => {
   ];
 
   return (
-    <section id="contact" className="py-16 lg:py-20 bg-gradient-mapping">
-      <div className="container mx-auto px-4 sm:px-6">
+    <section id="contact" className="py-20 w-full bg-gradient-to-br from-background to-background/95">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-12 lg:mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 bg-gradient-primary bg-clip-text text-transparent">
             {translations.contact.title}

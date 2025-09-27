@@ -36,8 +36,8 @@ export const ProjectsSection = ({ translations }: ProjectsSectionProps) => {
   ];
 
   return (
-    <div className="py-20 bg-gradient-space">
-      <div className="container mx-auto px-6">
+    <div className="py-20 w-full bg-gradient-to-br from-background to-background/95">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-primary bg-clip-text text-transparent">
             {translations.projects.title}

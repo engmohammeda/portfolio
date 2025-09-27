@@ -11,8 +11,8 @@ interface HeroSectionProps {
 
 export const HeroSection = ({ translations }: HeroSectionProps) => {
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-hero">
-      <div className="container mx-auto px-4 sm:px-6 py-12 lg:py-20">
+    <section className="min-h-screen w-full flex items-center justify-center relative overflow-hidden bg-gradient-hero">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 py-12 lg:py-20">
         <div className="grid grid-cols-1 xl:grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* Content */}
           <div className="xl:col-span-7 text-center lg:text-left space-y-6 lg:space-y-8 animate-fade-in">
@@ -57,7 +57,7 @@ export const HeroSection = ({ translations }: HeroSectionProps) => {
             {/* Social Links */}
             <div className="flex gap-4 justify-center lg:justify-start pt-4">
               <a
-                href="https://github.com/mohammed-bukhaiti"
+                href="https://github.com/engmohammeda"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 rounded-full bg-card/50 border border-border/50 hover:border-primary/50 hover:shadow-professional transition-all duration-300 group"
@@ -73,7 +73,7 @@ export const HeroSection = ({ translations }: HeroSectionProps) => {
                 <Linkedin className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
               </a>
               <a
-                href="https://twitter.com/mohammed_bukhaiti"
+                href="https://twitter.com/engalbukhaiti"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 rounded-full bg-card/50 border border-border/50 hover:border-primary/50 hover:shadow-professional transition-all duration-300 group"

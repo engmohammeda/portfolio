@@ -29,10 +29,10 @@
 
     /* Professional Surveying Colors */
     --survey-orange: 25 95% 55%;
-    --survey-blue: 200 85% 60%;
-    --earth-brown: 35 45% 35%;
-    --precision-gray: 220 15% 45%;
-    --mapping-green: 120 60% 50%;
+    --survey-blue: 210 80% 50%;
+    --earth-brown: 30 45% 35%;
+    --precision-gray: 220 15% 55%;
+    --mapping-green: 125 50% 45%;
     --steel-blue: 210 50% 40%;
     --field-orange: 35 85% 65%;
     --tech-slate: 220 15% 25%;
@@ -162,6 +162,27 @@
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+  }
+
+  /* Typewriter Effect */
+  .typewriter {
+    font-family: 'Courier New', monospace;
+    border-right: 2px solid hsl(var(--survey-orange));
+    animation: typing 2s steps(40, end), blink 1s step-end infinite;
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    max-width: 100%;
+  }
+
+  @keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+
+  @keyframes blink {
+    from, to { border-color: transparent; }
+    50% { border-color: hsl(var(--survey-orange)); }
   }
 
   .glass-effect {

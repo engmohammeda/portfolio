@@ -29,17 +29,20 @@ const Index = () => {
 
   if (!isLoaded) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-background">
-        <div className="text-center">
-          <div className="w-16 h-16 border-4 border-primary/20 border-t-primary rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-muted-foreground">Loading Digital Engineering Nexus...</p>
+      <div className="min-h-screen w-full flex items-center justify-center bg-background">
+        <div className="text-center space-y-6">
+          <div className="w-20 h-20 border-4 border-survey-orange/30 border-t-survey-orange rounded-full animate-spin mx-auto"></div>
+          <div className="typewriter text-lg text-survey-orange font-medium">
+            محمد البخيتي - مهندس مساحة
+          </div>
+          <p className="text-muted-foreground">جاري تحضير المحتوى الهندسي...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className={`min-h-screen bg-background ${currentLang === 'ar' ? 'rtl' : 'ltr'}`}>
+    <div className={`min-h-screen w-full bg-background ${currentLang === 'ar' ? 'rtl' : 'ltr'}`}>
       <GeometricBackground />
       <ProgressIndicator />
       <Navigation
@@ -48,23 +51,23 @@ const Index = () => {
         translations={currentTranslations}
       />
       
-      <main className="relative z-10">
-        <section id="home">
+      <main className="relative z-10 w-full">
+        <section id="home" className="w-full">
           <HeroSection translations={currentTranslations} />
         </section>
-        <section id="about">
+        <section id="about" className="w-full">
           <AboutSection translations={currentTranslations} />
         </section>
-        <section id="experience">
+        <section id="experience" className="w-full">
           <ExperienceSection currentLanguage={currentLang} />
         </section>
-        <section id="projects">
+        <section id="projects" className="w-full">
           <ProjectsSection translations={currentTranslations} />
         </section>
-        <section id="skills">
+        <section id="skills" className="w-full">
           <SkillsSection translations={currentTranslations} />
         </section>
-        <section id="contact">
+        <section id="contact" className="w-full">
           <ContactSection translations={currentTranslations} />
         </section>
       </main>
