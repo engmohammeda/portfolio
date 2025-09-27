@@ -7,7 +7,8 @@ import { SkillsSection } from '@/components/SkillsSection';
 import { ExperienceSection } from '@/components/ExperienceSection';
 import { ContactSection } from '@/components/ContactSection';
 import { Footer } from '@/components/Footer';
-import { ThreeBackground } from '@/components/ThreeBackground';
+import { GeometricBackground } from '@/components/GeometricBackground';
+import { ProgressIndicator } from '@/components/ProgressIndicator';
 import { translations } from '@/data/translations';
 
 const Index = () => {
@@ -39,7 +40,8 @@ const Index = () => {
 
   return (
     <div className={`min-h-screen bg-background ${currentLang === 'ar' ? 'rtl' : 'ltr'}`}>
-      <ThreeBackground />
+      <GeometricBackground />
+      <ProgressIndicator />
       <Navigation
         currentLang={currentLang}
         onLanguageToggle={handleLanguageToggle}
@@ -47,12 +49,24 @@ const Index = () => {
       />
       
       <main className="relative z-10">
-        <HeroSection translations={currentTranslations} />
-        <AboutSection translations={currentTranslations} />
-        <ExperienceSection currentLanguage={currentLang} />
-        <ProjectsSection translations={currentTranslations} />
-        <SkillsSection translations={currentTranslations} />
-        <ContactSection translations={currentTranslations} />
+        <section id="home">
+          <HeroSection translations={currentTranslations} />
+        </section>
+        <section id="about">
+          <AboutSection translations={currentTranslations} />
+        </section>
+        <section id="experience">
+          <ExperienceSection currentLanguage={currentLang} />
+        </section>
+        <section id="projects">
+          <ProjectsSection translations={currentTranslations} />
+        </section>
+        <section id="skills">
+          <SkillsSection translations={currentTranslations} />
+        </section>
+        <section id="contact">
+          <ContactSection translations={currentTranslations} />
+        </section>
       </main>
       
       <Footer translations={currentTranslations} />

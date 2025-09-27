@@ -36,7 +36,7 @@ export const ProjectsSection = ({ translations }: ProjectsSectionProps) => {
   ];
 
   return (
-    <section id="projects" className="py-20 bg-gradient-space">
+    <div className="py-20 bg-gradient-space">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-primary bg-clip-text text-transparent">
@@ -57,6 +57,6 @@ export const ProjectsSection = ({ translations }: ProjectsSectionProps) => {
           ))}
         </div>
       </div>
-    </section>
+    </div>
   );
 };

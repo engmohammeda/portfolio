@@ -5,6 +5,7 @@ export const translations = {
     nav: {
       home: "Home",
       about: "About",
+      experience: "Experience",
       projects: "Projects",
       skills: "Skills",
       contact: "Contact"
@@ -131,7 +132,8 @@ export const translations = {
     nav: {
       home: "الرئيسية",
       about: "نبذة",
-      projects: "المشاريع",
+      experience: "الخبرة",
+      projects: "المشاريع", 
       skills: "المهارات",
       contact: "التواصل"
     },

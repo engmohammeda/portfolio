@@ -1,6 +1,6 @@
 import { Mail, Phone, MapPin } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { ContactFormEmail } from './ContactFormEmail';
+
 
 interface ContactSectionProps {
   translations: any;
@@ -54,19 +54,9 @@ export const ContactSection = ({ translations }: ContactSectionProps) => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-          {/* Contact Form */}
-          <Card className="bg-card/50 backdrop-blur-sm border-border/50 hover:shadow-professional transition-all duration-500">
-            <CardHeader>
-              <CardTitle className="text-xl sm:text-2xl text-center">إرسال رسالة</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <ContactFormEmail translations={translations} />
-            </CardContent>
-          </Card>
-
+        <div className="max-w-4xl mx-auto">
           {/* Contact Info */}
-          <div className="space-y-4 lg:space-y-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
             {contactInfo.map((info, index) => (
               <Card
                 key={index}
