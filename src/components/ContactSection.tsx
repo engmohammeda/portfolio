@@ -1,26 +1,12 @@
 import { Mail, Phone, MapPin } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-
+import { Card, CardContent } from '@/components/ui/card';
 
 interface ContactSectionProps {
   translations: any;
 }
 
 export const ContactSection = ({ translations }: ContactSectionProps) => {
-
   const contactInfo = [
-    {
-      icon: Mail,
-      label: 'Email',
-      value: translations.contact.info.email,
-      href: `mailto:${translations.contact.info.email}`
-    },
-    {
-      icon: Phone,
-      label: 'Phone',
-      value: translations.contact.info.phone,
-      href: `tel:${translations.contact.info.phone}`
-    },
     {
       icon: () => (
         <svg className="h-6 w-6" viewBox="0 0 24 24" fill="currentColor">
@@ -32,16 +18,28 @@ export const ContactSection = ({ translations }: ContactSectionProps) => {
       href: `https://wa.me/${translations.contact.info.whatsapp.replace(/[^0-9]/g, '')}`
     },
     {
+      icon: Phone,
+      label: 'Phone',
+      value: translations.contact.info.phone,
+      href: `tel:${translations.contact.info.phone}`
+    },
+    {
+      icon: Mail,
+      label: 'Email',
+      value: translations.contact.info.email,
+      href: `mailto:${translations.contact.info.email}`
+    },
+    {
       icon: MapPin,
       label: 'Location',
       value: translations.contact.info.location,
-      href: '#'
+      href: 'https://maps.google.com/?q=Sana\'a,Yemen'
     }
   ];
 
   return (
     <section id="contact" className="py-20 w-full bg-gradient-to-br from-background to-background/95">
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6">
+      <div className="w-full px-4 sm:px-6">
         <div className="text-center mb-12 lg:mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 bg-gradient-primary bg-clip-text text-transparent">
             {translations.contact.title}
@@ -55,13 +53,11 @@ export const ContactSection = ({ translations }: ContactSectionProps) => {
         </div>
 
         <div className="max-w-4xl mx-auto">
-          {/* Contact Info */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
             {contactInfo.map((info, index) => (
               <Card
                 key={index}
-                className="bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 hover:shadow-professional transition-all duration-500 group animate-float"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className="bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 hover:shadow-professional transition-all duration-500 group"
               >
                 <CardContent className="p-4 sm:p-6">
                   <div className="flex items-center space-x-4 rtl:space-x-reverse">
@@ -72,6 +68,8 @@ export const ContactSection = ({ translations }: ContactSectionProps) => {
                       <h4 className="font-semibold text-foreground text-sm sm:text-base">{info.label}</h4>
                       <a
                         href={info.href}
+                        target={info.href.startsWith('http') ? '_blank' : undefined}
+                        rel={info.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                         className="text-muted-foreground hover:text-primary transition-colors duration-300 text-sm sm:text-base break-all"
                       >
                         {info.value}

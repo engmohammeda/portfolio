@@ -92,9 +92,9 @@ export const translations = {
         submit: "Send Message"
       },
       info: {
-        email: "Mohammedlbkhyty@gmail.com",
-        phone: "+967 772791169",
-        whatsapp: "+967 714403583",
+        email: "mohalbukhaiti@gmail.com",
+        phone: "+967772791169",
+        whatsapp: "+967714403583",
         location: "Sana'a, Yemen"
       }
     },
@@ -106,26 +106,39 @@ export const translations = {
       sectionSubtitle: "Eager to start my career in surveying and roads with a passion for AI",
       projectsTitle: "Projects",
       educationTitle: "Education",
-      certificationsTitle: "Acquired Certifications",
+      certificationsTitle: "Certifications and Training",
       keyAchievements: "Key Achievements:",
-
-    experience: {
-      title: "Projects and Professional Experience",
-      jobs: [
-        {
-          title: "Surveyor and Lead Designer | Design of a 3 km Mountain Road (Capstone Project)",
-          company: "Applied Project",
-          period: "2024 - 2025",
-          description: "I directed the extensive preliminary research phase, evaluating the terrain and contributing factors to identify the most advantageous route for the road. I performed topographic surveys utilizing a total station and gathered and analyzed extensive field data to guarantee design precision"
-        },
-        {
-          title: "Trainee Surveyor (Practical Qualification Course)",
-          company: "Practical Training",
-          period: "2024",
-          description: "I underwent comprehensive practical training in the utilization of contemporary surveying instruments, including Total Station, GPS, and Level. I conducted the setting-out and surveying operations for the columns and axes of a training facility"
-        }
-      ]
-    },
+      graduationProject: {
+        title: "Surveyor and Lead Designer | Design of a 3 km Mountain Road (Capstone Project)",
+        company: "Graduation Project",
+        description: "I directed the extensive preliminary research phase, evaluating the terrain and contributing factors to identify the most advantageous route for the road.",
+        achievements: [
+          "I performed topographic surveys utilizing a total station and gathered and analyzed extensive field data to guarantee design precision",
+          "The detailed road model was developed in Civil 3D, incorporating horizontal and vertical alignments, lanes, and cross sections",  
+          "The quantities of earthworks (cutting and filling) were meticulously calculated, and a comprehensive design package, complete with a cost estimate, was prepared and is ready for implementation",
+          "I developed a comprehensive suite of executive plans and technical reports for the project"
+        ]
+      },
+      practicalTraining: {
+        title: "Trainee Surveyor (Practical Qualification Course)",
+        company: "Practical Training",
+        description: "I underwent comprehensive practical training in the utilization of contemporary surveying instruments.",
+        achievements: [
+          "I underwent comprehensive practical training in the utilization of contemporary surveying instruments, including Total Station, GPS, and Level",
+          "I conducted the setting-out and surveying operations for the columns and axes of a training facility",
+          "Applications of Civil 3D and AutoCAD software to integrate field data with office designs"
+        ]
+      },
+      educationDetails: {
+        diploma: "Diploma in Surveying and Road Engineering | 2023-2025",
+        institute: "Certified Surveyors Qualification Course | 2025",
+        specialization: "Surveying and Roads"
+      },
+      certificationDetails: {
+        aiExpert: "Advanced AutoCAD Course : 2024",
+        gisFundamentals: "Advanced Civil 3D Course : 2025",
+        pythonBeginner: "Survey Equipment Training : 2025"
+      }
     }
   },
   ar: {
@@ -219,9 +232,9 @@ export const translations = {
         submit: "إرسال الرسالة"
       },
       info: {
-        email: "Mohammedlbkhyty@gmail.com",
-        phone: "+967 772791169",
-        whatsapp: "+967 714403583",
+        email: "mohalbukhaiti@gmail.com",
+        phone: "+967772791169",
+        whatsapp: "+967714403583",
         location: "صنعاء، اليمن"
       }
     },
@@ -233,26 +246,39 @@ export const translations = {
       sectionSubtitle: "متحمس لبدء مسيرتي المهنية في مجال المساحة والطرقات مع شغف بالذكاء الاصطناعي",
       projectsTitle: "المشاريع",
       educationTitle: "التعليم",
-      certificationsTitle: "الشهادات المكتسبة",
+      certificationsTitle: "الشهادات والتدريب",
       keyAchievements: "الإنجازات الرئيسية:",
-
-    experience: {
-      title: "الخبرة العملية والمشاريع",
-      jobs: [
-        {
-          title: "مساح ومصمم رئيسي | تصميم طريق جبلي 3 كم (مشروع التخرج)",
-          company: "مشروع تطبيقي",
-          period: "2024 - 2025",
-          description: "قدت مرحلة البحث الأولي الشامل، وتقييم التضاريس والعوامل المؤثرة لتحديد أفضل مسار للطريق. أجريت مسوحات طبوغرافية باستخدام Total Station وجمعت وحللت بيانات ميدانية شاملة لضمان دقة التصميم"
-        },
-        {
-          title: "متدرب مساح (دورة تأهيلية عملية)",
-          company: "التدريب العملي",
-          period: "2024",
-          description: "تدربت بشكل عملي على استخدام أجهزة المساحة الحديثة، بما في ذلك Total Station وGPS وLevel. نفذت عمليات التوقيع والمساحة للأعمدة والمحاور لمنشأة تدريبية"
-        }
-      ]
-    },
+      graduationProject: {
+        title: "مساح ومصمم رئيسي | تصميم طريق جبلي بطول 3 كيلومترات (مشروع تخرج)",
+        company: "مشروع التخرج",
+        description: "قدت مرحلة الدراسة الأولية الشاملة، وتحليل التضاريس والعوامل المؤثرة لتحديد المسار الأمثل للطريق.",
+        achievements: [
+          "قمت بالمسوحات الطوبوغرافية باستخدام جهاز المحطة الشاملة وجمع وتحليل بيانات ميدانية واسعة لضمان دقة التصميم",
+          "تم تطوير نموذج الطريق التفصيلي في Civil 3D، ودمج المحاذاة الأفقية والعمودية والممرات والمقاطع العرضية",
+          "تم حساب كميات الأعمال الترابية (القطع والردم) بدقة، وإعداد حزمة تصميم شاملة مكتملة مع تقدير التكلفة، وهي جاهزة للتنفيذ",
+          "طورت مجموعة شاملة من الخطط التنفيذية والتقارير الفنية للمشروع"
+        ]
+      },
+      practicalTraining: {
+        title: "مساح متدرب (دورة تأهيلية عملية)",
+        company: "التدريب العملي",
+        description: "تدربت بشكل عملي وركزت على استخدام الأجهزة المساحية الحديثة.",
+        achievements: [
+          "تدربت عمليًا بشكل شامل على استخدام الأجهزة المساحية المعاصرة، بما في ذلك Total Station وGPS وLevel",
+          "نفذت عمليات التوقيع (Setting-out) والإسقاط المساحي للأعمدة ومحاور مرفق تدريبي",
+          "تطبيقات على برامج Civil 3D وAutoCAD لربط البيانات الميدانية بالتصاميم المكتبية"
+        ]
+      },
+      educationDetails: {
+        diploma: "دبلوم في المساحة والطرق | 2023-2025",
+        institute: "دورة تأهيل المساحين المعتمدين | 2025",
+        specialization: "المساحة والطرق"
+      },
+      certificationDetails: {
+        aiExpert: "كورس AutoCAD المتقدم : 2024",
+        gisFundamentals: "كورس Civil 3D المتقدم : 2025",
+        pythonBeginner: "تدريب على أجهزة المساحة : 2025"
+      }
     }
   }
 };

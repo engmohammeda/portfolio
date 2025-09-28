@@ -52,19 +52,17 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ currentLan
     {
       title: t('experienceSection.graduationProject.title'),
       company: t('experienceSection.graduationProject.company'),
-      period: "2025", // Your actual graduation year
+      period: "2025",
       description: t('experienceSection.graduationProject.description'),
-      achievements: getTranslatedArray('experienceSection.graduationProject.achievements') // Using the new helper for arrays
+      achievements: getTranslatedArray('experienceSection.graduationProject.achievements')
     },
-    // You can add more projects here by defining them in experienceSection.projects in translations.ts
-    // For example, if you add another project:
-    // {
-    //   title: t('experienceSection.otherProject1.title'),
-    //   company: t('experienceSection.otherProject1.company'),
-    //   period: "2024",
-    //   description: t('experienceSection.otherProject1.description'),
-    //   achievements: getTranslatedArray('experienceSection.otherProject1.achievements')
-    // }
+    {
+      title: t('experienceSection.practicalTraining.title'),
+      company: t('experienceSection.practicalTraining.company'),
+      period: "2024-2025",
+      description: t('experienceSection.practicalTraining.description'),
+      achievements: getTranslatedArray('experienceSection.practicalTraining.achievements')
+    }
   ];
 
   const education = [
@@ -79,14 +77,12 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ currentLan
   const certifications = [
     t('experienceSection.certificationDetails.aiExpert'),
     t('experienceSection.certificationDetails.gisFundamentals'),
-    t('experienceSection.certificationDetails.pythonBeginner'),
-    // Add other certifications here from translations.ts if you have them
-    // t('experienceSection.certificationDetails.otherOnlineCert'),
+    t('experienceSection.certificationDetails.pythonBeginner')
   ];
 
   return (
-    <section className="py-20">
-      <div className="container mx-auto px-6">
+    <section className="py-20 w-full">
+      <div className="w-full px-4 sm:px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-primary bg-clip-text text-transparent">
             {t('experienceSection.sectionTitle')}
@@ -96,7 +92,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ currentLan
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {/* Projects */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-3 mb-8">
@@ -106,7 +102,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ currentLan
 
             <div className="space-y-6">
               {experiences.map((exp, index) => (
-                <Card key={index} className="bg-card/50 backdrop-blur-sm border-border/50 hover:shadow-tech transition-all duration-500 group">
+                <Card key={index} className="bg-card/50 backdrop-blur-sm border-border/50 hover:shadow-professional transition-all duration-500 group">
                   <CardContent className="p-6">
                     <div className="flex items-start justify-between mb-4">
                       <div>
@@ -129,8 +125,8 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ currentLan
                       </h5>
                       <ul className="space-y-1">
                         {exp.achievements.map((achievement, i) => (
-                          <li key={i} className="flex items-center gap-2 text-sm text-muted-foreground">
-                            <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
+                          <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
+                            <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></div>
                             {achievement}
                           </li>
                         ))}
@@ -177,7 +173,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ currentLan
                   <Card key={index} className="bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-all duration-300">
                     <CardContent className="p-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-2 h-2 bg-primary rounded-full animate-pulse-glow"></div>
+                        <div className="w-2 h-2 bg-primary rounded-full"></div>
                         <p className="text-sm text-foreground">{cert}</p>
                       </div>
                     </CardContent>
