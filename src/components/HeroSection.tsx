@@ -10,28 +10,44 @@ interface HeroSectionProps {
 
 export const HeroSection = ({ translations }: HeroSectionProps) => {
   return (
-    <section className="min-h-screen w-full flex items-center justify-center relative overflow-hidden bg-gradient-hero pt-20">
-      <div className="w-full px-4 sm:px-6 py-12 lg:py-20">
+    <section id="home" className="min-h-screen w-full flex items-center justify-center relative overflow-hidden bg-gradient-hero pt-20">
+      {/* Animated Background Particles */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {[...Array(20)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-2 h-2 bg-primary/20 rounded-full animate-particle blur-sm"
+            style={{
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              animationDelay: `${i * 0.3}s`,
+              animationDuration: `${8 + Math.random() * 4}s`,
+            }}
+          />
+        ))}
+      </div>
+
+      <div className="w-full px-4 sm:px-6 py-12 lg:py-20 relative z-10">
         <div className="grid grid-cols-1 xl:grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* Content */}
-          <div className="xl:col-span-7 text-center lg:text-left space-y-6 lg:space-y-8 animate-fade-in z-10">
+          <div className="xl:col-span-7 text-center lg:text-left space-y-6 lg:space-y-8 animate-reveal z-10">
             <div className="space-y-4">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold bg-gradient-primary bg-clip-text text-transparent leading-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold font-display bg-gradient-primary bg-clip-text text-transparent leading-tight animate-gradient-shift" style={{ backgroundSize: '200% 200%' }}>
                 {translations.hero.title}
               </h1>
-              <h2 className="text-lg sm:text-xl md:text-2xl text-survey-orange font-medium">
+              <h2 className="text-lg sm:text-xl md:text-2xl text-secondary font-semibold animate-slide-up" style={{ animationDelay: '0.2s' }}>
                 {translations.hero.subtitle}
               </h2>
-              <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto lg:mx-0">
+              <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto lg:mx-0 leading-relaxed animate-slide-up" style={{ animationDelay: '0.4s' }}>
                 {translations.hero.description}
               </p>
             </div>
 
-            {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            {/* Enhanced Action Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-scale-in" style={{ animationDelay: '0.6s' }}>
               <Button 
                 size="lg" 
-                className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-professional group"
+                className="bg-gradient-primary hover:shadow-glow text-primary-foreground font-semibold group relative overflow-hidden"
                 onClick={() => {
                   const link = document.createElement('a');
                   link.href = '/Mohammed-Al-Bukhaiti-CV.pdf';
@@ -39,16 +55,17 @@ export const HeroSection = ({ translations }: HeroSectionProps) => {
                   link.click();
                 }}
               >
-                <Download className="mr-2 h-5 w-5 group-hover:animate-bounce" />
-                {translations.hero.downloadCV}
+                <span className="absolute inset-0 shimmer"></span>
+                <Download className="mr-2 h-5 w-5 group-hover:animate-bounce relative z-10" />
+                <span className="relative z-10">{translations.hero.downloadCV}</span>
               </Button>
               <Button 
                 size="lg" 
                 variant="outline"
-                className="border-primary/20 hover:bg-primary/10 hover:border-primary/40"
+                className="glass-card border-primary/30 hover:border-primary/60 hover-glow font-semibold group"
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                <Mail className="mr-2 h-5 w-5" />
+                <Mail className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
                 {translations.hero.contactMe}
               </Button>
             </div>
@@ -127,31 +144,40 @@ export const HeroSection = ({ translations }: HeroSectionProps) => {
 
           {/* Visual Section */}
           <div className="xl:col-span-5 flex flex-col items-center space-y-6">
-            {/* Profile Image */}
-            <div className="relative">
-              <div className="w-64 h-64 sm:w-80 sm:h-80 lg:w-72 lg:h-72 xl:w-80 xl:h-80 rounded-full overflow-hidden border-4 border-primary/20 shadow-professional">
+            {/* Enhanced Profile Image with Glow */}
+            <div className="relative animate-float">
+              {/* Glow Ring */}
+              <div className="absolute inset-0 rounded-full bg-gradient-primary opacity-20 blur-2xl animate-pulse-glow"></div>
+              
+              <div className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-72 lg:h-72 xl:w-80 xl:h-80 rounded-full overflow-hidden border-4 border-primary/30 shadow-professional hover:border-primary/50 transition-all duration-500 hover-glow group">
                 <img
                   src={profileImage}
                   alt="Mohammed Al-Bukhaiti"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
+                {/* Overlay on Hover */}
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </div>
-              <div className="absolute -bottom-4 -right-4 w-12 h-12 sm:w-16 sm:h-16 bg-gradient-primary rounded-full flex items-center justify-center">
+              
+              <div className="absolute -bottom-4 -right-4 w-12 h-12 sm:w-16 sm:h-16 bg-gradient-primary rounded-full flex items-center justify-center shadow-glow animate-pulse-glow hover:scale-110 transition-transform duration-300 cursor-pointer">
                 <span className="text-primary-foreground font-bold text-xs sm:text-sm">مساح</span>
               </div>
             </div>
 
-            {/* Surveyor Illustration Card */}
-            <Card className="bg-card/30 backdrop-blur-sm border-border/50 hover:shadow-professional transition-all duration-500 max-w-sm">
-              <CardContent className="p-4">
+            {/* Enhanced Surveyor Illustration Card */}
+            <Card className="glass-card border-primary/20 hover:border-primary/40 hover-glow transition-all duration-500 max-w-sm group">
+              <CardContent className="p-5">
                 <div className="flex items-center space-x-4 rtl:space-x-reverse">
-                  <img 
-                    src={surveyorIllustration} 
-                    alt="Surveyor Illustration" 
-                    className="w-16 h-16 rounded-lg object-cover"
-                  />
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-gradient-primary opacity-20 blur-lg rounded-lg"></div>
+                    <img 
+                      src={surveyorIllustration} 
+                      alt="Surveyor Illustration" 
+                      className="w-16 h-16 rounded-lg object-cover relative z-10 group-hover:scale-110 transition-transform duration-500"
+                    />
+                  </div>
                   <div className="flex-1 text-center sm:text-left">
-                    <h3 className="font-semibold text-foreground text-sm">مهندس مساحة محترف</h3>
+                    <h3 className="font-bold font-display text-foreground text-sm mb-1 group-hover:text-primary transition-colors duration-300">مهندس مساحة محترف</h3>
                     <p className="text-xs text-muted-foreground">دقة في القياس وإتقان في التصميم</p>
                   </div>
                 </div>

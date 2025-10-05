@@ -23,11 +23,11 @@ export const Navigation = ({ currentLang, onLanguageToggle, translations }: Navi
   ];
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-background/85 backdrop-blur-md border-b border-border/50">
+    <nav className="fixed top-0 w-full z-50 glass-card border-b border-border/30">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+          <div className="text-2xl font-bold font-display bg-gradient-primary bg-clip-text text-transparent hover:scale-110 transition-transform duration-300">
             MA
           </div>
 
@@ -37,7 +37,7 @@ export const Navigation = ({ currentLang, onLanguageToggle, translations }: Navi
               <a
                 key={item.key}
                 href={item.href}
-                className="text-foreground/80 hover:text-primary transition-colors duration-300 relative group scroll-smooth"
+                className="text-foreground/80 hover:text-primary transition-all duration-300 relative group scroll-smooth font-medium"
                 onClick={(e) => {
                   e.preventDefault();
                   const target = document.querySelector(item.href);
@@ -47,7 +47,7 @@ export const Navigation = ({ currentLang, onLanguageToggle, translations }: Navi
                 }}
               >
                 {translations.nav[item.key]}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-primary transition-all duration-300 group-hover:w-full shadow-glow"></span>
               </a>
             ))}
           </div>
