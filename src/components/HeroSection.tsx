@@ -1,6 +1,12 @@
 import { Download, MapPin, Phone, Mail, Github, Linkedin, Twitter } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import profileImage from '@/assets/mohammed-portrait.jpg';
 import surveyorIllustration from '@/assets/surveyor-illustration.png';
 
@@ -45,20 +51,38 @@ export const HeroSection = ({ translations }: HeroSectionProps) => {
 
             {/* Enhanced Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-scale-in" style={{ animationDelay: '0.6s' }}>
-              <Button 
-                size="lg" 
-                className="bg-gradient-primary hover:shadow-glow text-primary-foreground font-semibold group relative overflow-hidden"
-                onClick={() => {
-                  const link = document.createElement('a');
-                  link.href = '/Mohammed-Al-Bukhaiti-CV.pdf';
-                  link.download = 'Mohammed-Al-Bukhaiti-CV.pdf';
-                  link.click();
-                }}
-              >
-                <span className="absolute inset-0 shimmer"></span>
-                <Download className="mr-2 h-5 w-5 group-hover:animate-bounce relative z-10" />
-                <span className="relative z-10">{translations.hero.downloadCV}</span>
-              </Button>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button 
+                    size="lg" 
+                    className="bg-gradient-primary hover:shadow-glow text-primary-foreground font-semibold group relative overflow-hidden"
+                  >
+                    <span className="absolute inset-0 shimmer"></span>
+                    <Download className="mr-2 h-5 w-5 group-hover:animate-bounce relative z-10" />
+                    <span className="relative z-10">{translations.hero.downloadCV}</span>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="glass-card border-primary/30 min-w-[200px]" align="center">
+                  <DropdownMenuItem 
+                    className="cursor-pointer hover:bg-primary/10 focus:bg-primary/10 text-foreground font-medium"
+                    onClick={() => {
+                      window.open('https://www.mediafire.com/file/your-arabic-cv-link', '_blank');
+                    }}
+                  >
+                    <Download className="mr-2 h-4 w-4" />
+                    النسخة العربية
+                  </DropdownMenuItem>
+                  <DropdownMenuItem 
+                    className="cursor-pointer hover:bg-primary/10 focus:bg-primary/10 text-foreground font-medium"
+                    onClick={() => {
+                      window.open('https://www.mediafire.com/file/your-english-cv-link', '_blank');
+                    }}
+                  >
+                    <Download className="mr-2 h-4 w-4" />
+                    English Version
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
               <Button 
                 size="lg" 
                 variant="outline"
