@@ -66,7 +66,7 @@ export const HeroSection = ({ translations }: HeroSectionProps) => {
                   <DropdownMenuItem 
                     className="cursor-pointer hover:bg-primary/10 focus:bg-primary/10 text-foreground font-medium"
                     onClick={() => {
-                      window.open('https://www.mediafire.com/file/your-arabic-cv-link', '_blank');
+                      window.open('https://www.mediafire.com/file/4q7na66sd21xz2y/CV_MOHAMMED_AL-BUKHAITI_AR.pdf/file?dkey=s0ks7b170wk&r=6', '_blank');
                     }}
                   >
                     <Download className="mr-2 h-4 w-4" />
@@ -75,7 +75,7 @@ export const HeroSection = ({ translations }: HeroSectionProps) => {
                   <DropdownMenuItem 
                     className="cursor-pointer hover:bg-primary/10 focus:bg-primary/10 text-foreground font-medium"
                     onClick={() => {
-                      window.open('https://www.mediafire.com/file/your-english-cv-link', '_blank');
+                      window.open('https://www.mediafire.com/file/s2g9wtnhizzlhbc/CV_MOHAMMED_AL-BUKHAITI_EN_.pdf/file?dkey=emzwgx1v6tj&r=1818', '_blank');
                     }}
                   >
                     <Download className="mr-2 h-4 w-4" />

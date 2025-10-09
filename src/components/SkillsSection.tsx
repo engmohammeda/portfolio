@@ -34,25 +34,29 @@ export const SkillsSection = ({ translations }: SkillsSectionProps) => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
           {/* Expertise Levels */}
-          <Card className="bg-card/50 border-border/50 shadow-lg">
-            <CardContent className="p-6">
-              <h3 className="text-xl font-semibold mb-6 text-center text-foreground">
+          <Card className="glass-card border-primary/20 shadow-lg">
+            <CardContent className="p-8">
+              <h3 className="text-xl font-semibold mb-8 text-center text-foreground">
                 {translations.skills.expertiseTitle}
               </h3>
-              <div className="grid gap-4">
+              <div className="grid gap-6">
                 {expertiseData.map((item, index) => (
-                  <div key={index} className="space-y-2">
+                  <div key={index} className="space-y-3">
                     <div className="flex items-center justify-between">
-                      <div className="flex items-center space-x-3">
-                        <item.icon className="h-5 w-5 text-survey-orange" />
-                        <span className="text-sm font-medium text-foreground">{item.skill}</span>
+                      <div className="flex items-center space-x-3 rtl:space-x-reverse">
+                        <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                          <item.icon className="h-5 w-5 text-primary" />
+                        </div>
+                        <span className="text-base font-semibold text-foreground">{item.skill}</span>
                       </div>
-                      <span className="text-sm font-bold text-survey-orange">{item.level}%</span>
+                      <span className="text-lg font-bold text-primary">{item.level}%</span>
                     </div>
-                    <Progress 
-                      value={item.level} 
-                      className="h-3 bg-muted/30" 
-                    />
+                    <div className="relative h-3 bg-muted/30 rounded-full overflow-hidden">
+                      <div 
+                        className="absolute inset-y-0 left-0 bg-gradient-to-r from-primary to-primary/70 rounded-full transition-all duration-1000 ease-out"
+                        style={{ width: `${item.level}%` }}
+                      />
+                    </div>
                   </div>
                 ))}
               </div>
@@ -60,19 +64,19 @@ export const SkillsSection = ({ translations }: SkillsSectionProps) => {
           </Card>
 
           {/* Achievements */}
-          <Card className="bg-card/50 border-border/50 shadow-lg">
-            <CardContent className="p-6">
-              <h3 className="text-xl font-semibold mb-6 text-center text-foreground">
+          <Card className="glass-card border-primary/20 shadow-lg">
+            <CardContent className="p-8">
+              <h3 className="text-xl font-semibold mb-8 text-center text-foreground">
                 {translations.skills.achievementsTitle}
               </h3>
               <div className="grid grid-cols-2 gap-4">
                 {translations.skills.achievements.map((achievement: any, index: number) => (
                   <div 
                     key={index}
-                    className="text-center p-4 bg-gradient-to-br from-survey-orange/10 to-survey-blue/10 rounded-xl border border-survey-orange/20"
+                    className="text-center p-6 bg-gradient-to-br from-primary/5 to-primary/10 rounded-2xl border-2 border-primary/20 hover:border-primary/40 transition-all duration-300 hover:shadow-lg"
                   >
-                    <div className="text-2xl mb-2">{achievement.icon}</div>
-                    <div className="text-lg font-bold text-survey-orange mb-1">{achievement.value}</div>
+                    <div className="text-3xl mb-3">{achievement.icon}</div>
+                    <div className="text-2xl font-bold text-primary mb-2">{achievement.value}</div>
                     <div className="text-xs text-foreground font-medium leading-tight">{achievement.title}</div>
                   </div>
                 ))}
@@ -86,16 +90,16 @@ export const SkillsSection = ({ translations }: SkillsSectionProps) => {
           {translations.skills.categories.map((category: any, categoryIndex: number) => (
             <Card 
               key={categoryIndex}
-              className="bg-card/50 border-border/50 shadow-lg hover:shadow-xl transition-shadow duration-300"
+              className="glass-card border-primary/20 shadow-lg hover:shadow-xl hover:border-primary/40 transition-all duration-300"
             >
               <CardContent className="p-6">
-                <div className="flex items-center space-x-3 mb-4">
-                  <div className="w-10 h-10 bg-gradient-to-br from-survey-orange to-survey-blue rounded-lg flex items-center justify-center">
+                <div className="flex items-center space-x-3 rtl:space-x-reverse mb-5">
+                  <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary/70 rounded-xl flex items-center justify-center shadow-lg">
                     {React.createElement(skillIcons[categoryIndex]?.icon || Settings, {
-                      className: "h-5 w-5 text-white"
+                      className: "h-6 w-6 text-white"
                     })}
                   </div>
-                  <h3 className="text-lg font-semibold text-foreground">
+                  <h3 className="text-lg font-bold text-foreground">
                     {category.title}
                   </h3>
                 </div>
@@ -104,7 +108,7 @@ export const SkillsSection = ({ translations }: SkillsSectionProps) => {
                     <Badge 
                       key={skillIndex} 
                       variant="secondary" 
-                      className="bg-survey-orange/10 text-survey-orange border-survey-orange/20 hover:bg-survey-orange/20 transition-colors font-medium"
+                      className="bg-primary/10 text-primary border-primary/30 hover:bg-primary/20 hover:border-primary/50 transition-all duration-200 font-medium px-3 py-1"
                     >
                       {skill}
                     </Badge>

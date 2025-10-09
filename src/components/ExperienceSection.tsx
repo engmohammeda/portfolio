@@ -1,6 +1,6 @@
 // src/components/ExperienceSection.tsx
 
-import { Award, Calendar, GraduationCap, Trophy } from 'lucide-react';
+import { Award, Calendar, GraduationCap, Trophy, Download } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { translations, Language } from '@/data/translations'; // Correct import path for translations and Language type
 
@@ -75,9 +75,22 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ currentLan
   ];
 
   const certifications = [
-    t('experienceSection.certificationDetails.aiExpert'),
-    t('experienceSection.certificationDetails.gisFundamentals'),
-    t('experienceSection.certificationDetails.pythonBeginner')
+    {
+      title: t('experienceSection.certificationDetails.aiExpert'),
+      downloadUrl: null
+    },
+    {
+      title: t('experienceSection.certificationDetails.gisFundamentals'),
+      downloadUrl: null
+    },
+    {
+      title: 'دورة احترافية في استخدام الأجهزة المساحية',
+      downloadUrl: 'https://www.mediafire.com/file/lkmcxtvqc1gzunb/Professional+surveyor+certificate+.pdf/file?dkey=qta2y8pldgt&r=640'
+    },
+    {
+      title: t('experienceSection.certificationDetails.pythonBeginner'),
+      downloadUrl: null
+    }
   ];
 
   return (
@@ -170,11 +183,22 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ currentLan
 
               <div className="space-y-3">
                 {certifications.map((cert, index) => (
-                  <Card key={index} className="bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-all duration-300">
+                  <Card key={index} className="bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-all duration-300 group">
                     <CardContent className="p-4">
-                      <div className="flex items-center gap-3">
-                        <div className="w-2 h-2 bg-primary rounded-full"></div>
-                        <p className="text-sm text-foreground">{cert}</p>
+                      <div className="flex items-center justify-between gap-3">
+                        <div className="flex items-center gap-3 flex-1">
+                          <div className="w-2 h-2 bg-primary rounded-full"></div>
+                          <p className="text-sm text-foreground">{cert.title}</p>
+                        </div>
+                        {cert.downloadUrl && (
+                          <button
+                            onClick={() => window.open(cert.downloadUrl, '_blank')}
+                            className="p-2 rounded-lg bg-primary/10 hover:bg-primary/20 text-primary transition-colors duration-300 opacity-0 group-hover:opacity-100"
+                            title="تحميل الشهادة"
+                          >
+                            <Download className="h-4 w-4" />
+                          </button>
+                        )}
                       </div>
                     </CardContent>
                   </Card>

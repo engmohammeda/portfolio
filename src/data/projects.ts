@@ -59,8 +59,8 @@ export const projects: Project[] = [
       en: 'Surveying Process Automation'
     },
     description: {
-      ar: 'تطوير أدوات لأتمتة العمليات المساحية وتصنيف البيانات من خلال معالجة النقاط المساحية وتحليلها آلياً لتسريع العمل الميداني.',
-      en: 'Development of tools to automate surveying operations and data classification through automatic processing and analysis of surveying points to accelerate fieldwork.'
+      ar: 'تطوير أدوات لأتمتة العمليات المساحية وتصنيف البيانات من خلال معالجة النقاط المساحية وتحليلها آلياً لتسريع العمل الميداني. أعمل على معالجة بيانات المسح وتحويلها لرسومات فنية وتقارير شاملة.',
+      en: 'Development of tools to automate surveying operations and data classification through automatic processing and analysis of surveying points to accelerate fieldwork. Working on processing survey data and converting it into technical drawings and comprehensive reports.'
     },
     technologies: ['Python', 'تحليل البيانات', 'أتمتة العمليات', 'معالجة النقاط'],
     image: '/src/assets/highway-design.jpg',
