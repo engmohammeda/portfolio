@@ -48,9 +48,9 @@ const useCountUp = (end: number, duration: number = 2000, start: number = 0) => 
   return { count, elementRef };
 };
 
-// Circular progress component
-const CircularProgress = ({ percentage, label, icon: Icon, index }: { percentage: number; label: string; icon: any; index: number }) => {
-  const [progress, setProgress] = useState(0);
+// Simple Bar Chart Component - Professional and Clean
+const SkillBar = ({ percentage, label, icon: Icon, index }: { percentage: number; label: string; icon: any; index: number }) => {
+  const [width, setWidth] = useState(0);
   const [hasAnimated, setHasAnimated] = useState(false);
   const elementRef = useRef<HTMLDivElement>(null);
   const { count } = useCountUp(percentage, 2000);
@@ -63,7 +63,7 @@ const CircularProgress = ({ percentage, label, icon: Icon, index }: { percentage
         if (entries[0].isIntersecting) {
           setHasAnimated(true);
           setTimeout(() => {
-            setProgress(percentage);
+            setWidth(percentage);
           }, index * 150);
         }
       },
@@ -77,57 +77,37 @@ const CircularProgress = ({ percentage, label, icon: Icon, index }: { percentage
     return () => observer.disconnect();
   }, [percentage, index, hasAnimated]);
 
-  const circumference = 2 * Math.PI * 58;
-  const strokeDashoffset = circumference - (progress / 100) * circumference;
-
   return (
     <div 
       ref={elementRef}
-      className="flex flex-col items-center group cursor-pointer"
+      className="space-y-3"
       style={{ animationDelay: `${index * 0.1}s` }}
     >
-      <div className="relative w-36 h-36 mb-4">
-        {/* Background circle */}
-        <svg className="w-full h-full transform -rotate-90" viewBox="0 0 120 120">
-          <circle
-            cx="60"
-            cy="60"
-            r="58"
-            className="stroke-muted/20"
-            strokeWidth="8"
-            fill="none"
-          />
-          {/* Progress circle */}
-          <circle
-            cx="60"
-            cy="60"
-            r="58"
-            className="stroke-primary transition-all duration-1000 ease-out drop-shadow-[0_0_8px_hsl(var(--primary))]"
-            strokeWidth="8"
-            fill="none"
-            strokeDasharray={circumference}
-            strokeDashoffset={strokeDashoffset}
-            strokeLinecap="round"
-            style={{
-              filter: 'drop-shadow(0 0 12px hsl(var(--primary) / 0.6))'
-            }}
-          />
-        </svg>
-        
-        {/* Center content */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-2 group-hover:scale-110 transition-transform duration-300">
-            <Icon className="w-7 h-7 text-primary" />
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+            <Icon className="w-5 h-5 text-primary" />
           </div>
-          <span className="text-2xl font-bold text-primary tabular-nums">
-            {count}%
+          <span className="text-base font-semibold text-foreground">
+            {label}
           </span>
         </div>
+        <span className="text-xl font-bold text-primary tabular-nums">
+          {count}%
+        </span>
       </div>
       
-      <span className="text-sm font-semibold text-foreground text-center max-w-[140px] leading-tight">
-        {label}
-      </span>
+      <div className="relative h-3 bg-muted/30 rounded-full overflow-hidden">
+        <div 
+          className="absolute top-0 left-0 h-full bg-gradient-to-r from-primary to-secondary rounded-full transition-all duration-1000 ease-out"
+          style={{ 
+            width: `${width}%`,
+            boxShadow: '0 0 20px hsl(var(--primary) / 0.5)'
+          }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer" />
+        </div>
+      </div>
     </div>
   );
 };
@@ -193,18 +173,18 @@ export const SkillsSection = ({ translations }: SkillsSectionProps) => {
           </p>
         </div>
 
-        {/* Circular Progress - Expertise Levels */}
+        {/* Simple Bar Chart - Expertise Levels */}
         <Card className="glass-card border-primary/20 shadow-glow mb-16 overflow-hidden">
           <CardContent className="p-8 md:p-12">
             <div className="flex items-center justify-center gap-2 mb-10">
               <TrendingUp className="w-6 h-6 text-primary" />
               <h3 className="text-2xl font-bold text-center bg-gradient-primary bg-clip-text text-transparent">
-                {translations.skills.expertiseTitle}
+                مستوى الإتقان
               </h3>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 justify-items-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
               {expertiseData.map((item: any, index: number) => (
-                <CircularProgress
+                <SkillBar
                   key={index}
                   percentage={item.level}
                   label={item.skill}
@@ -222,7 +202,7 @@ export const SkillsSection = ({ translations }: SkillsSectionProps) => {
             <div className="flex items-center justify-center gap-2 mb-10">
               <Award className="w-6 h-6 text-primary" />
               <h3 className="text-2xl font-bold text-center bg-gradient-primary bg-clip-text text-transparent">
-                {translations.skills.achievementsTitle}
+                الإنجازات
               </h3>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">

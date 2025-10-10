@@ -77,19 +77,18 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ currentLan
   const certifications = [
     {
       title: t('experienceSection.certificationDetails.aiExpert'),
-      downloadUrl: null
+      downloadUrl: null,
+      comingSoon: true
     },
     {
       title: t('experienceSection.certificationDetails.gisFundamentals'),
-      downloadUrl: null
-    },
-    {
-      title: 'دورة احترافية في استخدام الأجهزة المساحية',
-      downloadUrl: 'https://www.mediafire.com/file/lkmcxtvqc1gzunb/Professional+surveyor+certificate+.pdf/file?dkey=qta2y8pldgt&r=640'
+      downloadUrl: null,
+      comingSoon: true
     },
     {
       title: t('experienceSection.certificationDetails.pythonBeginner'),
-      downloadUrl: null
+      downloadUrl: 'https://www.mediafire.com/file/lkmcxtvqc1gzunb/Professional+surveyor+certificate+.pdf/file?dkey=qta2y8pldgt&r=640',
+      comingSoon: false
     }
   ];
 
@@ -188,9 +187,14 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ currentLan
                       <div className="flex items-center justify-between gap-3">
                         <div className="flex items-center gap-3 flex-1">
                           <div className="w-2 h-2 bg-primary rounded-full"></div>
-                          <p className="text-sm text-foreground">{cert.title}</p>
+                          <div className="flex-1">
+                            <p className="text-sm text-foreground">{cert.title}</p>
+                            {cert.comingSoon && (
+                              <p className="text-xs text-muted-foreground mt-1">سيتم إرفاقها عند صدورها</p>
+                            )}
+                          </div>
                         </div>
-                        {cert.downloadUrl && (
+                        {cert.downloadUrl && !cert.comingSoon && (
                           <button
                             onClick={() => window.open(cert.downloadUrl, '_blank')}
                             className="p-2 rounded-lg bg-primary/10 hover:bg-primary/20 text-primary transition-colors duration-300 opacity-0 group-hover:opacity-100"
