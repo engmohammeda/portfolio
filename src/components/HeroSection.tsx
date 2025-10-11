@@ -65,21 +65,31 @@ export const HeroSection = ({ translations }: HeroSectionProps) => {
                 <DropdownMenuContent className="glass-card border-primary/30 min-w-[200px]" align="center">
                   <DropdownMenuItem 
                     className="cursor-pointer hover:bg-primary/10 focus:bg-primary/10 text-foreground font-medium"
-                    onClick={() => {
-                      window.open('https://www.mediafire.com/file/4q7na66sd21xz2y/CV_MOHAMMED_AL-BUKHAITI_AR.pdf/file?dkey=s0ks7b170wk&r=6', '_blank');
-                    }}
+                    asChild
                   >
-                    <Download className="mr-2 h-4 w-4" />
-                    النسخة العربية
+                    <a 
+                      href="https://www.mediafire.com/file/4q7na66sd21xz2y/CV_MOHAMMED_AL-BUKHAITI_AR.pdf/file?dkey=s0ks7b170wk&r=6"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center"
+                    >
+                      <Download className="mr-2 h-4 w-4" />
+                      النسخة العربية
+                    </a>
                   </DropdownMenuItem>
                   <DropdownMenuItem 
                     className="cursor-pointer hover:bg-primary/10 focus:bg-primary/10 text-foreground font-medium"
-                    onClick={() => {
-                      window.open('https://www.mediafire.com/file/s2g9wtnhizzlhbc/CV_MOHAMMED_AL-BUKHAITI_EN_.pdf/file?dkey=emzwgx1v6tj&r=1818', '_blank');
-                    }}
+                    asChild
                   >
-                    <Download className="mr-2 h-4 w-4" />
-                    English Version
+                    <a 
+                      href="https://www.mediafire.com/file/s2g9wtnhizzlhbc/CV_MOHAMMED_AL-BUKHAITI_EN_.pdf/file?dkey=emzwgx1v6tj&r=1818"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center"
+                    >
+                      <Download className="mr-2 h-4 w-4" />
+                      English Version
+                    </a>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
