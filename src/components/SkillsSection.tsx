@@ -26,16 +26,19 @@ const useCountUp = (end: number, duration: number = 2000, start: number = 0) => 
             const progress = Math.min((currentTime - startTime) / duration, 1);
             
             const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-            setCount(Math.floor(easeOutQuart * (end - start) + start));
+            const newCount = Math.floor(easeOutQuart * (end - start) + start);
+            setCount(newCount);
             
             if (progress < 1) {
               requestAnimationFrame(animate);
+            } else {
+              setCount(end); // Ensure final value is exact
             }
           };
           requestAnimationFrame(animate);
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.1 }
     );
 
     if (elementRef.current) {
