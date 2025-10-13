@@ -1,5 +1,6 @@
 import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { LanguageToggle } from './LanguageToggle';
 import { ThemeToggle } from './ThemeToggle';
@@ -12,15 +13,43 @@ interface NavigationProps {
 
 export const Navigation = ({ currentLang, onLanguageToggle, translations }: NavigationProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const navItems = [
-    { key: 'home', href: '#home' },
-    { key: 'about', href: '#about' },
-    { key: 'experience', href: '#experience' },
-    { key: 'projects', href: '#projects' },
-    { key: 'skills', href: '#skills' },
-    { key: 'contact', href: '#contact' }
+    { key: 'home', href: '#home', isRoute: false },
+    { key: 'about', href: '#about', isRoute: false },
+    { key: 'experience', href: '#experience', isRoute: false },
+    { key: 'projects', href: '/projects', isRoute: true },
+    { key: 'skills', href: '#skills', isRoute: false },
+    { key: 'contact', href: '#contact', isRoute: false }
   ];
+
+  const handleNavClick = (item: typeof navItems[0], e: React.MouseEvent) => {
+    e.preventDefault();
+    
+    if (item.isRoute) {
+      navigate(item.href);
+      setIsMenuOpen(false);
+    } else {
+      // If we're on projects page, go to home first
+      if (location.pathname === '/projects') {
+        navigate('/');
+        setTimeout(() => {
+          const target = document.querySelector(item.href);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 100);
+      } else {
+        const target = document.querySelector(item.href);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+      setIsMenuOpen(false);
+    }
+  };
 
   return (
     <nav className="fixed top-0 w-full z-50 glass-card border-b border-border/30">
@@ -38,13 +67,7 @@ export const Navigation = ({ currentLang, onLanguageToggle, translations }: Navi
                 key={item.key}
                 href={item.href}
                 className="text-foreground/80 hover:text-primary transition-all duration-300 relative group scroll-smooth font-medium"
-                onClick={(e) => {
-                  e.preventDefault();
-                  const target = document.querySelector(item.href);
-                  if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                  }
-                }}
+                onClick={(e) => handleNavClick(item, e)}
               >
                 {translations.nav[item.key]}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-primary transition-all duration-300 group-hover:w-full shadow-glow"></span>
@@ -77,14 +100,7 @@ export const Navigation = ({ currentLang, onLanguageToggle, translations }: Navi
                   key={item.key}
                   href={item.href}
                   className="text-foreground/80 hover:text-primary transition-colors duration-300 py-2"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setIsMenuOpen(false);
-                    const target = document.querySelector(item.href);
-                    if (target) {
-                      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                  }}
+                  onClick={(e) => handleNavClick(item, e)}
                 >
                   {translations.nav[item.key]}
                 </a>

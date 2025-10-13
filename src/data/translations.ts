@@ -10,6 +10,14 @@ export const translations = {
       skills: "Skills",
       contact: "Contact"
     },
+    projectsPage: {
+      title: "My Projects",
+      subtitle: "AutoCAD & Civil 3D Works",
+      autocadSection: "AutoCAD Works",
+      civil3dSection: "Civil 3D Works",
+      underDevelopment: "Under Development",
+      comingSoon: "This section is currently under development. Projects will be added soon."
+    },
     hero: {
       title: "Mohammed Al-Bukhaiti",
       subtitle: "Surveyor and Roadway Technician",
@@ -149,6 +157,14 @@ export const translations = {
       projects: "المشاريع", 
       skills: "المهارات",
       contact: "التواصل"
+    },
+    projectsPage: {
+      title: "مشاريعي",
+      subtitle: "أعمال الأوتوكاد والسيفيل ثري دي",
+      autocadSection: "أعمال الأوتوكاد",
+      civil3dSection: "أعمال السيفيل ثري دي",
+      underDevelopment: "قيد التطوير",
+      comingSoon: "هذا القسم قيد التطوير حالياً. سيتم إضافة المشاريع قريباً."
     },
     hero: {
       title: "محمد البخيتي",
