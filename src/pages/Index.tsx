@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Navigation } from '@/components/Navigation';
 import { HeroSection } from '@/components/HeroSection';
 import { AboutSection } from '@/components/AboutSection';
+import { ProjectsPreview } from '@/components/ProjectsPreview';
 import { SkillsSection } from '@/components/SkillsSection';
 import { ExperienceSection } from '@/components/ExperienceSection';
 import { ContactSection } from '@/components/ContactSection';
@@ -59,6 +60,9 @@ const Index = () => {
         </section>
         <section id="experience" className="w-full">
           <ExperienceSection currentLanguage={currentLang} />
+        </section>
+        <section id="projects" className="w-full">
+          <ProjectsPreview translations={currentTranslations} />
         </section>
         <section id="skills" className="w-full">
           <SkillsSection translations={currentTranslations} />

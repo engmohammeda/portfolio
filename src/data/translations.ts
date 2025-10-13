@@ -16,7 +16,8 @@ export const translations = {
       autocadSection: "AutoCAD Works",
       civil3dSection: "Civil 3D Works",
       underDevelopment: "Under Development",
-      comingSoon: "This section is currently under development. Projects will be added soon."
+      comingSoon: "This section is currently under development. Projects will be added soon.",
+      viewAllProjects: "View All Projects"
     },
     hero: {
       title: "Mohammed Al-Bukhaiti",
@@ -164,7 +165,8 @@ export const translations = {
       autocadSection: "أعمال الأوتوكاد",
       civil3dSection: "أعمال السيفيل ثري دي",
       underDevelopment: "قيد التطوير",
-      comingSoon: "هذا القسم قيد التطوير حالياً. سيتم إضافة المشاريع قريباً."
+      comingSoon: "هذا القسم قيد التطوير حالياً. سيتم إضافة المشاريع قريباً.",
+      viewAllProjects: "عرض جميع المشاريع"
     },
     hero: {
       title: "محمد البخيتي",
