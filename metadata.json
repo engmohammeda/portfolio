@@ -1,0 +1,8 @@
+{
+  "name": "Professional CV Builder",
+  "description": "A highly professional and unique resume builder application with live preview and PDF export.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
