@@ -205,9 +205,10 @@ export default function App() {
                   <div className="w-full lg:w-1/2 aspect-video bg-slate-50 rounded-3xl border border-slate-100 overflow-hidden relative group/mockup flex items-center justify-center">
                     <div className="absolute inset-0 bg-blue-50/50 group-hover/mockup:bg-blue-100/30 transition-colors pointer-events-none"></div>
                     
-                    {idx % 3 === 0 && <Terminal className="w-32 h-32 text-slate-300 group-hover/mockup:text-blue-500 transition-colors duration-500 group-hover/mockup:scale-110" strokeWidth={1} />}
-                    {idx % 3 === 1 && <Layers className="w-32 h-32 text-slate-300 group-hover/mockup:text-blue-500 transition-colors duration-500 group-hover/mockup:scale-110" strokeWidth={1} />}
-                    {idx % 3 === 2 && <Globe className="w-32 h-32 text-slate-300 group-hover/mockup:text-blue-500 transition-colors duration-500 group-hover/mockup:scale-110" strokeWidth={1} />}
+                    {project.type === 'code' && <Code2 className="w-32 h-32 text-slate-300 group-hover/mockup:text-blue-500 transition-colors duration-500 group-hover/mockup:scale-110" strokeWidth={1} />}
+                    {project.type === 'dwg' && <Map className="w-32 h-32 text-slate-300 group-hover/mockup:text-blue-500 transition-colors duration-500 group-hover/mockup:scale-110" strokeWidth={1} />}
+                    {project.type === 'web' && <Globe className="w-32 h-32 text-slate-300 group-hover/mockup:text-blue-500 transition-colors duration-500 group-hover/mockup:scale-110" strokeWidth={1} />}
+                    {(!project.type) && <Layers className="w-32 h-32 text-slate-300 group-hover/mockup:text-blue-500 transition-colors duration-500 group-hover/mockup:scale-110" strokeWidth={1} />}
                     
                     <div className="absolute top-4 start-4 bg-white/80 backdrop-blur-sm px-4 py-1.5 rounded-full text-xs font-bold font-mono text-slate-500 border border-slate-200 flex items-center gap-2">
                        <span>PROJECT_{project.id}</span>
@@ -256,7 +257,7 @@ export default function App() {
       {/* The Arsenal (Skills) & Experience Split */}
       <section className="py-20 lg:py-32 bg-slate-50 border-t border-slate-200">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-12 gap-16 lg:gap-24">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
             
             {/* Experience */}
             <motion.div {...fadeUp} className="lg:col-span-7">
