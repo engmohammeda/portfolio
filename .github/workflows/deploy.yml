@@ -46,4 +46,4 @@ jobs:
 
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4        package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+        uses: actions/deploy-pages@v4
