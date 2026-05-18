@@ -68,31 +68,33 @@ export const cvData = {
       categories: [
         {
           name: "Engineering Software",
-          skills: "AutoCAD Civil 3D, ArcGIS, Global Mapper"
+          skills: [
+            { name: "AutoCAD Civil 3D", value: 95 },
+            { name: "ArcGIS / QGIS", value: 85 },
+            { name: "Global Mapper", value: 88 }
+          ]
         },
         {
           name: "Automation & Code",
-          skills: "Python (Data Processing), React, TypeScript"
+          skills: [
+            { name: "Python (Pandas, Numpy)", value: 90 },
+            { name: "React, TypeScript", value: 80 },
+            { name: "Node.js (APIs)", value: 75 }
+          ]
         },
         {
           name: "Field Operations",
-          skills: "Leica/Topcon Total Station, RTK/GNSS Systems"
+          skills: [
+            { name: "Leica/Topcon Total Station", value: 95 },
+            { name: "RTK/GNSS Systems", value: 92 },
+            { name: "Drone Surveying Data", value: 85 }
+          ]
         }
       ]
     },
     experience: {
-      title: "OPERATIONAL LOG",
+      title: "OPERATIONAL LOG & TIMELINE",
       jobs: [
-        {
-          title: "Topographic Surveyor & Civil 3D Modeler",
-          company: "Confidential Megaproject",
-          date: "2023 - Present",
-          points: [
-            "Executed full-scale topographic surveys for critical infrastructure, processing 5,000+ points.",
-            "Designed cross-sections and slopes optimizing traffic flow and stormwater compliance.",
-            "Handled direct coordination with execution teams to align 3D models with ground reality."
-          ]
-        },
         {
           title: "Workflow Automation Lead",
           company: "Independent Architect",
@@ -101,8 +103,42 @@ export const cvData = {
             "Consulted on data workflow optimizations for surveying teams.",
             "Built and deployed custom scripts directly reducing operational hours."
           ]
+        },
+        {
+          title: "Topographic Surveyor & Civil 3D Modeler",
+          company: "Confidential Megaproject",
+          date: "2023 - 2024",
+          points: [
+            "Executed full-scale topographic surveys for critical infrastructure, processing 5,000+ points.",
+            "Designed cross-sections and slopes optimizing traffic flow and stormwater compliance.",
+            "Handled direct coordination with execution teams to align 3D models with ground reality."
+          ]
         }
       ]
+    },
+    testimonials: {
+      title: "RECOMMENDATIONS",
+      quotes: [
+        {
+          text: "Mohammed changed the way our office handles site data. A process that used to take three surveyors a whole week now runs through his script in less than an hour.",
+          author: "Sr. Project Manager",
+          role: "Topographic Dept"
+        },
+        {
+          text: "His Civil 3D corridors for the mountainous roads were spotless. It saved the execution team significant time and eliminated expensive re-work.",
+          author: "Lead Highway Engineer",
+          role: "Infrastructure Team"
+        }
+      ]
+    },
+    contact: {
+      title: "INITIATE A PROTOCOL",
+      subtitle: "Looking for robust data automation or Civil 3D mastery? Send a direct transmission.",
+      nameLabel: "Identifier (Name)",
+      emailLabel: "Return Address (Email)",
+      messageLabel: "Transmission Payload (Message)",
+      submitText: "Deploy Transmission",
+      successText: "Transmission received. Awaiting response sequence."
     },
     education: {
       title: "ACCREDITATION",
@@ -134,7 +170,7 @@ export const cvData = {
       content: "أنا لا أقوم بمجرد مسح الأراضي؛ بل أقوم بهندسة البيانات. أعمل كجسر بين الطبوغرافيا الميدانية الخام والنماذج الحسابية الدقيقة والمؤتمتة. تركيزي ينصب على تقليص مئات الساعات من الحسابات اليدوية إلى ثوانٍ عبر لغة بايثون ومنهجيات SaaS، لضمان تسليم خالٍ من الأخطاء في المشاريع العملاقة. أبني أنظمة تحل العوائق الهندسية قبل أن تصل لسرعة التنفيذ."
     },
     caseStudies: {
-      title: "محفظة الهندسة والأتمتة (Case Studies)",
+      title: "محفظة الهندسة والأتمتة",
       projects: [
         {
           id: "01",
@@ -184,31 +220,33 @@ export const cvData = {
       categories: [
         {
           name: "البرمجيات الهندسية",
-          skills: "AutoCAD Civil 3D, ArcGIS, Global Mapper"
+          skills: [
+            { name: "AutoCAD Civil 3D", value: 95 },
+            { name: "ArcGIS / QGIS", value: 85 },
+            { name: "Global Mapper", value: 88 }
+          ]
         },
         {
           name: "الأتمتة والبرمجة",
-          skills: "Python (معالجة البيانات), React, TypeScript"
+          skills: [
+            { name: "Python (معالجة البيانات)", value: 90 },
+            { name: "React, TypeScript", value: 80 },
+            { name: "Node.js (APIs)", value: 75 }
+          ]
         },
         {
           name: "العمليات الميدانية",
-          skills: "Leica/Topcon Total Station, RTK/GNSS Systems"
+          skills: [
+            { name: "Leica/Topcon Total Station", value: 95 },
+            { name: "RTK/GNSS Systems", value: 92 },
+            { name: "الرفع المساحي بالدرونز", value: 85 }
+          ]
         }
       ]
     },
     experience: {
-      title: "السجل التشغيلي",
+      title: "السجل التشغيلي والزمني",
       jobs: [
-        {
-          title: "مساح طبوغرافي ومصمم Civil 3D",
-          company: "مشروع بنية تحتية عملاق",
-          date: "2023 - الحاضر",
-          points: [
-            "تنفيذ مسح طبوغرافي شامل للبنى التحتية الحرجة، ومعالجة أكثر من 5000 نقطة.",
-            "تصميم المقاطع العرضية والميول بما يحسن تدفق المرور والامتثال لصرف السيول.",
-            "التنسيق المباشر مع فرق التنفيذ لمطابقة نماذج 3D المكتسبة مع الواقع الميداني."
-          ]
-        },
         {
           title: "قائد أتمتة سير العمل",
           company: "بناء مستقل",
@@ -217,8 +255,42 @@ export const cvData = {
             "تقديم استشارات برمجية لتحسين سير عمل البيانات للفرق المساحية.",
             "بناء ونشر نصوص برمجية (Scripts) أدت لتقليص ساعات العمل التشغيلي الميداني مباشرة."
           ]
+        },
+        {
+          title: "مساح طبوغرافي ومصمم Civil 3D",
+          company: "مشروع بنية تحتية عملاق",
+          date: "2023 - 2024",
+          points: [
+            "تنفيذ مسح طبوغرافي شامل للبنى التحتية الحرجة، ومعالجة أكثر من 5000 نقطة.",
+            "تصميم المقاطع العرضية والميول بما يحسن تدفق المرور والامتثال لصرف السيول.",
+            "التنسيق المباشر مع فرق التنفيذ لمطابقة نماذج 3D المكتسبة مع الواقع الميداني."
+          ]
         }
       ]
+    },
+    testimonials: {
+      title: "آراء وتوصيات",
+      quotes: [
+        {
+          text: "المهندس محمد غيّر طريقة تعاملنا مع البيانات في المكتب. العملية التي كانت تستغرق 3 مساحين لأسبوع كامل تُنجز الآن بنصوصه البرمجية في أقل من ساعة.",
+          author: "مدير مشاريع أول",
+          role: "قسم الطبوغرافيا"
+        },
+        {
+          text: "نماذج الـ Civil 3D التي صممها للطرق الجبلية كانت خالية من العيوب. وفرت على فريق التنفيذ وقتاً هائلاً ومنعت إعادة العمل المكلفة.",
+          author: "كبير مهندسي الطرق",
+          role: "فريق البنية التحتية"
+        }
+      ]
+    },
+    contact: {
+      title: "تهيئة اتصال جديد",
+      subtitle: "تبحث عن أتمتة بيانات قوية أو احترافية في Civil 3D؟ أرسل طلب اتصال عبر النموذج.",
+      nameLabel: "المُعرّف (الاسم)",
+      emailLabel: "عنوان الرد (البريد الإلكتروني)",
+      messageLabel: "حزمة البيانات (الرسالة)",
+      submitText: "نشر الإرسال",
+      successText: "تم استلام البيانات. في انتظار تسلسل الرد."
     },
     education: {
       title: "الاعتماد الأكاديمي",

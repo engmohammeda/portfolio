@@ -4,10 +4,11 @@ import {
   FileDown, Map, Calculator, Code2, Globe, Mail, Phone, MapPin, 
   Linkedin, Printer, Briefcase, User, GraduationCap, Wrench, FolderOpen,
   ArrowRight, CheckCircle2, ChevronRight, Download, Terminal, Layers,
-  ListFilter, ArrowUpDown, Github, Twitter, Moon, Sun
+  ListFilter, ArrowUpDown, Github, Twitter, Moon, Sun, Send, MessageSquare
 } from 'lucide-react';
 import { cvData, Language } from './data';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer, Tooltip } from 'recharts';
+import confetti from 'canvas-confetti';
 
 export default function App() {
   const [lang, setLang] = useState<Language>('ar');
@@ -15,6 +16,7 @@ export default function App() {
   const [filterCategory, setFilterCategory] = useState<string>('All');
   const [sortOrder, setSortOrder] = useState<'desc' | 'asc'>('desc');
   const [showPrintWarning, setShowPrintWarning] = useState(false);
+  const [formState, setFormState] = useState<'idle' | 'submitting' | 'success'>('idle');
 
   const d = cvData[lang];
   const isRtl = lang === 'ar';
@@ -33,6 +35,21 @@ export default function App() {
       window.print();
     }
   };
+
+  const handleFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setFormState('submitting');
+    setTimeout(() => {
+      setFormState('success');
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
+      setTimeout(() => setFormState('idle'), 5000);
+    }, 1500);
+  };
+
 
   const allCategories = useMemo(() => {
     const cats = d.caseStudies?.projects.map(p => p.category).filter(Boolean) as string[];
@@ -356,13 +373,30 @@ export default function App() {
                     </div>
                   )}
 
-                  <div className="space-y-6">
+                  <div className="space-y-8">
                     {d.competencies.categories.map((cat, i) => (
-                      <div key={i} className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
-                        <h4 className="text-sm font-bold text-slate-900 dark:text-white mb-4">{cat.name}</h4>
-                        <p className="text-slate-600 dark:text-slate-400 font-medium leading-[1.8]">
-                          {cat.skills}
-                        </p>
+                      <div key={i} className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm relative overflow-hidden group">
+                        <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-blue-500 to-indigo-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+                        <h4 className="text-sm font-bold text-slate-900 dark:text-white mb-6 uppercase tracking-wider">{cat.name}</h4>
+                        <div className="space-y-5">
+                          {cat.skills.map((skill: any, idx: number) => (
+                            <div key={idx} className="space-y-2">
+                              <div className="flex justify-between text-xs font-semibold">
+                                <span className="text-slate-600 dark:text-slate-300">{skill.name}</span>
+                                <span className="text-blue-600 dark:text-blue-400 font-mono">{skill.value}%</span>
+                              </div>
+                              <div className="h-1.5 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                                <motion.div 
+                                  initial={{ width: 0 }}
+                                  whileInView={{ width: `${skill.value}%` }}
+                                  viewport={{ once: true }}
+                                  transition={{ duration: 1, delay: 0.2 + (idx * 0.1) }}
+                                  className="h-full bg-blue-500 dark:bg-blue-400 rounded-full"
+                                ></motion.div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
                       </div>
                     ))}
                   </div>
@@ -406,22 +440,104 @@ export default function App() {
           </div>
         </section>
 
-        {/* CTA Footer */}
-        <section className="py-20 lg:py-32 bg-blue-600 dark:bg-blue-700 text-white text-center print:hidden">
-          <div className="max-w-3xl mx-auto px-6">
-            <motion.div {...fadeUp}>
-              <h2 className="text-3xl lg:text-5xl font-bold mb-8">{isRtl ? 'جاهز لتحسين إنتاجية فريقك؟' : 'Ready to optimize your team\'s output?'}</h2>
-              <p className="text-blue-100 text-lg lg:text-xl font-medium mb-12 max-w-2xl mx-auto">
-                {isRtl ? 'لنتحدث عن كيف يمكن للأتمتة والخبرة أن تُسرع تسليم مشاريعك.' : 'Let\'s talk about how automation and expertise can accelerate your project delivery.'}
-              </p>
-              <a 
-                href={`mailto:${d.header.email}`}
-                className="inline-flex items-center gap-3 bg-white text-blue-600 dark:text-blue-700 px-8 py-4 rounded-full font-bold text-lg hover:bg-slate-50 hover:scale-105 active:scale-95 transition-all shadow-xl shadow-blue-900/20 dark:shadow-black/20"
-              >
-                <Mail className="w-5 h-5" />
-                {isRtl ? 'تواصل معي' : 'Get in Touch'}
-              </a>
+        {/* Testimonials */}
+        <section className="py-20 lg:py-32 bg-slate-900 dark:bg-slate-950 text-white relative">
+          <div className="max-w-7xl mx-auto px-6">
+            <motion.div {...fadeUp} className="text-center mb-16">
+              <h2 className="text-3xl lg:text-5xl font-extrabold tracking-tight mb-4">
+                {d.testimonials.title}
+              </h2>
+              <div className="w-16 h-1 bg-blue-500 mx-auto rounded-full"></div>
             </motion.div>
+
+            <div className="grid md:grid-cols-2 gap-8">
+              {d.testimonials.quotes.map((quote: any, idx: number) => (
+                <motion.div 
+                  key={idx}
+                  {...fadeUp}
+                  className="bg-white/5 border border-white/10 p-8 rounded-3xl relative"
+                >
+                  <MessageSquare className="w-10 h-10 text-white/10 absolute top-8 end-8" />
+                  <p className="text-lg text-slate-300 leading-relaxed italic mb-8 relative z-10">
+                    "{quote.text}"
+                  </p>
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-indigo-500 flex items-center justify-center font-bold text-lg">
+                      {quote.author.charAt(0)}
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-white">{quote.author}</h4>
+                      <span className="text-sm text-blue-400">{quote.role}</span>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Footer & Contact Form */}
+        <section className="py-20 lg:py-32 bg-blue-600 dark:bg-blue-800 text-white relative print:hidden">
+          <div className="absolute inset-0 opacity-[0.05] dark:opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] mix-blend-overlay"></div>
+          <div className="max-w-5xl mx-auto px-6 relative z-10">
+            <div className="grid md:grid-cols-2 gap-16 items-center">
+              <motion.div {...fadeUp} className="text-start">
+                <h2 className="text-4xl lg:text-5xl font-extrabold mb-6 leading-tight">{d.contact.title}</h2>
+                <p className="text-blue-100 text-lg font-medium mb-10 max-w-md">
+                  {d.contact.subtitle}
+                </p>
+                <div className="space-y-6 text-sm font-semibold text-blue-100/80 font-mono">
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-full bg-black/10 flex items-center justify-center"><Mail className="w-4 h-4 text-white" /></div>
+                    <span dir="ltr">{d.header.email}</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-full bg-black/10 flex items-center justify-center"><Phone className="w-4 h-4 text-white" /></div>
+                    <span dir="ltr">{d.header.phone}</span>
+                  </div>
+                </div>
+              </motion.div>
+
+              <motion.div {...fadeUp} className="bg-white dark:bg-slate-900 rounded-3xl p-8 shadow-2xl text-slate-800 dark:text-slate-200">
+                {formState === 'success' ? (
+                  <div className="h-64 flex flex-col items-center justify-center text-center">
+                    <div className="w-16 h-16 bg-emerald-100 dark:bg-emerald-900/40 rounded-full flex items-center justify-center mb-6">
+                      <CheckCircle2 className="w-8 h-8 text-emerald-500" />
+                    </div>
+                    <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">{d.contact.successText}</h3>
+                  </div>
+                ) : (
+                  <form onSubmit={handleFormSubmit} className="space-y-5">
+                    <div>
+                      <label className="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">{d.contact.nameLabel}</label>
+                      <input required type="text" className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all font-medium" />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">{d.contact.emailLabel}</label>
+                      <input required type="email" className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all font-medium" />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">{d.contact.messageLabel}</label>
+                      <textarea required rows={4} className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all font-medium resize-none"></textarea>
+                    </div>
+                    <button 
+                      disabled={formState === 'submitting'}
+                      type="submit" 
+                      className="w-full bg-blue-600 hover:bg-blue-700 disabled:opacity-70 disabled:hover:bg-blue-600 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 transition-all active:scale-[0.98]"
+                    >
+                      {formState === 'submitting' ? (
+                        <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                      ) : (
+                        <>
+                          <Send className="w-4 h-4" />
+                          {d.contact.submitText}
+                        </>
+                      )}
+                    </button>
+                  </form>
+                )}
+              </motion.div>
+            </div>
           </div>
         </section>
 
