@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   FileDown, Map, Calculator, Code2, Globe, Mail, Phone, MapPin, 
@@ -11,12 +11,22 @@ import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Responsi
 import confetti from 'canvas-confetti';
 
 export default function App() {
-  const [lang, setLang] = useState<Language>('ar');
+  const [lang, setLang] = useState<Language>(() => {
+    if (typeof navigator !== 'undefined' && navigator.language) {
+      return navigator.language.startsWith('ar') ? 'ar' : 'en';
+    }
+    return 'ar';
+  });
   const [theme, setTheme] = useState<'light' | 'dark'>('dark');
   const [filterCategory, setFilterCategory] = useState<string>('All');
   const [sortOrder, setSortOrder] = useState<'desc' | 'asc'>('desc');
   const [showPrintWarning, setShowPrintWarning] = useState(false);
   const [formState, setFormState] = useState<'idle' | 'submitting' | 'success'>('idle');
+
+  useEffect(() => {
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    document.documentElement.lang = lang;
+  }, [lang]);
 
   const d = cvData[lang];
   const isRtl = lang === 'ar';
