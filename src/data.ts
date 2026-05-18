@@ -8,7 +8,9 @@ export const cvData = {
       location: "Riyadh, KSA",
       phone: "+966 XX XXX XXXX",
       email: "m.albkhyty@email.com",
-      linkedin: "linkedin.com/in/malbkhyty",
+      linkedin: "https://linkedin.com/in/malbkhyty",
+      github: "https://github.com/engmohammeda",
+      twitter: "https://twitter.com/malbkhyty",
       valueProp: "Transforming raw topographic data into error-free executable models while eliminating bottlenecks through Python automation."
     },
     summary: {
@@ -122,7 +124,9 @@ export const cvData = {
       location: "الرياض، المملكة",
       phone: "+966 XX XXX XXXX",
       email: "m.albkhyty@email.com",
-      linkedin: "linkedin.com/in/malbkhyty",
+      linkedin: "https://linkedin.com/in/malbkhyty",
+      github: "https://github.com/engmohammeda",
+      twitter: "https://twitter.com/malbkhyty",
       valueProp: "تحويل البيانات الطبوغرافية الخام إلى نماذج تنفيذية خالية من الأخطاء، مع القضاء على عوائق العمليات عبر أتمتة بايثون."
     },
     summary: {

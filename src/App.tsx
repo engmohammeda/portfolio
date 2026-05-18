@@ -4,7 +4,7 @@ import {
   FileDown, Map, Calculator, Code2, Globe, Mail, Phone, MapPin, 
   Linkedin, Printer, Briefcase, User, GraduationCap, Wrench, FolderOpen,
   ArrowRight, CheckCircle2, ChevronRight, Download, Terminal, Layers,
-  ListFilter, ArrowUpDown
+  ListFilter, ArrowUpDown, Github, Twitter
 } from 'lucide-react';
 import { cvData, Language } from './data';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer, Tooltip } from 'recharts';
@@ -131,6 +131,29 @@ export default function App() {
             <span className="flex items-center gap-2"><MapPin className="w-4 h-4 text-blue-500"/> {d.header.location}</span>
             <span className="flex items-center gap-2 font-mono"><Phone className="w-4 h-4 text-blue-500" /> <span dir="ltr">{d.header.phone}</span></span>
             <span className="flex items-center gap-2"><Mail className="w-4 h-4 text-blue-500"/> {d.header.email}</span>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }} 
+            animate={{ opacity: 1 }} 
+            transition={{ delay: 0.5 }}
+            className="mt-6 flex justify-center gap-4"
+          >
+            {d.header.linkedin && (
+              <a href={d.header.linkedin} target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-blue-100 hover:text-blue-600 transition-colors">
+                <Linkedin className="w-5 h-5" />
+              </a>
+            )}
+            {d.header.github && (
+              <a href={d.header.github} target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-slate-200 hover:text-slate-900 transition-colors">
+                <Github className="w-5 h-5" />
+              </a>
+            )}
+            {d.header.twitter && (
+              <a href={d.header.twitter} target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-blue-50 hover:text-blue-400 transition-colors">
+                <Twitter className="w-5 h-5" />
+              </a>
+            )}
           </motion.div>
         </div>
       </section>
