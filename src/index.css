@@ -2,6 +2,11 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+@theme {
+  --font-sans: "Alexandria", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
 @media print {
   body {
     -webkit-print-color-adjust: exact !important;
