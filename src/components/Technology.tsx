@@ -14,15 +14,15 @@ export const Technology: React.FC = () => {
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
-      className="py-16 sm:py-24 border-t border-gray-200/60"
+      className="py-16 sm:py-24 border-t border-gray-200/60 dark:border-gray-800/60"
     >
       <div className="flex items-center gap-3 mb-10">
-        <Terminal className="w-4 h-4 text-gray-400" />
-        <h3 className="text-[11px] font-bold uppercase tracking-widest text-gray-400">{t.title}</h3>
+        <Terminal className="w-4 h-4 text-gray-400 dark:text-gray-500" />
+        <h3 className="text-[11px] font-bold uppercase tracking-widest text-gray-400 dark:text-gray-500">{t.title}</h3>
       </div>
       
       <div className="max-w-3xl">
-        <p className="text-xl sm:text-2xl text-gray-600 mb-12 leading-relaxed tracking-tight">
+        <p className="text-xl sm:text-2xl text-gray-600 dark:text-gray-300 mb-12 leading-relaxed tracking-tight">
           {t.description}
         </p>
         
@@ -30,7 +30,7 @@ export const Technology: React.FC = () => {
           {t.items.map((item, index) => (
             <div 
               key={index} 
-              className="px-5 py-3 bg-white text-black rounded-xl text-sm font-semibold border border-gray-200/60 shadow-sm hover:border-black/20 hover:shadow-md transition-all cursor-default"
+              className="px-5 py-3 bg-white dark:bg-slate-900 text-black dark:text-white rounded-xl text-sm font-semibold border border-gray-200/60 dark:border-gray-800/60 shadow-sm hover:border-black/20 dark:hover:border-white/20 hover:shadow-md transition-all cursor-default"
             >
               {item}
             </div>

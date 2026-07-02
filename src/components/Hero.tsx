@@ -36,27 +36,27 @@ export const Hero: React.FC = () => {
       className="pt-32 pb-24 sm:pt-40 sm:pb-32"
     >
       <motion.div variants={item} className="mb-4">
-        <span className="inline-block px-3 py-1 bg-black text-white text-[10px] font-bold uppercase tracking-widest rounded-full">
+        <span className="inline-block px-3 py-1 bg-black dark:bg-white text-white dark:text-black text-[10px] font-bold uppercase tracking-widest rounded-full">
           {t.title}
         </span>
       </motion.div>
 
       <motion.h1 
         variants={item} 
-        className="text-5xl sm:text-7xl lg:text-8xl font-semibold tracking-tighter text-black mb-6 leading-[1.05]"
+        className="text-5xl sm:text-7xl lg:text-8xl font-semibold tracking-tighter text-black dark:text-white mb-6 leading-[1.05]"
       >
         {t.name}
       </motion.h1>
       
       <motion.p 
         variants={item} 
-        className="text-xl sm:text-2xl text-gray-500 max-w-2xl mb-12 leading-relaxed tracking-tight"
+        className="text-xl sm:text-2xl text-gray-500 dark:text-gray-400 max-w-2xl mb-12 leading-relaxed tracking-tight"
       >
         {t.tagline}
       </motion.p>
       
       <motion.div variants={item} className="flex items-center gap-4 no-print">
-        <a href="#contact" className="inline-flex items-center gap-2 bg-black text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-gray-800 transition-colors">
+        <a href="#contact" className="inline-flex items-center gap-2 bg-black dark:bg-white text-white dark:text-black px-6 py-3 rounded-full text-sm font-medium hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors">
           {language === 'en' ? 'Get in touch' : 'تواصل معي'}
         </a>
       </motion.div>

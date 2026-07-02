@@ -63,14 +63,14 @@ export const Contact: React.FC = () => {
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
-      className="py-16 sm:py-24 border-t border-gray-200/60 pb-32"
+      className="py-16 sm:py-24 border-t border-gray-200/60 dark:border-gray-800/60 pb-32"
     >
-      <h3 className="text-[11px] font-bold uppercase tracking-widest text-gray-400 mb-10">{t.title}</h3>
+      <h3 className="text-[11px] font-bold uppercase tracking-widest text-gray-400 dark:text-gray-500 mb-10">{t.title}</h3>
       
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-24">
         {/* Contact Form */}
         <div className="order-2 lg:order-1">
-          <h4 className="text-lg font-medium text-black mb-6">{t.form.title}</h4>
+          <h4 className="text-lg font-medium text-black dark:text-white mb-6">{t.form.title}</h4>
           
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -82,7 +82,7 @@ export const Contact: React.FC = () => {
                   onChange={handleChange}
                   placeholder={t.form.namePlaceholder}
                   required
-                  className="w-full bg-white border border-gray-200/60 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-black/5 focus:border-black/20 transition-all placeholder:text-gray-400"
+                  className="w-full bg-white dark:bg-slate-900 border border-gray-200/60 dark:border-gray-800/60 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-black/5 focus:border-black/20 transition-all placeholder:text-gray-400 dark:placeholder:text-gray-500 dark:text-white"
                   dir={dir}
                 />
               </div>
@@ -94,7 +94,7 @@ export const Contact: React.FC = () => {
                   onChange={handleChange}
                   placeholder={t.form.emailPlaceholder}
                   required
-                  className="w-full bg-white border border-gray-200/60 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-black/5 focus:border-black/20 transition-all placeholder:text-gray-400"
+                  className="w-full bg-white dark:bg-slate-900 border border-gray-200/60 dark:border-gray-800/60 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-black/5 focus:border-black/20 transition-all placeholder:text-gray-400 dark:placeholder:text-gray-500 dark:text-white"
                   dir="ltr"
                 />
               </div>
@@ -107,7 +107,7 @@ export const Contact: React.FC = () => {
                 placeholder={t.form.messagePlaceholder}
                 required
                 rows={4}
-                className="w-full bg-white border border-gray-200/60 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-black/5 focus:border-black/20 transition-all placeholder:text-gray-400 resize-none"
+                className="w-full bg-white dark:bg-slate-900 border border-gray-200/60 dark:border-gray-800/60 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-black/5 focus:border-black/20 transition-all placeholder:text-gray-400 dark:placeholder:text-gray-500 dark:text-white resize-none"
                 dir={dir}
               />
             </div>
@@ -116,7 +116,7 @@ export const Contact: React.FC = () => {
               <button
                 type="submit"
                 disabled={status === 'submitting'}
-                className="flex items-center gap-2 bg-black text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-gray-800 transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
+                className="flex items-center gap-2 bg-black dark:bg-white text-white dark:text-black px-6 py-3 rounded-full text-sm font-medium hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 {status === 'submitting' ? (
                   <>
@@ -150,15 +150,15 @@ export const Contact: React.FC = () => {
         
         {/* Contact Info */}
         <div className="order-1 lg:order-2 flex flex-col justify-center">
-          <p className="text-[10px] font-mono font-bold uppercase tracking-widest text-gray-400 mb-4">{language === 'en' ? 'Get in touch' : 'تواصل معي'}</p>
-          <p className="text-2xl sm:text-3xl font-medium text-black mb-10 leading-snug">
+          <p className="text-[10px] font-mono font-bold uppercase tracking-widest text-gray-400 dark:text-gray-500 mb-4">{language === 'en' ? 'Get in touch' : 'تواصل معي'}</p>
+          <p className="text-2xl sm:text-3xl font-medium text-black dark:text-white mb-10 leading-snug">
             {language === 'en' ? "Let's work together on your next project." : "دعنا نعمل معاً على مشروعك القادم."}
           </p>
           
           <div className="flex items-center gap-4">
             <a 
               href={`mailto:${t.email}`} 
-              className="flex items-center justify-center w-12 h-12 bg-white text-black border border-gray-200/60 rounded-full hover:border-black/20 hover:shadow-md hover:-translate-y-1 transition-all"
+              className="flex items-center justify-center w-12 h-12 bg-white dark:bg-slate-900 text-black dark:text-white border border-gray-200/60 dark:border-gray-800/60 rounded-full hover:border-black/20 dark:hover:border-white/20 hover:shadow-md hover:-translate-y-1 transition-all"
               title="Email"
             >
               <Mail className="w-5 h-5" />
@@ -168,7 +168,7 @@ export const Contact: React.FC = () => {
               href={`https://wa.me/${t.phone.replace(/[^0-9]/g, '')}`} 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="flex items-center justify-center w-12 h-12 bg-white text-black border border-gray-200/60 rounded-full hover:border-black/20 hover:shadow-md hover:-translate-y-1 transition-all"
+              className="flex items-center justify-center w-12 h-12 bg-white dark:bg-slate-900 text-black dark:text-white border border-gray-200/60 dark:border-gray-800/60 rounded-full hover:border-black/20 dark:hover:border-white/20 hover:shadow-md hover:-translate-y-1 transition-all"
               title="WhatsApp"
             >
               <MessageCircle className="w-5 h-5" />
@@ -178,7 +178,7 @@ export const Contact: React.FC = () => {
               href="https://x.com/engalbukhaiti" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="flex items-center justify-center w-12 h-12 bg-white text-black border border-gray-200/60 rounded-full hover:border-black/20 hover:shadow-md hover:-translate-y-1 transition-all"
+              className="flex items-center justify-center w-12 h-12 bg-white dark:bg-slate-900 text-black dark:text-white border border-gray-200/60 dark:border-gray-800/60 rounded-full hover:border-black/20 dark:hover:border-white/20 hover:shadow-md hover:-translate-y-1 transition-all"
               title="X (Twitter)"
             >
               <XIcon className="w-4 h-4" />
@@ -187,7 +187,7 @@ export const Contact: React.FC = () => {
         </div>
       </div>
       
-      <div className="pt-8 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 text-xs font-mono font-medium text-gray-400 no-print">
+      <div className="pt-8 border-t border-gray-100 dark:border-gray-800 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 text-xs font-mono font-medium text-gray-400 dark:text-gray-500 no-print">
         <p>© {new Date().getFullYear()} {t.name}.</p>
       </div>
     </motion.section>
