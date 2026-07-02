@@ -49,7 +49,17 @@ export const portfolioData = {
       name: "Mohammed Ali Al-Bakhity",
       email: "Mohammedalbkhyty@gmail.com",
       x: "@engalbukhaiti",
-      phone: "+967 772791169"
+      phone: "+967 772791169",
+      form: {
+        title: "Send a Message",
+        namePlaceholder: "Your Name",
+        emailPlaceholder: "Your Email",
+        messagePlaceholder: "Type your message here...",
+        submit: "Send Message",
+        sending: "Sending...",
+        success: "Message sent successfully!",
+        error: "Failed to send message. Please try again."
+      }
     }
   },
   ar: {
@@ -102,7 +112,17 @@ export const portfolioData = {
       name: "محمد علي البخيتي",
       email: "Mohammedalbkhyty@gmail.com",
       x: "@engalbukhaiti",
-      phone: "+967 772791169"
+      phone: "+967 772791169",
+      form: {
+        title: "أرسل رسالة",
+        namePlaceholder: "الاسم",
+        emailPlaceholder: "البريد الإلكتروني",
+        messagePlaceholder: "اكتب رسالتك هنا...",
+        submit: "إرسال الرسالة",
+        sending: "جاري الإرسال...",
+        success: "تم إرسال الرسالة بنجاح!",
+        error: "حدث خطأ أثناء إرسال الرسالة. يرجى المحاولة مرة أخرى."
+      }
     }
   }
 };
