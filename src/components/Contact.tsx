@@ -22,8 +22,7 @@ export const Contact: React.FC = () => {
     setStatus('submitting');
     
     try {
-      // Allow fallback if user hasn't set up Web3Forms key yet
-      const accessKey = import.meta.env.VITE_WEB3FORMS_KEY || "YOUR_ACCESS_KEY_HERE";
+      const accessKey = "6285201c-2d82-4f65-b35e-b3fa2de7082a";
       
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
@@ -40,8 +39,7 @@ export const Contact: React.FC = () => {
       
       const result = await response.json();
       
-      if (result.success || accessKey === "YOUR_ACCESS_KEY_HERE") {
-        // If they use placeholder key, simulate success anyway to show how it works
+      if (result.success) {
         setStatus('success');
         setFormData({ name: '', email: '', message: '' });
         setTimeout(() => setStatus('idle'), 5000);
