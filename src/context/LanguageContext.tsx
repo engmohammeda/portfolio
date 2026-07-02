@@ -12,7 +12,18 @@ const LanguageContext = createContext<LanguageContextProps | undefined>(undefine
 export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [language, setLanguage] = useState<Language>(() => {
     const saved = localStorage.getItem('app-language');
-    return (saved === 'ar' || saved === 'en') ? saved : 'ar';
+    if (saved === 'ar' || saved === 'en') return saved;
+    
+    // Detect browser language
+    if (typeof navigator !== 'undefined') {
+      const browserLang = navigator.language || (navigator.languages && navigator.languages[0]);
+      if (browserLang && browserLang.toLowerCase().startsWith('ar')) {
+        return 'ar';
+      }
+      return 'en';
+    }
+    
+    return 'ar'; // Fallback
   });
 
   const toggleLanguage = () => {

@@ -1,8 +1,8 @@
-# Mohammed Ali Al-Bakhity - Professional Portfolio
+# Mohammed Al-Bakhity Ali - Professional Portfolio
 
 A clean, minimalist, bilingual (English & Arabic) personal portfolio built to showcase engineering background, technical skills, and projects.
 
-![Portfolio UI](https://via.placeholder.com/1000x500.png?text=Mohammed+Ali+Al-Bakhity+-+Portfolio)
+![Portfolio UI](https://via.placeholder.com/1000x500.png?text=Mohammed+Al-Bakhity+Ali+-+Portfolio)
 
 ## ✨ Features
 

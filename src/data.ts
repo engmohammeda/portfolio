@@ -9,7 +9,7 @@ export const portfolioData = {
       downloadCV: "Download CV"
     },
     hero: {
-      name: "Mohammed Ali Al-Bakhity",
+      name: "Mohammed Al-Bakhity Ali",
       title: "Surveying Technician & AI Solutions Builder",
       tagline: "I am a surveying technician with strong technical capabilities, using software and AI to solve practical problems and improve productivity.",
     },
@@ -46,7 +46,7 @@ export const portfolioData = {
     },
     contact: {
       title: "Contact",
-      name: "Mohammed Ali Al-Bakhity",
+      name: "Mohammed Al-Bakhity Ali",
       email: "Mohammedalbkhyty@gmail.com",
       x: "@engalbukhaiti",
       phone: "+967 772791169",
@@ -72,7 +72,7 @@ export const portfolioData = {
       downloadCV: "تحميل السيرة الذاتية"
     },
     hero: {
-      name: "محمد علي البخيتي",
+      name: "محمد البخيتي علي",
       title: "فني مساحة وطرق | مطور حلول تقنية وأتمتة",
       tagline: "محمد البخيتي فني مساحة وطرق يمتلك قدرات تقنية متقدمة ويستخدم البرمجيات والذكاء الاصطناعي لتطوير الحلول وتحسين الإنتاجية.",
     },
@@ -109,7 +109,7 @@ export const portfolioData = {
     },
     contact: {
       title: "التواصل",
-      name: "محمد علي البخيتي",
+      name: "محمد البخيتي علي",
       email: "Mohammedalbkhyty@gmail.com",
       x: "@engalbukhaiti",
       phone: "+967 772791169",

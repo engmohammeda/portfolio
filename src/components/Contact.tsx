@@ -189,7 +189,6 @@ export const Contact: React.FC = () => {
       
       <div className="pt-8 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 text-xs font-mono font-medium text-gray-400 no-print">
         <p>© {new Date().getFullYear()} {t.name}.</p>
-        <p>Built with minimal design philosophy.</p>
       </div>
     </motion.section>
   );
