@@ -63,16 +63,17 @@ export const Contact: React.FC = () => {
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
-      className="py-16 sm:py-24 border-t border-gray-200/60 dark:border-gray-800/60 pb-32"
+      className="py-24 sm:py-32 pb-40 relative"
     >
-      <h3 className="text-[11px] font-bold uppercase tracking-widest text-gray-400 dark:text-gray-500 mb-10">{t.title}</h3>
+      <h3 className="text-[13px] font-bold uppercase tracking-widest text-black dark:text-white mb-16">{t.title}</h3>
       
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-24">
         {/* Contact Form */}
-        <div className="order-2 lg:order-1">
-          <h4 className="text-lg font-medium text-black dark:text-white mb-6">{t.form.title}</h4>
+        <div className="order-2 lg:order-1 bg-white/50 dark:bg-slate-900/50 backdrop-blur-md p-8 sm:p-12 rounded-[3rem] border border-gray-200/60 dark:border-white/10 shadow-xl shadow-black/5 dark:shadow-white/5 relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-blue-500/10 to-transparent dark:from-blue-500/20 rounded-full blur-3xl -mr-32 -mt-32"></div>
+          <h4 className="text-2xl font-semibold text-black dark:text-white mb-8 relative z-10">{t.form.title}</h4>
           
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <input

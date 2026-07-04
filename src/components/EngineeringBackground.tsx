@@ -3,6 +3,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { portfolioData } from '../data';
 import { motion } from 'framer-motion';
 import { Compass } from 'lucide-react';
+import { cn } from '../lib/utils';
 
 export const EngineeringBackground: React.FC = () => {
   const { language } = useLanguage();
@@ -14,24 +15,33 @@ export const EngineeringBackground: React.FC = () => {
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
-      className="py-16 sm:py-24 border-t border-gray-200/60 dark:border-gray-800/60"
+      className="py-24 sm:py-32 relative"
     >
       <div className="flex items-center gap-3 mb-10">
-        <Compass className="w-4 h-4 text-gray-400 dark:text-gray-500" />
-        <h3 className="text-[11px] font-bold uppercase tracking-widest text-gray-400 dark:text-gray-500">{t.title}</h3>
+        <Compass className="w-5 h-5 text-black dark:text-white" />
+        <h3 className="text-[13px] font-bold uppercase tracking-widest text-black dark:text-white">{t.title}</h3>
       </div>
       
-      <div className="max-w-3xl">
-        <p className="text-xl sm:text-2xl text-gray-600 dark:text-gray-300 mb-12 leading-relaxed tracking-tight">
+      <div className="max-w-4xl">
+        <p className="text-xl sm:text-3xl text-gray-600 dark:text-gray-300 mb-16 leading-relaxed tracking-tight font-light">
           {t.description}
         </p>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           {t.items.map((item, index) => (
-            <div key={index} className="flex items-start gap-4 pb-4 border-b border-gray-100 dark:border-gray-800">
-              <div className="font-mono text-[10px] text-gray-400 dark:text-gray-500 mt-1 font-bold">0{index + 1}</div>
-              <span className="text-lg font-medium text-black dark:text-white">{item}</span>
-            </div>
+            <motion.div 
+              whileHover={{ y: -5 }}
+              key={index} 
+              className={cn(
+                "p-8 rounded-3xl border border-gray-200/60 dark:border-white/10 bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm hover:bg-white dark:hover:bg-slate-800 transition-colors duration-300 relative overflow-hidden group",
+                index === 0 ? "sm:col-span-2 md:col-span-2" : "",
+                index === 3 ? "sm:col-span-2 md:col-span-2" : ""
+              )}
+            >
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-500/10 to-purple-500/10 dark:from-blue-500/20 dark:to-purple-500/20 rounded-full blur-2xl -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-700"></div>
+              <div className="font-mono text-xs text-blue-600 dark:text-blue-400 mb-4 font-bold tracking-wider">0{index + 1}</div>
+              <span className="text-xl font-semibold text-black dark:text-white block relative z-10">{item}</span>
+            </motion.div>
           ))}
         </div>
       </div>
