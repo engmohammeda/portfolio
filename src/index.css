@@ -1,292 +1,131 @@
-@import url('https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
 @import "tailwindcss";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --font-sans: "Inter", "Alexandria", system-ui, -apple-system, sans-serif;
+  --font-sans: "Inter", "Alexandria", system-ui, sans-serif;
   --font-display: "Space Grotesk", "Alexandria", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
   
-  --color-paper: #fcfbf7;
-  --color-ink: #0f0f0f;
-  --color-amber: #f59e0b;
-  --color-amber-dark: #d97706;
-}
-
-* {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(0,0,0,0.2) transparent;
+  --color-primary: #111111;
+  --color-secondary: #FAFAFA;
+  --color-accent: #2563EB;
 }
 
 body {
-  background-color: #fcfbf7;
-  color: #0f0f0f;
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
 }
 
 .dark body {
-  background-color: #09090b;
-  color: #fafafa;
+  background-color: #030712; /* gray-950 */
+  color: #f8fafc; /* slate-50 */
 }
 
-/* ===== Engineering Blueprint Grid ===== */
-.blueprint-grid {
-  background-size: 40px 40px;
+/* Linear-style grid background */
+.bg-grid {
+  background-size: 50px 50px;
   background-image: 
-    linear-gradient(to right, rgba(0,0,0,0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0,0,0,0.04) 1px, transparent 1px);
+    linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+  mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
 }
 
-.dark .blueprint-grid {
+.dark .bg-grid {
   background-image: 
-    linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
 }
 
-.blueprint-grid-fine {
-  background-size: 120px 120px;
-  background-image: 
-    linear-gradient(to right, rgba(0,0,0,0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0,0,0,0.06) 1px, transparent 1px),
-    linear-gradient(to right, rgba(0,0,0,0.02) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0,0,0,0.02) 1px, transparent 1px);
-  background-position: 0 0, 0 0, 20px 20px, 20px 20px;
-}
-
-.dark .blueprint-grid-fine {
-  background-image: 
-    linear-gradient(to right, rgba(255,255,255,0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255,255,255,0.06) 1px, transparent 1px),
-    linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
-}
-
-/* ===== Engineering Hero Background ===== */
-.engineering-bg {
+.aurora-bg {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
   overflow: hidden;
-  pointer-events: none;
   z-index: 0;
+  pointer-events: none;
 }
 
-.eng-orb {
+.aurora-blob {
   position: absolute;
+  filter: blur(80px);
+  opacity: 0.4;
   border-radius: 50%;
-  filter: blur(90px);
-  opacity: 0.5;
-  animation: engFloat 25s infinite ease-in-out;
+  animation: float 20s infinite ease-in-out;
 }
 
-.dark .eng-orb {
-  opacity: 0.18;
+.dark .aurora-blob {
+  opacity: 0.15;
 }
 
-.eng-orb-1 {
-  width: 720px;
-  height: 720px;
-  background: radial-gradient(circle, rgba(245,158,11,0.25) 0%, rgba(251,191,36,0) 70%);
-  top: -280px;
-  left: -200px;
-}
-
-.eng-orb-2 {
+.aurora-1 {
+  background: radial-gradient(circle, rgba(59,130,246,0.4) 0%, rgba(147,197,253,0) 70%);
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(14,165,233,0.2) 0%, rgba(125,211,252,0) 70%);
-  top: 10%;
-  right: -150px;
-  animation-delay: -8s;
+  top: -200px;
+  left: -100px;
+  animation-delay: 0s;
 }
 
-.eng-orb-3 {
+.aurora-2 {
+  background: radial-gradient(circle, rgba(168,85,247,0.4) 0%, rgba(216,180,254,0) 70%);
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, rgba(0,0,0,0.06) 0%, transparent 70%);
+  top: 20%;
+  right: -100px;
+  animation-delay: -5s;
+}
+
+.aurora-3 {
+  background: radial-gradient(circle, rgba(14,165,233,0.4) 0%, rgba(125,211,252,0) 70%);
+  width: 400px;
+  height: 400px;
   bottom: -100px;
-  left: 25%;
-  animation-delay: -16s;
+  left: 30%;
+  animation-delay: -10s;
 }
 
-.dark .eng-orb-3 {
-  background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -50px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.9); }
 }
 
-@keyframes engFloat {
-  0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
-  33% { transform: translate(30px, -40px) scale(1.08) rotate(1deg); }
-  66% { transform: translate(-20px, 25px) scale(0.94) rotate(-1deg); }
-}
-
-/* Corner markers - engineering drawing style */
-.corner-marker {
-  position: absolute;
-  width: 24px;
-  height: 24px;
-  border-color: rgba(0,0,0,0.15);
-}
-
-.dark .corner-marker {
-  border-color: rgba(255,255,255,0.15);
-}
-
-.corner-tl { top: 24px; left: 24px; border-top: 2px solid; border-left: 2px solid; }
-.corner-tr { top: 24px; right: 24px; border-top: 2px solid; border-right: 2px solid; }
-.corner-bl { bottom: 24px; left: 24px; border-bottom: 2px solid; border-left: 2px solid; }
-.corner-br { bottom: 24px; right: 24px; border-bottom: 2px solid; border-right: 2px solid; }
-
-/* SaaS Badge */
-.saas-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 14px;
-  border-radius: 999px;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  background: white;
-  border: 1px solid rgba(0,0,0,0.08);
-  box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.04);
-}
-
-.dark .saas-badge {
-  background: rgba(24,24,27,0.8);
-  border-color: rgba(255,255,255,0.08);
-  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-}
-
-.saas-badge-dot {
-  width: 6px;
-  height: 6px;
-  background: #22c55e;
-  border-radius: 50%;
-  box-shadow: 0 0 0 4px rgba(34,197,94,0.15);
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { box-shadow: 0 0 0 4px rgba(34,197,94,0.15); }
-  50% { box-shadow: 0 0 0 6px rgba(34,197,94,0.08); }
-}
-
-/* Section badge */
-.section-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: #a1a1aa;
-}
-
-.section-badge::before {
-  content: '';
-  width: 24px;
-  height: 1px;
-  background: currentColor;
-  opacity: 0.5;
-}
-
-.dark .section-badge {
-  color: #71717a;
-}
-
-/* Engineer card - blueprint style */
-.blueprint-card {
-  background: rgba(255,255,255,0.7);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(0,0,0,0.06);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 12px 32px rgba(0,0,0,0.04);
-}
-
-.dark .blueprint-card {
-  background: rgba(24,24,27,0.6);
-  border-color: rgba(255,255,255,0.08);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.3), 0 12px 32px rgba(0,0,0,0.2);
-}
-
-/* Measurement line decoration */
-.measure-line {
-  position: relative;
-  height: 1px;
-  background: repeating-linear-gradient(90deg, rgba(0,0,0,0.15) 0px, rgba(0,0,0,0.15) 4px, transparent 4px, transparent 8px);
-}
-
-.dark .measure-line {
-  background: repeating-linear-gradient(90deg, rgba(255,255,255,0.15) 0px, rgba(255,255,255,0.15) 4px, transparent 4px, transparent 8px);
-}
-
-.text-gradient-amber {
-  background: linear-gradient(90deg, #f59e0b 0%, #ea580c 50%, #f59e0b 100%);
-  -webkit-background-clip: text;
+.text-gradient {
   background-clip: text;
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-}
-
-.text-gradient-ink {
-  background: linear-gradient(180deg, #0f0f0f 0%, #52525b 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.dark .text-gradient-ink {
-  background: linear-gradient(180deg, #fafafa 0%, #a1a1aa 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
 }
 
 html {
   scroll-behavior: smooth;
 }
 
-::selection {
-  background: #f59e0b;
-  color: white;
-}
-
-.dark ::selection {
-  background: #f59e0b;
-  color: black;
-}
-
-/* Smooth underline */
-.hover-underline {
-  position: relative;
-}
-
-.hover-underline::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background: currentColor;
-  transition: width 0.3s ease;
-}
-
-.hover-underline:hover::after {
-  width: 100%;
-}
-
 @media print {
-  @page { margin: 0; size: auto; }
+  @page {
+    margin: 0;
+    size: auto;
+  }
   body {
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
-    background: white !important;
+    background-color: white !important;
     color: black !important;
   }
-  .no-print { display: none !important; }
-  .blueprint-grid, .engineering-bg, .eng-orb { display: none !important; }
+  .bg-grid {
+    display: none !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
 }
