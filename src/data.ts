@@ -1,127 +1,267 @@
 export const portfolioData = {
   en: {
     nav: {
-      intro: "01 Introduction",
-      engineering: "02 Engineering Background",
-      technology: "03 Technology & Automation",
-      projects: "04 Projects",
-      contact: "05 Contact",
+      about: "About",
+      services: "Services",
+      experience: "Experience",
+      projects: "Projects",
+      certificates: "Certificates",
+      contact: "Contact",
       downloadCV: "Download CV"
     },
     hero: {
+      badge: "Available for surveying & roads projects",
       name: "Mohammed Al-Bakhity Ali",
-      title: "Surveying Technician & AI Solutions Builder",
-      tagline: "I am a surveying technician with strong technical capabilities, using software and AI to solve practical problems and improve productivity.",
-    },
-    about: {
-      title: "Who I Am",
-      p1: "I am a professional with an academic background in surveying and roads engineering, coupled with a deep passion for technology. I specialize in bridging the gap between field engineering and digital innovation.",
-      p2: "My focus is on utilizing artificial intelligence and modern software tools to build practical solutions, automate tedious procedures, and significantly enhance team productivity and operational efficiency."
-    },
-    engineering: {
-      title: "Engineering Background",
-      description: "My foundational expertise is built on a two-year diploma in Surveying and Roads, covering essential principles required for field and office engineering tasks.",
-      items: [
-        "Surveying Principles",
-        "Quantity Calculations",
-        "AutoCAD",
-        "Civil Engineering Software",
-        "Roads Engineering Basics"
+      role: "Surveying & Roads Technician",
+      headline1: "Precision Surveying.",
+      headline2: "Safe Roads.",
+      headline3: "Professional Execution.",
+      description: "Diploma in Surveying and Roads Engineering with hands-on experience in topographic surveys, road layout, quantity calculations and site supervision. Committed to accuracy, safety, and quality on every project.",
+      ctaPrimary: "Download CV",
+      ctaSecondary: "View Projects",
+      stats: [
+        { value: "2+", label: "Years Experience" },
+        { value: "15+", label: "Projects Completed" },
+        { value: "100%", label: "Accuracy Commitment" }
       ]
     },
-    technology: {
-      title: "Technology & Automation",
-      description: "Beyond traditional surveying, I bring a tech-driven mindset to the table, developing solutions that streamline workflows and solve complex challenges.",
+    about: {
+      badge: "Who I Am",
+      title: "A surveying technician who believes accuracy in the field is the foundation of every successful project.",
+      p1: "I am Mohammed Al-Bakhity Ali, a surveying and roads technician with a 2-year diploma in Surveying and Roads Engineering. My work combines precise field measurements with accurate office work using AutoCAD and civil engineering software.",
+      p2: "I specialize in topographic and cadastral surveying, road route layout, leveling, quantity surveying, and construction supervision. I work with total station, level, and GPS devices, and I am keen on delivering drawings and reports that are clear, accurate, and ready for execution.",
+      highlights: [
+        { label: "Specialization", value: "Surveying & Roads" },
+        { label: "Location", value: "Yemen - Available for field work" },
+        { label: "Education", value: "Diploma in Surveying & Roads - 2 Years" },
+        { label: "Tools", value: "Total Station, Level, GPS, AutoCAD" }
+      ]
+    },
+    services: {
+      badge: "What I Do",
+      title: "Field & Office Surveying Services",
+      description: "Comprehensive surveying services covering all stages from initial site survey to execution and quantity handover.",
       items: [
-        "Utilizing Artificial Intelligence",
-        "Building Applications",
-        "Automating Procedures",
-        "Designing Internal Tools",
-        "Improving Productivity"
+        { title: "Topographic Survey", desc: "Detailed topographic surveys for lands, buildings and infrastructure projects with high accuracy." },
+        { title: "Road Layout & Leveling", desc: "Staking road routes, curves, levels, and longitudinal & cross sections." },
+        { title: "Quantity Calculation", desc: "Accurate calculation of excavation, backfill, asphalt and concrete quantities." },
+        { title: "AutoCAD Drafting", desc: "Preparing survey drawings, road plans, sections and final as-built drawings." },
+        { title: "Construction Supervision", desc: "Field supervision to ensure execution matches drawings and technical specifications." },
+        { title: "Cadastral & Land Division", desc: "Land surveying, division and property boundary definition with legal documentation." }
+      ]
+    },
+    experience: {
+      badge: "Career Path",
+      title: "Experience & Education",
+      jobs: [
+        {
+          role: "Surveying & Roads Technician",
+          company: "Engineering Projects - Field & Office",
+          period: "2022 - Present",
+          location: "Yemen",
+          desc: "Executing topographic surveys, road layouts, quantity takeoffs and supervising site implementation. Preparing AutoCAD drawings and daily reports."
+        },
+        {
+          role: "Diploma in Surveying and Roads",
+          company: "Technical Institute - Surveying Department",
+          period: "2020 - 2022",
+          location: "Yemen",
+          desc: "Two-year diploma covering surveying principles, roads engineering, quantity calculations, AutoCAD and civil engineering software."
+        }
       ]
     },
     projects: {
-      title: "Selected Projects",
-      comingSoon: "Projects will be updated soon."
+      badge: "Selected Work",
+      title: "Surveying & Roads Projects",
+      description: "A selection of field projects that reflect accuracy in measurement and commitment to execution.",
+      items: [
+        {
+          title: "Rural Road Surveying & Layout",
+          type: "Roads Engineering",
+          location: "Yemen",
+          year: "2024",
+          desc: "Full topographic survey and road route staking with levels and cross sections for a rural road project."
+        },
+        {
+          title: "Residential Land Subdivision",
+          type: "Cadastral Survey",
+          location: "Yemen",
+          year: "2023",
+          desc: "Surveying and dividing residential land into plots with boundary definition and preparation of subdivision drawings."
+        },
+        {
+          title: "Building Site Layout & Levels",
+          type: "Construction Survey",
+          location: "Yemen",
+          year: "2023",
+          desc: "Building footprint layout, level transfer, and supervision of excavation and foundation levels."
+        }
+      ]
+    },
+    certificates: {
+      badge: "Documents",
+      title: "Certificates & Official Documents",
+      description: "All certificates and official documents are available for viewing and direct download.",
+      download: "Download",
+      view: "View",
+      note: "You can add your certificates as images or PDFs in /public/certificates/",
+      items: [
+        { title: "Diploma in Surveying & Roads", issuer: "Technical Institute", date: "2022", file: "/portfolio/certificates/diploma.pdf", type: "Diploma" },
+        { title: "AutoCAD Certificate", issuer: "Training Center", date: "2022", file: "/portfolio/certificates/autocad.pdf", type: "Course" },
+        { title: "Quantity Surveying Certificate", issuer: "Engineering Center", date: "2023", file: "/portfolio/certificates/quantity.pdf", type: "Course" },
+        { title: "National ID / Engineering Card", issuer: "Official Authority", date: "2024", file: "/portfolio/certificates/id.pdf", type: "Document" }
+      ]
     },
     contact: {
-      title: "Contact",
-      name: "Mohammed Al-Bakhity Ali",
+      badge: "Contact",
+      title: "Let's Execute Your Project With Precision.",
+      description: "Available for surveying and roads projects. Contact me for a survey, consultation, or execution supervision.",
       email: "Mohammedalbkhyty@gmail.com",
-      x: "@engalbukhaiti",
       phone: "+967 772791169",
+      location: "Yemen - Sana'a",
+      x: "@engalbukhaiti",
       form: {
         title: "Send a Message",
         namePlaceholder: "Your Name",
         emailPlaceholder: "Your Email",
-        messagePlaceholder: "Type your message here...",
+        messagePlaceholder: "Project details...",
         submit: "Send Message",
         sending: "Sending...",
         success: "Message sent successfully!",
-        error: "Failed to send message. Please try again."
+        error: "Failed to send. Try again."
       }
     }
   },
   ar: {
     nav: {
-      intro: "01 المقدمة",
-      engineering: "02 الخلفية الهندسية",
-      technology: "03 التقنية والأتمتة",
-      projects: "04 المشاريع",
-      contact: "05 التواصل",
-      downloadCV: "تحميل السيرة الذاتية"
+      about: "نبذة عني",
+      services: "خدماتي",
+      experience: "الخبرة",
+      projects: "المشاريع",
+      certificates: "الشهادات",
+      contact: "تواصل",
+      downloadCV: "تحميل السيرة"
     },
     hero: {
+      badge: "متاح لمشاريع المساحة والطرق",
       name: "محمد البخيتي علي",
-      title: "فني مساحة وطرق | مطور حلول تقنية وأتمتة",
-      tagline: "محمد البخيتي فني مساحة وطرق يمتلك قدرات تقنية متقدمة ويستخدم البرمجيات والذكاء الاصطناعي لتطوير الحلول وتحسين الإنتاجية.",
-    },
-    about: {
-      title: "نبذة",
-      p1: "أنا مهني أمتلك خلفية أكاديمية في المساحة والطرق، ولدي شغف عميق ببناء الحلول التقنية. أتخصص في سد الفجوة بين العمل الهندسي الميداني والابتكار الرقمي.",
-      p2: "يرتكز عملي على استخدام الذكاء الاصطناعي والأدوات البرمجية الحديثة لبناء حلول عملية، أتمتة الإجراءات المعقدة، وتحسين إنتاجية الفريق وكفاءة العمل بشكل ملحوظ."
-    },
-    engineering: {
-      title: "الخلفية الهندسية",
-      description: "تعتمد خبرتي الأساسية على دبلوم لمدة عامين في المساحة والطرق، والذي يغطي المفاهيم الأساسية المطلوبة للمهام الهندسية الميدانية والمكتبية.",
-      items: [
-        "مبادئ المساحة (Surveying Principles)",
-        "حساب الكميات (Quantity Calculations)",
-        "أوتوكاد (AutoCAD)",
-        "برامج الهندسة المدنية",
-        "أساسيات هندسة الطرق"
+      role: "فني مساحة وطرق",
+      headline1: "مساحة دقيقة.",
+      headline2: "طرق آمنة.",
+      headline3: "تنفيذ احترافي.",
+      description: "دبلوم مساحة وطرق مع خبرة ميدانية ومكتبية في الرفع الطبوغرافي، تخطيط الطرق، حساب الكميات والإشراف الميداني. ألتزم بالدقة والسلامة والجودة في كل مشروع.",
+      ctaPrimary: "تحميل السيرة الذاتية",
+      ctaSecondary: "عرض المشاريع",
+      stats: [
+        { value: "+2", label: "سنوات خبرة" },
+        { value: "+15", label: "مشروع منجز" },
+        { value: "%100", label: "التزام بالدقة" }
       ]
     },
-    technology: {
-      title: "التقنية والأتمتة",
-      description: "إلى جانب المساحة التقليدية، أمتلك عقلية تقنية تساعد على ابتكار حلول وتطوير أدوات لتسهيل سير العمل وحل التحديات المعقدة.",
+    about: {
+      badge: "من أنا",
+      title: "فني مساحة أؤمن أن دقة القياس في الميدان هي أساس نجاح أي مشروع.",
+      p1: "أنا محمد البخيتي علي، فني مساحة وطرق حاصل على دبلوم سنتين في المساحة والطرق. يجمع عملي بين القياسات الميدانية الدقيقة والعمل المكتبي المتقن باستخدام أوتوكاد وبرامج الهندسة المدنية.",
+      p2: "أتخصص في الرفع المساحي الطبوغرافي والعقاري، تخطيط مسارات الطرق، الميزانية، حساب الكميات، والإشراف على التنفيذ. أعمل على أجهزة التوتال ستيشن والليفل والـ GPS، وأحرص على تقديم مخططات وتقارير واضحة ودقيقة وجاهزة للتنفيذ.",
+      highlights: [
+        { label: "التخصص", value: "مساحة وطرق" },
+        { label: "الموقع", value: "اليمن - متاح للعمل الميداني" },
+        { label: "المؤهل", value: "دبلوم مساحة وطرق - سنتين" },
+        { label: "الأجهزة", value: "توتال ستيشن، ليفل، GPS، أوتوكاد" }
+      ]
+    },
+    services: {
+      badge: "ماذا أقدم",
+      title: "خدمات مساحية ميدانية ومكتبية متكاملة",
+      description: "خدمات مساحية شاملة تغطي جميع المراحل من الرفع المبدئي للموقع حتى التنفيذ وتسليم الكميات.",
       items: [
-        "استخدام الذكاء الاصطناعي",
-        "بناء التطبيقات",
-        "أتمتة الإجراءات",
-        "تصميم الأدوات الداخلية",
-        "تحسين الإنتاجية"
+        { title: "الرفع الطبوغرافي", desc: "رفع طبوغرافي تفصيلي للأراضي والمباني ومشاريع البنية التحتية بدقة عالية." },
+        { title: "تخطيط الطرق والميزانية", desc: "توقيع مسارات الطرق والمنحنيات والمناسيب والقطاعات الطولية والعرضية." },
+        { title: "حساب الكميات", desc: "حساب دقيق لكميات الحفر والردم والإسفلت والخرسانة." },
+        { title: "الرسم بـ أوتوكاد", desc: "إعداد المخططات المساحية ومخططات الطرق والقطاعات ومخططات التسليم النهائي." },
+        { title: "الإشراف على التنفيذ", desc: "إشراف ميداني لضمان مطابقة التنفيذ للمخططات والمواصفات الفنية." },
+        { title: "الرفع العقاري وتقسيم الأراضي", desc: "رفع الأراضي وتقسيمها وتحديد حدود الملكيات مع التوثيق القانوني." }
+      ]
+    },
+    experience: {
+      badge: "المسار المهني",
+      title: "الخبرة والتعليم",
+      jobs: [
+        {
+          role: "فني مساحة وطرق",
+          company: "مشاريع هندسية - ميداني ومكتبي",
+          period: "2022 - الآن",
+          location: "اليمن",
+          desc: "تنفيذ أعمال الرفع الطبوغرافي وتخطيط الطرق وحساب الكميات والإشراف على التنفيذ الميداني. إعداد مخططات أوتوكاد والتقارير اليومية."
+        },
+        {
+          role: "دبلوم مساحة وطرق",
+          company: "المعهد التقني - قسم المساحة",
+          period: "2020 - 2022",
+          location: "اليمن",
+          desc: "دبلوم سنتين يغطي مبادئ المساحة، هندسة الطرق، حساب الكميات، أوتوكاد وبرامج الهندسة المدنية."
+        }
       ]
     },
     projects: {
-      title: "مشاريع مختارة",
-      comingSoon: "سيتم تحديث المشاريع قريباً."
+      badge: "أعمال مختارة",
+      title: "مشاريع المساحة والطرق",
+      description: "مجموعة من المشاريع الميدانية التي تعكس الدقة في القياس والالتزام بالتنفيذ.",
+      items: [
+        {
+          title: "مسح وتخطيط طريق ريفي",
+          type: "هندسة طرق",
+          location: "اليمن",
+          year: "2024",
+          desc: "رفع طبوغرافي كامل وتوقيع مسار طريق مع المناسيب والقطاعات العرضية لمشروع طريق ريفي."
+        },
+        {
+          title: "تقسيم أرض سكنية",
+          type: "رفع عقاري",
+          location: "اليمن",
+          year: "2023",
+          desc: "رفع وتقسيم أرض سكنية إلى قطع مع تحديد الحدود وإعداد مخططات التقسيم."
+        },
+        {
+          title: "توقيع مبنى ومناسيب",
+          type: "مساحة إنشائية",
+          location: "اليمن",
+          year: "2023",
+          desc: "توقيع مسقط المبنى ونقل المناسيب والإشراف على مناسيب الحفر والأساسات."
+        }
+      ]
+    },
+    certificates: {
+      badge: "الوثائق",
+      title: "الشهادات والوثائق الرسمية",
+      description: "جميع الشهادات والوثائق متاحة للاطلاع والتحميل المباشر.",
+      download: "تحميل",
+      view: "معاينة",
+      note: "يمكنك إضافة شهاداتك كصور أو PDF في مجلد /public/certificates/",
+      items: [
+        { title: "دبلوم مساحة وطرق", issuer: "المعهد التقني", date: "2022", file: "/portfolio/certificates/diploma.pdf", type: "شهادة" },
+        { title: "شهادة أوتوكاد", issuer: "مركز تدريب", date: "2022", file: "/portfolio/certificates/autocad.pdf", type: "دورة" },
+        { title: "شهادة حساب كميات", issuer: "مركز هندسي", date: "2023", file: "/portfolio/certificates/quantity.pdf", type: "دورة" },
+        { title: "بطاقة هوية / بطاقة هندسية", issuer: "جهة رسمية", date: "2024", file: "/portfolio/certificates/id.pdf", type: "وثيقة" }
+      ]
     },
     contact: {
-      title: "التواصل",
-      name: "محمد البخيتي علي",
+      badge: "التواصل",
+      title: "دعنا ننفذ مشروعك بدقة واحترافية.",
+      description: "متاح لمشاريع المساحة والطرق. تواصل معي لطلب رفع مساحي، استشارة، أو إشراف تنفيذ.",
       email: "Mohammedalbkhyty@gmail.com",
-      x: "@engalbukhaiti",
       phone: "+967 772791169",
+      location: "اليمن - صنعاء",
+      x: "@engalbukhaiti",
       form: {
         title: "أرسل رسالة",
         namePlaceholder: "الاسم",
         emailPlaceholder: "البريد الإلكتروني",
-        messagePlaceholder: "اكتب رسالتك هنا...",
+        messagePlaceholder: "تفاصيل المشروع...",
         submit: "إرسال الرسالة",
         sending: "جاري الإرسال...",
-        success: "تم إرسال الرسالة بنجاح!",
-        error: "حدث خطأ أثناء إرسال الرسالة. يرجى المحاولة مرة أخرى."
+        success: "تم الإرسال بنجاح!",
+        error: "فشل الإرسال، حاول مرة أخرى."
       }
     }
   }
