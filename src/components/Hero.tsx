@@ -2,258 +2,289 @@ import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { portfolioData } from '../data';
 import { motion } from 'framer-motion';
-import { Download, ArrowUpRight, MapPinned, Ruler, Layers } from 'lucide-react';
+import { Download, ArrowRight, MapPinned, Ruler, Layers, TrendingUp } from 'lucide-react';
 
 export const Hero: React.FC = () => {
   const { language } = useLanguage();
   const t = portfolioData[language].hero;
 
   return (
-    <section id="intro" className="relative pt-32 md:pt-44 pb-16 md:pb-24 overflow-hidden">
-      {/* Engineering BG */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 blueprint-grid-fine opacity-[0.6] dark:opacity-[0.25]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#fcfbf7]/0 via-[#fcfbf7]/40 to-[#fcfbf7] dark:from-[#09090b]/0 dark:via-[#09090b]/40 dark:to-[#09090b]" />
-        <div className="eng-orb eng-orb-1" />
-        <div className="eng-orb eng-orb-2" />
-      </div>
-
-      {/* Corner markers */}
-      <div className="corner-marker corner-tl hidden md:block" />
-      <div className="corner-marker corner-tr hidden md:block" />
+    <section id="intro" className="relative pt-32 md:pt-40 pb-20 md:pb-32 overflow-hidden">
+      {/* Background */}
+      <div className="hero-gradient-mesh" />
+      <div className="absolute inset-0 grid-overlay opacity-60 dark:opacity-40" />
       
-      <div className="relative z-10 max-w-5xl mx-auto">
+      {/* Floating decorative elements */}
+      <div className="absolute top-20 left-10 w-72 h-72 bg-[#d4a853]/10 dark:bg-[#d4a853]/5 rounded-full blur-[100px] float-element" />
+      <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#1e3a5f]/10 dark:bg-[#1e3a5f]/20 rounded-full blur-[120px] float-element-delay-1" />
+
+      <div className="relative z-10 max-w-6xl mx-auto px-6">
         {/* Badge */}
         <motion.div
-          initial={{ opacity: 0, y: 10 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="flex justify-center mb-8 md:mb-10"
+          className="flex justify-center mb-8"
         >
           <div className="saas-badge">
-            <span className="saas-badge-dot" />
+            <span className="pulse-dot" />
             <span className="font-mono">{t.badge}</span>
           </div>
         </motion.div>
 
-        {/* Role */}
+        {/* Role Badge */}
         <motion.div
-          initial={{ opacity: 0, y: 10 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex justify-center mb-4"
+          className="flex justify-center mb-6"
         >
-          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 dark:bg-amber-500/20 border border-amber-500/20 text-amber-700 dark:text-amber-300 font-mono text-[11px] font-bold tracking-widest uppercase">
-            <MapPinned className="w-3 h-3" />
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-[#1e3a5f]/10 to-[#d4a853]/10 dark:from-[#d4a853]/20 dark:to-[#1e3a5f]/20 border border-[#1e3a5f]/10 dark:border-[#d4a853]/20 text-[#1e3a5f] dark:text-[#e8c675] font-mono text-[11px] font-bold tracking-[0.2em] uppercase">
+            <MapPinned className="w-3.5 h-3.5" />
             {t.role}
           </span>
         </motion.div>
 
-        {/* Headline - SaaS Super Hero */}
+        {/* Headline */}
         <motion.h1
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className="text-center font-display font-bold tracking-tight leading-[0.9] text-[2.6rem] sm:text-[3.5rem] md:text-[5rem] lg:text-[5.8rem] mb-6"
+          className="text-center font-display font-black tracking-tight leading-[0.95] text-[2.8rem] sm:text-[3.8rem] md:text-[5.5rem] lg:text-[6.5rem] mb-8"
         >
-          <span className="block text-zinc-900 dark:text-white">{t.headline1}</span>
-          <span className="block text-zinc-900 dark:text-white">{t.headline2}</span>
-          <span className="block text-gradient-amber pb-2">{t.headline3}</span>
+          <span className="block text-gradient-primary">{t.headline1}</span>
+          <span className="block text-gradient-primary">{t.headline2}</span>
+          <span className="block text-gradient-gold mt-2">{t.headline3}</span>
         </motion.h1>
 
         {/* Description */}
         <motion.p
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.45 }}
-          className="text-center text-[16px] md:text-[18px] leading-relaxed text-zinc-600 dark:text-zinc-400 max-w-[640px] mx-auto mb-10 font-light px-4"
+          transition={{ duration: 0.7, delay: 0.5 }}
+          className="text-center text-[17px] md:text-[19px] leading-relaxed text-[#475569] dark:text-white/60 max-w-[680px] mx-auto mb-12 font-light px-4"
         >
           {t.description}
         </motion.p>
 
         {/* CTAs */}
         <motion.div
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.55 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-16"
+          transition={{ duration: 0.7, delay: 0.6 }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20"
         >
           <a
             href="/portfolio/cv/mohammed-albakhity-cv.pdf"
             download
-            className="group w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 px-7 py-3.5 rounded-full text-[14px] font-semibold shadow-[0_8px_24px_rgba(0,0,0,0.12)] hover:shadow-[0_12px_32px_rgba(0,0,0,0.16)] hover:scale-[1.02] active:scale-[0.98] transition-all"
+            className="group btn-primary w-full sm:w-auto"
           >
-            <Download className="w-4 h-4" />
+            <Download className="w-5 h-5" />
             {t.ctaPrimary}
-            <ArrowUpRight className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+            <ArrowRight className="w-4 h-4 opacity-60 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
           </a>
           <a
             href="#projects"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full text-[14px] font-semibold bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-900 dark:text-white hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors"
+            className="btn-secondary w-full sm:w-auto"
           >
             {t.ctaSecondary}
           </a>
         </motion.div>
 
-        {/* Stats - SaaS style social proof bar */}
+        {/* Stats Bar */}
         <motion.div
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.65 }}
-          className="mx-auto max-w-3xl mb-16 md:mb-24"
+          transition={{ duration: 0.7, delay: 0.7 }}
+          className="max-w-4xl mx-auto mb-20"
         >
-          <div className="grid grid-cols-3 divide-x divide-zinc-200 dark:divide-zinc-800 border-y border-zinc-200 dark:border-zinc-800 py-6 md:py-8">
+          <div className="grid grid-cols-3 gap-4 md:gap-6">
             {t.stats.map((stat, i) => (
-              <div key={i} className="text-center px-2">
-                <div className="font-display font-bold text-2xl md:text-3xl text-zinc-900 dark:text-white tracking-tight">{stat.value}</div>
-                <div className="font-mono text-[10px] md:text-[11px] tracking-widest uppercase text-zinc-500 dark:text-zinc-500 mt-1">{stat.label}</div>
+              <div key={i} className="stat-card">
+                <div className="font-display font-black text-3xl md:text-4xl lg:text-5xl text-gradient-primary tracking-tight mb-2">
+                  {stat.value}
+                </div>
+                <div className="font-mono text-[10px] md:text-[11px] tracking-[0.15em] uppercase text-[#475569] dark:text-white/50 font-semibold">
+                  {stat.label}
+                </div>
               </div>
             ))}
           </div>
         </motion.div>
 
-        {/* Hero Preview - Engineering Blueprint Mockup */}
+        {/* Dashboard Mockup */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.75, ease: [0.16, 1, 0.3, 1] }}
-          className="relative mx-auto"
+          transition={{ duration: 1, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="relative max-w-6xl mx-auto"
         >
-          <div className="relative blueprint-card rounded-[24px] md:rounded-[32px] overflow-hidden p-3 md:p-4">
-            {/* Window header */}
-            <div className="flex items-center justify-between px-5 py-4 rounded-[16px] md:rounded-[20px] bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200/50 dark:border-zinc-800/50 mb-3 md:mb-4">
-              <div className="flex items-center gap-3">
-                <div className="flex gap-1.5">
-                  <div className="w-3 h-3 rounded-full bg-red-400" />
-                  <div className="w-3 h-3 rounded-full bg-amber-400" />
-                  <div className="w-3 h-3 rounded-full bg-green-500" />
-                </div>
-                <div className="hidden md:flex items-center gap-2 ml-4 font-mono text-[11px] text-zinc-500">
-                  <Ruler className="w-3.5 h-3.5" />
-                  SITE_SURVEY_2024.dwg • Scale 1:500
-                </div>
+          <div className="mockup-container shine-effect">
+            {/* Mockup Header */}
+            <div className="mockup-header">
+              <div className="flex gap-2">
+                <div className="mockup-dot bg-red-400" />
+                <div className="mockup-dot bg-amber-400" />
+                <div className="mockup-dot bg-green-500" />
               </div>
-              <div className="flex items-center gap-2 font-mono text-[10px] tracking-widest uppercase text-zinc-400">
+              <div className="hidden md:flex items-center gap-2 ml-6 font-mono text-[11px] text-[#475569] dark:text-white/50">
+                <Ruler className="w-3.5 h-3.5" />
+                TOPOGRAPHIC_SURVEY_2024.dwg • Scale 1:500
+              </div>
+              <div className="ml-auto flex items-center gap-2 font-mono text-[10px] tracking-widest uppercase text-[#475569]/60 dark:text-white/40">
                 <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                <span className="hidden sm:inline">Total Station Connected</span>
-                <span className="sm:hidden">TS Connected</span>
+                <span className="hidden sm:inline">Total Station Active</span>
+                <span className="sm:hidden">Active</span>
               </div>
             </div>
 
-            {/* Blueprint Content */}
-            <div className="grid grid-cols-12 gap-3 md:gap-4">
-              {/* Left - Map/Grid */}
-              <div className="col-span-12 md:col-span-8 rounded-[16px] md:rounded-[20px] bg-[#fafaf8] dark:bg-zinc-900 border border-zinc-200/60 dark:border-zinc-800/60 p-4 md:p-6 relative overflow-hidden min-h-[300px] md:min-h-[420px]">
-                <div className="absolute inset-0 blueprint-grid opacity-70" />
-                
-                {/* Measurement markers */}
-                <div className="relative z-10 h-full flex flex-col">
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="font-mono text-[10px] tracking-widest uppercase text-zinc-400 flex items-center gap-2">
-                      <Layers className="w-3 h-3" />
-                      Topographic Survey
-                    </div>
-                    <div className="font-mono text-[10px] px-2 py-1 rounded-full bg-amber-500 text-white font-bold">N 15°21' E</div>
-                  </div>
-
-                  {/* Simulated survey map */}
-                  <div className="flex-1 relative border border-dashed border-zinc-300 dark:border-zinc-700 rounded-xl overflow-hidden bg-white/50 dark:bg-zinc-800/30">
-                    {/* Grid lines */}
-                    <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 300" preserveAspectRatio="none">
-                      <defs>
-                        <pattern id="smallGrid" width="20" height="20" patternUnits="userSpaceOnUse">
-                          <path d="M 20 0 L 0 0 0 20" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-zinc-200 dark:text-zinc-700" opacity="0.5"/>
-                        </pattern>
-                        <pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse">
-                          <rect width="100" height="100" fill="url(#smallGrid)"/>
-                          <path d="M 100 0 L 0 0 0 100" fill="none" stroke="currentColor" strokeWidth="0.8" className="text-zinc-300 dark:text-zinc-600" opacity="0.6"/>
-                        </pattern>
-                      </defs>
-                      <rect width="100%" height="100%" fill="url(#grid)" />
-                      {/* Contour lines */}
-                      <path d="M 0 150 Q 100 120 200 160 T 400 140" fill="none" stroke="#f59e0b" strokeWidth="1.2" strokeDasharray="6 6" opacity="0.6" />
-                      <path d="M 0 180 Q 120 160 240 190 T 400 170" fill="none" stroke="#f59e0b" strokeWidth="1" strokeDasharray="4 8" opacity="0.4" />
-                      {/* Road centerline */}
-                      <path d="M 20 200 C 80 180 140 220 200 200 S 320 160 380 180" fill="none" stroke="#0f0f0f" strokeWidth="2.5" className="dark:stroke-white" />
-                      <path d="M 20 205 C 80 185 140 225 200 205 S 320 165 380 185" fill="none" stroke="#0f0f0f" strokeWidth="0.8" opacity="0.5" className="dark:stroke-white" />
-                      <path d="M 20 195 C 80 175 140 215 200 195 S 320 155 380 175" fill="none" stroke="#0f0f0f" strokeWidth="0.8" opacity="0.5" className="dark:stroke-white" />
-                      {/* Points */}
-                      <circle cx="60" cy="190" r="4" fill="#f59e0b" stroke="white" strokeWidth="1.5" />
-                      <circle cx="150" cy="210" r="4" fill="#0ea5e9" stroke="white" strokeWidth="1.5" />
-                      <circle cx="240" cy="180" r="4" fill="#f59e0b" stroke="white" strokeWidth="1.5" />
-                      <circle cx="330" cy="170" r="4" fill="#0f0f0f" className="dark:fill-white" />
-                    </svg>
-
-                    {/* Labels */}
-                    <div className="absolute top-3 left-3 font-mono text-[9px] leading-tight bg-white dark:bg-zinc-900 px-2 py-1.5 rounded border shadow-sm">
-                      <div className="text-zinc-400">BM-01</div>
-                      <div className="font-bold text-zinc-900 dark:text-white">1254.320m</div>
-                    </div>
-                    <div className="absolute bottom-3 right-3 font-mono text-[9px] leading-tight bg-amber-500 text-white px-2 py-1.5 rounded font-bold shadow-sm">
-                      ROAD AXIS • STA 0+320
-                    </div>
-                  </div>
-
-                  <div className="mt-4 flex gap-2 font-mono text-[10px] text-zinc-500">
-                    <span className="px-2.5 py-1 rounded-full bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-bold">SCALE 1:500</span>
-                    <span className="px-2.5 py-1 rounded-full border bg-white dark:bg-zinc-800">WGS84 • UTM</span>
-                    <span className="hidden sm:inline px-2.5 py-1 rounded-full border bg-white dark:bg-zinc-800">±3mm accuracy</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Right - Data Panel */}
-              <div className="col-span-12 md:col-span-4 flex flex-col gap-3 md:gap-4">
-                <div className="rounded-[16px] md:rounded-[20px] bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 p-5">
-                  <div className="font-mono text-[10px] tracking-widest uppercase opacity-60 mb-3">Coordinates • BM-01</div>
-                  <div className="space-y-3 font-mono text-[12px]">
-                    <div className="flex justify-between"><span className="opacity-60">N</span><span className="font-bold">15°21'34.2"</span></div>
-                    <div className="flex justify-between"><span className="opacity-60">E</span><span className="font-bold">44°12'11.8"</span></div>
-                    <div className="flex justify-between"><span className="opacity-60">Elev</span><span className="font-bold text-amber-400 dark:text-amber-600">1254.320m</span></div>
-                    <div className="pt-3 mt-3 border-t border-white/10 dark:border-zinc-900/10 flex justify-between text-[11px]"><span className="opacity-60">Accuracy</span><span className="font-bold">±2mm</span></div>
-                  </div>
-                </div>
-
-                <div className="rounded-[16px] md:rounded-[20px] bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-5 flex-1">
-                  <div className="font-mono text-[10px] tracking-widest uppercase text-zinc-400 mb-4 flex items-center justify-between">
-                    <span>Quantities</span>
-                    <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
-                  </div>
-                  <div className="space-y-4">
-                    {[
-                      { label: "Excavation", value: "1,240 m³", pct: 75 },
-                      { label: "Backfill", value: "860 m³", pct: 60 },
-                      { label: "Asphalt", value: "2,100 m²", pct: 45 },
-                    ].map((q, i) => (
-                      <div key={i}>
-                        <div className="flex justify-between font-mono text-[11px] mb-1.5">
-                          <span className="text-zinc-600 dark:text-zinc-400">{q.label}</span>
-                          <span className="font-bold text-zinc-900 dark:text-white">{q.value}</span>
+            {/* Mockup Content */}
+            <div className="p-4 md:p-6">
+              <div className="grid grid-cols-12 gap-4">
+                {/* Left - Survey Map */}
+                <div className="col-span-12 lg:col-span-8">
+                  <div className="rounded-2xl bg-gradient-to-br from-[#f8f9fc] to-white dark:from-[#0f172a] dark:to-[#06080f] border border-[#1e3a5f]/5 dark:border-white/5 p-5 md:p-6 relative overflow-hidden min-h-[320px] md:min-h-[440px]">
+                    <div className="absolute inset-0 grid-overlay-fine opacity-50" />
+                    
+                    <div className="relative z-10 h-full flex flex-col">
+                      <div className="flex items-center justify-between mb-6">
+                        <div className="font-mono text-[10px] tracking-[0.15em] uppercase text-[#475569] dark:text-white/50 flex items-center gap-2">
+                          <Layers className="w-3.5 h-3.5" />
+                          Topographic Survey
                         </div>
-                        <div className="h-1.5 rounded-full bg-zinc-100 dark:bg-zinc-800 overflow-hidden">
-                          <div className="h-full bg-amber-500 rounded-full" style={{ width: `${q.pct}%` }} />
+                        <div className="font-mono text-[10px] px-3 py-1.5 rounded-full bg-gradient-to-r from-[#d4a853] to-[#e8c675] text-white font-bold shadow-lg shadow-[#d4a853]/20">
+                          N 15°21' E
                         </div>
                       </div>
-                    ))}
+
+                      {/* Survey visualization */}
+                      <div className="flex-1 relative border-2 border-dashed border-[#1e3a5f]/10 dark:border-white/10 rounded-xl overflow-hidden bg-white/30 dark:bg-[#0f172a]/30">
+                        <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 300" preserveAspectRatio="none">
+                          <defs>
+                            <pattern id="smallGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+                              <path d="M 20 0 L 0 0 0 20" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-[#1e3a5f]/10 dark:text-white/5" />
+                            </pattern>
+                            <pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse">
+                              <rect width="100" height="100" fill="url(#smallGrid)" />
+                              <path d="M 100 0 L 0 0 0 100" fill="none" stroke="currentColor" strokeWidth="1" className="text-[#1e3a5f]/15 dark:text-white/8" />
+                            </pattern>
+                          </defs>
+                          <rect width="100%" height="100%" fill="url(#grid)" />
+                          
+                          {/* Contour lines */}
+                          <path d="M 0 150 Q 100 120 200 160 T 400 140" fill="none" stroke="#d4a853" strokeWidth="1.5" strokeDasharray="8 6" opacity="0.6" />
+                          <path d="M 0 180 Q 120 160 240 190 T 400 170" fill="none" stroke="#d4a853" strokeWidth="1" strokeDasharray="6 8" opacity="0.4" />
+                          
+                          {/* Road centerline */}
+                          <path d="M 20 200 C 80 180 140 220 200 200 S 320 160 380 180" fill="none" stroke="#1e3a5f" strokeWidth="3" className="dark:stroke-white" />
+                          <path d="M 20 205 C 80 185 140 225 200 205 S 320 165 380 185" fill="none" stroke="#1e3a5f" strokeWidth="1" opacity="0.5" className="dark:stroke-white" />
+                          <path d="M 20 195 C 80 175 140 215 200 195 S 320 155 380 175" fill="none" stroke="#1e3a5f" strokeWidth="1" opacity="0.5" className="dark:stroke-white" />
+                          
+                          {/* Survey points */}
+                          <circle cx="60" cy="190" r="5" fill="#d4a853" stroke="white" strokeWidth="2" />
+                          <circle cx="150" cy="210" r="5" fill="#2d5a8e" stroke="white" strokeWidth="2" />
+                          <circle cx="240" cy="180" r="5" fill="#d4a853" stroke="white" strokeWidth="2" />
+                          <circle cx="330" cy="170" r="5" fill="#1e3a5f" className="dark:fill-white" stroke="white" strokeWidth="2" />
+                        </svg>
+
+                        {/* Labels */}
+                        <div className="absolute top-3 left-3 font-mono text-[9px] leading-tight bg-white dark:bg-[#0f172a] px-2.5 py-2 rounded-lg border border-[#1e3a5f]/10 dark:border-white/10 shadow-lg">
+                          <div className="text-[#475569] dark:text-white/50">BM-01</div>
+                          <div className="font-bold text-[#1e3a5f] dark:text-white">1254.320m</div>
+                        </div>
+                        <div className="absolute bottom-3 right-3 font-mono text-[9px] leading-tight bg-gradient-to-r from-[#d4a853] to-[#e8c675] text-white px-3 py-2 rounded-lg font-bold shadow-lg">
+                          ROAD AXIS • STA 0+320
+                        </div>
+                      </div>
+
+                      <div className="mt-4 flex flex-wrap gap-2 font-mono text-[10px]">
+                        <span className="px-3 py-1.5 rounded-full bg-[#1e3a5f] dark:bg-white text-white dark:text-[#0f172a] font-bold">SCALE 1:500</span>
+                        <span className="px-3 py-1.5 rounded-full border border-[#1e3a5f]/10 dark:border-white/10 bg-white dark:bg-[#0f172a] text-[#475569] dark:text-white/60">WGS84 • UTM</span>
+                        <span className="hidden sm:inline px-3 py-1.5 rounded-full border border-[#1e3a5f]/10 dark:border-white/10 bg-white dark:bg-[#0f172a] text-[#475569] dark:text-white/60">±3mm accuracy</span>
+                      </div>
+                    </div>
                   </div>
-                  <div className="mt-5 pt-4 border-t border-zinc-100 dark:border-zinc-800 font-mono text-[10px] text-zinc-500 flex items-center gap-1.5">
-                    <div className="w-3 h-3 rounded-full border border-zinc-300 dark:border-zinc-700 flex items-center justify-center"><div className="w-1 h-1 rounded-full bg-zinc-900 dark:bg-white" /></div>
-                    Auto-calculated • Civil 3D
+                </div>
+
+                {/* Right - Data Panels */}
+                <div className="col-span-12 lg:col-span-4 flex flex-col gap-4">
+                  {/* Coordinates Card */}
+                  <div className="rounded-2xl bg-gradient-to-br from-[#1e3a5f] to-[#2d5a8e] text-white p-6 shadow-xl shadow-[#1e3a5f]/20">
+                    <div className="font-mono text-[10px] tracking-[0.15em] uppercase opacity-70 mb-4">Coordinates • BM-01</div>
+                    <div className="space-y-3 font-mono text-[13px]">
+                      <div className="flex justify-between items-center">
+                        <span className="opacity-70">N</span>
+                        <span className="font-bold">15°21'34.2"</span>
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <span className="opacity-70">E</span>
+                        <span className="font-bold">44°12'11.8"</span>
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <span className="opacity-70">Elev</span>
+                        <span className="font-bold text-[#e8c675]">1254.320m</span>
+                      </div>
+                      <div className="pt-4 mt-4 border-t border-white/10 flex justify-between items-center text-[11px]">
+                        <span className="opacity-70">Accuracy</span>
+                        <span className="font-bold">±2mm</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Quantities Card */}
+                  <div className="rounded-2xl bg-white dark:bg-[#0f172a] border border-[#1e3a5f]/5 dark:border-white/5 p-6 flex-1 shadow-lg">
+                    <div className="font-mono text-[10px] tracking-[0.15em] uppercase text-[#475569] dark:text-white/50 mb-5 flex items-center justify-between">
+                      <span className="flex items-center gap-2">
+                        <TrendingUp className="w-3.5 h-3.5" />
+                        Quantities
+                      </span>
+                      <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                    </div>
+                    <div className="space-y-5">
+                      {[
+                        { label: "Excavation", value: "1,240 m³", pct: 75 },
+                        { label: "Backfill", value: "860 m³", pct: 60 },
+                        { label: "Asphalt", value: "2,100 m²", pct: 45 },
+                      ].map((q, i) => (
+                        <div key={i}>
+                          <div className="flex justify-between font-mono text-[11px] mb-2">
+                            <span className="text-[#475569] dark:text-white/60">{q.label}</span>
+                            <span className="font-bold text-[#1e3a5f] dark:text-white">{q.value}</span>
+                          </div>
+                          <div className="h-2 rounded-full bg-[#f8f9fc] dark:bg-white/5 overflow-hidden">
+                            <motion.div
+                              initial={{ width: 0 }}
+                              animate={{ width: `${q.pct}%` }}
+                              transition={{ duration: 1, delay: 1 + i * 0.2, ease: "easeOut" }}
+                              className="h-full bg-gradient-to-r from-[#d4a853] to-[#e8c675] rounded-full"
+                            />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="mt-6 pt-5 border-t border-[#1e3a5f]/5 dark:border-white/5 font-mono text-[10px] text-[#475569] dark:text-white/40 flex items-center gap-2">
+                      <div className="w-3.5 h-3.5 rounded-full border border-[#1e3a5f]/20 dark:border-white/20 flex items-center justify-center">
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#1e3a5f] dark:bg-white" />
+                      </div>
+                      Auto-calculated • Civil 3D
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Bottom measurement decoration */}
-            <div className="mt-3 flex items-center gap-3 px-2">
-              <div className="flex-1 measure-line" />
-              <div className="font-mono text-[10px] tracking-widest text-zinc-400">15.5 KM ROAD • PRECISION SURVEY</div>
-              <div className="flex-1 measure-line" />
+            {/* Bottom decoration */}
+            <div className="px-6 pb-5">
+              <div className="flex items-center gap-3">
+                <div className="flex-1 measure-decoration" />
+                <div className="font-mono text-[10px] tracking-[0.2em] text-[#475569]/50 dark:text-white/30">15.5 KM ROAD • PRECISION SURVEY</div>
+                <div className="flex-1 measure-decoration" />
+              </div>
             </div>
           </div>
 
-          {/* Glow below */}
-          <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 w-[80%] h-24 bg-amber-500/10 blur-[40px] rounded-full -z-10" />
+          {/* Glow effect */}
+          <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 w-[80%] h-32 bg-gradient-to-r from-[#1e3a5f]/10 via-[#d4a853]/15 to-[#1e3a5f]/10 dark:from-[#1e3a5f]/20 dark:via-[#d4a853]/10 dark:to-[#1e3a5f]/20 blur-[60px] -z-10 rounded-full" />
         </motion.div>
       </div>
     </section>

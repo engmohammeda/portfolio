@@ -9,68 +9,90 @@ export const Experience: React.FC = () => {
   const t = portfolioData[language].experience;
 
   return (
-    <section id="experience" className="py-24 md:py-32 relative">
-      <div className="max-w-5xl mx-auto">
+    <section id="experience" className="py-24 md:py-36 relative">
+      <div className="max-w-6xl mx-auto px-6">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-14"
+          transition={{ duration: 0.7 }}
+          className="mb-16"
         >
-          <div className="section-badge mb-4">{t.badge}</div>
-          <h2 className="font-display font-bold tracking-tight text-[2rem] md:text-[2.8rem] leading-[0.95] text-zinc-900 dark:text-white">
+          <div className="section-label mb-5">{t.badge}</div>
+          <h2 className="font-display font-black tracking-tight text-[2rem] md:text-[3rem] leading-[0.95] text-[#0f172a] dark:text-white">
             {t.title}
           </h2>
         </motion.div>
 
         <div className="relative">
           {/* Timeline line */}
-          <div className="absolute left-6 md:left-[35%] top-0 bottom-0 w-[1px] bg-zinc-200 dark:bg-zinc-800 hidden md:block" />
-          <div className="absolute left-6 top-0 bottom-0 w-[1px] bg-zinc-200 dark:bg-zinc-800 md:hidden" />
+          <div className="timeline-line hidden md:block" />
+          <div className="absolute left-6 top-0 bottom-0 w-[2px] bg-gradient-to-b from-[#d4a853] via-[#1e3a5f]/20 to-transparent md:hidden" />
 
-          <div className="space-y-8 md:space-y-12">
+          <div className="space-y-12 md:space-y-16">
             {t.jobs.map((job, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="relative grid grid-cols-1 md:grid-cols-[35%_1fr] gap-4 md:gap-10 group"
+                transition={{ delay: index * 0.12, duration: 0.6 }}
+                className="relative grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-6 md:gap-10 group"
               >
-                {/* Dot */}
-                <div className="absolute left-6 md:left-[35%] top-2 md:top-3 -translate-x-1/2 w-3 h-3 rounded-full bg-white dark:bg-zinc-900 border-2 border-zinc-900 dark:border-white shadow-[0_0_0_4px_white] dark:shadow-[0_0_0_4px_#09090b] group-hover:scale-125 group-hover:border-amber-500 dark:group-hover:border-amber-500 transition-all z-10 hidden md:block" />
-                <div className="absolute left-6 top-2 -translate-x-1/2 w-3 h-3 rounded-full bg-white dark:bg-zinc-900 border-2 border-zinc-900 dark:border-white shadow-[0_0_0_4px_#fcfbf7] dark:shadow-[0_0_0_4px_#09090b] md:hidden z-10" />
-
-                {/* Left meta */}
-                <div className="pl-12 md:pl-0 md:text-right md:pr-12">
-                  <div className="inline-flex items-center gap-2 font-mono text-[11px] tracking-widest uppercase px-3 py-1 rounded-full bg-amber-500/10 text-amber-700 dark:text-amber-300 border border-amber-500/20 mb-3">
+                {/* Left meta (desktop) */}
+                <div className={`hidden md:block ${index % 2 === 0 ? 'text-right pr-10' : 'order-last pl-10'}`}>
+                  <div className="inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.15em] uppercase px-4 py-2 rounded-full bg-gradient-to-r from-[#d4a853]/10 to-[#d4a853]/5 border border-[#d4a853]/20 text-[#b8912e] dark:text-[#e8c675] mb-3">
                     <Calendar className="w-3 h-3" />
                     {job.period}
                   </div>
-                  <div className="font-mono text-[12px] text-zinc-500 dark:text-zinc-400 flex md:justify-end items-center gap-1.5">
-                    <MapPin className="w-3 h-3" />
+                  <div className="font-mono text-[12px] text-[#475569] dark:text-white/50 flex items-center gap-2 justify-end">
+                    <MapPin className="w-3.5 h-3.5" />
                     {job.location}
                   </div>
                 </div>
 
-                {/* Right content */}
-                <div className="pl-12 md:pl-0">
-                  <div className="blueprint-card rounded-[20px] p-6 md:p-7 group-hover:shadow-[0_8px_24px_rgba(0,0,0,0.06)] transition-shadow">
-                    <div className="flex items-start gap-3 mb-3">
-                      <div className="w-9 h-9 rounded-full bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 flex items-center justify-center shrink-0">
-                        {index === 0 ? <Briefcase className="w-4 h-4" /> : <GraduationCap className="w-4 h-4" />}
+                {/* Timeline dot */}
+                <div className="hidden md:flex items-start justify-center pt-3">
+                  <div className="relative">
+                    <div className="w-4 h-4 rounded-full bg-white dark:bg-[#06080f] border-[3px] border-[#d4a853] shadow-[0_0_0_6px_rgba(212,168,83,0.1)] group-hover:scale-125 group-hover:border-[#1e3a5f] dark:group-hover:border-[#d4a853] transition-all duration-300 z-10" />
+                  </div>
+                </div>
+
+                {/* Content card */}
+                <div className={`${index % 2 === 0 ? 'md:order-last md:pl-10' : 'md:pr-10'} pl-12 md:pl-0`}>
+                  {/* Mobile meta */}
+                  <div className="md:hidden mb-4">
+                    <div className="inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.15em] uppercase px-3 py-1.5 rounded-full bg-[#d4a853]/10 border border-[#d4a853]/20 text-[#b8912e] dark:text-[#e8c675] mb-2">
+                      <Calendar className="w-3 h-3" />
+                      {job.period}
+                    </div>
+                    <div className="font-mono text-[11px] text-[#475569] dark:text-white/50 flex items-center gap-1.5">
+                      <MapPin className="w-3 h-3" />
+                      {job.location}
+                    </div>
+                  </div>
+
+                  {/* Mobile dot */}
+                  <div className="absolute left-6 top-6 -translate-x-1/2 w-3.5 h-3.5 rounded-full bg-white dark:bg-[#06080f] border-[3px] border-[#d4a853] shadow-[0_0_0_4px_rgba(212,168,83,0.15)] md:hidden z-10" />
+
+                  <div className="glass-card rounded-[24px] p-7 md:p-8 group-hover:shadow-[0_8px_32px_rgba(30,58,95,0.08)] dark:group-hover:shadow-[0_8px_32px_rgba(0,0,0,0.3)] transition-all duration-500">
+                    <div className="flex items-start gap-4 mb-4">
+                      <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-[#1e3a5f] to-[#2d5a8e] dark:from-[#d4a853] dark:to-[#b8912e] flex items-center justify-center shrink-0 shadow-lg">
+                        {job.type === 'work' 
+                          ? <Briefcase className="w-5 h-5 text-white dark:text-[#0f172a]" />
+                          : <GraduationCap className="w-5 h-5 text-white dark:text-[#0f172a]" />
+                        }
                       </div>
                       <div>
-                        <h3 className="font-display font-semibold text-[17px] leading-tight text-zinc-900 dark:text-white">
+                        <h3 className="font-display font-bold text-[17px] leading-tight text-[#0f172a] dark:text-white">
                           {job.role}
                         </h3>
-                        <div className="font-medium text-[13px] text-zinc-600 dark:text-zinc-400 mt-1">
+                        <div className="font-medium text-[13px] text-[#475569] dark:text-white/50 mt-1.5">
                           {job.company}
                         </div>
                       </div>
                     </div>
-                    <p className="text-[13.5px] leading-[1.7] text-zinc-600 dark:text-zinc-400 font-light">
+                    <p className="text-[14px] leading-[1.8] text-[#475569] dark:text-white/50 font-light">
                       {job.desc}
                     </p>
                   </div>
