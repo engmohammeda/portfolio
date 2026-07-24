@@ -12,13 +12,10 @@ import { Contact } from './components/Contact';
 
 function AppContent() {
   return (
-    <div className="min-h-screen font-sans selection:bg-amber-500 selection:text-white relative transition-colors duration-300 overflow-x-hidden">
-      {/* Global blueprint grid - subtle */}
-      <div className="fixed inset-0 blueprint-grid opacity-[0.4] dark:opacity-[0.15] pointer-events-none z-0" />
-      
+    <div className="min-h-screen font-sans selection:bg-[#d4a853] selection:text-white relative overflow-x-hidden transition-colors duration-300">
       <Navbar />
       
-      <main className="max-w-5xl mx-auto px-6 relative z-10">
+      <main className="relative z-10">
         <Hero />
         <About />
         <Services />
@@ -28,16 +25,16 @@ function AppContent() {
         <Contact />
       </main>
 
-      {/* Bottom engineering line */}
-      <div className="relative z-10 max-w-5xl mx-auto px-6 pb-8">
-        <div className="flex items-center gap-3 opacity-40">
-          <div className="flex-1 h-[1px] bg-zinc-200 dark:bg-zinc-800" />
-          <div className="font-mono text-[9px] tracking-[0.2em] uppercase text-zinc-400 flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full border border-zinc-400" />
-            DWG • PDF • SURVEY • ROADS • 2024
-            <span className="w-2 h-2 rounded-full bg-amber-500" />
+      {/* Footer line */}
+      <div className="relative z-10 max-w-6xl mx-auto px-6 pb-10">
+        <div className="flex items-center gap-4 opacity-30">
+          <div className="flex-1 h-[1px] bg-gradient-to-r from-transparent to-[#1e3a5f]/20 dark:to-white/10" />
+          <div className="font-mono text-[9px] tracking-[0.25em] uppercase text-[#1e3a5f]/50 dark:text-white/30 flex items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full border border-current" />
+            DWG • PDF • TOPOGRAPHIC • ROADS • 2024
+            <span className="w-1.5 h-1.5 rounded-full bg-[#d4a853]" />
           </div>
-          <div className="flex-1 h-[1px] bg-zinc-200 dark:bg-zinc-800" />
+          <div className="flex-1 h-[1px] bg-gradient-to-l from-transparent to-[#1e3a5f]/20 dark:to-white/10" />
         </div>
       </div>
     </div>

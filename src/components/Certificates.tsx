@@ -6,9 +6,9 @@ import { Download, Eye, FileText, GraduationCap, Award, Shield } from 'lucide-re
 
 const typeIcons: Record<string, React.ElementType> = {
   Diploma: GraduationCap,
-  شهادة: GraduationCap,
-  Course: Award,
-  دورة: Award,
+  دبلوم: GraduationCap,
+  Certificate: Award,
+  شهادة: Award,
   Document: Shield,
   وثيقة: Shield,
 };
@@ -18,61 +18,64 @@ export const Certificates: React.FC = () => {
   const t = portfolioData[language].certificates;
 
   return (
-    <section id="certificates" className="py-24 md:py-32 relative">
-      <div className="absolute inset-0 -z-10 bg-zinc-50/50 dark:bg-zinc-900/20" />
+    <section id="certificates" className="py-24 md:py-36 relative">
+      <div className="absolute inset-0 bg-gradient-to-b from-[#f8f9fc]/50 to-transparent dark:from-[#0f172a]/30 dark:to-transparent pointer-events-none" />
 
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12"
+          transition={{ duration: 0.7 }}
+          className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16"
         >
-          <div>
-            <div className="section-badge mb-4">{t.badge}</div>
-            <h2 className="font-display font-bold tracking-tight text-[2rem] md:text-[2.8rem] leading-[0.95] text-zinc-900 dark:text-white">
+          <div className="max-w-lg">
+            <div className="section-label mb-5">{t.badge}</div>
+            <h2 className="font-display font-black tracking-tight text-[2rem] md:text-[3rem] leading-[0.95] text-[#0f172a] dark:text-white">
               {t.title}
             </h2>
           </div>
-          <div className="max-w-[360px]">
-            <p className="text-[14px] leading-relaxed text-zinc-600 dark:text-zinc-400 font-light mb-3">
-              {t.description}
-            </p>
-            <p className="font-mono text-[11px] text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/30 border border-amber-200/50 dark:border-amber-900/50 rounded-full px-3 py-1.5 inline-flex">
-              {t.note}
-            </p>
-          </div>
+          <p className="text-[15px] leading-relaxed text-[#475569] dark:text-white/50 max-w-[380px] font-light">
+            {t.description}
+          </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
+        {/* Certificates Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
           {t.items.map((cert, index) => {
             const Icon = typeIcons[cert.type] || FileText;
             return (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 25 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.06 }}
-                whileHover={{ y: -3 }}
-                className="group relative blueprint-card rounded-[20px] p-6 flex gap-4"
+                transition={{ delay: index * 0.08, duration: 0.6 }}
+                className="group glass-card glass-card-hover rounded-[24px] p-6 md:p-7 flex gap-5 relative overflow-hidden"
               >
-                <div className="w-14 h-14 rounded-[14px] bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-                  <Icon className="w-6 h-6" />
+                {/* Number watermark */}
+                <div className="absolute -bottom-4 -right-2 font-mono text-[80px] font-black leading-none text-[#1e3a5f]/[0.03] dark:text-white/[0.03] select-none pointer-events-none group-hover:text-[#d4a853]/10 dark:group-hover:text-[#d4a853]/10 transition-colors duration-700">
+                  {String(index + 1).padStart(2, '0')}
                 </div>
 
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-start justify-between gap-3 mb-1">
-                    <h3 className="font-display font-semibold text-[15px] leading-tight text-zinc-900 dark:text-white truncate">
+                {/* Icon */}
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#1e3a5f] to-[#2d5a8e] dark:from-[#d4a853] dark:to-[#b8912e] flex items-center justify-center shrink-0 shadow-lg shadow-[#1e3a5f]/15 dark:shadow-[#d4a853]/15 group-hover:scale-105 transition-transform duration-500">
+                  <Icon className="w-6 h-6 text-white dark:text-[#0f172a]" />
+                </div>
+
+                {/* Content */}
+                <div className="flex-1 min-w-0 relative z-10">
+                  <div className="flex items-start justify-between gap-3 mb-2">
+                    <h3 className="font-display font-bold text-[15px] leading-tight text-[#0f172a] dark:text-white truncate">
                       {cert.title}
                     </h3>
-                    <span className="font-mono text-[10px] px-2 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 shrink-0">
+                    <span className="font-mono text-[9px] px-2.5 py-1 rounded-full bg-[#d4a853]/10 text-[#b8912e] dark:text-[#e8c675] border border-[#d4a853]/20 shrink-0 font-semibold tracking-wider uppercase">
                       {cert.type}
                     </span>
                   </div>
-                  <div className="font-mono text-[11px] text-zinc-500 dark:text-zinc-400 flex items-center gap-3 mb-4">
+                  <div className="font-mono text-[11px] text-[#475569]/60 dark:text-white/40 flex items-center gap-3 mb-5">
                     <span>{cert.issuer}</span>
-                    <span className="w-1 h-1 rounded-full bg-zinc-300 dark:bg-zinc-700" />
+                    <span className="w-1 h-1 rounded-full bg-[#d4a853]/50" />
                     <span>{cert.date}</span>
                   </div>
 
@@ -81,7 +84,7 @@ export const Certificates: React.FC = () => {
                       href={cert.file}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 text-[12px] font-semibold hover:scale-[1.02] transition-transform"
+                      className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-[#1e3a5f] dark:bg-[#d4a853] text-white dark:text-[#0f172a] text-[12px] font-bold hover:scale-[1.03] active:scale-[0.97] transition-transform shadow-md shadow-[#1e3a5f]/15 dark:shadow-[#d4a853]/15"
                     >
                       <Eye className="w-3.5 h-3.5" />
                       {t.view}
@@ -89,55 +92,55 @@ export const Certificates: React.FC = () => {
                     <a
                       href={cert.file}
                       download
-                      className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 text-[12px] font-medium hover:bg-zinc-50 dark:hover:bg-zinc-700 transition-colors"
+                      className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-white dark:bg-white/5 border border-[#1e3a5f]/10 dark:border-white/10 text-[#475569] dark:text-white/70 text-[12px] font-semibold hover:bg-[#f8f9fc] dark:hover:bg-white/10 transition-colors"
                     >
                       <Download className="w-3.5 h-3.5" />
                       {t.download}
                     </a>
                   </div>
                 </div>
-
-                {/* watermark */}
-                <div className="absolute bottom-0 right-6 font-mono text-[40px] font-bold leading-none text-zinc-100 dark:text-zinc-800 opacity-60 group-hover:opacity-80 transition-opacity select-none pointer-events-none">
-                  {String(index + 1).padStart(2, '0')}
-                </div>
               </motion.div>
             );
           })}
         </div>
 
-        {/* CV Banner */}
+        {/* CV Download Banner */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-10 rounded-[24px] bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 p-7 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6 overflow-hidden relative"
+          className="mt-12 rounded-[28px] bg-gradient-to-br from-[#1e3a5f] to-[#2d5a8e] dark:from-[#0f172a] dark:to-[#1e3a5f] text-white p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 overflow-hidden relative shine-effect"
         >
-          <div className="absolute top-0 right-0 w-96 h-96 bg-amber-500/20 rounded-full blur-[60px] -mr-32 -mt-32 pointer-events-none" />
+          {/* Background accents */}
+          <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#d4a853]/15 rounded-full blur-[80px] -mr-32 -mt-32 pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-white/5 rounded-full blur-[60px] -ml-20 -mb-20 pointer-events-none" />
+
           <div className="relative z-10">
-            <div className="font-mono text-[11px] tracking-widest uppercase opacity-60 mb-2">Curriculum Vitae</div>
-            <h3 className="font-display font-bold text-[20px] md:text-[24px] leading-tight mb-2">
-              {language === 'en' ? "Complete CV & Portfolio PDF" : "السيرة الذاتية الكاملة PDF"}
+            <div className="font-mono text-[11px] tracking-[0.18em] uppercase text-[#d4a853] mb-3 flex items-center gap-2">
+              <FileText className="w-4 h-4" />
+              Curriculum Vitae
+            </div>
+            <h3 className="font-display font-black text-[22px] md:text-[28px] leading-tight mb-3">
+              {t.cvTitle}
             </h3>
-            <p className="text-[13px] opacity-70 font-light max-w-md">
-              {language === 'en'
-                ? "Download the full CV with all experience, education, skills and project list in one professional PDF document ready for printing."
-                : "حمّل السيرة الذاتية الكاملة مع كل الخبرات والتعليم والمهارات وقائمة المشاريع في ملف PDF احترافي جاهز للطباعة."}
+            <p className="text-[14px] opacity-70 font-light max-w-md leading-relaxed">
+              {t.cvDesc}
             </p>
           </div>
+
           <div className="relative z-10 flex gap-3 shrink-0">
             <a
               href="/portfolio/cv/mohammed-albakhity-cv.pdf"
               download
-              className="inline-flex items-center gap-2 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white px-6 py-3 rounded-full text-[14px] font-semibold shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-transform"
+              className="inline-flex items-center gap-2 bg-[#d4a853] hover:bg-[#e8c675] text-[#0f172a] px-7 py-3.5 rounded-full text-[14px] font-bold shadow-xl shadow-[#d4a853]/25 hover:scale-[1.03] active:scale-[0.97] transition-all"
             >
-              <Download className="w-4 h-4" />
+              <Download className="w-4.5 h-4.5" />
               {language === 'en' ? "Download CV" : "تحميل السيرة"}
             </a>
             <a
               href="/portfolio/cv/mohammed-albakhity-cv.pdf"
               target="_blank"
-              className="inline-flex items-center gap-2 bg-white/10 dark:bg-zinc-900/10 backdrop-blur border border-white/20 dark:border-zinc-900/20 text-white dark:text-zinc-900 px-6 py-3 rounded-full text-[14px] font-medium hover:bg-white/20 transition-colors"
+              className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur border border-white/15 text-white px-6 py-3.5 rounded-full text-[14px] font-medium transition-colors"
             >
               <Eye className="w-4 h-4" />
               {t.view}
