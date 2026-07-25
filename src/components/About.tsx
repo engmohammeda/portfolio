@@ -39,10 +39,10 @@ export const About: React.FC = () => {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="lg:col-span-7 space-y-7"
           >
-            <p className="text-[17px] md:text-[19px] leading-[1.8] text-[#475569] dark:text-white/70 font-light">
+            <p className="text-[17px] md:text-[19px] leading-[1.8] text-body-muted font-light">
               {t.p1}
             </p>
-            <p className="text-[16px] md:text-[17px] leading-[1.8] text-[#475569]/80 dark:text-white/50 font-light">
+            <p className="text-[16px] md:text-[17px] leading-[1.8] text-subtle font-light">
               {t.p2}
             </p>
 
@@ -84,7 +84,7 @@ export const About: React.FC = () => {
             </div>
 
             <div className="glass-card rounded-[28px] p-7 md:p-8 glass-card-hover">
-              <div className="font-mono text-[10px] tracking-[0.18em] uppercase text-[#d4a853] mb-6 flex items-center gap-2">
+              <div className="font-mono text-[10px] tracking-[0.18em] uppercase text-gold-ink mb-6 flex items-center gap-2">
                 <FileCheck className="w-3.5 h-3.5" />
                 Professional Profile
               </div>
@@ -98,7 +98,7 @@ export const About: React.FC = () => {
                         <Icon className="w-4.5 h-4.5 text-[#1e3a5f] dark:text-[#d4a853]" />
                       </div>
                       <div>
-                        <div className="font-mono text-[10px] tracking-[0.15em] uppercase text-[#475569]/60 dark:text-white/40 mb-1.5">{h.label}</div>
+                        <div className="font-mono text-[10px] tracking-[0.15em] uppercase text-faint mb-1.5">{h.label}</div>
                         <div className="font-semibold text-[14px] text-[#0f172a] dark:text-white leading-snug">{h.value}</div>
                       </div>
                     </div>

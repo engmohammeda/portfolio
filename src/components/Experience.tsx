@@ -27,7 +27,7 @@ export const Experience: React.FC = () => {
         <div className="relative">
           {/* Timeline line */}
           <div className="timeline-line hidden md:block" />
-          <div className="absolute left-6 top-0 bottom-0 w-[2px] bg-gradient-to-b from-[#d4a853] via-[#1e3a5f]/20 to-transparent md:hidden" />
+          <div className="absolute start-6 top-0 bottom-0 w-[2px] bg-gradient-to-b from-[#d4a853] via-[#1e3a5f]/20 to-transparent md:hidden" />
 
           <div className="space-y-12 md:space-y-16">
             {t.jobs.map((job, index) => (
@@ -36,16 +36,16 @@ export const Experience: React.FC = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.12, duration: 0.6 }}
+                transition={{ delay: index * 0.1, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                 className="relative grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-6 md:gap-10 group"
               >
                 {/* Left meta (desktop) */}
-                <div className={`hidden md:block ${index % 2 === 0 ? 'text-right pr-10' : 'order-last pl-10'}`}>
-                  <div className="inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.15em] uppercase px-4 py-2 rounded-full bg-gradient-to-r from-[#d4a853]/10 to-[#d4a853]/5 border border-[#d4a853]/20 text-[#b8912e] dark:text-[#e8c675] mb-3">
+                <div className={`hidden md:block ${index % 2 === 0 ? 'text-end pe-10' : 'order-last ps-10'}`}>
+                  <div className="inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.15em] uppercase px-4 py-2 rounded-full bg-gradient-to-r from-[#d4a853]/10 to-[#d4a853]/5 border border-[#d4a853]/20 text-gold-ink mb-3">
                     <Calendar className="w-3 h-3" />
                     {job.period}
                   </div>
-                  <div className="font-mono text-[12px] text-[#475569] dark:text-white/50 flex items-center gap-2 justify-end">
+                  <div className="font-mono text-[12px] text-subtle flex items-center gap-2 justify-end">
                     <MapPin className="w-3.5 h-3.5" />
                     {job.location}
                   </div>
@@ -59,21 +59,21 @@ export const Experience: React.FC = () => {
                 </div>
 
                 {/* Content card */}
-                <div className={`${index % 2 === 0 ? 'md:order-last md:pl-10' : 'md:pr-10'} pl-12 md:pl-0`}>
+                <div className={`${index % 2 === 0 ? 'md:order-last md:ps-10' : 'md:pe-10'} ps-12 md:ps-0`}>
                   {/* Mobile meta */}
                   <div className="md:hidden mb-4">
-                    <div className="inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.15em] uppercase px-3 py-1.5 rounded-full bg-[#d4a853]/10 border border-[#d4a853]/20 text-[#b8912e] dark:text-[#e8c675] mb-2">
+                    <div className="inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.15em] uppercase px-3 py-1.5 rounded-full bg-[#d4a853]/10 border border-[#d4a853]/20 text-gold-ink mb-2">
                       <Calendar className="w-3 h-3" />
                       {job.period}
                     </div>
-                    <div className="font-mono text-[11px] text-[#475569] dark:text-white/50 flex items-center gap-1.5">
+                    <div className="font-mono text-[11px] text-subtle flex items-center gap-1.5">
                       <MapPin className="w-3 h-3" />
                       {job.location}
                     </div>
                   </div>
 
                   {/* Mobile dot */}
-                  <div className="absolute left-6 top-6 -translate-x-1/2 w-3.5 h-3.5 rounded-full bg-white dark:bg-[#06080f] border-[3px] border-[#d4a853] shadow-[0_0_0_4px_rgba(212,168,83,0.15)] md:hidden z-10" />
+                  <div className="absolute start-6 top-6 -translate-x-1/2 rtl:translate-x-1/2 w-3.5 h-3.5 rounded-full bg-white dark:bg-[#06080f] border-[3px] border-[#d4a853] shadow-[0_0_0_4px_rgba(212,168,83,0.15)] md:hidden z-10" />
 
                   <div className="glass-card rounded-[24px] p-7 md:p-8 group-hover:shadow-[0_8px_32px_rgba(30,58,95,0.08)] dark:group-hover:shadow-[0_8px_32px_rgba(0,0,0,0.3)] transition-all duration-500">
                     <div className="flex items-start gap-4 mb-4">
@@ -87,12 +87,12 @@ export const Experience: React.FC = () => {
                         <h3 className="font-display font-bold text-[17px] leading-tight text-[#0f172a] dark:text-white">
                           {job.role}
                         </h3>
-                        <div className="font-medium text-[13px] text-[#475569] dark:text-white/50 mt-1.5">
+                        <div className="font-medium text-[13px] text-subtle mt-1.5">
                           {job.company}
                         </div>
                       </div>
                     </div>
-                    <p className="text-[14px] leading-[1.8] text-[#475569] dark:text-white/50 font-light">
+                    <p className="text-[14px] leading-[1.8] text-subtle font-light">
                       {job.desc}
                     </p>
                   </div>

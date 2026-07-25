@@ -30,11 +30,11 @@ function AppContent() {
 
       {/* Footer line */}
       <div className="relative z-10 max-w-6xl mx-auto px-6 pb-10">
-        <div className="flex items-center gap-4 opacity-30">
+        <div className="flex items-center gap-4 opacity-60">
           <div className="flex-1 h-[1px] bg-gradient-to-r from-transparent to-[#1e3a5f]/20 dark:to-white/10" />
-          <div className="font-mono text-[9px] tracking-[0.25em] uppercase text-[#1e3a5f]/50 dark:text-white/30 flex items-center gap-2">
+          <div className="font-mono text-[10px] tracking-[0.25em] uppercase text-[#1e3a5f]/70 dark:text-white/50 flex items-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full border border-current" />
-            DWG • PDF • TOPOGRAPHIC • ROADS • 2024
+            DWG • PDF • TOPOGRAPHIC • ROADS
             <span className="w-1.5 h-1.5 rounded-full bg-[#d4a853]" />
           </div>
           <div className="flex-1 h-[1px] bg-gradient-to-l from-transparent to-[#1e3a5f]/20 dark:to-white/10" />

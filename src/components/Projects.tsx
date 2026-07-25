@@ -27,7 +27,7 @@ export const Projects: React.FC = () => {
               {t.title}
             </h2>
           </div>
-          <p className="text-[15px] leading-relaxed text-[#475569] dark:text-white/50 max-w-[380px] font-light">
+          <p className="text-[15px] leading-relaxed text-subtle max-w-[380px] font-light">
             {t.description}
           </p>
         </motion.div>
@@ -39,12 +39,12 @@ export const Projects: React.FC = () => {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.6 }}
+              transition={{ delay: index * 0.08, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
               className="group"
             >
               <div className="glass-card glass-card-hover rounded-[28px] overflow-hidden flex flex-col h-full">
                 {/* Preview Header - Blueprint */}
-                <div className="relative h-[220px] bg-gradient-to-br from-[#f8f9fc] to-white dark:from-[#0f172a] dark:to-[#06080f] border-b border-[#1e3a5f]/5 dark:border-white/5 overflow-hidden">
+                <div dir="ltr" className="relative h-[200px] md:h-[220px] bg-gradient-to-br from-[#f8f9fc] to-white dark:from-[#0f172a] dark:to-[#06080f] border-b border-[#1e3a5f]/5 dark:border-white/5 overflow-hidden">
                   <div className="absolute inset-0 grid-overlay-fine opacity-40" />
                   <div className="absolute inset-0 p-5">
                     <svg viewBox="0 0 300 160" className="w-full h-full">
@@ -91,11 +91,11 @@ export const Projects: React.FC = () => {
                     <span className="font-mono text-[10px] font-bold px-3 py-1.5 rounded-full bg-[#1e3a5f] dark:bg-white text-white dark:text-[#0f172a] shadow-lg">
                       {project.type}
                     </span>
-                    <span className="font-mono text-[10px] font-semibold px-3 py-1.5 rounded-full bg-white/90 dark:bg-[#0f172a]/90 backdrop-blur border border-[#1e3a5f]/10 dark:border-white/10 text-[#475569] dark:text-white/70">
+                    <span className="font-mono text-[10px] font-semibold px-3 py-1.5 rounded-full bg-white/90 dark:bg-[#0f172a]/90 backdrop-blur border border-[#1e3a5f]/10 dark:border-white/10 text-body-muted">
                       {project.year}
                     </span>
                   </div>
-                  <div className="absolute bottom-4 left-4 font-mono text-[9px] text-[#475569] dark:text-white/40 flex items-center gap-1.5">
+                  <div className="absolute bottom-4 left-4 font-mono text-[10px] text-subtle flex items-center gap-1.5">
                     <Ruler className="w-3 h-3" /> SCALE 1:500 • {project.location}
                   </div>
                 </div>
@@ -105,7 +105,7 @@ export const Projects: React.FC = () => {
                   <h3 className="font-display font-bold text-[17px] leading-tight text-[#0f172a] dark:text-white mb-3">
                     {project.title}
                   </h3>
-                  <p className="text-[13.5px] leading-[1.7] text-[#475569] dark:text-white/50 font-light flex-1 mb-6">
+                  <p className="text-[13.5px] leading-[1.7] text-subtle font-light flex-1 mb-6">
                     {project.desc}
                   </p>
 
@@ -115,19 +115,19 @@ export const Projects: React.FC = () => {
                       {Object.entries(project.stats).slice(0, 3).map(([key, value]) => (
                         <div key={key} className="text-center">
                           <div className="font-mono text-[11px] font-bold text-[#1e3a5f] dark:text-[#e8c675]">{value}</div>
-                          <div className="font-mono text-[9px] text-[#475569]/50 dark:text-white/30 uppercase tracking-wider mt-1">{key}</div>
+                          <div className="font-mono text-[10px] text-faint uppercase tracking-wider mt-1">{key}</div>
                         </div>
                       ))}
                     </div>
                   )}
 
                   <div className="flex items-center justify-between pt-5 border-t border-[#1e3a5f]/5 dark:border-white/5">
-                    <div className="flex items-center gap-3 font-mono text-[11px] text-[#475569]/60 dark:text-white/40">
+                    <div className="flex items-center gap-3 font-mono text-[11px] text-faint">
                       <span className="flex items-center gap-1"><MapPin className="w-3 h-3" /> {project.location}</span>
                       <span className="flex items-center gap-1"><Calendar className="w-3 h-3" /> {project.year}</span>
                     </div>
-                    <div className="w-8 h-8 rounded-full bg-[#1e3a5f]/5 dark:bg-white/5 flex items-center justify-center group-hover:bg-[#d4a853] group-hover:text-white dark:group-hover:bg-[#d4a853] dark:group-hover:text-[#0f172a] text-[#475569] dark:text-white/50 transition-all duration-300">
-                      <ArrowUpRight className="w-4 h-4" />
+                    <div className="w-8 h-8 rounded-full bg-[#1e3a5f]/5 dark:bg-white/5 flex items-center justify-center group-hover:bg-[#d4a853] group-hover:text-white dark:group-hover:bg-[#d4a853] dark:group-hover:text-[#0f172a] text-subtle transition-all duration-300">
+                      <ArrowUpRight className="w-4 h-4 rtl:-rotate-90" />
                     </div>
                   </div>
                 </div>
@@ -142,7 +142,7 @@ export const Projects: React.FC = () => {
           viewport={{ once: true }}
           className="mt-12 text-center"
         >
-          <p className="font-mono text-[11px] tracking-[0.15em] uppercase text-[#475569]/50 dark:text-white/30">
+          <p className="font-mono text-[11px] tracking-[0.15em] uppercase text-faint">
             {language === 'en' 
               ? "More project documentation available upon request • DWG • PDF • Reports" 
               : "مزيد من توثيق المشاريع متاح عند الطلب • DWG • PDF • تقارير"}

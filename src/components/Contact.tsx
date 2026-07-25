@@ -64,7 +64,7 @@ export const Contact: React.FC = () => {
           <h2 className="font-display font-black tracking-tight text-[2.2rem] md:text-[3.5rem] leading-[0.92] text-[#0f172a] dark:text-white max-w-3xl">
             {t.title}
           </h2>
-          <p className="mt-5 text-[16px] leading-relaxed text-[#475569] dark:text-white/50 max-w-xl font-light">
+          <p className="mt-5 text-[16px] leading-relaxed text-subtle max-w-xl font-light">
             {t.description}
           </p>
         </motion.div>
@@ -79,7 +79,7 @@ export const Contact: React.FC = () => {
             className="lg:col-span-5 space-y-5"
           >
             <div className="glass-card rounded-[28px] p-7 md:p-8">
-              <div className="font-mono text-[10px] tracking-[0.18em] uppercase text-[#d4a853] mb-6">Contact Details</div>
+              <div className="font-mono text-[10px] tracking-[0.18em] uppercase text-gold-ink mb-6">Contact Details</div>
               
               <div className="space-y-5">
                 <a href={`mailto:${t.email}`} className="flex items-center gap-4 group">
@@ -87,8 +87,8 @@ export const Contact: React.FC = () => {
                     <Mail className="w-5 h-5 text-white dark:text-[#0f172a]" />
                   </div>
                   <div>
-                    <div className="font-mono text-[10px] uppercase tracking-[0.15em] text-[#475569]/60 dark:text-white/40">Email</div>
-                    <div className="font-semibold text-[14px] text-[#0f172a] dark:text-white mt-1 group-hover:text-[#d4a853] transition-colors">{t.email}</div>
+                    <div className="font-mono text-[10px] uppercase tracking-[0.15em] text-faint">Email</div>
+                    <div className="font-semibold text-[14px] text-[#0f172a] dark:text-white mt-1 group-hover:text-gold-ink dark:group-hover:text-[#e8c675] transition-colors">{t.email}</div>
                   </div>
                 </a>
 
@@ -97,17 +97,17 @@ export const Contact: React.FC = () => {
                     <Phone className="w-5 h-5 text-white" />
                   </div>
                   <div>
-                    <div className="font-mono text-[10px] uppercase tracking-[0.15em] text-[#475569]/60 dark:text-white/40">Phone / WhatsApp</div>
+                    <div className="font-mono text-[10px] uppercase tracking-[0.15em] text-faint">Phone / WhatsApp</div>
                     <div className="font-semibold text-[14px] text-[#0f172a] dark:text-white mt-1" dir="ltr">{t.phone}</div>
                   </div>
                 </a>
 
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 rounded-2xl bg-[#f8f9fc] dark:bg-white/5 border border-[#1e3a5f]/5 dark:border-white/5 flex items-center justify-center">
-                    <MapPin className="w-5 h-5 text-[#475569] dark:text-white/50" />
+                    <MapPin className="w-5 h-5 text-subtle" />
                   </div>
                   <div>
-                    <div className="font-mono text-[10px] uppercase tracking-[0.15em] text-[#475569]/60 dark:text-white/40">Location</div>
+                    <div className="font-mono text-[10px] uppercase tracking-[0.15em] text-faint">Location</div>
                     <div className="font-semibold text-[14px] text-[#0f172a] dark:text-white mt-1">{t.location}</div>
                   </div>
                 </div>
@@ -115,12 +115,13 @@ export const Contact: React.FC = () => {
 
               {/* Social */}
               <div className="mt-8 pt-7 border-t border-[#1e3a5f]/5 dark:border-white/5">
-                <div className="font-mono text-[10px] tracking-[0.18em] uppercase text-[#475569]/50 dark:text-white/30 mb-4">Social</div>
+                <div className="font-mono text-[10px] tracking-[0.18em] uppercase text-faint mb-4">Social</div>
                 <div className="flex gap-3">
                   <a 
                     href={`https://wa.me/${t.phone.replace(/[^0-9]/g, '')}`} 
                     target="_blank" 
                     rel="noopener noreferrer" 
+                    aria-label="WhatsApp"
                     className="w-11 h-11 rounded-xl bg-[#1e3a5f] dark:bg-[#d4a853] text-white dark:text-[#0f172a] flex items-center justify-center hover:scale-105 transition-transform shadow-lg"
                   >
                     <MessageCircle className="w-4.5 h-4.5" />
@@ -129,13 +130,15 @@ export const Contact: React.FC = () => {
                     href="https://x.com/engalbukhaiti" 
                     target="_blank" 
                     rel="noopener noreferrer" 
-                    className="w-11 h-11 rounded-xl border border-[#1e3a5f]/10 dark:border-white/10 bg-white dark:bg-white/5 text-[#475569] dark:text-white/70 flex items-center justify-center hover:bg-[#f8f9fc] dark:hover:bg-white/10 transition-colors"
+                    aria-label="X (Twitter)"
+                    className="w-11 h-11 rounded-xl border border-[#1e3a5f]/10 dark:border-white/10 bg-white dark:bg-white/5 text-body-muted flex items-center justify-center hover:bg-[#f8f9fc] dark:hover:bg-white/10 transition-colors"
                   >
                     <XIcon className="w-4 h-4" />
                   </a>
                   <a 
                     href={`mailto:${t.email}`} 
-                    className="w-11 h-11 rounded-xl border border-[#1e3a5f]/10 dark:border-white/10 bg-white dark:bg-white/5 text-[#475569] dark:text-white/70 flex items-center justify-center hover:bg-[#f8f9fc] dark:hover:bg-white/10 transition-colors"
+                    aria-label="Email"
+                    className="w-11 h-11 rounded-xl border border-[#1e3a5f]/10 dark:border-white/10 bg-white dark:bg-white/5 text-body-muted flex items-center justify-center hover:bg-[#f8f9fc] dark:hover:bg-white/10 transition-colors"
                   >
                     <Mail className="w-4 h-4" />
                   </a>
@@ -148,7 +151,7 @@ export const Contact: React.FC = () => {
               <div className="w-7 h-7 rounded-full bg-[#d4a853] text-white flex items-center justify-center shrink-0 mt-0.5 shadow-lg shadow-[#d4a853]/20">
                 <span className="text-[12px] font-bold">!</span>
               </div>
-              <p className="text-[13px] leading-[1.7] text-[#b8912e] dark:text-[#e8c675]/90 font-light">
+              <p className="text-[13px] leading-[1.7] text-gold-ink font-light">
                 {t.availability}
               </p>
             </div>
@@ -174,7 +177,7 @@ export const Contact: React.FC = () => {
                     onChange={handleChange}
                     placeholder={t.form.namePlaceholder}
                     required
-                    className="w-full rounded-2xl bg-[#f8f9fc] dark:bg-white/5 border border-[#1e3a5f]/5 dark:border-white/5 px-6 py-4 text-[14px] focus:outline-none focus:ring-2 focus:ring-[#d4a853]/30 focus:border-[#d4a853]/30 transition-all placeholder:text-[#475569]/50 dark:text-white"
+                    className="w-full rounded-2xl bg-[#f8f9fc] dark:bg-white/5 border border-[#1e3a5f]/5 dark:border-white/5 px-6 py-4 text-[14px] focus:outline-none focus:ring-2 focus:ring-[#d4a853]/30 focus:border-[#d4a853]/30 transition-all placeholder:text-[#64748b] dark:placeholder:text-white/45 dark:text-white"
                     dir={dir}
                   />
                   <input
@@ -184,7 +187,7 @@ export const Contact: React.FC = () => {
                     onChange={handleChange}
                     placeholder={t.form.emailPlaceholder}
                     required
-                    className="w-full rounded-2xl bg-[#f8f9fc] dark:bg-white/5 border border-[#1e3a5f]/5 dark:border-white/5 px-6 py-4 text-[14px] focus:outline-none focus:ring-2 focus:ring-[#d4a853]/30 focus:border-[#d4a853]/30 transition-all placeholder:text-[#475569]/50 dark:text-white"
+                    className="w-full rounded-2xl bg-[#f8f9fc] dark:bg-white/5 border border-[#1e3a5f]/5 dark:border-white/5 px-6 py-4 text-[14px] focus:outline-none focus:ring-2 focus:ring-[#d4a853]/30 focus:border-[#d4a853]/30 transition-all placeholder:text-[#64748b] dark:placeholder:text-white/45 dark:text-white"
                     dir="ltr"
                   />
                 </div>
@@ -196,7 +199,7 @@ export const Contact: React.FC = () => {
                   placeholder={t.form.messagePlaceholder}
                   required
                   rows={6}
-                  className="w-full rounded-2xl bg-[#f8f9fc] dark:bg-white/5 border border-[#1e3a5f]/5 dark:border-white/5 px-6 py-4 text-[14px] focus:outline-none focus:ring-2 focus:ring-[#d4a853]/30 focus:border-[#d4a853]/30 transition-all placeholder:text-[#475569]/50 dark:text-white resize-none"
+                  className="w-full rounded-2xl bg-[#f8f9fc] dark:bg-white/5 border border-[#1e3a5f]/5 dark:border-white/5 px-6 py-4 text-[14px] focus:outline-none focus:ring-2 focus:ring-[#d4a853]/30 focus:border-[#d4a853]/30 transition-all placeholder:text-[#64748b] dark:placeholder:text-white/45 dark:text-white resize-none"
                   dir={dir}
                 />
 
@@ -233,7 +236,7 @@ export const Contact: React.FC = () => {
                   )}
                 </div>
 
-                <p className="font-mono text-[11px] text-[#475569]/50 dark:text-white/30 pt-2">
+                <p className="font-mono text-[11px] text-faint pt-2">
                   {t.responseNote}
                 </p>
               </form>
@@ -243,10 +246,10 @@ export const Contact: React.FC = () => {
 
         {/* Footer */}
         <div className="mt-20 pt-10 border-t border-[#1e3a5f]/5 dark:border-white/5 flex flex-col md:flex-row justify-between gap-5">
-          <p className="font-mono text-[11px] text-[#475569]/60 dark:text-white/30 tracking-wide">
+          <p className="font-mono text-[11px] text-faint tracking-wide">
             © {new Date().getFullYear()} {language === 'en' ? "Mohammed Al-Bakhity Ali — Surveying & Roads Engineer" : "محمد البخيتي علي — مهندس مساحة وطرق"} • {t.footer?.rights || (language === 'en' ? "All rights reserved" : "جميع الحقوق محفوظة")}
           </p>
-          <div className="font-mono text-[11px] text-[#475569]/60 dark:text-white/30 flex gap-5">
+          <div className="font-mono text-[11px] text-faint flex gap-5">
             <span className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" /> {language === 'en' ? "Available for Projects" : "متاح للمشاريع"}</span>
             <span>Yemen • Sana'a</span>
           </div>

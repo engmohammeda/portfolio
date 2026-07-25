@@ -36,7 +36,7 @@ export const Certificates: React.FC = () => {
               {t.title}
             </h2>
           </div>
-          <p className="text-[15px] leading-relaxed text-[#475569] dark:text-white/50 max-w-[380px] font-light">
+          <p className="text-[15px] leading-relaxed text-subtle max-w-[380px] font-light">
             {t.description}
           </p>
         </motion.div>
@@ -51,11 +51,11 @@ export const Certificates: React.FC = () => {
                 initial={{ opacity: 0, y: 25 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.08, duration: 0.6 }}
+                transition={{ delay: index * 0.08, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                 className="group glass-card glass-card-hover rounded-[24px] p-6 md:p-7 flex gap-5 relative overflow-hidden"
               >
                 {/* Number watermark */}
-                <div className="absolute -bottom-4 -right-2 font-mono text-[80px] font-black leading-none text-[#1e3a5f]/[0.03] dark:text-white/[0.03] select-none pointer-events-none group-hover:text-[#d4a853]/10 dark:group-hover:text-[#d4a853]/10 transition-colors duration-700">
+                <div className="absolute -bottom-4 -end-2 font-mono text-[80px] font-black leading-none text-[#1e3a5f]/[0.03] dark:text-white/[0.03] select-none pointer-events-none group-hover:text-[#d4a853]/10 dark:group-hover:text-[#d4a853]/10 transition-colors duration-700">
                   {String(index + 1).padStart(2, '0')}
                 </div>
 
@@ -67,14 +67,14 @@ export const Certificates: React.FC = () => {
                 {/* Content */}
                 <div className="flex-1 min-w-0 relative z-10">
                   <div className="flex items-start justify-between gap-3 mb-2">
-                    <h3 className="font-display font-bold text-[15px] leading-tight text-[#0f172a] dark:text-white truncate">
+                    <h3 className="font-display font-bold text-[15px] leading-snug text-[#0f172a] dark:text-white">
                       {cert.title}
                     </h3>
-                    <span className="font-mono text-[9px] px-2.5 py-1 rounded-full bg-[#d4a853]/10 text-[#b8912e] dark:text-[#e8c675] border border-[#d4a853]/20 shrink-0 font-semibold tracking-wider uppercase">
+                    <span className="font-mono text-[9px] px-2.5 py-1 rounded-full bg-[#d4a853]/10 text-gold-ink border border-[#d4a853]/20 shrink-0 font-semibold tracking-wider uppercase">
                       {cert.type}
                     </span>
                   </div>
-                  <div className="font-mono text-[11px] text-[#475569]/60 dark:text-white/40 flex items-center gap-3 mb-5">
+                  <div className="font-mono text-[11px] text-faint flex items-center gap-3 mb-5">
                     <span>{cert.issuer}</span>
                     <span className="w-1 h-1 rounded-full bg-[#d4a853]/50" />
                     <span>{cert.date}</span>
@@ -93,7 +93,7 @@ export const Certificates: React.FC = () => {
                     <a
                       href={assetUrl(cert.file)}
                       download
-                      className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-white dark:bg-white/5 border border-[#1e3a5f]/10 dark:border-white/10 text-[#475569] dark:text-white/70 text-[12px] font-semibold hover:bg-[#f8f9fc] dark:hover:bg-white/10 transition-colors"
+                      className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-white dark:bg-white/5 border border-[#1e3a5f]/10 dark:border-white/10 text-body-muted text-[12px] font-semibold hover:bg-[#f8f9fc] dark:hover:bg-white/10 transition-colors"
                     >
                       <Download className="w-3.5 h-3.5" />
                       {t.download}
@@ -117,7 +117,7 @@ export const Certificates: React.FC = () => {
           <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-white/5 rounded-full blur-[60px] -ml-20 -mb-20 pointer-events-none" />
 
           <div className="relative z-10">
-            <div className="font-mono text-[11px] tracking-[0.18em] uppercase text-[#d4a853] mb-3 flex items-center gap-2">
+            <div className="font-mono text-[11px] tracking-[0.18em] uppercase text-gold-ink mb-3 flex items-center gap-2">
               <FileText className="w-4 h-4" />
               Curriculum Vitae
             </div>
