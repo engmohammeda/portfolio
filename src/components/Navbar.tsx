@@ -3,6 +3,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { useTheme } from '../context/ThemeContext';
 import { portfolioData } from '../data';
 import { Globe, Sun, Moon, Menu, X, Download, Compass } from 'lucide-react';
+import { assetUrl } from '../lib/utils';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export const Navbar: React.FC = () => {
@@ -11,6 +12,7 @@ export const Navbar: React.FC = () => {
   const t = portfolioData[language].nav;
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>('');
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 30);
@@ -26,6 +28,31 @@ export const Navbar: React.FC = () => {
     { href: "#certificates", label: t.certificates },
     { href: "#contact", label: t.contact },
   ];
+
+  // Scrollspy: highlight the nav link matching the section currently in view
+  useEffect(() => {
+    const sectionIds = links.map((l) => l.href.slice(1));
+    const sections = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => Boolean(el));
+
+    if (sections.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: '-45% 0px -50% 0px', threshold: 0 }
+    );
+
+    sections.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [language]);
 
   return (
     <>
@@ -53,15 +80,22 @@ export const Navbar: React.FC = () => {
 
           {/* Desktop Links */}
           <div className="hidden lg:flex items-center gap-1 bg-[#f8f9fc]/80 dark:bg-white/5 rounded-full p-1">
-            {links.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="px-4 py-2 rounded-full text-[13px] font-medium text-[#475569] dark:text-white/60 hover:text-[#1e3a5f] dark:hover:text-white hover:bg-white dark:hover:bg-white/10 transition-all"
-              >
-                {link.label}
-              </a>
-            ))}
+            {links.map((link) => {
+              const isActive = activeSection === link.href.slice(1);
+              return (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className={`px-4 py-2 rounded-full text-[13px] font-medium transition-all ${
+                    isActive
+                      ? "bg-white dark:bg-white/10 text-[#1e3a5f] dark:text-white shadow-sm"
+                      : "text-[#475569] dark:text-white/60 hover:text-[#1e3a5f] dark:hover:text-white hover:bg-white dark:hover:bg-white/10"
+                  }`}
+                >
+                  {link.label}
+                </a>
+              );
+            })}
           </div>
 
           {/* Actions */}
@@ -84,7 +118,7 @@ export const Navbar: React.FC = () => {
             </div>
 
             <a
-              href="/portfolio/cv/mohammed-albakhity-cv.pdf"
+              href={assetUrl("cv/mohammed-albakhity-cv.pdf")}
               download
               className="hidden md:inline-flex items-center gap-2 btn-primary !py-2.5 !px-5 !text-[13px]"
             >
@@ -128,7 +162,7 @@ export const Navbar: React.FC = () => {
               </div>
               <div className="mt-5 pt-5 border-t border-[#1e3a5f]/5 dark:border-white/5">
                 <a
-                  href="/portfolio/cv/mohammed-albakhity-cv.pdf"
+                  href={assetUrl("cv/mohammed-albakhity-cv.pdf")}
                   download
                   className="flex items-center justify-center gap-2 btn-primary w-full"
                   onClick={() => setMobileOpen(false)}

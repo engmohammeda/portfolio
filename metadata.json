@@ -1,8 +1,5 @@
 {
-  "name": "Mohammed Ali Al-Bakhity - Portfolio",
-  "description": "Personal portfolio and CV for Mohammed Ali Al-Bakhity, Surveying Technician & AI Solutions Builder.",
-  "requestFramePermissions": [],
-  "majorCapabilities": [
-    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
-  ]
+  "name": "Mohammed Al-Bakhity Ali - Surveying & Roads Engineer Portfolio",
+  "description": "Personal portfolio and CV for Mohammed Al-Bakhity Ali, Surveying & Roads Engineer. Topographic surveys, road layout, quantity calculations, AutoCAD drafting, and construction supervision.",
+  "requestFramePermissions": []
 }

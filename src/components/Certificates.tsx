@@ -3,6 +3,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { portfolioData } from '../data';
 import { motion } from 'framer-motion';
 import { Download, Eye, FileText, GraduationCap, Award, Shield } from 'lucide-react';
+import { assetUrl } from '../lib/utils';
 
 const typeIcons: Record<string, React.ElementType> = {
   Diploma: GraduationCap,
@@ -81,7 +82,7 @@ export const Certificates: React.FC = () => {
 
                   <div className="flex gap-2">
                     <a
-                      href={cert.file}
+                      href={assetUrl(cert.file)}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-[#1e3a5f] dark:bg-[#d4a853] text-white dark:text-[#0f172a] text-[12px] font-bold hover:scale-[1.03] active:scale-[0.97] transition-transform shadow-md shadow-[#1e3a5f]/15 dark:shadow-[#d4a853]/15"
@@ -90,7 +91,7 @@ export const Certificates: React.FC = () => {
                       {t.view}
                     </a>
                     <a
-                      href={cert.file}
+                      href={assetUrl(cert.file)}
                       download
                       className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-white dark:bg-white/5 border border-[#1e3a5f]/10 dark:border-white/10 text-[#475569] dark:text-white/70 text-[12px] font-semibold hover:bg-[#f8f9fc] dark:hover:bg-white/10 transition-colors"
                     >
@@ -130,7 +131,7 @@ export const Certificates: React.FC = () => {
 
           <div className="relative z-10 flex gap-3 shrink-0">
             <a
-              href="/portfolio/cv/mohammed-albakhity-cv.pdf"
+              href={assetUrl("cv/mohammed-albakhity-cv.pdf")}
               download
               className="inline-flex items-center gap-2 bg-[#d4a853] hover:bg-[#e8c675] text-[#0f172a] px-7 py-3.5 rounded-full text-[14px] font-bold shadow-xl shadow-[#d4a853]/25 hover:scale-[1.03] active:scale-[0.97] transition-all"
             >
@@ -138,7 +139,7 @@ export const Certificates: React.FC = () => {
               {language === 'en' ? "Download CV" : "تحميل السيرة"}
             </a>
             <a
-              href="/portfolio/cv/mohammed-albakhity-cv.pdf"
+              href={assetUrl("cv/mohammed-albakhity-cv.pdf")}
               target="_blank"
               className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur border border-white/15 text-white px-6 py-3.5 rounded-full text-[14px] font-medium transition-colors"
             >

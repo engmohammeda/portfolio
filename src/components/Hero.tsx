@@ -3,6 +3,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { portfolioData } from '../data';
 import { motion } from 'framer-motion';
 import { Download, ArrowRight, MapPinned, Ruler, Layers, TrendingUp } from 'lucide-react';
+import { assetUrl } from '../lib/utils';
 
 export const Hero: React.FC = () => {
   const { language } = useLanguage();
@@ -75,7 +76,7 @@ export const Hero: React.FC = () => {
           className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20"
         >
           <a
-            href="/portfolio/cv/mohammed-albakhity-cv.pdf"
+            href={assetUrl("cv/mohammed-albakhity-cv.pdf")}
             download
             className="group btn-primary w-full sm:w-auto"
           >

@@ -21,7 +21,7 @@ export const Contact: React.FC = () => {
     e.preventDefault();
     setStatus('submitting');
     try {
-      const accessKey = "6285201c-2d82-4f65-b35e-b3fa2de7082a";
+      const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "6285201c-2d82-4f65-b35e-b3fa2de7082a";
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
