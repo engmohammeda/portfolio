@@ -3,6 +3,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { portfolioData } from '../data';
 import { motion } from 'framer-motion';
 import { MapPin, GraduationCap, Wrench, FileCheck, CheckCircle2 } from 'lucide-react';
+import engineerAvatar from '../assets/engineer-avatar.webp';
 
 const highlightIcons = [Wrench, MapPin, GraduationCap, FileCheck];
 
@@ -67,8 +68,21 @@ export const About: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="lg:col-span-5"
+            className="lg:col-span-5 space-y-6"
           >
+            {/* Illustration */}
+            <div className="glass-card rounded-[28px] p-4 md:p-5 overflow-hidden relative group">
+              <div className="absolute inset-0 grid-overlay-fine opacity-30 pointer-events-none" />
+              <div className="relative rounded-[20px] overflow-hidden">
+                <img
+                  src={engineerAvatar}
+                  alt={language === 'en' ? "Mohammed Al-Bakhity Ali operating a Total Station on site" : "محمد البخيتي علي يشغّل جهاز التوتال ستيشن في الميدان"}
+                  loading="lazy"
+                  className="w-full h-auto object-cover group-hover:scale-[1.02] transition-transform duration-700"
+                />
+              </div>
+            </div>
+
             <div className="glass-card rounded-[28px] p-7 md:p-8 glass-card-hover">
               <div className="font-mono text-[10px] tracking-[0.18em] uppercase text-[#d4a853] mb-6 flex items-center gap-2">
                 <FileCheck className="w-3.5 h-3.5" />

@@ -111,10 +111,10 @@ export const portfolioData = {
       download: "Download",
       view: "Preview",
       items: [
-        { title: "Diploma in Surveying & Roads", issuer: "Technical Institute", date: "2022", file: "/portfolio/certificates/diploma.pdf", type: "Diploma" },
-        { title: "AutoCAD Professional Certificate", issuer: "Training Center", date: "2022", file: "/portfolio/certificates/autocad.pdf", type: "Certificate" },
-        { title: "Quantity Surveying Certificate", issuer: "Engineering Center", date: "2023", file: "/portfolio/certificates/quantity.pdf", type: "Certificate" },
-        { title: "National ID / Engineering Card", issuer: "Official Authority", date: "2024", file: "/portfolio/certificates/id.pdf", type: "Document" }
+        { title: "Diploma in Surveying & Roads", issuer: "Technical Institute", date: "2022", file: "certificates/diploma.pdf", type: "Diploma" },
+        { title: "AutoCAD Professional Certificate", issuer: "Training Center", date: "2022", file: "certificates/autocad.pdf", type: "Certificate" },
+        { title: "Quantity Surveying Certificate", issuer: "Engineering Center", date: "2023", file: "certificates/quantity.pdf", type: "Certificate" },
+        { title: "National ID / Engineering Card", issuer: "Official Authority", date: "2024", file: "certificates/id.pdf", type: "Document" }
       ],
       cvTitle: "Complete CV & Resume",
       cvDesc: "Download the full CV with all experience, education, skills and project history in one professional PDF document."
@@ -257,10 +257,10 @@ export const portfolioData = {
       download: "تحميل",
       view: "معاينة",
       items: [
-        { title: "دبلوم هندسة المساحة والطرق", issuer: "المعهد التقني", date: "2022", file: "/portfolio/certificates/diploma.pdf", type: "دبلوم" },
-        { title: "شهادة أوتوكاد الاحترافية", issuer: "مركز تدريب", date: "2022", file: "/portfolio/certificates/autocad.pdf", type: "شهادة" },
-        { title: "شهادة حساب الكميات", issuer: "مركز هندسي", date: "2023", file: "/portfolio/certificates/quantity.pdf", type: "شهادة" },
-        { title: "بطاقة هوية / بطاقة هندسية", issuer: "جهة رسمية", date: "2024", file: "/portfolio/certificates/id.pdf", type: "وثيقة" }
+        { title: "دبلوم هندسة المساحة والطرق", issuer: "المعهد التقني", date: "2022", file: "certificates/diploma.pdf", type: "دبلوم" },
+        { title: "شهادة أوتوكاد الاحترافية", issuer: "مركز تدريب", date: "2022", file: "certificates/autocad.pdf", type: "شهادة" },
+        { title: "شهادة حساب الكميات", issuer: "مركز هندسي", date: "2023", file: "certificates/quantity.pdf", type: "شهادة" },
+        { title: "بطاقة هوية / بطاقة هندسية", issuer: "جهة رسمية", date: "2024", file: "certificates/id.pdf", type: "وثيقة" }
       ],
       cvTitle: "السيرة الذاتية الكاملة",
       cvDesc: "حمّل السيرة الذاتية الكاملة مع كل الخبرات والتعليم والمهارات وسجل المشاريع في ملف PDF احترافي."

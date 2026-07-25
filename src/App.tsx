@@ -9,6 +9,7 @@ import { Experience } from './components/Experience';
 import { Projects } from './components/Projects';
 import { Certificates } from './components/Certificates';
 import { Contact } from './components/Contact';
+import { WhatsAppButton } from './components/WhatsAppButton';
 
 function AppContent() {
   return (
@@ -24,6 +25,8 @@ function AppContent() {
         <Certificates />
         <Contact />
       </main>
+
+      <WhatsAppButton />
 
       {/* Footer line */}
       <div className="relative z-10 max-w-6xl mx-auto px-6 pb-10">
