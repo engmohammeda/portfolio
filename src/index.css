@@ -19,6 +19,8 @@
   --color-surface-dark: #0a0e1a;
   --color-ink: #0f172a;
   --color-ink-light: #475569;
+  /* Accessible gold for small text on light backgrounds (WCAG AA: 5.05:1) */
+  --color-accent-ink: #8a6a1f;
 }
 
 * {
@@ -57,6 +59,78 @@ body {
 .dark ::selection {
   background: #d4a853;
   color: #0f172a;
+}
+
+/* ========== FOCUS VISIBLE (keyboard a11y) ========== */
+:focus-visible {
+  outline: 2px solid #b8912e;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.dark :focus-visible {
+  outline-color: #e8c675;
+}
+
+/* ========== ARABIC TYPOGRAPHY ==========
+   Arabic script needs taller line-height (ascenders/descenders get clipped
+   by the ultra-tight latin display leading) and no negative tracking. */
+html[lang="ar"] h1,
+html[lang="ar"] h2,
+html[lang="ar"] h3 {
+  letter-spacing: 0 !important;
+  line-height: 1.25 !important;
+}
+
+html[lang="ar"] .italic {
+  font-style: normal;
+}
+
+/* ========== REDUCED MOTION ========== */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .hero-gradient-mesh::before,
+  .float-element,
+  .shine-effect::after,
+  .pulse-dot,
+  .animate-ping,
+  .animate-pulse,
+  .animate-spin {
+    animation: none !important;
+  }
+}
+
+/* ========== TEXT ROLES (WCAG AA) ==========
+   Single source of truth for secondary text colors so every section
+   uses the same hierarchy instead of ad-hoc opacities. */
+.text-body-muted {
+  color: #475569; /* 7.6:1 on white */
+}
+.dark .text-body-muted {
+  color: rgba(241, 245, 249, 0.72); /* ~9:1 on #06080f */
+}
+
+.text-subtle {
+  color: #5b6b82; /* 5.6:1 on white — meta text, captions */
+}
+.dark .text-subtle {
+  color: rgba(241, 245, 249, 0.58);
+}
+
+.text-faint {
+  color: #64748b; /* 4.8:1 on white — smallest mono labels, still AA */
+}
+.dark .text-faint {
+  color: rgba(241, 245, 249, 0.5);
+}
+
+.text-gold-ink {
+  color: var(--color-accent-ink); /* 5.05:1 on white */
+}
+.dark .text-gold-ink {
+  color: #e8c675;
 }
 
 /* ========== SAAS HERO BACKGROUND ========== */
@@ -207,7 +281,11 @@ body {
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #d4a853;
+  color: var(--color-accent-ink);
+}
+
+.dark .section-label {
+  color: #e8c675;
 }
 
 .section-label::before {
@@ -218,9 +296,21 @@ body {
   border-radius: 2px;
 }
 
+[dir="rtl"] .section-label::before {
+  background: linear-gradient(-90deg, #d4a853, transparent);
+}
+
 /* ========== GRADIENT TEXT ========== */
 .text-gradient-gold {
-  background: linear-gradient(135deg, #d4a853 0%, #e8c675 40%, #b8912e 100%);
+  /* Darker gold blend in light mode so large headlines clear WCAG large-text contrast */
+  background: linear-gradient(135deg, #b8912e 0%, #c9962e 45%, #a17a24 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dark .text-gradient-gold {
+  background: linear-gradient(135deg, #d4a853 0%, #e8c675 40%, #d4a853 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -466,7 +556,7 @@ body {
 /* ========== TIMELINE ========== */
 .timeline-line {
   position: absolute;
-  left: 24px;
+  inset-inline-start: 24px;
   top: 0;
   bottom: 0;
   width: 2px;
@@ -479,8 +569,12 @@ body {
 
 @media (min-width: 768px) {
   .timeline-line {
-    left: 50%;
+    inset-inline-start: 50%;
     transform: translateX(-50%);
+  }
+
+  [dir="rtl"] .timeline-line {
+    transform: translateX(50%);
   }
 }
 

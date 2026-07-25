@@ -38,7 +38,7 @@ export const Services: React.FC = () => {
               {t.title}
             </h2>
           </div>
-          <p className="text-[15px] leading-relaxed text-[#475569] dark:text-white/50 max-w-[380px] font-light">
+          <p className="text-[15px] leading-relaxed text-subtle max-w-[380px] font-light">
             {t.description}
           </p>
         </motion.div>
@@ -52,7 +52,7 @@ export const Services: React.FC = () => {
                 initial={{ opacity: 0, y: 25 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.06 }}
+                transition={{ duration: 0.55, delay: index * 0.06, ease: [0.16, 1, 0.3, 1] }}
                 className="group glass-card glass-card-hover rounded-[24px] p-7 md:p-8 relative overflow-hidden"
               >
                 {/* Hover accent */}
@@ -63,7 +63,7 @@ export const Services: React.FC = () => {
                     <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#1e3a5f] to-[#2d5a8e] dark:from-[#d4a853] dark:to-[#b8912e] flex items-center justify-center shadow-lg shadow-[#1e3a5f]/15 dark:shadow-[#d4a853]/15 group-hover:scale-110 transition-transform duration-500">
                       <Icon className="w-5.5 h-5.5 text-white dark:text-[#0f172a]" />
                     </div>
-                    <div className="font-mono text-[11px] font-bold tracking-[0.15em] text-[#1e3a5f]/20 dark:text-white/10 group-hover:text-[#d4a853]/50 transition-colors duration-500">
+                    <div className="font-mono text-[11px] font-bold tracking-[0.15em] text-[#1e3a5f]/30 dark:text-white/20 group-hover:text-gold-ink dark:group-hover:text-[#e8c675] transition-colors duration-500">
                       0{index + 1}
                     </div>
                   </div>
@@ -71,14 +71,10 @@ export const Services: React.FC = () => {
                   <h3 className="font-display font-bold text-[18px] leading-tight tracking-tight text-[#0f172a] dark:text-white mb-3">
                     {item.title}
                   </h3>
-                  <p className="text-[13.5px] leading-[1.7] text-[#475569] dark:text-white/50 font-light">
+                  <p className="text-[13.5px] leading-[1.7] text-subtle font-light">
                     {item.desc}
                   </p>
 
-                  <div className="mt-7 flex items-center gap-2 font-mono text-[10px] tracking-[0.15em] uppercase text-[#475569]/50 dark:text-white/30">
-                    <div className="w-5 h-[1.5px] bg-[#d4a853]/50 rounded-full" />
-                    <span>Surveying Service</span>
-                  </div>
                 </div>
 
                 {/* Corner accent */}

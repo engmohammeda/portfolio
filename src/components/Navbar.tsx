@@ -74,7 +74,7 @@ export const Navbar: React.FC = () => {
             </div>
             <div className="hidden md:block leading-tight">
               <div className="font-display font-bold text-[14px] tracking-tight text-[#0f172a] dark:text-white">محمد البخيتي</div>
-              <div className="font-mono text-[10px] tracking-[0.15em] uppercase text-[#1e3a5f]/50 dark:text-[#d4a853]/70">Surveying • Roads</div>
+              <div className="font-mono text-[10px] tracking-[0.15em] uppercase text-[#1e3a5f]/70 dark:text-[#e8c675]/80">Surveying • Roads</div>
             </div>
           </a>
 
@@ -89,7 +89,7 @@ export const Navbar: React.FC = () => {
                   className={`px-4 py-2 rounded-full text-[13px] font-medium transition-all ${
                     isActive
                       ? "bg-white dark:bg-white/10 text-[#1e3a5f] dark:text-white shadow-sm"
-                      : "text-[#475569] dark:text-white/60 hover:text-[#1e3a5f] dark:hover:text-white hover:bg-white dark:hover:bg-white/10"
+                      : "text-body-muted hover:text-[#1e3a5f] dark:hover:text-white hover:bg-white dark:hover:bg-white/10"
                   }`}
                 >
                   {link.label}
@@ -103,15 +103,17 @@ export const Navbar: React.FC = () => {
             <div className="flex items-center gap-1 p-1 rounded-full bg-[#f8f9fc] dark:bg-white/5 border border-[#1e3a5f]/5 dark:border-white/5">
               <button
                 onClick={toggleLanguage}
-                className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-white dark:hover:bg-white/10 text-[#475569] dark:text-white/60 hover:text-[#1e3a5f] dark:hover:text-white transition-colors"
+                className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-white dark:hover:bg-white/10 text-body-muted hover:text-[#1e3a5f] dark:hover:text-white transition-colors"
                 title="Toggle Language"
+                aria-label={language === 'en' ? 'التبديل إلى العربية' : 'Switch to English'}
               >
                 <Globe className="w-3.5 h-3.5" />
               </button>
               <button
                 onClick={toggleTheme}
-                className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-white dark:hover:bg-white/10 text-[#475569] dark:text-white/60 hover:text-[#1e3a5f] dark:hover:text-white transition-colors"
+                className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-white dark:hover:bg-white/10 text-body-muted hover:text-[#1e3a5f] dark:hover:text-white transition-colors"
                 title="Toggle Theme"
+                aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
               >
                 {theme === 'light' ? <Moon className="w-3.5 h-3.5" /> : <Sun className="w-3.5 h-3.5" />}
               </button>
@@ -129,6 +131,8 @@ export const Navbar: React.FC = () => {
             {/* Mobile menu */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
+              aria-label={mobileOpen ? (language === 'en' ? 'Close menu' : 'إغلاق القائمة') : (language === 'en' ? 'Open menu' : 'فتح القائمة')}
+              aria-expanded={mobileOpen}
               className="lg:hidden w-10 h-10 flex items-center justify-center rounded-full bg-gradient-to-br from-[#1e3a5f] to-[#2d5a8e] dark:from-[#d4a853] dark:to-[#b8912e] text-white dark:text-[#0f172a] shadow-lg"
             >
               {mobileOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
@@ -154,7 +158,7 @@ export const Navbar: React.FC = () => {
                     key={link.href}
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
-                    className="px-5 py-3.5 rounded-xl text-[15px] font-medium text-[#475569] dark:text-white/70 hover:bg-[#f8f9fc] dark:hover:bg-white/5 hover:text-[#1e3a5f] dark:hover:text-white transition-colors"
+                    className="px-5 py-3.5 rounded-xl text-[15px] font-medium text-body-muted hover:bg-[#f8f9fc] dark:hover:bg-white/5 hover:text-[#1e3a5f] dark:hover:text-white transition-colors"
                   >
                     {link.label}
                   </a>
