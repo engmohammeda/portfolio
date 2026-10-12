@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
 
+# Explicitly allow CV + document downloads for recruiters and crawlers
+Allow: /portfolio/cv/
+Allow: /portfolio/certificates/
+
 Sitemap: https://engmohammeda.github.io/portfolio/sitemap.xml

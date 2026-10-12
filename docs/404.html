@@ -3,20 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>محمد البخيتي علي - فني مساحة وطرق</title>
+    <title>محمد البخيتي | مهندس مساحة وطرق</title>
+    <meta name="robots" content="noindex" />
     <script>
-      // GitHub Pages SPA redirect trick: preserve the intended path/hash
-      // and send the visitor back to the app's index.html so client-side
-      // routing (hash links) can take over.
-      var basePath = '/portfolio/';
-      var target = basePath + (window.location.hash || '');
-      window.location.replace(target);
+      // GitHub Pages has no SPA fallback: send deep links / hash routes back
+      // into the built app so client-side anchors keep working.
+      (function () {
+        var base = '/portfolio/';
+        var target = base + (window.location.hash || '');
+        window.location.replace(target);
+      })();
     </script>
   </head>
-  <body>
-    <p style="font-family: sans-serif; text-align: center; margin-top: 3rem;">
-      جارِ التحويل إلى الصفحة الرئيسية... <br />
-      Redirecting to the homepage...
-    </p>
+  <body style="font-family: system-ui, sans-serif; text-align: center; margin-top: 3rem">
+    <p>جارِ التحويل إلى الملف المهني…<br />Redirecting to the professional portfolio…</p>
+    <p><a href="/portfolio/">اضغط هنا إذا لم يتم التحويل تلقائياً / Click here if you are not redirected</a></p>
   </body>
 </html>

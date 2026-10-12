@@ -1,18 +1,20 @@
 {
-  "name": "محمد البخيتي علي - فني مساحة وطرق",
-  "short_name": "البخيتي - مساحة وطرق",
-  "description": "بورتفوليو محمد البخيتي علي - فني مساحة وطرق، رفع طبوغرافي وتخطيط طرق وحساب كميات.",
+  "name": "محمد البخيتي — مهندس مساحة وطرق | Mohammed Al-Bakhity",
+  "short_name": "البخيتي — مساحة وطرق",
+  "description": "مهندس مساحة وطرق: رفع ميداني، طرق ومناسيب، حساب كميات BOQ، رسم AutoCAD، خرائط GIS، وتقارير تنفيذ — المملكة العربية السعودية.",
   "start_url": "/portfolio/",
   "scope": "/portfolio/",
   "display": "standalone",
-  "background_color": "#06080f",
-  "theme_color": "#1e3a5f",
+  "background_color": "#060D16",
+  "theme_color": "#0B2239",
   "lang": "ar",
   "dir": "rtl",
+  "categories": ["business", "productivity", "utilities"],
   "icons": [
     { "src": "/portfolio/favicon-16x16.png", "sizes": "16x16", "type": "image/png" },
     { "src": "/portfolio/favicon-32x32.png", "sizes": "32x32", "type": "image/png" },
-    { "src": "/portfolio/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
-    { "src": "/portfolio/android-chrome-512x512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+    { "src": "/portfolio/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/portfolio/android-chrome-512x512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/portfolio/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
   ]
 }
