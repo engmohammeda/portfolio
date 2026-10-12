@@ -2,88 +2,116 @@ import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { portfolioData } from '../data';
 import { motion } from 'framer-motion';
-import { Map, Route, Calculator, DraftingCompass, HardHat, LandPlot } from 'lucide-react';
-
-const iconMap: Record<string, React.ElementType> = {
-  map: Map,
-  route: Route,
-  calculator: Calculator,
-  drafting: DraftingCompass,
-  helmet: HardHat,
-  land: LandPlot,
-};
+import { Chip, FigureLabel, SectionHeader, SectionShell, reveal } from './ui';
+import { waLink } from '../lib/links';
+import { Check, ArrowLeft, ArrowRight, ClipboardList } from 'lucide-react';
 
 export const Services: React.FC = () => {
-  const { language } = useLanguage();
+  const { language, dir } = useLanguage();
   const t = portfolioData[language].services;
+  const Arrow = dir === 'rtl' ? ArrowLeft : ArrowRight;
 
   return (
-    <section id="services" className="py-24 md:py-36 relative">
-      {/* Divider line */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#1e3a5f]/8 dark:via-white/5 to-transparent" />
-      </div>
+    <SectionShell id="services">
+      <SectionHeader
+        no={`03 / ${language === 'ar' ? 'الخدمات' : 'SERVICES'}`}
+        title={t.title}
+        desc={t.desc}
+      />
 
-      <div className="max-w-6xl mx-auto px-6 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16"
-        >
-          <div className="max-w-lg">
-            <div className="section-label mb-5">{t.badge}</div>
-            <h2 className="font-display font-black tracking-tight text-[2rem] md:text-[3rem] leading-[0.95] text-[#0f172a] dark:text-white">
-              {t.title}
-            </h2>
-          </div>
-          <p className="text-[15px] leading-relaxed text-subtle max-w-[380px] font-light">
-            {t.description}
-          </p>
-        </motion.div>
+      <div className="grid gap-5 md:grid-cols-2">
+        {t.items.map((s, i) => (
+          <motion.article
+            key={s.code}
+            {...reveal}
+            transition={{ duration: 0.5, delay: Math.min(i * 0.04, 0.2) }}
+            className="sheet sheet-hover flex flex-col p-5 md:p-6"
+          >
+            <div className="flex items-start gap-3">
+              <span className="font-mono text-[11px] font-semibold" style={{ color: 'var(--gold)' }}>
+                {s.code}
+              </span>
+              <div className="rule mt-2.5 flex-1" />
+              <Chip mono className="text-[10.5px]!">
+                {language === 'ar' ? 'تسليم بملفات مصدرية' : 'Source files'}
+              </Chip>
+            </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
-          {t.items.map((item, index) => {
-            const Icon = iconMap[item.icon] || Map;
-            return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.55, delay: index * 0.06, ease: [0.16, 1, 0.3, 1] }}
-                className="group glass-card glass-card-hover rounded-[24px] p-7 md:p-8 relative overflow-hidden"
+            <h3 className="mt-4 font-display text-[17.5px] font-bold leading-tight" style={{ color: 'var(--txt)' }}>
+              {s.title}
+            </h3>
+            <p className="mt-2.5 text-[13.5px] leading-relaxed" style={{ color: 'var(--txt-2)' }}>
+              {s.desc}
+            </p>
+
+            <div className="mt-5">
+              <FigureLabel className="mb-2.5 block">{t.outLabel}</FigureLabel>
+              <ul className="grid gap-2 sm:grid-cols-3">
+                {s.deliverables.map((d) => (
+                  <li
+                    key={d}
+                    className="flex items-start gap-2 rounded-[8px] border px-3 py-2 text-[12px] leading-snug"
+                    style={{ borderColor: 'var(--line)', background: 'var(--panel-2)', color: 'var(--txt-2)' }}
+                  >
+                    <Check className="mt-0.5 h-3 w-3 shrink-0" style={{ color: 'var(--gold)' }} strokeWidth={3} />
+                    {d}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="mt-auto flex flex-wrap items-center gap-3 border-t pt-4" style={{ borderColor: 'var(--line)' }}>
+              <span className="text-[12px] leading-snug" style={{ color: 'var(--txt-3)' }}>
+                {s.note}
+              </span>
+              <a
+                href={waLink(`${portfolioData[language].contact.waText}: ${s.title} (${s.code})`)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link-rule ms-auto text-[13px]"
               >
-                {/* Hover accent */}
-                <div className="absolute top-0 right-0 w-36 h-36 bg-[#d4a853]/5 dark:bg-[#d4a853]/10 rounded-full blur-3xl -mr-12 -mt-12 group-hover:bg-[#d4a853]/15 dark:group-hover:bg-[#d4a853]/20 transition-all duration-700" />
-
-                <div className="relative z-10">
-                  <div className="flex items-start justify-between mb-7">
-                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#1e3a5f] to-[#2d5a8e] dark:from-[#d4a853] dark:to-[#b8912e] flex items-center justify-center shadow-lg shadow-[#1e3a5f]/15 dark:shadow-[#d4a853]/15 group-hover:scale-110 transition-transform duration-500">
-                      <Icon className="w-5.5 h-5.5 text-white dark:text-[#0f172a]" />
-                    </div>
-                    <div className="font-mono text-[11px] font-bold tracking-[0.15em] text-[#1e3a5f]/30 dark:text-white/20 group-hover:text-gold-ink dark:group-hover:text-[#e8c675] transition-colors duration-500">
-                      0{index + 1}
-                    </div>
-                  </div>
-
-                  <h3 className="font-display font-bold text-[18px] leading-tight tracking-tight text-[#0f172a] dark:text-white mb-3">
-                    {item.title}
-                  </h3>
-                  <p className="text-[13.5px] leading-[1.7] text-subtle font-light">
-                    {item.desc}
-                  </p>
-
-                </div>
-
-                {/* Corner accent */}
-                <div className="absolute bottom-4 right-4 w-4 h-4 border-r-2 border-b-2 border-[#1e3a5f]/10 dark:border-white/5 rounded-br-md opacity-0 group-hover:opacity-100 group-hover:border-[#d4a853]/50 transition-all duration-500" />
-              </motion.div>
-            );
-          })}
-        </div>
+                {t.cta}
+                <Arrow className="h-3.5 w-3.5" />
+              </a>
+            </div>
+          </motion.article>
+        ))}
       </div>
-    </section>
+
+      {/* engagement steps */}
+      <motion.div {...reveal} className="mt-12 sheet overflow-hidden">
+        <div className="sheet-head">
+          <ClipboardList className="h-3.5 w-3.5" style={{ color: 'var(--gold)' }} />
+          <FigureLabel>{t.stepsTitle}</FigureLabel>
+        </div>
+        <div className="grid divide-y md:grid-cols-3 md:divide-y-0" style={{ borderColor: 'var(--line)' }}>
+          {t.steps.map((step, i) => (
+            <div
+              key={step.title}
+              className="p-6 md:border-e md:last:border-e-0"
+              style={{ borderColor: 'var(--line)' }}
+            >
+              <div className="flex items-center gap-3">
+                <span
+                  className="grid h-7 w-7 place-items-center rounded-[7px] font-mono text-[11px] font-bold"
+                  style={{ background: 'var(--gold-soft)', color: '#8A6A1F' }}
+                >
+                  {i + 1}
+                </span>
+                <h4 className="text-[14.5px] font-bold" style={{ color: 'var(--txt)' }}>
+                  {step.title}
+                </h4>
+              </div>
+              <p className="mt-3 text-[13px] leading-relaxed" style={{ color: 'var(--txt-3)' }}>
+                {step.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+        <div className="border-t px-6 py-4" style={{ borderColor: 'var(--line)', background: 'var(--panel-2)' }}>
+          <FigureLabel className="text-[10.5px]!">{t.note}</FigureLabel>
+        </div>
+      </motion.div>
+    </SectionShell>
   );
 };

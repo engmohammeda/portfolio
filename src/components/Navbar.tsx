@@ -1,181 +1,193 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { useTheme } from '../context/ThemeContext';
 import { portfolioData } from '../data';
-import { Globe, Sun, Moon, Menu, X, Download, Compass } from 'lucide-react';
-import { assetUrl } from '../lib/utils';
-import { motion, AnimatePresence } from 'framer-motion';
+import { assetUrl, cn } from '../lib/utils';
+import { downloadCv } from '../lib/cv';
+import { Menu, X, Sun, Moon, Globe, Download, Compass } from 'lucide-react';
+import { AnimatePresence, motion } from 'framer-motion';
+
+const SECTIONS = ['profile', 'capabilities', 'services', 'projects', 'experience', 'credentials', 'contact'] as const;
 
 export const Navbar: React.FC = () => {
   const { language, toggleLanguage } = useLanguage();
   const { theme, toggleTheme } = useTheme();
   const t = portfolioData[language].nav;
   const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState<string>('');
+  const [open, setOpen] = useState(false);
+  const [active, setActive] = useState<string>('');
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 30);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const links = [
-    { href: "#about", label: t.about },
-    { href: "#services", label: t.services },
-    { href: "#experience", label: t.experience },
-    { href: "#projects", label: t.projects },
-    { href: "#certificates", label: t.certificates },
-    { href: "#contact", label: t.contact },
-  ];
-
-  // Scrollspy: highlight the nav link matching the section currently in view
   useEffect(() => {
-    const sectionIds = links.map((l) => l.href.slice(1));
-    const sections = sectionIds
-      .map((id) => document.getElementById(id))
-      .filter((el): el is HTMLElement => Boolean(el));
-
-    if (sections.length === 0) return;
-
+    const els = SECTIONS.map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
+    if (!els.length) return;
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
+        entries.forEach((e) => {
+          if (e.isIntersecting) setActive(e.target.id);
         });
       },
-      { rootMargin: '-45% 0px -50% 0px', threshold: 0 }
+      { rootMargin: '-40% 0px -55% 0px', threshold: 0 },
     );
-
-    sections.forEach((el) => observer.observe(el));
+    els.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [language]);
+
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [open]);
+
+  const links = SECTIONS.map((id) => ({ href: `#${id}`, id, label: t[id] }));
+
+  const text = language === 'ar' ? 'محمد البخيتي' : 'M. Al-Bakhity';
+  const sub = language === 'ar' ? 'مساحة · طرق · كميات · GIS' : 'Survey · Roads · Quantities · GIS';
 
   return (
     <>
-      <div className="fixed top-0 left-0 right-0 z-50 flex justify-center w-full px-4 pt-4 md:pt-5 no-print pointer-events-none">
-        <motion.nav
-          initial={{ y: -30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className={`pointer-events-auto w-full max-w-6xl flex items-center justify-between px-5 md:px-7 py-3 md:py-3.5 rounded-2xl md:rounded-full border nav-blur transition-all duration-500 ${
-            scrolled
-              ? "bg-white/85 dark:bg-[#06080f]/85 border-[#1e3a5f]/8 dark:border-white/8 shadow-[0_8px_32px_rgba(30,58,95,0.08),0_1px_3px_rgba(0,0,0,0.04)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
-              : "bg-white/50 dark:bg-[#06080f]/50 border-white/30 dark:border-white/5 shadow-sm"
-          }`}
-        >
-          {/* Logo */}
-          <a href="#" className="flex items-center gap-3 group">
-            <div className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-[#1e3a5f] to-[#2d5a8e] dark:from-[#d4a853] dark:to-[#b8912e] flex items-center justify-center shadow-lg shadow-[#1e3a5f]/20 dark:shadow-[#d4a853]/20 group-hover:scale-105 transition-transform">
-              <Compass className="w-5 h-5 text-white dark:text-[#0f172a]" />
-            </div>
-            <div className="hidden md:block leading-tight">
-              <div className="font-display font-bold text-[14px] tracking-tight text-[#0f172a] dark:text-white">محمد البخيتي</div>
-              <div className="font-mono text-[10px] tracking-[0.15em] uppercase text-[#1e3a5f]/70 dark:text-[#e8c675]/80">Surveying • Roads</div>
-            </div>
+      <a href="#profile" className="skip-link no-print">
+        {language === 'ar' ? 'تخطَّ إلى المحتوى' : 'Skip to content'}
+      </a>
+
+      <header
+        className={cn('nav-shell no-print fixed inset-x-0 top-0 z-50 border-b', scrolled && 'is-scrolled')}
+      >
+        <div className="wrap flex h-[68px] items-center gap-4">
+          {/* Brand */}
+          <a href="#top" className="flex items-center gap-3 shrink-0" aria-label={text}>
+            <span
+              className="grid h-9 w-9 place-items-center rounded-[9px] border"
+              style={{ background: 'var(--navy)', borderColor: 'var(--navy)' }}
+            >
+              <Compass className="h-[18px] w-[18px]" strokeWidth={1.75} color="#F7EFDA" />
+            </span>
+            <span className="hidden leading-tight sm:block">
+              <span className="block text-[13.5px] font-bold" style={{ color: 'var(--txt)' }}>
+                {text}
+              </span>
+              <span className="label block text-[9.5px]!">{sub}</span>
+            </span>
           </a>
 
-          {/* Desktop Links */}
-          <div className="hidden lg:flex items-center gap-1 bg-[#f8f9fc]/80 dark:bg-white/5 rounded-full p-1">
-            {links.map((link) => {
-              const isActive = activeSection === link.href.slice(1);
-              return (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className={`px-4 py-2 rounded-full text-[13px] font-medium transition-all ${
-                    isActive
-                      ? "bg-white dark:bg-white/10 text-[#1e3a5f] dark:text-white shadow-sm"
-                      : "text-body-muted hover:text-[#1e3a5f] dark:hover:text-white hover:bg-white dark:hover:bg-white/10"
-                  }`}
-                >
-                  {link.label}
-                </a>
-              );
-            })}
-          </div>
+          {/* Desktop nav */}
+          <nav className="mx-auto hidden items-center gap-0.5 lg:flex" aria-label={t.menu}>
+            {links.map((l) => (
+              <a
+                key={l.id}
+                href={l.href}
+                aria-current={active === l.id ? 'true' : undefined}
+                className={cn(
+                  'relative rounded-md px-3 py-2 text-[13.5px] font-medium transition-colors',
+                  active === l.id ? '' : 'muted hover:opacity-100',
+                )}
+                style={{ color: active === l.id ? 'var(--txt)' : undefined }}
+              >
+                {l.label}
+                {active === l.id && (
+                  <motion.span
+                    layoutId="nav-underline"
+                    className="absolute inset-x-2.5 -bottom-0.5 h-[2px] rounded-full"
+                    style={{ background: 'var(--gold)' }}
+                  />
+                )}
+              </a>
+            ))}
+          </nav>
 
           {/* Actions */}
-          <div className="flex items-center gap-2 md:gap-3">
-            <div className="flex items-center gap-1 p-1 rounded-full bg-[#f8f9fc] dark:bg-white/5 border border-[#1e3a5f]/5 dark:border-white/5">
-              <button
-                onClick={toggleLanguage}
-                className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-white dark:hover:bg-white/10 text-body-muted hover:text-[#1e3a5f] dark:hover:text-white transition-colors"
-                title="Toggle Language"
-                aria-label={language === 'en' ? 'التبديل إلى العربية' : 'Switch to English'}
-              >
-                <Globe className="w-3.5 h-3.5" />
-              </button>
-              <button
-                onClick={toggleTheme}
-                className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-white dark:hover:bg-white/10 text-body-muted hover:text-[#1e3a5f] dark:hover:text-white transition-colors"
-                title="Toggle Theme"
-                aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
-              >
-                {theme === 'light' ? <Moon className="w-3.5 h-3.5" /> : <Sun className="w-3.5 h-3.5" />}
-              </button>
-            </div>
-
-            <a
-              href={assetUrl("cv/mohammed-albakhity-cv.pdf")}
-              download
-              className="hidden md:inline-flex items-center gap-2 btn-primary !py-2.5 !px-5 !text-[13px]"
-            >
-              <Download className="w-3.5 h-3.5" />
-              {t.downloadCV}
-            </a>
-
-            {/* Mobile menu */}
+          <div className="ms-auto flex items-center gap-2 lg:ms-0">
             <button
-              onClick={() => setMobileOpen(!mobileOpen)}
-              aria-label={mobileOpen ? (language === 'en' ? 'Close menu' : 'إغلاق القائمة') : (language === 'en' ? 'Open menu' : 'فتح القائمة')}
-              aria-expanded={mobileOpen}
-              className="lg:hidden w-10 h-10 flex items-center justify-center rounded-full bg-gradient-to-br from-[#1e3a5f] to-[#2d5a8e] dark:from-[#d4a853] dark:to-[#b8912e] text-white dark:text-[#0f172a] shadow-lg"
+              type="button"
+              onClick={toggleLanguage}
+              className="btn btn-outline btn-sm px-2.5!"
+              aria-label={language === 'ar' ? 'Switch to English' : 'التبديل إلى العربية'}
+              title={language === 'ar' ? 'English' : 'العربية'}
             >
-              {mobileOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+              <Globe className="h-3.5 w-3.5" />
+              <span className="hidden font-mono text-[11px] sm:inline">{language === 'ar' ? 'EN' : 'ع'}</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={toggleTheme}
+              className="btn btn-outline btn-sm px-2.5!"
+              aria-label={theme === 'light' ? (language === 'ar' ? 'الوضع الليلي' : 'Dark mode') : language === 'ar' ? 'الوضع النهاري' : 'Light mode'}
+            >
+              {theme === 'light' ? <Moon className="h-3.5 w-3.5" /> : <Sun className="h-3.5 w-3.5" />}
+            </button>
+
+            <button
+              type="button"
+              onClick={() => downloadCv(language)}
+              className="btn btn-primary btn-sm hidden md:inline-flex"
+            >
+              <Download className="h-3.5 w-3.5" />
+              {t.cv}
+            </button>
+
+            <button
+              type="button"
+              onClick={() => setOpen(true)}
+              className="btn btn-outline btn-sm lg:hidden px-2.5!"
+              aria-label={t.menu}
+              aria-expanded={open}
+            >
+              <Menu className="h-4 w-4" />
             </button>
           </div>
-        </motion.nav>
-      </div>
+        </div>
+      </header>
 
-      {/* Mobile Drawer */}
+      {/* Mobile sheet */}
       <AnimatePresence>
-        {mobileOpen && (
+        {open && (
           <motion.div
-            initial={{ opacity: 0, y: -15 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -15 }}
-            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed top-[76px] left-4 right-4 z-40 lg:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-[60] lg:hidden"
+            style={{ background: 'var(--bg)' }}
+            role="dialog"
+            aria-modal="true"
           >
-            <div className="glass-card rounded-[24px] p-6 border border-[#1e3a5f]/5 dark:border-white/5">
-              <div className="flex flex-col gap-1">
-                {links.map((link) => (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    onClick={() => setMobileOpen(false)}
-                    className="px-5 py-3.5 rounded-xl text-[15px] font-medium text-body-muted hover:bg-[#f8f9fc] dark:hover:bg-white/5 hover:text-[#1e3a5f] dark:hover:text-white transition-colors"
-                  >
-                    {link.label}
-                  </a>
-                ))}
-              </div>
-              <div className="mt-5 pt-5 border-t border-[#1e3a5f]/5 dark:border-white/5">
-                <a
-                  href={assetUrl("cv/mohammed-albakhity-cv.pdf")}
-                  download
-                  className="flex items-center justify-center gap-2 btn-primary w-full"
-                  onClick={() => setMobileOpen(false)}
-                >
-                  <Download className="w-4 h-4" />
-                  {t.downloadCV}
-                </a>
-              </div>
+            <div className="wrap flex h-[68px] items-center justify-between border-b" style={{ borderColor: 'var(--line)' }}>
+              <span className="label">{language === 'ar' ? 'القائمة' : 'Menu'}</span>
+              <button
+                type="button"
+                onClick={() => setOpen(false)}
+                className="btn btn-outline btn-sm px-2.5!"
+                aria-label={language === 'ar' ? 'إغلاق' : 'Close'}
+              >
+                <X className="h-4 w-4" />
+              </button>
             </div>
+            <nav className="wrap mt-4 flex flex-col">
+              {links.map((l, i) => (
+                <a
+                  key={l.id}
+                  href={l.href}
+                  onClick={() => setOpen(false)}
+                  className="flex items-center justify-between border-b py-4 text-[16px] font-semibold"
+                  style={{ borderColor: 'var(--line)', color: 'var(--txt)' }}
+                >
+                  {l.label}
+                  <span className="label">{String(i + 1).padStart(2, '0')}</span>
+                </a>
+              ))}
+              <button type="button" onClick={() => { setOpen(false); downloadCv(language); }} className="btn btn-primary mt-6">
+                <Download className="h-4 w-4" />
+                {t.cv}
+              </button>
+            </nav>
           </motion.div>
         )}
       </AnimatePresence>

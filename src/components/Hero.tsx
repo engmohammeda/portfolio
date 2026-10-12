@@ -1,286 +1,181 @@
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
-import { portfolioData } from '../data';
+import { portfolioData, identity } from '../data';
 import { motion } from 'framer-motion';
-import { Download, ArrowRight, MapPinned, Ruler, Layers, TrendingUp } from 'lucide-react';
-import { assetUrl } from '../lib/utils';
+import { Chip, FigureLabel, StatCell, reveal } from './ui';
+import { Console } from './Console';
+import { waLink, updatedLabel } from '../lib/links';
+import { Download, FileText, MapPin, ArrowLeft, ArrowRight, Ruler } from 'lucide-react';
+import { downloadCv } from '../lib/cv';
 
 export const Hero: React.FC = () => {
-  const { language } = useLanguage();
+  const { language, dir } = useLanguage();
   const t = portfolioData[language].hero;
+  const contact = portfolioData[language].contact;
+  const cv = portfolioData[language].credentials;
+  const Arrow = dir === 'rtl' ? ArrowLeft : ArrowRight;
 
   return (
-    <section id="intro" className="relative pt-32 md:pt-40 pb-20 md:pb-32 overflow-hidden">
-      {/* Background */}
-      <div className="hero-gradient-mesh" />
-      <div className="absolute inset-0 grid-overlay opacity-60 dark:opacity-40" />
-      
-      {/* Floating decorative elements */}
-      <div className="absolute top-20 left-10 w-72 h-72 bg-[#d4a853]/10 dark:bg-[#d4a853]/5 rounded-full blur-[100px] float-element" />
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#1e3a5f]/10 dark:bg-[#1e3a5f]/20 rounded-full blur-[120px] float-element-delay-1" />
-
-      <div className="relative z-10 max-w-6xl mx-auto px-6">
-        {/* Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
-          className="flex justify-center mb-8"
-        >
-          <div className="saas-badge">
-            <span className="pulse-dot" />
-            <span className="font-mono">{t.badge}</span>
-          </div>
+    <section id="top" className="paper relative pt-[92px] md:pt-[104px]">
+      <div className="wrap pb-14 md:pb-20">
+        {/* meta strip */}
+        <motion.div {...reveal} className="flex flex-wrap items-center gap-3 border-b pb-4" style={{ borderColor: 'var(--line)' }}>
+          <Chip tone="live">
+            <span className="status-dot" />
+            {t.status}
+          </Chip>
+          <FigureLabel className="ms-auto flex items-center gap-2">
+            <Ruler className="h-3.5 w-3.5" />
+            {t.sheetNo}
+          </FigureLabel>
+          <FigureLabel className="hidden md:inline">
+            {portfolioData[language].footer.updated}: {updatedLabel(language)}
+          </FigureLabel>
         </motion.div>
 
-        {/* Role Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
-          className="flex justify-center mb-6"
-        >
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-[#1e3a5f]/10 to-[#d4a853]/10 dark:from-[#d4a853]/20 dark:to-[#1e3a5f]/20 border border-[#1e3a5f]/10 dark:border-[#d4a853]/20 text-[#1e3a5f] dark:text-[#e8c675] font-mono text-[11px] font-bold tracking-[0.2em] uppercase">
-            <MapPinned className="w-3.5 h-3.5" />
-            {t.role}
-          </span>
-        </motion.div>
+        <div className="mt-10 grid gap-10 lg:grid-cols-12 lg:gap-12">
+          {/* ---------- left: statement ---------- */}
+          <div className="lg:col-span-7">
+            <motion.p {...reveal} className="label mb-5">
+              {t.role}
+            </motion.p>
 
-        {/* Headline */}
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="text-center font-display font-black tracking-tight leading-[0.95] text-[2.5rem] sm:text-[3.8rem] md:text-[5.5rem] lg:text-[6.5rem] mb-8"
-        >
-          <span className="block text-gradient-primary">{t.headline1}</span>
-          <span className="block text-gradient-primary">{t.headline2}</span>
-          <span className="block text-gradient-gold mt-2">{t.headline3}</span>
-        </motion.h1>
+            <motion.h1
+              {...reveal}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              className="display text-[clamp(2rem,5.6vw,3.9rem)]"
+            >
+              {t.headlineA}
+              <br />
+              <span style={{ color: 'var(--gold)' }}>{t.headlineB}</span>
+            </motion.h1>
 
-        {/* Description */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
-          className="text-center text-[17px] md:text-[19px] leading-relaxed text-body-muted max-w-[680px] mx-auto mb-12 font-light px-4"
-        >
-          {t.description}
-        </motion.p>
+            <motion.p {...reveal} className="lede mt-6 max-w-[62ch]">
+              {t.subhead}
+            </motion.p>
 
-        {/* CTAs */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 md:mb-20"
-        >
-          <a
-            href={assetUrl("cv/mohammed-albakhity-cv.pdf")}
-            download
-            className="group btn-primary w-full sm:w-auto"
-          >
-            <Download className="w-5 h-5" />
-            {t.ctaPrimary}
-            <ArrowRight className="w-4 h-4 opacity-60 group-hover:opacity-100 group-hover:translate-x-1 rtl:rotate-180 rtl:group-hover:-translate-x-1 transition-all" />
-          </a>
-          <a
-            href="#projects"
-            className="btn-secondary w-full sm:w-auto"
-          >
-            {t.ctaSecondary}
-          </a>
-        </motion.div>
-
-        {/* Stats Bar */}
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.55, ease: [0.16, 1, 0.3, 1] }}
-          className="max-w-4xl mx-auto mb-16 md:mb-20"
-        >
-          <div className="grid grid-cols-3 gap-3 md:gap-6">
-            {t.stats.map((stat, i) => (
-              <div key={i} className="stat-card">
-                <div className="font-display font-black text-3xl md:text-4xl lg:text-5xl text-gradient-primary tracking-tight mb-2">
-                  {stat.value}
-                </div>
-                <div className="font-mono text-[10px] md:text-[11px] tracking-[0.12em] uppercase text-subtle font-semibold">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* Dashboard Mockup */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.65, ease: [0.16, 1, 0.3, 1] }}
-          className="relative max-w-6xl mx-auto"
-          dir="ltr"
-        >
-          <div className="mockup-container shine-effect">
-            {/* Mockup Header */}
-            <div className="mockup-header">
-              <div className="flex gap-2">
-                <div className="mockup-dot bg-red-400" />
-                <div className="mockup-dot bg-amber-400" />
-                <div className="mockup-dot bg-green-500" />
-              </div>
-              <div className="hidden md:flex items-center gap-2 ms-6 font-mono text-[11px] text-subtle">
-                <Ruler className="w-3.5 h-3.5" />
-                TOPOGRAPHIC_SURVEY.dwg
-              </div>
-              <div className="ms-auto flex items-center gap-2 font-mono text-[10px] tracking-widest uppercase text-faint">
-                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                <span className="hidden sm:inline">Total Station Active</span>
-                <span className="sm:hidden">Active</span>
-              </div>
-            </div>
-
-            {/* Mockup Content */}
-            <div className="p-4 md:p-6">
-              <div className="grid grid-cols-12 gap-4 md:gap-5">
-                {/* Left - Survey Map */}
-                <div className="col-span-12 lg:col-span-8">
-                  <div className="rounded-2xl bg-gradient-to-br from-[#f8f9fc] to-white dark:from-[#0f172a] dark:to-[#06080f] border border-[#1e3a5f]/5 dark:border-white/5 p-5 md:p-6 relative overflow-hidden min-h-[300px] md:min-h-[440px]">
-                    <div className="absolute inset-0 grid-overlay-fine opacity-50" />
-                    
-                    <div className="relative z-10 h-full flex flex-col">
-                      <div className="flex items-center justify-between mb-6">
-                        <div className="font-mono text-[10px] tracking-[0.15em] uppercase text-subtle flex items-center gap-2">
-                          <Layers className="w-3.5 h-3.5" />
-                          Topographic Survey
-                        </div>
-                        <div className="font-mono text-[10px] md:text-[11px] tracking-wider font-bold text-gold-ink">
-                          N 15°21' E
-                        </div>
-                      </div>
-
-                      {/* Survey visualization */}
-                      <div className="flex-1 relative rounded-xl overflow-hidden bg-white/40 dark:bg-[#0f172a]/40 border border-[#1e3a5f]/8 dark:border-white/8 min-h-[180px]">
-                        <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 300" preserveAspectRatio="none" aria-hidden="true">
-                          <defs>
-                            <pattern id="surveyGrid" width="50" height="50" patternUnits="userSpaceOnUse">
-                              <path d="M 50 0 L 0 0 0 50" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-[#1e3a5f]/10 dark:text-white/6" />
-                            </pattern>
-                          </defs>
-                          <rect width="100%" height="100%" fill="url(#surveyGrid)" />
-
-                          {/* Contour line */}
-                          <path d="M 0 150 Q 100 120 200 160 T 400 140" fill="none" stroke="#b8912e" strokeWidth="1.5" strokeDasharray="8 6" opacity="0.55" className="dark:stroke-[#d4a853]" />
-
-                          {/* Road centerline */}
-                          <path d="M 20 200 C 80 180 140 220 200 200 S 320 160 380 180" fill="none" stroke="#1e3a5f" strokeWidth="3" className="dark:stroke-white" />
-                          <path d="M 20 208 C 80 188 140 228 200 208 S 320 168 380 188" fill="none" stroke="#1e3a5f" strokeWidth="1" opacity="0.4" className="dark:stroke-white" />
-                          <path d="M 20 192 C 80 172 140 212 200 192 S 320 152 380 172" fill="none" stroke="#1e3a5f" strokeWidth="1" opacity="0.4" className="dark:stroke-white" />
-
-                          {/* Survey points */}
-                          <circle cx="60" cy="190" r="5" fill="#b8912e" stroke="white" strokeWidth="2" />
-                          <circle cx="200" cy="200" r="5" fill="#2d5a8e" stroke="white" strokeWidth="2" />
-                          <circle cx="330" cy="170" r="5" fill="#1e3a5f" className="dark:fill-white" stroke="white" strokeWidth="2" />
-                        </svg>
-
-                        {/* Labels */}
-                        <div className="absolute top-3 left-3 font-mono text-[10px] leading-tight bg-white dark:bg-[#0f172a] px-2.5 py-2 rounded-lg border border-[#1e3a5f]/10 dark:border-white/10 shadow-md">
-                          <div className="text-faint">BM-01</div>
-                          <div className="font-bold text-[#1e3a5f] dark:text-white">1254.320m</div>
-                        </div>
-                        <div className="absolute bottom-3 right-3 font-mono text-[10px] leading-tight bg-[#1e3a5f] dark:bg-white text-white dark:text-[#0f172a] px-3 py-2 rounded-lg font-bold shadow-md">
-                          STA 0+320
-                        </div>
-                      </div>
-
-                      <div className="mt-4 flex flex-wrap gap-2 font-mono text-[10px] md:text-[11px]">
-                        <span className="px-3 py-1.5 rounded-full bg-[#1e3a5f] dark:bg-white text-white dark:text-[#0f172a] font-bold">SCALE 1:500</span>
-                        <span className="px-3 py-1.5 rounded-full border border-[#1e3a5f]/10 dark:border-white/10 bg-white dark:bg-[#0f172a] text-subtle">WGS84 • UTM</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Right - Data Panels (desktop only: keeps the mobile hero compact) */}
-                <div className="hidden lg:flex col-span-12 lg:col-span-4 flex-col gap-5">
-                  {/* Coordinates Card */}
-                  <div className="rounded-2xl bg-gradient-to-br from-[#1e3a5f] to-[#2d5a8e] text-white p-6 shadow-xl shadow-[#1e3a5f]/20">
-                    <div className="font-mono text-[10px] tracking-[0.15em] uppercase opacity-80 mb-4">Coordinates • BM-01</div>
-                    <div className="space-y-3 font-mono text-[13px]">
-                      <div className="flex justify-between items-center">
-                        <span className="opacity-80">N</span>
-                        <span className="font-bold">15°21'34.2"</span>
-                      </div>
-                      <div className="flex justify-between items-center">
-                        <span className="opacity-80">E</span>
-                        <span className="font-bold">44°12'11.8"</span>
-                      </div>
-                      <div className="flex justify-between items-center">
-                        <span className="opacity-80">Elev</span>
-                        <span className="font-bold text-[#e8c675]">1254.320m</span>
-                      </div>
-                      <div className="pt-4 mt-4 border-t border-white/10 flex justify-between items-center text-[11px]">
-                        <span className="opacity-80">Accuracy</span>
-                        <span className="font-bold">±2mm</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Quantities Card */}
-                  <div className="rounded-2xl bg-white dark:bg-[#0f172a] border border-[#1e3a5f]/5 dark:border-white/5 p-6 flex-1 shadow-lg">
-                    <div className="font-mono text-[10px] tracking-[0.15em] uppercase text-subtle mb-5 flex items-center justify-between">
-                      <span className="flex items-center gap-2">
-                        <TrendingUp className="w-3.5 h-3.5" />
-                        Quantities
+            {/* work chain */}
+            <motion.div {...reveal} className="mt-8">
+              <FigureLabel className="mb-3 block">
+                {language === 'ar' ? 'سلسلة العمل' : 'Work chain'}
+              </FigureLabel>
+              <ol className="flex flex-wrap items-center gap-x-2 gap-y-2">
+                {t.chain.map((step, i) => (
+                  <li key={step} className="flex items-center gap-2">
+                    <span className="flex items-center gap-2">
+                      <span className="font-mono text-[10px]" style={{ color: 'var(--gold)' }}>
+                        {String(i + 1).padStart(2, '0')}
                       </span>
-                      <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                    </div>
-                    <div className="space-y-5">
-                      {[
-                        { label: "Excavation", value: "1,240 m³", pct: 75 },
-                        { label: "Backfill", value: "860 m³", pct: 60 },
-                        { label: "Asphalt", value: "2,100 m²", pct: 45 },
-                      ].map((q, i) => (
-                        <div key={i}>
-                          <div className="flex justify-between font-mono text-[11px] mb-2">
-                            <span className="text-body-muted">{q.label}</span>
-                            <span className="font-bold text-[#1e3a5f] dark:text-white">{q.value}</span>
-                          </div>
-                          <div className="h-2 rounded-full bg-[#f8f9fc] dark:bg-white/5 overflow-hidden">
-                            <motion.div
-                              initial={{ width: 0 }}
-                              animate={{ width: `${q.pct}%` }}
-                              transition={{ duration: 1, delay: 1 + i * 0.15, ease: [0.16, 1, 0.3, 1] }}
-                              className="h-full bg-gradient-to-r from-[#d4a853] to-[#e8c675] rounded-full"
-                            />
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                    <div className="mt-6 pt-5 border-t border-[#1e3a5f]/5 dark:border-white/5 font-mono text-[10px] text-subtle flex items-center gap-2">
-                      <div className="w-3.5 h-3.5 rounded-full border border-[#1e3a5f]/20 dark:border-white/20 flex items-center justify-center">
-                        <div className="w-1.5 h-1.5 rounded-full bg-[#1e3a5f] dark:bg-white" />
-                      </div>
-                      Auto-calculated • Civil 3D
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+                      <span className="text-[13.5px] font-semibold" style={{ color: 'var(--txt)' }}>
+                        {step}
+                      </span>
+                    </span>
+                    {i < t.chain.length - 1 && (
+                      <Arrow className="h-3.5 w-3.5" style={{ color: 'var(--line-strong)' }} aria-hidden />
+                    )}
+                  </li>
+                ))}
+              </ol>
+            </motion.div>
 
-            {/* Bottom decoration */}
-            <div className="hidden md:block px-6 pb-5">
-              <div className="flex items-center gap-3">
-                <div className="flex-1 measure-decoration" />
-                <div className="font-mono text-[10px] tracking-[0.2em] text-faint">15.5 KM ROAD • PRECISION SURVEY</div>
-                <div className="flex-1 measure-decoration" />
-              </div>
-            </div>
+            {/* CTAs */}
+            <motion.div {...reveal} className="mt-9 flex flex-wrap items-center gap-3">
+              <button type="button" onClick={() => downloadCv(language)} className="btn btn-primary btn-lg">
+                <Download className="h-4 w-4" />
+                {t.ctaPrimary}
+              </button>
+              <a
+                href={waLink(`${contact.waText}: ${language === 'ar' ? 'أرغب بالتواصل بخصوص عمل' : 'I would like to discuss work'}`)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-wa btn-lg"
+              >
+                {t.ctaSecondary}
+              </a>
+              <a href="#capabilities" className="link-rule ms-1 text-[14px]">
+                {t.ctaTertiary}
+                <Arrow className="h-3.5 w-3.5" />
+              </a>
+            </motion.div>
           </div>
 
-          {/* Glow effect */}
-          <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 w-[80%] h-32 bg-gradient-to-r from-[#1e3a5f]/10 via-[#d4a853]/15 to-[#1e3a5f]/10 dark:from-[#1e3a5f]/20 dark:via-[#d4a853]/10 dark:to-[#1e3a5f]/20 blur-[60px] -z-10 rounded-full" />
+          {/* ---------- right: hire card ---------- */}
+          <motion.aside {...reveal} transition={{ duration: 0.6, delay: 0.1 }} className="lg:col-span-5">
+            <div className="sheet ticks overflow-hidden">
+              <div className="sheet-head">
+                <FileText className="h-3.5 w-3.5" style={{ color: 'var(--gold)' }} />
+                <FigureLabel>{portfolioData[language].profile.searchTitle}</FigureLabel>
+              </div>
+
+              <div className="sheet-body">
+                <ul className="space-y-2.5">
+                  {portfolioData[language].profile.searchRoles.map((role) => (
+                    <li key={role} className="flex items-center gap-2.5 text-[14px] font-medium" style={{ color: 'var(--txt)' }}>
+                      <span className="h-1.5 w-1.5 rounded-full" style={{ background: 'var(--gold)' }} />
+                      {role}
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {portfolioData[language].profile.workTypes.map((w) => (
+                    <Chip key={w}>{w}</Chip>
+                  ))}
+                </div>
+
+                <div className="rule my-5" />
+
+                <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+                  <MapPin className="h-4 w-4" style={{ color: 'var(--gold)' }} />
+                  <span className="text-[13.5px] font-semibold" style={{ color: 'var(--txt)' }}>
+                    {identity[language === 'ar' ? 'locationAr' : 'locationEn']}
+                  </span>
+                  <span className="label ms-auto">{contact.responseNote}</span>
+                </div>
+
+                <div className="mt-5 grid grid-cols-2 gap-3">
+                  <a href={`mailto:${identity.email}`} className="btn btn-outline btn-sm w-full">
+                    {language === 'ar' ? 'البريد' : 'Email'}
+                  </a>
+                  <a
+                    href={waLink(`${contact.waText}: ${language === 'ar' ? 'فرصة عمل' : 'job opportunity'}`)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-outline btn-sm w-full"
+                  >
+                    WhatsApp
+                  </a>
+                </div>
+
+                <button type="button" onClick={() => downloadCv(language)} className="link-rule mt-5 text-[13px]">
+                  <Download className="h-3.5 w-3.5" />
+                  {cv.cvBtn} · {language === 'ar' ? 'محدّث' : 'current'}
+                </button>
+              </div>
+            </div>
+          </motion.aside>
+        </div>
+
+        {/* ---------- stats ---------- */}
+        <motion.div {...reveal} className="mt-14 grid grid-cols-2 gap-6 md:grid-cols-4 md:gap-8">
+          {t.stats.map((s) => (
+            <StatCell key={s.label} value={s.value} label={s.label} note={s.note} />
+          ))}
         </motion.div>
+
+        {/* ---------- console ---------- */}
+        <div className="mt-14 md:mt-20">
+          <div className="mb-4 flex flex-wrap items-end justify-between gap-3">
+            <div>
+              <FigureLabel className="mb-2 block">{language === 'ar' ? 'عرض تفاعلي' : 'Interactive'}</FigureLabel>
+              <h2 className="font-display text-[22px] font-bold md:text-[26px]" style={{ color: 'var(--txt)' }}>
+                {t.console.title}
+              </h2>
+            </div>
+            <FigureLabel className="max-w-[42ch] text-end">{t.console.footnote}</FigureLabel>
+          </div>
+          <Console />
+        </div>
       </div>
     </section>
   );

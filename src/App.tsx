@@ -3,52 +3,39 @@ import { LanguageProvider } from './context/LanguageContext';
 import { ThemeProvider } from './context/ThemeContext';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { About } from './components/About';
+import { Profile } from './components/Profile';
+import { Capabilities } from './components/Capabilities';
 import { Services } from './components/Services';
-import { Experience } from './components/Experience';
 import { Projects } from './components/Projects';
-import { Certificates } from './components/Certificates';
+import { Experience } from './components/Experience';
+import { Credentials } from './components/Credentials';
 import { Contact } from './components/Contact';
-import { WhatsAppButton } from './components/WhatsAppButton';
-
-function AppContent() {
-  return (
-    <div className="min-h-screen font-sans selection:bg-[#d4a853] selection:text-white relative overflow-x-hidden transition-colors duration-300">
-      <Navbar />
-      
-      <main className="relative z-10">
-        <Hero />
-        <About />
-        <Services />
-        <Experience />
-        <Projects />
-        <Certificates />
-        <Contact />
-      </main>
-
-      <WhatsAppButton />
-
-      {/* Footer line */}
-      <div className="relative z-10 max-w-6xl mx-auto px-6 pb-10">
-        <div className="flex items-center gap-4 opacity-60">
-          <div className="flex-1 h-[1px] bg-gradient-to-r from-transparent to-[#1e3a5f]/20 dark:to-white/10" />
-          <div className="font-mono text-[10px] tracking-[0.25em] uppercase text-[#1e3a5f]/70 dark:text-white/50 flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full border border-current" />
-            DWG • PDF • TOPOGRAPHIC • ROADS
-            <span className="w-1.5 h-1.5 rounded-full bg-[#d4a853]" />
-          </div>
-          <div className="flex-1 h-[1px] bg-gradient-to-l from-transparent to-[#1e3a5f]/20 dark:to-white/10" />
-        </div>
-      </div>
-    </div>
-  );
-}
+import { Footer } from './components/Footer';
+import { FloatingWA } from './components/FloatingWA';
+import { ResumeSheet } from './components/ResumeSheet';
 
 export default function App() {
   return (
     <ThemeProvider>
       <LanguageProvider>
-        <AppContent />
+        <div id="site" className="min-h-screen selection:bg-(--gold) selection:text-white">
+          <Navbar />
+          <main>
+            <Hero />
+            <Profile />
+            <Capabilities />
+            <Services />
+            <Projects />
+            <Experience />
+            <Credentials />
+            <Contact />
+          </main>
+          <Footer />
+          <FloatingWA />
+        </div>
+
+        {/* print-only CV sheet (shown by the "Print / save PDF" action) */}
+        <ResumeSheet />
       </LanguageProvider>
     </ThemeProvider>
   );

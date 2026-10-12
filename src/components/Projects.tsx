@@ -1,154 +1,147 @@
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { portfolioData } from '../data';
 import { motion } from 'framer-motion';
-import { MapPin, Calendar, Ruler, ArrowUpRight } from 'lucide-react';
+import { Blueprint, type BlueprintKind } from './Blueprint';
+import { Chip, FigureLabel, SectionHeader, SectionShell, reveal } from './ui';
+import { MapPin, Calendar, Layers } from 'lucide-react';
+
+const PREVIEW: Record<string, BlueprintKind> = {
+  road: 'roads',
+  subdivision: 'cadastral',
+  building: 'survey',
+  quantities: 'quantities',
+  asbuilt: 'cad',
+  gis: 'gis',
+  supervision: 'site',
+};
 
 export const Projects: React.FC = () => {
   const { language } = useLanguage();
   const t = portfolioData[language].projects;
+  const [filter, setFilter] = useState('all');
+
+  const items = useMemo(
+    () => (filter === 'all' ? t.items : t.items.filter((p) => p.track === filter)),
+    [filter, t.items],
+  );
+
+  const trackLabel = (id: string) => t.filters.find((f) => f.id === id)?.label ?? id;
 
   return (
-    <section id="projects" className="py-24 md:py-36 relative">
-      {/* Background accent */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#1e3a5f]/[0.015] to-transparent dark:via-[#d4a853]/[0.015] pointer-events-none" />
+    <SectionShell id="projects" tone="panel">
+      <SectionHeader no={`04 / ${language === 'ar' ? 'نماذج الأعمال' : 'PROJECTS'}`} title={t.title} desc={t.desc} />
 
-      <div className="max-w-6xl mx-auto px-6 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16"
-        >
-          <div className="max-w-lg">
-            <div className="section-label mb-5">{t.badge}</div>
-            <h2 className="font-display font-black tracking-tight text-[2rem] md:text-[3rem] leading-[0.95] text-[#0f172a] dark:text-white">
-              {t.title}
-            </h2>
-          </div>
-          <p className="text-[15px] leading-relaxed text-subtle max-w-[380px] font-light">
-            {t.description}
-          </p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {t.items.map((project, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.08, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="group"
+      {/* filters */}
+      <motion.div {...reveal} className="mb-7 flex flex-wrap items-center gap-2">
+        {t.filters.map((f) => {
+          const active = filter === f.id;
+          return (
+            <button
+              key={f.id}
+              type="button"
+              onClick={() => setFilter(f.id)}
+              aria-pressed={active}
+              className="rounded-[8px] border px-3.5 py-2 text-[13px] font-semibold transition-colors"
+              style={{
+                borderColor: active ? 'var(--navy)' : 'var(--line)',
+                background: active ? 'var(--navy)' : 'var(--panel)',
+                color: active ? '#fff' : 'var(--txt-2)',
+              }}
             >
-              <div className="glass-card glass-card-hover rounded-[28px] overflow-hidden flex flex-col h-full">
-                {/* Preview Header - Blueprint */}
-                <div dir="ltr" className="relative h-[200px] md:h-[220px] bg-gradient-to-br from-[#f8f9fc] to-white dark:from-[#0f172a] dark:to-[#06080f] border-b border-[#1e3a5f]/5 dark:border-white/5 overflow-hidden">
-                  <div className="absolute inset-0 grid-overlay-fine opacity-40" />
-                  <div className="absolute inset-0 p-5">
-                    <svg viewBox="0 0 300 160" className="w-full h-full">
-                      {index === 0 && (
-                        <>
-                          {/* Road project */}
-                          <path d="M 10 100 C 60 80 120 120 180 90 S 250 70 290 85" fill="none" stroke="#1e3a5f" strokeWidth="2.5" className="dark:stroke-white" />
-                          <path d="M 10 105 C 60 85 120 125 180 95 S 250 75 290 90" fill="none" stroke="#1e3a5f" strokeWidth="0.8" opacity="0.4" className="dark:stroke-white" />
-                          <path d="M 10 95 C 60 75 120 115 180 85 S 250 65 290 80" fill="none" stroke="#1e3a5f" strokeWidth="0.8" opacity="0.4" className="dark:stroke-white" />
-                          <circle cx="80" cy="95" r="4" fill="#d4a853" />
-                          <circle cx="160" cy="110" r="4" fill="#2d5a8e" className="dark:fill-[#e8c675]" />
-                          <circle cx="230" cy="75" r="4" fill="#1e3a5f" className="dark:fill-white" />
-                          <text x="150" y="20" textAnchor="middle" fontFamily="monospace" fontSize="9" fill="#475569" className="dark:fill-white/50">ROAD CENTERLINE • 15KM</text>
-                        </>
-                      )}
-                      {index === 1 && (
-                        <>
-                          {/* Land subdivision */}
-                          <rect x="20" y="20" width="260" height="120" fill="none" stroke="#1e3a5f" strokeWidth="1.5" strokeDasharray="8 4" className="dark:stroke-white/40" />
-                          <line x1="20" y1="80" x2="280" y2="80" stroke="#1e3a5f" strokeWidth="0.8" opacity="0.5" className="dark:stroke-white/30" />
-                          <line x1="150" y1="20" x2="150" y2="140" stroke="#1e3a5f" strokeWidth="0.8" opacity="0.5" className="dark:stroke-white/30" />
-                          <rect x="30" y="30" width="90" height="40" fill="none" stroke="#d4a853" strokeWidth="1.2" />
-                          <rect x="160" y="30" width="90" height="40" fill="none" stroke="#2d5a8e" strokeWidth="1.2" className="dark:stroke-[#e8c675]" />
-                          <rect x="30" y="90" width="90" height="40" fill="none" stroke="#1e3a5f" strokeWidth="1.2" className="dark:stroke-white/50" />
-                          <text x="150" y="155" textAnchor="middle" fontFamily="monospace" fontSize="8" fill="#475569" className="dark:fill-white/50">48 PLOTS • 12,000 m²</text>
-                        </>
-                      )}
-                      {index === 2 && (
-                        <>
-                          {/* Building layout */}
-                          <rect x="70" y="40" width="160" height="80" fill="none" stroke="#1e3a5f" strokeWidth="2" className="dark:stroke-white" />
-                          <rect x="85" y="55" width="40" height="30" fill="none" stroke="#d4a853" strokeWidth="1.2" />
-                          <rect x="140" y="55" width="30" height="25" fill="none" stroke="#2d5a8e" strokeWidth="1" className="dark:stroke-[#e8c675]" />
-                          <line x1="10" y1="130" x2="290" y2="130" stroke="#d4a853" strokeWidth="1.2" strokeDasharray="6 4" />
-                          <circle cx="150" cy="130" r="5" fill="#d4a853" stroke="white" strokeWidth="1.5" />
-                          <text x="150" y="20" textAnchor="middle" fontFamily="monospace" fontSize="8" fill="#475569" className="dark:fill-white/50">BM • N 0°00' E • 12.5m</text>
-                        </>
-                      )}
-                    </svg>
-                  </div>
-                  
-                  {/* Badges */}
-                  <div className="absolute top-4 left-4 right-4 flex justify-between items-start">
-                    <span className="font-mono text-[10px] font-bold px-3 py-1.5 rounded-full bg-[#1e3a5f] dark:bg-white text-white dark:text-[#0f172a] shadow-lg">
-                      {project.type}
-                    </span>
-                    <span className="font-mono text-[10px] font-semibold px-3 py-1.5 rounded-full bg-white/90 dark:bg-[#0f172a]/90 backdrop-blur border border-[#1e3a5f]/10 dark:border-white/10 text-body-muted">
-                      {project.year}
-                    </span>
-                  </div>
-                  <div className="absolute bottom-4 left-4 font-mono text-[10px] text-subtle flex items-center gap-1.5">
-                    <Ruler className="w-3 h-3" /> SCALE 1:500 • {project.location}
-                  </div>
-                </div>
+              {f.label}
+              <span className="ms-2 font-mono text-[10.5px] opacity-60">
+                {f.id === 'all' ? t.items.length : t.items.filter((p) => p.track === f.id).length}
+              </span>
+            </button>
+          );
+        })}
+      </motion.div>
 
-                {/* Content */}
-                <div className="p-7 flex-1 flex flex-col">
-                  <h3 className="font-display font-bold text-[17px] leading-tight text-[#0f172a] dark:text-white mb-3">
-                    {project.title}
-                  </h3>
-                  <p className="text-[13.5px] leading-[1.7] text-subtle font-light flex-1 mb-6">
-                    {project.desc}
-                  </p>
+      {items.length === 0 && (
+        <p className="lede" style={{ color: 'var(--txt-3)' }}>
+          {t.empty}
+        </p>
+      )}
 
-                  {/* Stats */}
-                  {project.stats && (
-                    <div className="grid grid-cols-3 gap-3 mb-5 pt-5 border-t border-[#1e3a5f]/5 dark:border-white/5">
-                      {Object.entries(project.stats).slice(0, 3).map(([key, value]) => (
-                        <div key={key} className="text-center">
-                          <div className="font-mono text-[11px] font-bold text-[#1e3a5f] dark:text-[#e8c675]">{value}</div>
-                          <div className="font-mono text-[10px] text-faint uppercase tracking-wider mt-1">{key}</div>
-                        </div>
-                      ))}
-                    </div>
-                  )}
+      <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+        {items.map((p, i) => (
+          <motion.article
+            key={p.code}
+            layout
+            {...reveal}
+            transition={{ duration: 0.45, delay: Math.min(i * 0.04, 0.2) }}
+            className="sheet sheet-hover flex flex-col overflow-hidden"
+          >
+            {/* drawing preview */}
+            <div className="viewport relative border-b" style={{ borderColor: 'var(--line)' }}>
+              <div className="flex items-center justify-between border-b px-3.5 py-2" style={{ borderColor: 'var(--line)' }}>
+                <FigureLabel className="text-[10px]!">{p.code}</FigureLabel>
+                <span className="flex items-center gap-2">
+                  <Layers className="h-3 w-3" style={{ color: 'var(--gold)' }} />
+                  <FigureLabel className="text-[10px]!">{trackLabel(p.track)}</FigureLabel>
+                </span>
+              </div>
+              <div className="aspect-[16/9] w-full p-3">
+                <Blueprint kind={PREVIEW[p.preview] ?? 'survey'} className="h-full w-full" />
+              </div>
+              <div className="pointer-events-none absolute inset-x-3.5 bottom-2 flex items-center justify-between">
+                <FigureLabel className="text-[9px]!">SCALE 1:250</FigureLabel>
+                <FigureLabel className="text-[9px]!">{p.year}</FigureLabel>
+              </div>
+            </div>
 
-                  <div className="flex items-center justify-between pt-5 border-t border-[#1e3a5f]/5 dark:border-white/5">
-                    <div className="flex items-center gap-3 font-mono text-[11px] text-faint">
-                      <span className="flex items-center gap-1"><MapPin className="w-3 h-3" /> {project.location}</span>
-                      <span className="flex items-center gap-1"><Calendar className="w-3 h-3" /> {project.year}</span>
+            <div className="flex flex-1 flex-col p-5">
+              <h3 className="font-display text-[16.5px] font-bold leading-tight" style={{ color: 'var(--txt)' }}>
+                {p.title}
+              </h3>
+              <p className="mt-1.5 font-mono text-[11px]" style={{ color: 'var(--gold)' }}>
+                {p.scope}
+              </p>
+              <p className="mt-3 text-[13px] leading-relaxed" style={{ color: 'var(--txt-2)' }}>
+                {p.desc}
+              </p>
+
+              <div className="mt-5 grid grid-cols-3 gap-3 border-y py-3" style={{ borderColor: 'var(--line)' }}>
+                {p.stats.map((s) => (
+                  <div key={s.label}>
+                    <div className="font-mono text-[13px] font-semibold" style={{ color: 'var(--txt)' }}>
+                      {s.value}
                     </div>
-                    <div className="w-8 h-8 rounded-full bg-[#1e3a5f]/5 dark:bg-white/5 flex items-center justify-center group-hover:bg-[#d4a853] group-hover:text-white dark:group-hover:bg-[#d4a853] dark:group-hover:text-[#0f172a] text-subtle transition-all duration-300">
-                      <ArrowUpRight className="w-4 h-4 rtl:-rotate-90" />
-                    </div>
+                    <div className="label mt-1 text-[9.5px]!">{s.label}</div>
                   </div>
+                ))}
+              </div>
+
+              <div className="mt-4">
+                <FigureLabel className="mb-2 block">{t.deliverLabel}</FigureLabel>
+                <div className="flex flex-wrap gap-1.5">
+                  {p.deliverables.map((d) => (
+                    <Chip key={d} className="text-[11.5px]!">
+                      {d}
+                    </Chip>
+                  ))}
                 </div>
               </div>
-            </motion.div>
-          ))}
-        </div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="mt-12 text-center"
-        >
-          <p className="font-mono text-[11px] tracking-[0.15em] uppercase text-faint">
-            {language === 'en' 
-              ? "More project documentation available upon request • DWG • PDF • Reports" 
-              : "مزيد من توثيق المشاريع متاح عند الطلب • DWG • PDF • تقارير"}
-          </p>
-        </motion.div>
+              <div className="mt-auto flex items-center gap-4 pt-4 text-[11.5px]" style={{ color: 'var(--txt-3)' }}>
+                <span className="flex items-center gap-1.5">
+                  <MapPin className="h-3 w-3" />
+                  {p.location}
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <Calendar className="h-3 w-3" />
+                  {p.year}
+                </span>
+              </div>
+            </div>
+          </motion.article>
+        ))}
       </div>
-    </section>
+
+      <motion.p {...reveal} className="label mt-8 text-center">
+        {t.footnote}
+      </motion.p>
+    </SectionShell>
   );
 };

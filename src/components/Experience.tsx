@@ -2,106 +2,129 @@ import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { portfolioData } from '../data';
 import { motion } from 'framer-motion';
-import { Briefcase, GraduationCap, MapPin, Calendar } from 'lucide-react';
+import { Chip, FigureLabel, Meter, SectionHeader, SectionShell, reveal } from './ui';
+import { Briefcase, GraduationCap, MapPin, Sparkles } from 'lucide-react';
+
+const TYPE_META: Record<string, { icon: React.ElementType; color: string }> = {
+  work: { icon: Briefcase, color: 'var(--gold)' },
+  education: { icon: GraduationCap, color: '#12798A' },
+  training: { icon: Sparkles, color: 'var(--line-strong)' },
+};
 
 export const Experience: React.FC = () => {
   const { language } = useLanguage();
   const t = portfolioData[language].experience;
 
   return (
-    <section id="experience" className="py-24 md:py-36 relative">
-      <div className="max-w-6xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="mb-16"
-        >
-          <div className="section-label mb-5">{t.badge}</div>
-          <h2 className="font-display font-black tracking-tight text-[2rem] md:text-[3rem] leading-[0.95] text-[#0f172a] dark:text-white">
-            {t.title}
-          </h2>
-        </motion.div>
+    <SectionShell id="experience">
+      <SectionHeader
+        no={`05 / ${language === 'ar' ? 'الخبرة' : 'EXPERIENCE'}`}
+        title={t.title}
+        desc={t.desc}
+      />
 
-        <div className="relative">
-          {/* Timeline line */}
-          <div className="timeline-line hidden md:block" />
-          <div className="absolute start-6 top-0 bottom-0 w-[2px] bg-gradient-to-b from-[#d4a853] via-[#1e3a5f]/20 to-transparent md:hidden" />
+      {/* timeline */}
+      <div className="relative">
+        <div
+          className="absolute bottom-0 top-2 w-px"
+          style={{ insetInlineStart: 11, background: 'linear-gradient(to bottom, var(--gold), var(--line-strong), transparent)' }}
+          aria-hidden
+        />
+        <ol className="space-y-5">
+          {t.jobs.map((job, i) => {
+            const meta = TYPE_META[job.type] ?? TYPE_META.work;
+            const Icon = meta.icon;
+            return (
+              <motion.li key={`${job.role}-${job.period}`} {...reveal} transition={{ duration: 0.5, delay: Math.min(i * 0.06, 0.24) }} className="relative ps-10">
+                <span
+                  className="absolute top-6 grid h-[23px] w-[23px] place-items-center rounded-full border-2"
+                  style={{ insetInlineStart: 0, background: 'var(--bg)', borderColor: meta.color }}
+                >
+                  <span className="h-1.5 w-1.5 rounded-full" style={{ background: meta.color }} />
+                </span>
 
-          <div className="space-y-12 md:space-y-16">
-            {t.jobs.map((job, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="relative grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-6 md:gap-10 group"
-              >
-                {/* Left meta (desktop) */}
-                <div className={`hidden md:block ${index % 2 === 0 ? 'text-end pe-10' : 'order-last ps-10'}`}>
-                  <div className="inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.15em] uppercase px-4 py-2 rounded-full bg-gradient-to-r from-[#d4a853]/10 to-[#d4a853]/5 border border-[#d4a853]/20 text-gold-ink mb-3">
-                    <Calendar className="w-3 h-3" />
-                    {job.period}
-                  </div>
-                  <div className="font-mono text-[12px] text-subtle flex items-center gap-2 justify-end">
-                    <MapPin className="w-3.5 h-3.5" />
-                    {job.location}
-                  </div>
-                </div>
-
-                {/* Timeline dot */}
-                <div className="hidden md:flex items-start justify-center pt-3">
-                  <div className="relative">
-                    <div className="w-4 h-4 rounded-full bg-white dark:bg-[#06080f] border-[3px] border-[#d4a853] shadow-[0_0_0_6px_rgba(212,168,83,0.1)] group-hover:scale-125 group-hover:border-[#1e3a5f] dark:group-hover:border-[#d4a853] transition-all duration-300 z-10" />
-                  </div>
-                </div>
-
-                {/* Content card */}
-                <div className={`${index % 2 === 0 ? 'md:order-last md:ps-10' : 'md:pe-10'} ps-12 md:ps-0`}>
-                  {/* Mobile meta */}
-                  <div className="md:hidden mb-4">
-                    <div className="inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.15em] uppercase px-3 py-1.5 rounded-full bg-[#d4a853]/10 border border-[#d4a853]/20 text-gold-ink mb-2">
-                      <Calendar className="w-3 h-3" />
+                <div className="sheet p-5 md:p-6">
+                  <div className="flex flex-wrap items-center gap-3">
+                    <Chip tone={job.type === 'work' ? 'gold' : job.type === 'education' ? 'teal' : 'default'} mono>
                       {job.period}
-                    </div>
-                    <div className="font-mono text-[11px] text-subtle flex items-center gap-1.5">
-                      <MapPin className="w-3 h-3" />
+                    </Chip>
+                    <span className="flex items-center gap-1.5">
+                      <Icon className="h-3.5 w-3.5" style={{ color: meta.color }} />
+                      <FigureLabel className="text-[10px]!">
+                        {job.type === 'work'
+                          ? language === 'ar' ? 'عمل' : 'WORK'
+                          : job.type === 'education'
+                            ? language === 'ar' ? 'تعليم' : 'EDUCATION'
+                            : language === 'ar' ? 'تدريب' : 'TRAINING'}
+                      </FigureLabel>
+                    </span>
+                    <span className="ms-auto flex items-center gap-1.5 text-[11.5px]" style={{ color: 'var(--txt-3)' }}>
+                      <MapPin className="h-3 w-3" />
                       {job.location}
-                    </div>
+                    </span>
                   </div>
 
-                  {/* Mobile dot */}
-                  <div className="absolute start-6 top-6 -translate-x-1/2 rtl:translate-x-1/2 w-3.5 h-3.5 rounded-full bg-white dark:bg-[#06080f] border-[3px] border-[#d4a853] shadow-[0_0_0_4px_rgba(212,168,83,0.15)] md:hidden z-10" />
+                  <h3 className="mt-3.5 font-display text-[17px] font-bold leading-snug" style={{ color: 'var(--txt)' }}>
+                    {job.role}
+                  </h3>
+                  <p className="mt-1 text-[13px] font-medium" style={{ color: 'var(--gold)' }}>
+                    {job.org}
+                  </p>
 
-                  <div className="glass-card rounded-[24px] p-7 md:p-8 group-hover:shadow-[0_8px_32px_rgba(30,58,95,0.08)] dark:group-hover:shadow-[0_8px_32px_rgba(0,0,0,0.3)] transition-all duration-500">
-                    <div className="flex items-start gap-4 mb-4">
-                      <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-[#1e3a5f] to-[#2d5a8e] dark:from-[#d4a853] dark:to-[#b8912e] flex items-center justify-center shrink-0 shadow-lg">
-                        {job.type === 'work' 
-                          ? <Briefcase className="w-5 h-5 text-white dark:text-[#0f172a]" />
-                          : <GraduationCap className="w-5 h-5 text-white dark:text-[#0f172a]" />
-                        }
-                      </div>
-                      <div>
-                        <h3 className="font-display font-bold text-[17px] leading-tight text-[#0f172a] dark:text-white">
-                          {job.role}
-                        </h3>
-                        <div className="font-medium text-[13px] text-subtle mt-1.5">
-                          {job.company}
-                        </div>
-                      </div>
-                    </div>
-                    <p className="text-[14px] leading-[1.8] text-subtle font-light">
-                      {job.desc}
-                    </p>
-                  </div>
+                  <ul className="mt-4 grid gap-2 md:grid-cols-2">
+                    {job.bullets.map((b) => (
+                      <li key={b} className="flex gap-2.5 text-[13px] leading-relaxed" style={{ color: 'var(--txt-2)' }}>
+                        <span aria-hidden className="mt-[9px] h-px w-3 shrink-0" style={{ background: 'var(--gold)' }} />
+                        {b}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
+              </motion.li>
+            );
+          })}
+        </ol>
       </div>
-    </section>
+
+      {/* skills matrix */}
+      <motion.div {...reveal} className="mt-14">
+        <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
+          <div>
+            <h3 className="font-display text-[19px] font-bold" style={{ color: 'var(--txt)' }}>
+              {t.skillsTitle}
+            </h3>
+            <p className="mt-1.5 text-[13px]" style={{ color: 'var(--txt-3)' }}>
+              {t.skillsDesc}
+            </p>
+          </div>
+          <FigureLabel className="max-w-[46ch] text-end">{t.skillsNote}</FigureLabel>
+        </div>
+
+        <div className="grid gap-5 md:grid-cols-2">
+          {t.groups.map((group) => (
+            <div key={group.id} className="sheet overflow-hidden">
+              <div className="sheet-head">
+                <FigureLabel>{group.title}</FigureLabel>
+              </div>
+              <table className="spec-table">
+                <tbody>
+                  {group.items.map((s) => (
+                    <tr key={s.name}>
+                      <td style={{ color: 'var(--txt)' }}>{s.name}</td>
+                      <td className="w-[86px]">
+                        <Meter level={s.level} />
+                      </td>
+                      <td className="w-[74px] text-end">
+                        <span className="label text-[10px]!">{s.label}</span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ))}
+        </div>
+      </motion.div>
+    </SectionShell>
   );
 };
