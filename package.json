@@ -1,9 +1,9 @@
 {
   "name": "mohammed-albakhity-portfolio",
   "private": true,
-  "version": "3.0.0",
+  "version": "4.0.0",
   "type": "module",
-  "description": "Professional portfolio for Mohammed Al-Bakhity — Surveying & Roads engineer: field survey, roads & setting-out, quantity take-off (BOQ), AutoCAD/CAD drafting, GIS mapping and site supervision reporting.",
+  "description": "Compact professional portfolio for Mohammed Al-Bakhity — Surveying & Roads engineer: field survey, roads & setting-out, quantity take-off (BOQ), AutoCAD/CAD drafting, GIS mapping and site supervision.",
   "keywords": [
     "surveying",
     "roads",

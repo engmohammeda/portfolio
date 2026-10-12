@@ -1,4 +1,5 @@
 import React from 'react';
+import type { BlueprintKind } from '../data';
 
 /* ------------------------------------------------------------------
    Blueprint engine
@@ -11,19 +12,10 @@ import React from 'react';
    that is how the drawings they represent actually read.
    ------------------------------------------------------------------ */
 
-export type BlueprintKind =
-  | 'survey'
-  | 'cadastral'
-  | 'roads'
-  | 'quantities'
-  | 'cad'
-  | 'gis'
-  | 'site';
-
-const ACCENT = 'var(--gold)';
+const ACCENT = 'var(--accent)';
 const LINE = 'var(--txt-3)';
 const STRONG = 'var(--txt)';
-const DATA = '#12798A';
+const DATA = 'var(--warm)';
 
 const NorthArrow: React.FC<{ x: number; y: number }> = ({ x, y }) => (
   <g transform={`translate(${x} ${y})`} opacity="0.85">

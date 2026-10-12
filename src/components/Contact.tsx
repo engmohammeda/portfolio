@@ -1,12 +1,19 @@
 import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
-import { portfolioData } from '../data';
+import { portfolioData, identity } from '../data';
 import { motion } from 'framer-motion';
-import { Chip, FigureLabel, SectionHeader, SectionShell, reveal } from './ui';
+import { Pill, SectionHeader, SectionShell, reveal } from './ui';
 import { assetUrl } from '../lib/utils';
 import { mailLink, telLink, vcardUri, waLink } from '../lib/links';
 import {
-  MessageCircle, Mail, MapPin, Send, CheckCircle2, AlertCircle, QrCode, Contact as ContactIcon, Clock,
+  AlertCircle,
+  ArrowUpRight,
+  CheckCircle2,
+  Contact as ContactIcon,
+  Mail,
+  MessageCircle,
+  QrCode,
+  Send,
 } from 'lucide-react';
 
 const XIcon: React.FC<{ className?: string }> = ({ className }) => (
@@ -18,7 +25,7 @@ const XIcon: React.FC<{ className?: string }> = ({ className }) => (
 export const Contact: React.FC = () => {
   const { language } = useLanguage();
   const t = portfolioData[language].contact;
-  const [form, setForm] = useState({ name: '', email: '', subject: t.form.subjects[0], message: '' });
+  const [form, setForm] = useState({ name: '', contact: '', message: '' });
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
 
   const channelHref = (id: string, fallback: string) => {
@@ -45,267 +52,184 @@ export const Contact: React.FC = () => {
         body: JSON.stringify({
           access_key: accessKey,
           name: form.name,
-          email: form.email,
-          subject: `[${form.subject}] ${t.form.title} — ${form.name}`,
-          message: `النوع / Type: ${form.subject}\n\n${form.message}\n\n— أُرسلت من الملف المهني (${location.host})`,
+          email: form.contact,
+          subject: `${t.form.title} — ${form.name}`,
+          message: `${form.message}\n\n— ${form.contact} · ${location.host}`,
         }),
       });
       const data = await res.json();
-      if (data.success) {
-        setStatus('sent');
-        setForm({ name: '', email: '', subject: t.form.subjects[0], message: '' });
-        window.setTimeout(() => setStatus('idle'), 6000);
-      } else throw new Error('failed');
+      if (!data.success) throw new Error('failed');
+      setStatus('sent');
+      setForm({ name: '', contact: '', message: '' });
+      window.setTimeout(() => setStatus('idle'), 6000);
     } catch {
       setStatus('error');
       window.setTimeout(() => setStatus('idle'), 6000);
     }
   };
 
-  const field = 'w-full rounded-[9px] border px-3.5 py-2.5 text-[14px] outline-none transition-colors focus:border-(--gold)';
-  const fieldStyle: React.CSSProperties = { borderColor: 'var(--line)', background: 'var(--panel)', color: 'var(--txt)' };
-
   return (
-    <SectionShell id="contact">
+    <SectionShell id="contact" className="mesh-soft">
       <SectionHeader
-        no={`07 / ${language === 'ar' ? 'التواصل' : 'CONTACT'}`}
+        eyebrow={t.eyebrow}
         title={t.title}
         desc={t.desc}
+        aside={<Pill tone="good"><span className="status-dot" />{t.responseNote}</Pill>}
       />
 
       <div className="grid gap-6 lg:grid-cols-12">
         {/* channels */}
-        <motion.div {...reveal} className="lg:col-span-6">
-          <div className="sheet overflow-hidden">
-            <div className="sheet-head">
-              <MessageCircle className="h-3.5 w-3.5" style={{ color: 'var(--gold)' }} />
-              <FigureLabel>{language === 'ar' ? 'قنوات مباشرة' : 'Direct channels'}</FigureLabel>
-              <span className="ms-auto flex items-center gap-1.5">
-                <Clock className="h-3 w-3" style={{ color: 'var(--txt-3)' }} />
-                <FigureLabel className="text-[10px]!">{t.responseNote}</FigureLabel>
-              </span>
-            </div>
-
-            <div className="divide-y" style={{ borderColor: 'var(--line)' }}>
-              {t.channels.map((c) => {
-                const Icon = channelIcon(c.id);
-                return (
-                  <a
-                    key={c.id}
-                    href={channelHref(c.id, c.href)}
-                    target={c.id === 'wa' || c.id === 'x' || c.id === 'gh' ? '_blank' : undefined}
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-4 px-5 py-4 transition-colors hover:bg-(--panel-2)"
-                    style={{ borderColor: 'var(--line)' }}
+        <motion.div {...reveal} className="lg:col-span-5">
+          <div className="card overflow-hidden">
+            {t.channels.map((c) => {
+              const Icon = channelIcon(c.id);
+              return (
+                <a
+                  key={c.id}
+                  href={channelHref(c.id, c.href)}
+                  target={c.id === 'x' || c.id === 'gh' || c.id === 'wa' ? '_blank' : undefined}
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-4 border-b px-5 py-4 transition-colors last:border-b-0"
+                >
+                  <span
+                    className="grid h-11 w-11 shrink-0 place-items-center rounded-[14px] border border-(--line) bg-(--surface-2) text-(--txt-2) transition-colors group-hover:border-(--accent-line) group-hover:text-(--accent)"
                   >
-                    <span
-                      className="grid h-10 w-10 shrink-0 place-items-center rounded-[10px] border"
-                      style={{ borderColor: 'var(--line)', background: 'var(--panel-2)' }}
-                    >
-                      <Icon className="h-[18px] w-[18px]" />
-                    </span>
-                    <span className="min-w-0 flex-1">
-                      <span className="block text-[13.5px] font-bold" style={{ color: 'var(--txt)' }}>
-                        {c.label}
-                        <span className="ms-2 font-mono text-[12px] font-normal" style={{ color: 'var(--gold)' }}>
-                          {c.value}
-                        </span>
-                      </span>
-                      <span className="mt-0.5 block text-[12px]" style={{ color: 'var(--txt-3)' }}>
-                        {c.note}
+                    <Icon className="h-[18px] w-[18px]" />
+                  </span>
+                  <span className="min-w-0 flex-1">
+                    <span className="block text-[13.5px] font-bold t-1">
+                      {c.label}
+                      <span className="mono-xs ms-2 font-normal" style={{ color: 'var(--accent)' }}>
+                        {c.value}
                       </span>
                     </span>
-                  </a>
-                );
-              })}
-            </div>
-
-            {/* QR + vCard */}
-            <div className="grid grid-cols-2 gap-4 border-t p-5" style={{ borderColor: 'var(--line)', background: 'var(--panel-2)' }}>
-              <div>
-                <FigureLabel className="mb-2.5 flex items-center gap-2">
-                  <QrCode className="h-3.5 w-3.5" />
-                  {t.qrTitle}
-                </FigureLabel>
-                <div className="flex gap-3">
-                  <img
-                    src={assetUrl('qr/whatsapp.png')}
-                    alt="WhatsApp QR"
-                    width={104}
-                    height={104}
-                    loading="lazy"
-                    className="h-[104px] w-[104px] rounded-[8px] border bg-white p-1.5"
-                    style={{ borderColor: 'var(--line)' }}
+                    <span className="mt-0.5 block text-[12px] t-3">{c.note}</span>
+                  </span>
+                  <ArrowUpRight
+                    className="h-4 w-4 shrink-0 opacity-0 transition-opacity group-hover:opacity-100"
+                    style={{ color: 'var(--accent)' }}
                   />
-                  <img
-                    src={assetUrl('qr/site.png')}
-                    alt="Site QR"
-                    width={104}
-                    height={104}
-                    loading="lazy"
-                    className="h-[104px] w-[104px] rounded-[8px] border bg-white p-1.5"
-                    style={{ borderColor: 'var(--line)' }}
-                  />
-                </div>
-                <p className="mt-2.5 text-[11.5px] leading-snug" style={{ color: 'var(--txt-3)' }}>
-                  {t.qrNote}
-                </p>
-              </div>
-
-              <div className="flex flex-col justify-center gap-3">
-                <a href={vcardUri(language)} download="mohammed-al-bakhity.vcf" className="btn btn-outline btn-sm w-full">
-                  <ContactIcon className="h-3.5 w-3.5" />
-                  {t.vcard}
                 </a>
-                <a href={telLink()} className="btn btn-outline btn-sm w-full">
-                  {t.phoneDisplay}
-                </a>
-                <div className="flex items-center gap-2 text-[12px]" style={{ color: 'var(--txt-3)' }}>
-                  <MapPin className="h-3.5 w-3.5" />
-                  {t.location}
-                </div>
-              </div>
-            </div>
+              );
+            })}
           </div>
 
-          {/* availability */}
-          <div className="sheet sheet-flat ticks mt-5 p-5">
-            <div className="flex items-start gap-2.5">
-              <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0" style={{ color: '#128C4A' }} />
-              <p className="text-[13.5px] font-medium leading-relaxed" style={{ color: 'var(--txt)' }}>
-                {t.availability}
-              </p>
+          {/* QR + save contact */}
+          <div className="card mt-5 p-5">
+            <div className="flex items-start gap-5">
+              <div className="flex gap-2.5">
+                {['qr/whatsapp.png', 'qr/site.png'].map((src) => (
+                  <img
+                    key={src}
+                    src={assetUrl(src)}
+                    alt={t.qrTitle}
+                    width={86}
+                    height={86}
+                    loading="lazy"
+                    className="h-[86px] w-[86px] rounded-[12px] border bg-white p-1.5"
+                    style={{ borderColor: 'var(--line)' }}
+                  />
+                ))}
+              </div>
+              <div className="min-w-0 flex-1">
+                <div className="mono-xs mb-2 flex items-center gap-2">
+                  <QrCode className="h-3.5 w-3.5" style={{ color: 'var(--accent)' }} />
+                  {t.qrTitle}
+                </div>
+                <p className="text-[12.5px] leading-relaxed t-3">{t.qrNote}</p>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  <a href={vcardUri(language)} download="mohammed-al-bakhity.vcf" className="btn btn-outline btn-sm">
+                    <ContactIcon className="h-3.5 w-3.5" />
+                    {t.vcard}
+                  </a>
+                  <a href={telLink()} className="btn btn-ghost btn-sm" dir="ltr">
+                    {identity.phoneDisplay}
+                  </a>
+                </div>
+              </div>
             </div>
+            <p className="mt-4 border-t pt-4 text-[12.5px] leading-relaxed t-3">{t.availability}</p>
           </div>
         </motion.div>
 
         {/* form */}
-        <motion.div {...reveal} transition={{ duration: 0.6, delay: 0.1 }} className="lg:col-span-6">
-          <form onSubmit={onSubmit} className="sheet overflow-hidden">
-            <div className="sheet-head">
-              <Send className="h-3.5 w-3.5" style={{ color: 'var(--gold)' }} />
-              <FigureLabel>{t.form.title}</FigureLabel>
+        <motion.div {...reveal} transition={{ duration: 0.6, delay: 0.08 }} className="lg:col-span-7">
+          <form onSubmit={onSubmit} className="card h-full p-6 md:p-8">
+            <div className="flex items-center gap-3">
+              <span
+                className="grid h-9 w-9 place-items-center rounded-[12px]"
+                style={{ background: 'var(--accent-soft)', color: 'var(--accent)' }}
+              >
+                <Send className="h-4 w-4" />
+              </span>
+              <h3 className="h-card text-[17px]">{t.form.title}</h3>
             </div>
 
-            <div className="space-y-4 p-5 md:p-6">
-              <div className="grid gap-4 sm:grid-cols-2">
-                <label className="block">
-                  <span className="label mb-1.5 block">{t.form.name}</span>
-                  <input
-                    required
-                    value={form.name}
-                    onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    className={field}
-                    style={fieldStyle}
-                    autoComplete="name"
-                  />
-                </label>
-                <label className="block">
-                  <span className="label mb-1.5 block">{t.form.email}</span>
-                  <input
-                    required
-                    value={form.email}
-                    onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    className={field}
-                    style={fieldStyle}
-                    autoComplete="email"
-                    dir="ltr"
-                  />
-                </label>
-              </div>
-
+            <div className="mt-7 grid gap-5 sm:grid-cols-2">
               <label className="block">
-                <span className="label mb-1.5 block">{t.form.subject}</span>
-                <select
-                  value={form.subject}
-                  onChange={(e) => setForm({ ...form, subject: e.target.value })}
-                  className={field}
-                  style={fieldStyle}
-                >
-                  {t.form.subjects.map((s) => (
-                    <option key={s} value={s}>
-                      {s}
-                    </option>
-                  ))}
-                </select>
-              </label>
-
-              <label className="block">
-                <span className="label mb-1.5 block">{t.form.message}</span>
-                <textarea
+                <span className="field-label">{t.form.name}</span>
+                <input
                   required
-                  rows={6}
-                  value={form.message}
-                  onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  className={field}
-                  style={fieldStyle}
-                  placeholder={language === 'ar' ? 'الموقع، النطاق، المخرجات المطلوبة، والمدة المتوقعة…' : 'Location, scope, expected deliverables, timeframe…'}
+                  value={form.name}
+                  onChange={(e) => setForm({ ...form, name: e.target.value })}
+                  className="field"
+                  autoComplete="name"
                 />
               </label>
+              <label className="block">
+                <span className="field-label">{t.form.contact}</span>
+                <input
+                  required
+                  value={form.contact}
+                  onChange={(e) => setForm({ ...form, contact: e.target.value })}
+                  className="field"
+                  autoComplete="email"
+                  dir="ltr"
+                />
+              </label>
+            </div>
 
-              {/* honeypot for bots */}
-              <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} aria-hidden />
+            <label className="mt-5 block">
+              <span className="field-label">{t.form.message}</span>
+              <textarea
+                required
+                rows={6}
+                value={form.message}
+                onChange={(e) => setForm({ ...form, message: e.target.value })}
+                className="field resize-none"
+                placeholder={t.form.messagePlaceholder}
+              />
+            </label>
 
-              <button
-                type="submit"
-                disabled={status === 'sending'}
-                className="btn btn-primary btn-lg w-full disabled:opacity-60"
-              >
+            {/* honeypot */}
+            <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} aria-hidden />
+
+            <div className="mt-6 flex flex-wrap items-center gap-4">
+              <button type="submit" disabled={status === 'sending'} className="btn btn-primary btn-lg disabled:opacity-60">
                 {status === 'sending' ? t.form.sending : t.form.submit}
                 <Send className="h-4 w-4" />
               </button>
+              <span className="mono-xs">{t.form.privacy}</span>
+            </div>
 
-              {(status === 'sent' || status === 'error') && (
-                <div
-                  className="flex items-center gap-2.5 rounded-[9px] border px-4 py-3 text-[13px] font-medium"
-                  style={{
-                    borderColor: status === 'sent' ? 'rgba(18,140,74,0.35)' : 'rgba(200,60,60,0.35)',
-                    background: status === 'sent' ? 'rgba(18,140,74,0.07)' : 'rgba(200,60,60,0.07)',
-                    color: 'var(--txt)',
-                  }}
-                  role="status"
-                >
-                  {status === 'sent' ? (
-                    <CheckCircle2 className="h-4 w-4" style={{ color: '#128C4A' }} />
-                  ) : (
-                    <AlertCircle className="h-4 w-4" style={{ color: '#C83C3C' }} />
-                  )}
-                  {status === 'sent' ? t.form.success : t.form.error}
-                </div>
-              )}
-
-              <div className="flex flex-wrap items-center gap-3 pt-1">
-                <FigureLabel className="text-[10px]!">{t.form.privacy}</FigureLabel>
-                <Chip className="ms-auto text-[11px]!">
-                  {language === 'ar' ? 'أو راسلني على واتساب' : 'Or reach me on WhatsApp'}
-                </Chip>
+            {(status === 'sent' || status === 'error') && (
+              <div
+                className="mt-5 flex items-center gap-2.5 rounded-[14px] border px-4 py-3 text-[13px] font-medium t-1"
+                style={{
+                  borderColor: status === 'sent' ? 'var(--good-line)' : 'rgba(200,60,60,0.35)',
+                  background: status === 'sent' ? 'var(--good-soft)' : 'rgba(200,60,60,0.08)',
+                }}
+                role="status"
+              >
+                {status === 'sent' ? (
+                  <CheckCircle2 className="h-4 w-4" style={{ color: 'var(--good)' }} />
+                ) : (
+                  <AlertCircle className="h-4 w-4" style={{ color: '#C83C3C' }} />
+                )}
+                {status === 'sent' ? t.form.success : t.form.error}
               </div>
-            </div>
+            )}
           </form>
-
-          {/* after-contact steps */}
-          <div className="sheet sheet-flat mt-5 overflow-hidden">
-            <div className="sheet-head">
-              <FigureLabel>{t.stepsTitle}</FigureLabel>
-            </div>
-            <ol className="grid gap-0 divide-y" style={{ borderColor: 'var(--line)' }}>
-              {t.steps.map((s, i) => (
-                <li key={s.title} className="flex gap-4 px-5 py-4">
-                  <span className="font-mono text-[11px] font-bold" style={{ color: 'var(--gold)' }}>
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                  <span>
-                    <span className="block text-[13.5px] font-bold" style={{ color: 'var(--txt)' }}>
-                      {s.title}
-                    </span>
-                    <span className="mt-1 block text-[12.5px] leading-relaxed" style={{ color: 'var(--txt-3)' }}>
-                      {s.desc}
-                    </span>
-                  </span>
-                </li>
-              ))}
-            </ol>
-          </div>
         </motion.div>
       </div>
     </SectionShell>
