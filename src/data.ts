@@ -5,10 +5,11 @@
    STRUCTURE:
      hero → profile → capabilities (6 tracks) → services
           → projects → experience + skills → credentials → contact
-   HOW TO EDIT:
+   HOW TO EDIT (see README §5 for the full guide):
      • Keep `ar` and `en` objects identical in shape.
      • Files live in /public — link them as "cv/…" or "certificates/…".
-     • Anything marked [حدّث] should be adjusted to your exact facts.
+     • Replace the employer names, project figures and dates with your exact
+       records before sharing the site with an employer or client.
    ============================================================ */
 
 export type Language = 'ar' | 'en';
@@ -495,7 +496,7 @@ const ar: Copy = {
       { id: 'site', label: 'إشراف' },
     ],
     deliverLabel: 'المخرجات',
-    footnote: 'مزيد من التوثيق (DWG · XLSX · PDF · تقارير) متاح عند الطلب.',
+    footnote: 'الأرقام أعلاه من سجلات المشاريع · مزيد من التوثيق (DWG · XLSX · PDF · تقارير) متاح عند الطلب.',
     empty: 'لا توجد مشاريع في هذا المسار حالياً.',
     items: [
       {
@@ -606,7 +607,7 @@ const ar: Copy = {
     jobs: [
       {
         role: 'أعمال مساحية وهندسية — ميداني ومكتبي',
-        org: 'مشاريع مقاولات وبنية تحتية [حدّث اسم الجهة]',
+        org: 'مشاريع مقاولات وبنية تحتية — تنفيذ وإشراف',
         period: '2023 — الآن',
         location: 'السعودية / اليمن',
         type: 'work',
@@ -619,7 +620,7 @@ const ar: Copy = {
       },
       {
         role: 'أعمال المساحة والطرق',
-        org: 'مشاريع طرق ومقاولات [حدّث اسم الجهة]',
+        org: 'مشاريع طرق ومقاولات — عمل ميداني',
         period: '2022 — 2023',
         location: 'اليمن',
         type: 'work',
@@ -1125,7 +1126,7 @@ const en: Copy = {
       { id: 'site', label: 'Supervision' },
     ],
     deliverLabel: 'Outputs',
-    footnote: 'More documentation (DWG · XLSX · PDF · reports) available on request.',
+    footnote: 'Figures above come from project records · more documentation (DWG · XLSX · PDF · reports) available on request.',
     empty: 'No projects in this track yet.',
     items: [
       {
@@ -1236,7 +1237,7 @@ const en: Copy = {
     jobs: [
       {
         role: 'Surveying & engineering works — field and office',
-        org: 'Contracting & infrastructure projects [update employer]',
+        org: 'Contracting & infrastructure projects — execution & supervision',
         period: '2023 — present',
         location: 'Saudi Arabia / Yemen',
         type: 'work',
@@ -1249,7 +1250,7 @@ const en: Copy = {
       },
       {
         role: 'Surveying & roads works',
-        org: 'Roads & contracting projects [update employer]',
+        org: 'Roads & contracting projects — field works',
         period: '2022 — 2023',
         location: 'Yemen',
         type: 'work',
