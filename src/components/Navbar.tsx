@@ -1,24 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { useTheme } from '../context/ThemeContext';
-import { portfolioData } from '../data';
-import { assetUrl, cn } from '../lib/utils';
-import { downloadCv } from '../lib/cv';
-import { Menu, X, Sun, Moon, Globe, Download, Compass } from 'lucide-react';
+import { portfolioData, identity } from '../data';
+import { cn } from '../lib/utils';
+import { waLink } from '../lib/links';
+import { SECTIONS } from './ui';
 import { AnimatePresence, motion } from 'framer-motion';
-
-const SECTIONS = ['profile', 'capabilities', 'services', 'projects', 'experience', 'credentials', 'contact'] as const;
+import { Compass, Globe, Menu, MessageCircle, Moon, Sun, X } from 'lucide-react';
 
 export const Navbar: React.FC = () => {
   const { language, toggleLanguage } = useLanguage();
   const { theme, toggleTheme } = useTheme();
-  const t = portfolioData[language].nav;
+  const nav = portfolioData[language].nav;
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState<string>('');
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
+    const onScroll = () => setScrolled(window.scrollY > 16);
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
@@ -28,12 +27,8 @@ export const Navbar: React.FC = () => {
     const els = SECTIONS.map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
     if (!els.length) return;
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) setActive(e.target.id);
-        });
-      },
-      { rootMargin: '-40% 0px -55% 0px', threshold: 0 },
+      (entries) => entries.forEach((e) => e.isIntersecting && setActive(e.target.id)),
+      { rootMargin: '-45% 0px -50% 0px', threshold: 0 },
     );
     els.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
@@ -46,107 +41,89 @@ export const Navbar: React.FC = () => {
     };
   }, [open]);
 
-  const links = SECTIONS.map((id) => ({ href: `#${id}`, id, label: t[id] }));
-
-  const text = language === 'ar' ? 'محمد البخيتي' : 'M. Al-Bakhity';
-  const sub = language === 'ar' ? 'مساحة · طرق · كميات · GIS' : 'Survey · Roads · Quantities · GIS';
+  const links = SECTIONS.map((id) => ({ id, href: `#${id}`, label: nav[id] }));
+  const wa = waLink(`${portfolioData[language].contact.waText}: ${language === 'ar' ? 'فرصة عمل / مشروع' : 'a role / project'}`);
+  const name = language === 'ar' ? identity.shortAr : identity.shortEn;
 
   return (
     <>
-      <a href="#profile" className="skip-link no-print">
+      <a href="#services" className="skip-link no-print">
         {language === 'ar' ? 'تخطَّ إلى المحتوى' : 'Skip to content'}
       </a>
 
-      <header
-        className={cn('nav-shell no-print fixed inset-x-0 top-0 z-50 border-b', scrolled && 'is-scrolled')}
-      >
-        <div className="wrap flex h-[68px] items-center gap-4">
-          {/* Brand */}
-          <a href="#top" className="flex items-center gap-3 shrink-0" aria-label={text}>
-            <span
-              className="grid h-9 w-9 place-items-center rounded-[9px] border"
-              style={{ background: 'var(--navy)', borderColor: 'var(--navy)' }}
-            >
-              <Compass className="h-[18px] w-[18px]" strokeWidth={1.75} color="#F7EFDA" />
-            </span>
-            <span className="hidden leading-tight sm:block">
-              <span className="block text-[13.5px] font-bold" style={{ color: 'var(--txt)' }}>
-                {text}
-              </span>
-              <span className="label block text-[9.5px]!">{sub}</span>
-            </span>
-          </a>
-
-          {/* Desktop nav */}
-          <nav className="mx-auto hidden items-center gap-0.5 lg:flex" aria-label={t.menu}>
-            {links.map((l) => (
-              <a
-                key={l.id}
-                href={l.href}
-                aria-current={active === l.id ? 'true' : undefined}
-                className={cn(
-                  'relative rounded-md px-3 py-2 text-[13.5px] font-medium transition-colors',
-                  active === l.id ? '' : 'muted hover:opacity-100',
-                )}
-                style={{ color: active === l.id ? 'var(--txt)' : undefined }}
+      <header className="no-print fixed inset-x-0 top-0 z-50 pt-3 md:pt-4">
+        <div className="wrap">
+          <div className={cn('nav-bar flex h-[62px] items-center gap-2 px-2.5 md:px-3', scrolled && 'is-scrolled')}>
+            {/* brand */}
+            <a href="#top" className="flex shrink-0 items-center gap-2.5 ps-1" aria-label={name}>
+              <span
+                className="grid h-9 w-9 place-items-center rounded-[12px] text-white"
+                style={{ background: 'linear-gradient(135deg, var(--accent), var(--accent-2))' }}
               >
-                {l.label}
-                {active === l.id && (
-                  <motion.span
-                    layoutId="nav-underline"
-                    className="absolute inset-x-2.5 -bottom-0.5 h-[2px] rounded-full"
-                    style={{ background: 'var(--gold)' }}
-                  />
-                )}
+                <Compass className="h-[18px] w-[18px]" strokeWidth={2} color="var(--accent-ink)" />
+              </span>
+              <span className="hidden leading-tight sm:block">
+                <span className="block text-[13.5px] font-bold t-1">{name}</span>
+                <span className="mono-xs block text-[10px]!">{nav.brandSub}</span>
+              </span>
+            </a>
+
+            {/* desktop nav */}
+            <nav className="mx-auto hidden items-center gap-0.5 lg:flex" aria-label={nav.menu}>
+              {links.map((l) => (
+                <a key={l.id} href={l.href} className="nav-link" aria-current={active === l.id ? 'true' : undefined}>
+                  {active === l.id && (
+                    <motion.span
+                      layoutId="nav-active"
+                      className="absolute inset-0 rounded-full"
+                      style={{ background: 'var(--accent-soft)' }}
+                      transition={{ type: 'spring', stiffness: 380, damping: 32 }}
+                    />
+                  )}
+                  <span className="relative">{l.label}</span>
+                </a>
+              ))}
+            </nav>
+
+            {/* actions */}
+            <div className="ms-auto flex items-center gap-1.5 lg:ms-0">
+              <button
+                type="button"
+                onClick={toggleLanguage}
+                className="btn btn-ghost btn-icon"
+                aria-label={language === 'ar' ? 'Switch to English' : 'التبديل إلى العربية'}
+                title={nav.language}
+              >
+                <Globe className="h-[17px] w-[17px]" />
+              </button>
+              <button
+                type="button"
+                onClick={toggleTheme}
+                className="btn btn-ghost btn-icon"
+                aria-label={nav.theme}
+                title={theme === 'light' ? 'Dark' : 'Light'}
+              >
+                {theme === 'light' ? <Moon className="h-[17px] w-[17px]" /> : <Sun className="h-[17px] w-[17px]" />}
+              </button>
+              <a href={wa} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-sm ms-1 hidden sm:inline-flex">
+                <MessageCircle className="h-4 w-4" />
+                {nav.cta}
               </a>
-            ))}
-          </nav>
-
-          {/* Actions */}
-          <div className="ms-auto flex items-center gap-2 lg:ms-0">
-            <button
-              type="button"
-              onClick={toggleLanguage}
-              className="btn btn-outline btn-sm px-2.5!"
-              aria-label={language === 'ar' ? 'Switch to English' : 'التبديل إلى العربية'}
-              title={language === 'ar' ? 'English' : 'العربية'}
-            >
-              <Globe className="h-3.5 w-3.5" />
-              <span className="hidden font-mono text-[11px] sm:inline">{language === 'ar' ? 'EN' : 'ع'}</span>
-            </button>
-
-            <button
-              type="button"
-              onClick={toggleTheme}
-              className="btn btn-outline btn-sm px-2.5!"
-              aria-label={theme === 'light' ? (language === 'ar' ? 'الوضع الليلي' : 'Dark mode') : language === 'ar' ? 'الوضع النهاري' : 'Light mode'}
-            >
-              {theme === 'light' ? <Moon className="h-3.5 w-3.5" /> : <Sun className="h-3.5 w-3.5" />}
-            </button>
-
-            <button
-              type="button"
-              onClick={() => downloadCv(language)}
-              className="btn btn-primary btn-sm hidden md:inline-flex"
-            >
-              <Download className="h-3.5 w-3.5" />
-              {t.cv}
-            </button>
-
-            <button
-              type="button"
-              onClick={() => setOpen(true)}
-              className="btn btn-outline btn-sm lg:hidden px-2.5!"
-              aria-label={t.menu}
-              aria-expanded={open}
-            >
-              <Menu className="h-4 w-4" />
-            </button>
+              <button
+                type="button"
+                onClick={() => setOpen(true)}
+                className="btn btn-ghost btn-icon lg:hidden"
+                aria-label={nav.menu}
+                aria-expanded={open}
+              >
+                <Menu className="h-[18px] w-[18px]" />
+              </button>
+            </div>
           </div>
         </div>
       </header>
 
-      {/* Mobile sheet */}
+      {/* mobile sheet */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -154,39 +131,45 @@ export const Navbar: React.FC = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-[60] lg:hidden"
+            className="no-print fixed inset-0 z-[60] lg:hidden"
             style={{ background: 'var(--bg)' }}
             role="dialog"
             aria-modal="true"
+            aria-label={nav.menu}
           >
-            <div className="wrap flex h-[68px] items-center justify-between border-b" style={{ borderColor: 'var(--line)' }}>
-              <span className="label">{language === 'ar' ? 'القائمة' : 'Menu'}</span>
-              <button
-                type="button"
-                onClick={() => setOpen(false)}
-                className="btn btn-outline btn-sm px-2.5!"
-                aria-label={language === 'ar' ? 'إغلاق' : 'Close'}
-              >
-                <X className="h-4 w-4" />
+            <div className="wrap flex h-[74px] items-center justify-between">
+              <span className="eyebrow">{nav.menu}</span>
+              <button type="button" onClick={() => setOpen(false)} className="btn btn-ghost btn-icon" aria-label={nav.close}>
+                <X className="h-[18px] w-[18px]" />
               </button>
             </div>
-            <nav className="wrap mt-4 flex flex-col">
+
+            <nav className="wrap mt-2 flex flex-col">
               {links.map((l, i) => (
-                <a
+                <motion.a
                   key={l.id}
                   href={l.href}
                   onClick={() => setOpen(false)}
-                  className="flex items-center justify-between border-b py-4 text-[16px] font-semibold"
-                  style={{ borderColor: 'var(--line)', color: 'var(--txt)' }}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.04 * i, duration: 0.35 }}
+                  className="flex items-center justify-between border-b py-5"
                 >
-                  {l.label}
-                  <span className="label">{String(i + 1).padStart(2, '0')}</span>
-                </a>
+                  <span className="h-card text-[20px]">{l.label}</span>
+                  <span className="mono-xs">{String(i + 1).padStart(2, '0')}</span>
+                </motion.a>
               ))}
-              <button type="button" onClick={() => { setOpen(false); downloadCv(language); }} className="btn btn-primary mt-6">
-                <Download className="h-4 w-4" />
-                {t.cv}
-              </button>
+
+              <a
+                href={wa}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-wa btn-lg mt-8"
+                onClick={() => setOpen(false)}
+              >
+                <MessageCircle className="h-4 w-4" />
+                {identity.phoneDisplay}
+              </a>
             </nav>
           </motion.div>
         )}

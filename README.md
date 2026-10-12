@@ -1,58 +1,51 @@
-# محمد البخيتي — الملف المهني | Mohammed Al-Bakhity — Professional Portfolio
+# محمد البخيتي — الموقع المهني | Mohammed Al-Bakhity — Portfolio
 
-موقع شخصي **متعدد المسارات**: يعرض هوية مهنية متعددة (مساحة · طرق · كميات · مكتب فني · CAD · GIS · إشراف) بدل حصرها في مسمى واحد — مبني ومُصمَّم ليخدم هدفاً واحداً: **الحصول على فرصة عمل أو مشروع بأسرع وقت**.
+موقع شخصي **مختصر وعصري** لمهندس مساحة وطرق: يعرض الخدمات والمشاريع المنفّذة وبيانات التواصل مباشرة — بدون سيرة ذاتية وبدون شهادات ووثائق.
 
-> **الفكرة التصميمية:** الموقع كله مبني على لغة "اللوحة الهندسية" (Engineering Sheet): خطوط شعرية، تسميات فنية، عنوان لوحة كامل في الفوتر، أرقام أقسام، وجداول مواصفات. لا زخرفة زائدة ولا ألوان عشوائية — كل عنصر له وظيفة.
+> **الفكرة:** شاشة رئيسية قصيرة، ثم أربعة أقسام فقط. لا حشو ولا تفاصيل زائدة: كل جملة لها وظيفة، وكل خدمة لها مخرجات مكتوبة بوضوح.
 
 ---
 
-## 1) ماذا يعرض الموقع (بنية الأقسام)
+## 1) بنية الموقع
 
 | # | القسم | الوظيفة |
 |---|-------|---------|
-| 00 | **الواجهة + لوحة المخرجات** | العنوان: «تخصص واحد · قدرات متعددة» + لوحة تفاعلية بستة مسارات تُظهر *ما يُسلَّم فعلياً* لكل مسار، مع رسم هندسي متحرك |
-| 01 | **الملف المهني** | من أنا، مبادئ العمل، بطاقة بيانات (حقائق + صورة ميدانية) |
-| 02 | **خريطة القدرات** | 6 مسارات × (قدرات · أدوات · مخرجات · أدوار وظيفية) — 24 قدرة تنفيذية |
-| 03 | **الخدمات** | 8 خدمات بمخرجات واضحة + كيف يبدأ العمل |
-| 04 | **نماذج الأعمال** | 7 مشاريع برسم هندسي لكل مشروع + فلترة حسب المسار |
-| 05 | **الخبرة** | مسار زمني (عمل · تعليم · تدريب) + مصفوفة مهارات بمستويات صريحة |
-| 06 | **الشهادات** | ملفات PDF للاطلاع والتحميل + السيرة الذاتية (تنزيل + طباعة) |
-| 07 | **التواصل** | واتساب · بريد · X · GitHub · QR · حفظ جهة الاتصال (vCard) + نموذج طلب |
+| — | **الواجهة** | الاسم + التخصص + سطر واحد + زرّان (واتساب · المشاريع) + الأدوات + 3 أرقام |
+| 01 | **الخدمات** | ست خدمات بتبويب تفاعلي: لكل خدمة مخرجاتها وأدواتها ورسم توضيحي |
+| 02 | **المشاريع** | سبعة أعمال منفّذة، مع فلترة حسب التخصص وأرقام كل مشروع ومخرجاته |
+| 03 | **نبذة** | سطران عن طريقة العمل + سلسلة العمل + بيانات سريعة + صورة |
+| 04 | **تواصل** | واتساب · بريد · X · GitHub · QR · vCard + نموذج طلب قصير |
 
----
+**غير موجود في الموقع بشكل مقصود:** السيرة الذاتية، الشهادات، الوثائق، الخبرات الوظيفية، والمؤهلات الدراسية.
 
 ## 2) التقنيات
 
 - **React 19 + Vite 6 + TypeScript**
-- **Tailwind CSS v4** (نظام تصميم مركزي عبر `@theme` + متغيرات CSS)
-- **Framer Motion** لحركات الظهور الدقيقة
+- **Tailwind CSS v4** + متغيرات CSS لنظام تصميم مركزي (وضع نهاري/ليلي)
+- **Framer Motion** للحركات الدقيقة
 - **lucide-react** للأيقونات
-- **خطوط مستضافة محلياً** (بدون Google Fonts): IBM Plex Sans Arabic (نصوص) · Cairo (عناوين) · JetBrains Mono (قيم فنية) — أداء أفضل وخصوصية أعلى
-- **بدون أي تتبع خارجي**؛ نموذج التواصل عبر Web3Forms
+- خطوط مستضافة محلياً: IBM Plex Sans Arabic (نصوص) · Cairo (عناوين) · JetBrains Mono (أرقام وقيم)
+- بدون أي تتبع خارجي · نموذج التواصل عبر Web3Forms
 
 ## 3) هيكل الملفات
 
 ```
-index.html                 ← SEO كامل + JSON-LD (Person/Occupation/Service) + noscript
+index.html                 ← SEO + JSON-LD + noscript
 metadata.json              ← وصف المشروع
 src/
   data.ts                  ← ✱ كل النصوص (عربي/إنجليزي) في مكان واحد
-  index.css                ← نظام التصميم (توكنز، لوحات، أزرار، طباعة)
-  App.tsx                  ← تركيب الأقسام + ورقة الطباعة
+  index.css                ← نظام التصميم (توكنز، بطاقات، أزرار، حقول)
+  App.tsx                  ← تركيب الأقسام
   lib/
-    links.ts               ← واتساب/بريد/vCard/الطباعة
-    cv.ts                  ← تحميل السيرة الذاتية (مع fallback ذكي)
-    utils.ts               ← cn() + assetUrl() (BASE_URL-safe)
+    links.ts               ← واتساب / بريد / tel / vCard
+    utils.ts               ← cn() + assetUrl()
   components/
-    Navbar · Hero · Console · Blueprint · Profile · Capabilities ·
-    Services · Projects · Experience · Credentials · Contact ·
-    Footer · FloatingWA · ResumeSheet · ui.tsx
+    Navbar · Hero · Services · Projects · About · Contact · Footer ·
+    FloatingWA · Blueprint (رسومات SVG هندسية) · ui.tsx
 public/
-  cv/mohammed-albakhity-cv.pdf   ← سيرة ذاتية مُولَّدة (صفحة عربية + صفحة إنجليزية)
-  certificates/*.pdf             ← الدبلوم والشهادات
-  qr/site.png · qr/whatsapp.png  ← أكواد QR للتواصل السريع
+  qr/site.png · qr/whatsapp.png   ← أكواد QR سريعة
   og-image.jpg · favicon.* · site.webmanifest · robots.txt · sitemap.xml · 404.html
-scripts/build-assets.py    ← توليد الشعار والأيقونات و og-image و QR والسيرة الذاتية
+scripts/build-assets.py    ← توليد الشعار والأيقونات و og-image و QR  (npm run assets)
 .github/workflows/deploy.yml ← نشر تلقائي إلى GitHub Pages
 ```
 
@@ -61,66 +54,34 @@ scripts/build-assets.py    ← توليد الشعار والأيقونات و o
 ```bash
 npm install
 npm run dev        # http://localhost:3000
-npm run lint       # فحص TypeScript
-npm run build      # إخراج إلى docs/ (متوافق مع GitHub Pages)
-npm run preview    # معاينة نسخة الإنتاج
+npm run build      # يُنتج مجلد docs/ الجاهز للنشر
+npm run lint       # تحقّق TypeScript
+npm run assets     # إعادة توليد الأيقونات و og-image و QR (يتطلب Python + pillow/qrcode)
 ```
 
-## 5) تحديث المحتوى (أهم قسم للمالك)
+## 5) التعديل
 
-كل النصوص والبيانات في **`src/data.ts`** فقط، وبنسختين `ar` و `en` بنفس الشكل:
+- **النصوص:** كل شيء في `src/data.ts` (عربي + إنجليزي بنفس البنية). ابقَ على نفس الشكل عند الإضافة.
+- **الخدمات:** `services.items` — العنوان، الوصف، المخرجات، الأدوات، والرسم (`blueprint`).
+- **المشاريع:** `projects.items` — أضف عملاً جديداً أو غيّر `track` للتصنيف (مساحة · طرق · كميات · مكتب فني · خرائط · إشراف).
+- **التواصل:** `contact.channels` + `identity` في نهاية `src/data.ts` (الهاتف: `+966 56 674 3293`).
+- **الرسومات الهندسية:** `src/components/Blueprint.tsx` — رسومات SVG بألوان مرتبطة بمتغيرات CSS.
+- **نموذج التواصل:** مفتاح Web3Forms في `.env` (`VITE_WEB3FORMS_ACCESS_KEY`).
 
-- **الخبرة:** عدّل `experience.jobs` — استبدل `[حدّث اسم الجهة]` باسم الشركة الحقيقي، واضبط الفترات.
-- **المشاريع:** `projects.items` — لكل مشروع: `track` (المسار)، `scope`، `stats`، `deliverables`، و `preview` (نوع الرسم).
-- **الخدمات:** `services.items` — الخدمة ومخرجاتها.
-- **الشهادات:** `credentials.items` — ضع الملف في `public/certificates/` ثم اكتب المسار النسبي فقط (`certificates/xxx.pdf`).
-- **التواصل:** `contact` + `identity` في نهاية الملف (بريد، هاتف، روابط).
-- **السيرة الذاتية الجاهزة:** استبدل `public/cv/mohammed-albakhity-cv.pdf` بملفك (بنفس الاسم) أو أعد توليده: `npm run assets`.
+## 6) النشر
 
-> بعد أي تعديل شغّل `npm run build` ليتحدّث مجلد `docs/` الذي يُنشر.
-
-## 6) توليد الأصول (شعار، أيقونات، og-image، QR، CV)
-
-```bash
-pip install pillow qrcode arabic-reshaper python-bidi
-npm run assets                 # يبني كل الأصول في public/
-npm run assets -- --only og,cv # أو حدّد ما تريد: favicons,qr,og,cv
-```
-يقرأ السكربت الخطوط من حزم `@expo-google-fonts` عبر npm ولمرة واحدة (تُخزَّن في مجلد مؤقت)، ثم يولّد:
-`favicon.svg/ico/16/32` · `apple-touch-icon` · `android-chrome-192/512` · `og-image.jpg` (1200×630) · `qr/*.png` · `cv/*.pdf` (A4 من صفحتين).
-
-## 7) النشر (GitHub Pages)
-
-- الفرع `main` يُشغّل `deploy.yml` → بناء → نشر مجلد `docs/`.
+- GitHub Pages من فرع `main` عبر `docs/` (Workflow جاهز).
 - الرابط: `https://engmohammeda.github.io/portfolio/`
 - `vite.config.ts` يستخدم `base: '/portfolio/'` في البناء و `/` في التطوير.
-- إن غيّرت اسم المستودع أو النطاق: حدّث `base` + روابط `index.html` (canonical/OG) + `robots.txt` + `sitemap.xml` + `site.webmanifest` + `scripts/build-assets.py` (`SITE`).
+- إذا تغيّر اسم المستودع أو النطاق: حدّث `base` + روابط `index.html` + `robots.txt` + `sitemap.xml` + `site.webmanifest` + `SITE` في `scripts/build-assets.py`.
 
-## 8) ملاحظات مهنية (SEO / الوصول / الأداء)
+## 7) الوصول والأداء
 
-- بيانات منظمة: `ProfilePage` + `Person` + `hasOccupation` (مساح · طرق · كميات · CAD · GIS) + `hasCredential` + `makesOffer`.
-- `Open Graph` + `Twitter Card` بصورة 1200×630 مولّدة بهوية الموقع.
-- تفاعل كامل بالكيبورد (تخطّي إلى المحتوى، إغلاق القوائم، `aria-*` على التبويبات)، ودعم `prefers-reduced-motion`.
-- ثنائي اللغة بتبديل فوري (RTL/LTR) مع حفظ الاختيار، وخطوط عربية لا تُقتطع ولا تتطلب اتصالاً خارجياً.
-- ورقة طباعة A4 منسّقة (`Print / save PDF`) تُنتج سيرة ذاتية محدّثة دائماً من نفس المحتوى.
+- ثنائي اللغة بتبديل فوري (RTL/LTR) وخطوط عربية محلية بلا اتصال خارجي.
+- تفاعل كامل بالكيبورد (تبويبات الخدمات بأسهم الكيبورد، تخطّي إلى المحتوى) ودعم `prefers-reduced-motion`.
+- وضع ليلي/نهاري افتراضي حسب تفضيل النظام، قابل للتبديل والحفظ.
+- بيانات منظمة: `ProfilePage` + `Person` + `hasOccupation` + `makesOffer`.
 
-## 9) خطة الظهور والزيارات (تنفيذية)
-
-المطلوب لتحويل الموقع إلى مصدر وصول فعلي — كل خطوة دقائق معدودة:
-
-1. **فهرسة جوجل:** افتح [Google Search Console](https://search.google.com/search-console) → أضف الموقع `https://engmohammeda.github.io/portfolio/` → `Sitemaps` → أرسل `sitemap.xml`. أضف نفس الرابط في Bing Webmaster Tools.
-2. **GitHub:** الوصف (Description) والـ Topics مضبوطان أصلاً (`surveying · roads · portfolio · autocad · gis · quantity-surveying · saudi-arabia`) — تظهر في نتائج البحث وجوجل.
-3. **LinkedIn:** العنوان: `Surveying & Roads Engineer | Quantity Surveyor | AutoCAD & GIS`، وضع رابط الموقع في قسم *Contact info* وفي *Featured*، وإضافة الموقع في أعلى «About».
-4. **X / واتساب / البريد:** عدّل البايو ليشمل الرابط: `مهندس مساحة وطرق — الملف المهني: engmohammeda.github.io/portfolio`. أضف الرابط إلى التوقيع في البريد.
-5. **QR جاهز:** استخدم `public/qr/site.png` في السيرة الذاتية المطبوعة أو في كرت العمل — أو حمّل صفحة الموقع واطبعها كبطاقة.
-6. **أهمية محتوى الـ CV:** أول صف في أي إعلان وظيفة هو فلترة الكلمات المفتاحية؛ لذلك أُضيفت في السيرة الذاتية مسمّيات: *مساح موقع · مسّاح كميات · Quantity Surveyor · CAD Draftsman · GIS Technician · مراقب موقع*.
-7. **تحديث دوري:** كل مرة تُضاف شهادة أو مشروع، عدّل `src/data.ts` + `npm run assets && npm run build` — تحديث آخر تعديل في الفوتر وإعادة الإرسال في Search Console يرفع الظهور.
-
-### كلمات مفتاحية مستهدفة (موجودة فعلياً في الوسوم والمحتوى)
-
-عربي: `مهندس مساحة` · `مساح طرق` · `مساح كميات` · `رفع طبوغرافي` · `توتال ستيشن` · `حساب كميات BOQ` · `أوتوكاد` · `خرائط GIS` · `إشراف تنفيذي` · `الرياض` · `السعودية`
-English: `Land Surveyor` · `Quantity Surveyor` · `Roads Technician` · `AutoCAD Draftsman` · `GIS Technician` · `Setting out` · `As-built` · `Saudi Arabia`
-
-## 10) الترخيص
+## 8) الترخيص
 
 MIT — الاستخدام والنشر متاحان مع الإشارة للمصدر.
