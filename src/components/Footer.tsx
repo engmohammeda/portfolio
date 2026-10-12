@@ -3,9 +3,9 @@ import { useLanguage } from '../context/LanguageContext';
 import { portfolioData, identity } from '../data';
 import { FigureLabel } from './ui';
 import { updatedLabel, vcardUri } from '../lib/links';
-import { ArrowUp, Mail, MessageCircle } from 'lucide-react';
+import { ArrowUp, Linkedin, Mail, MessageCircle } from 'lucide-react';
 
-const SECTIONS = ['profile', 'capabilities', 'services', 'projects', 'experience', 'credentials', 'contact'] as const;
+const SECTIONS = ['profile', 'capabilities', 'services', 'projects', 'contact'] as const;
 
 export const Footer: React.FC = () => {
   const { language } = useLanguage();
@@ -62,6 +62,15 @@ export const Footer: React.FC = () => {
             >
               <MessageCircle className="h-3.5 w-3.5" />
             </a>
+            <a
+              href={identity.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-outline btn-sm px-2.5!"
+              aria-label="LinkedIn"
+            >
+              <Linkedin className="h-3.5 w-3.5" />
+            </a>
             <a href={vcardUri(language)} download="mohammed-al-bakhity.vcf" className="btn btn-outline btn-sm">
               vCard
             </a>
@@ -93,6 +102,11 @@ export const Footer: React.FC = () => {
             <li>
               <a href={identity.x} target="_blank" rel="noopener noreferrer">
                 X — @engalbukhaiti
+              </a>
+            </li>
+            <li>
+              <a href={identity.linkedin} target="_blank" rel="noopener noreferrer">
+                LinkedIn
               </a>
             </li>
             <li>

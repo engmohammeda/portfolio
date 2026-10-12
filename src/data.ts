@@ -3,21 +3,18 @@
    ------------------------------------------------------------
    Every visible string on the site lives here, in both AR + EN.
    STRUCTURE:
-     hero → profile → capabilities (6 tracks) → services
-          → projects → experience + skills → credentials → contact
+     hero → profile → capabilities (6 tracks) → services → projects → contact
    HOW TO EDIT (see README §5 for the full guide):
      • Keep `ar` and `en` objects identical in shape.
-     • Files live in /public — link them as "cv/…" or "certificates/…".
-     • Replace the employer names, project figures and dates with your exact
-       records before sharing the site with an employer or client.
+     • Files live in /public and should be linked with relative paths.
+     • Keep project figures and dates aligned with the exact project records.
    ============================================================ */
 
 export type Language = 'ar' | 'en';
 
 export interface NavCopy {
-  profile: string; capabilities: string; services: string; projects: string;
-  experience: string; credentials: string; contact: string;
-  cv: string; menu: string; theme: string; language: string; top: string;
+  profile: string; capabilities: string; services: string; projects: string; contact: string;
+  menu: string; theme: string; language: string; top: string;
 }
 
 export interface StatCopy { value: string; label: string; note: string }
@@ -35,7 +32,7 @@ export interface HeroCopy {
   headlineA: string; headlineB: string;
   role: string; subhead: string;
   chain: string[];
-  ctaPrimary: string; ctaSecondary: string; ctaTertiary: string;
+  ctaSecondary: string; ctaTertiary: string;
   stats: StatCopy[];
   console: { title: string; hint: string; tabsLabel: string; tabs: ConsoleTab[]; footnote: string };
 }
@@ -94,34 +91,6 @@ export interface ProjectsCopy {
   items: ProjectItem[];
 }
 
-export interface JobItem {
-  role: string; org: string; period: string; location: string;
-  type: 'work' | 'education' | 'training';
-  bullets: string[];
-}
-
-export interface SkillItem { name: string; level: number; label: string }
-
-export interface ExperienceCopy {
-  badge: string; title: string; desc: string;
-  jobs: JobItem[];
-  skillsTitle: string; skillsDesc: string;
-  groups: { id: string; title: string; items: SkillItem[] }[];
-  skillsNote: string;
-}
-
-export interface CertItem {
-  title: string; issuer: string; date: string; file: string;
-  type: string; note: string;
-}
-
-export interface CredentialsCopy {
-  badge: string; title: string; desc: string;
-  download: string; view: string; items: CertItem[];
-  cvTitle: string; cvDesc: string; cvBtn: string; printBtn: string;
-  docsNote: string;
-}
-
 export interface ContactCopy {
   badge: string; title: string; desc: string;
   email: string; phone: string; phoneDisplay: string; location: string;
@@ -147,8 +116,7 @@ export interface FooterCopy {
 
 export interface Copy {
   nav: NavCopy; hero: HeroCopy; profile: ProfileCopy; capabilities: CapabilitiesCopy;
-  services: ServicesCopy; projects: ProjectsCopy; experience: ExperienceCopy;
-  credentials: CredentialsCopy; contact: ContactCopy; footer: FooterCopy;
+  services: ServicesCopy; projects: ProjectsCopy; contact: ContactCopy; footer: FooterCopy;
 }
 
 /* ============================================================ */
@@ -159,10 +127,7 @@ const ar: Copy = {
     capabilities: 'القدرات',
     services: 'الخدمات',
     projects: 'المشاريع',
-    experience: 'الخبرة',
-    credentials: 'الشهادات',
     contact: 'تواصل',
-    cv: 'السيرة الذاتية',
     menu: 'القائمة',
     theme: 'المظهر',
     language: 'English',
@@ -179,14 +144,13 @@ const ar: Copy = {
     subhead:
       'أعمل عبر مسار متكامل يبدأ من الميدان وينتهي بمخرجات جاهزة للاعتماد: الرفع والتوقيع بأجهزة دقيقة، ثم المعالجة والرسم، ثم حساب الكميات، ثم خرائط GIS، ثم تقارير التنفيذ — في سلسلة واحدة لا انقطاع فيها.',
     chain: ['رفع ميداني', 'معالجة ورسم', 'حساب كميات', 'خرائط GIS', 'تقارير وتنفيذ'],
-    ctaPrimary: 'تحميل السيرة الذاتية',
     ctaSecondary: 'تواصل واتساب',
     ctaTertiary: 'استعرض القدرات',
     stats: [
       { value: '6', label: 'مسارات مهنية', note: 'مساحة · طرق · كميات · CAD · إشراف · GIS' },
       { value: '24', label: 'قدرة تنفيذية', note: 'مصنّفة تحت كل مسار' },
       { value: '14', label: 'أداة عمل', note: 'أجهزة وبرامج ميدانية ومكتبية' },
-      { value: '2022', label: 'بداية الممارسة', note: 'عمل ميداني ومكتبي متواصل' },
+      { value: '7', label: 'نماذج مشاريع', note: 'معروضة بالتفصيل في قسم المشاريع' },
     ],
     console: {
       title: 'لوحة المخرجات',
@@ -255,11 +219,10 @@ const ar: Copy = {
   profile: {
     badge: 'الملف المهني',
     title: 'أعمل في المساحة والطرق، وأغطي سلسلة العمل كاملة: من قياس الميدان حتى الملف الذي يُعتمد.',
-    p1: 'أعمل في مجال المساحة والطرق منذ 2022 بعمل ميداني ومكتبي متواصل. أُدير العمل عبر مسارات مترابطة: الرفع والتوقيع بالموقع، ثم المعالجة والرسم في المكتب الفني، ثم حساب الكميات وإعداد الجداول، ثم إخراج خرائط وبيانات GIS، وأخيراً متابعة التنفيذ وتقاريره.',
+    p1: 'أعمل في مجال المساحة والطرق عبر مسارات مترابطة: الرفع والتوقيع بالموقع، ثم المعالجة والرسم في المكتب الفني، ثم حساب الكميات وإعداد الجداول، ثم إخراج خرائط وبيانات GIS، وأخيراً متابعة التنفيذ وتقاريره.',
     p2: 'ما يميزني ليس مساراً واحداً، بل قدرتي على إكمال المهمة من بدايتها إلى نهايتها دون الحاجة لتسليمها بين عدة جهات: أوقّع في الموقع، وأرسم في AutoCAD، وأحصر الكميات، وأُخرج التقرير. هذا يوفّر وقت إدارة المشروع ويقلّل الأخطاء الناتجة عن نقل البيانات بين أكثر من جهة.',
     facts: [
       { label: 'التخصص الأساسي', value: 'المساحة والطرق' },
-      { label: 'المؤهل', value: 'دبلوم هندسة المساحة والطرق — سنتان' },
       { label: 'مكان العمل الحالي', value: 'المملكة العربية السعودية' },
       { label: 'اللغات', value: 'العربية (اللغة الأم) · الإنجليزية (قراءة فنية)' },
       { label: 'طبيعة العمل المتاح', value: 'ميداني ومكتبي · دوام كامل أو مشروع' },
@@ -272,7 +235,7 @@ const ar: Copy = {
       { title: 'تقرير بلغة الموقع', desc: 'التقرير يكون واضحاً لملاحظ الموقع كما لمهندس المكتب: ملاحظة، موقعها، إحداثياتها، والتأثير المتوقع.' },
     ],
     searchTitle: 'الوظيفة التي أبحث عنها الآن',
-    searchNote: 'أُقدّم على هذه الأدوار في السعودية، وجاهز لإرفاق السيرة الذاتية والشهادات فوراً.',
+    searchNote: 'أُقدّم على هذه الأدوار في السعودية، ومتاح للتواصل مباشرة بخصوص فرص العمل والمشاريع.',
     searchRoles: [
       'مسّاح موقع (Land / Site Surveyor)',
       'مسّاح كميات (Quantity Surveyor)',
@@ -600,141 +563,21 @@ const ar: Copy = {
     ],
   },
 
-  experience: {
-    badge: 'الخبرة والمسار',
-    title: 'مسار متصل — لا قفزات موصوفة',
-    desc: 'التدرج واضح: من الميدان، إلى المكتب الفني، إلى إدارة المخرجات الكاملة للمشروع.',
-    jobs: [
-      {
-        role: 'أعمال مساحية وهندسية — ميداني ومكتبي',
-        org: 'مشاريع مقاولات وبنية تحتية — تنفيذ وإشراف',
-        period: '2023 — الآن',
-        location: 'السعودية / اليمن',
-        type: 'work',
-        bullets: [
-          'تنفيذ الرفع المساحي وتوقيع المحاور والمناسيب لمواقع تنفيذ مختلفة.',
-          'إعداد المخططات في AutoCAD وتسليم ملفات جاهزة للاعتماد.',
-          'حصر الكميات وإعداد جداول BOQ ومستخلصات حسب نسبة الإنجاز.',
-          'متابعة التنفيذ ميدانياً وإعداد التقارير اليومية والأسبوعية.',
-        ],
-      },
-      {
-        role: 'أعمال المساحة والطرق',
-        org: 'مشاريع طرق ومقاولات — عمل ميداني',
-        period: '2022 — 2023',
-        location: 'اليمن',
-        type: 'work',
-        bullets: [
-          'رفع طبوغرافي وعقاري وتقسيم أراضٍ وتحديد حدود.',
-          'توقيع مسارات الطرق ونقل المناسيب وحساب الميول.',
-          'ميزانية طولية وعرضية وإخراج مقاطع للتنفيذ.',
-        ],
-      },
-      {
-        role: 'دبلوم هندسة المساحة والطرق',
-        org: 'المعهد التقني — قسم المساحة والطرق',
-        period: '2020 — 2022',
-        location: 'اليمن',
-        type: 'education',
-        bullets: [
-          'مبادئ المساحة المستوية والتطبيقية وحساب الإحداثيات.',
-          'هندسة الطرق: المنحنيات والمناسيب والمقاطع.',
-          'الرسم الهندسي وحساب الكميات وبرامج الهندسة المدنية.',
-        ],
-      },
-      {
-        role: 'تطوير مستمر — دورات وتدريب',
-        org: 'أوتوكاد · حساب الكميات · GIS · السلامة المهنية',
-        period: '2022 — الآن',
-        location: 'دورات معتمدة وتدريب ذاتي',
-        type: 'training',
-        bullets: [
-          'شهادات أوتوكاد الرسم الهندسي وحساب الكميات.',
-          'تطوير مهارات QGIS و Google Earth Pro في مشاريع حقيقية.',
-          'قراءة المواصفات الفنية وقوائم الفحص الميدانية.',
-        ],
-      },
-    ],
-    skillsTitle: 'مصفوفة المهارات',
-    skillsDesc: 'تقييم صريح لمستوى الإتقان — كل مستوى قابل للإثبات بمخرج فعلي.',
-    groups: [
-      {
-        id: 'field',
-        title: 'أجهزة ميدانية',
-        items: [
-          { name: 'Total Station', level: 4, label: 'متمكّن' },
-          { name: 'Digital Level', level: 4, label: 'متمكّن' },
-          { name: 'GNSS / RTK', level: 3, label: 'جيد' },
-          { name: 'ضبط نقاط مرجعية', level: 4, label: 'متمكّن' },
-        ],
-      },
-      {
-        id: 'office',
-        title: 'مكتب فني ورسم',
-        items: [
-          { name: 'AutoCAD (2D)', level: 4, label: 'متقدم' },
-          { name: 'Civil 3D', level: 3, label: 'جيد' },
-          { name: 'خرائط ومقاطع ومقاسات', level: 4, label: 'متقدم' },
-          { name: 'as-built وتسليمات', level: 4, label: 'متمكّن' },
-        ],
-      },
-      {
-        id: 'data',
-        title: 'كميات وبيانات',
-        items: [
-          { name: 'Excel (كميات وجداول)', level: 4, label: 'متقدم' },
-          { name: 'حصر BOQ ومستخلصات', level: 4, label: 'متمكّن' },
-          { name: 'QGIS', level: 3, label: 'جيد' },
-          { name: 'Google Earth Pro / KML', level: 4, label: 'متقدم' },
-        ],
-      },
-      {
-        id: 'site',
-        title: 'موقع وتنسيق',
-        items: [
-          { name: 'قراءة مخططات ومواصفات', level: 4, label: 'متقدم' },
-          { name: 'تقارير موقع ومخالفات', level: 4, label: 'متمكّن' },
-          { name: 'قوائم فحص وجودة', level: 3, label: 'جيد' },
-          { name: 'تنسيق مع فرق التنفيذ', level: 4, label: 'متمكّن' },
-        ],
-      },
-    ],
-    skillsNote: '«قيد التطوير» غير مذكورة كإتقان: لا أضع في المصفوفة مهارة لا أستطيع تسليم مخرج بها.',
-  },
-
-  credentials: {
-    badge: 'الشهادات والوثائق',
-    title: 'وثائق يمكن التحقق منها',
-    desc: 'الشهادات الأساسية والوثائق المهنية متاحة للاطلاع والتحميل مباشرة بصيغة PDF.',
-    download: 'تحميل',
-    view: 'معاينة',
-    items: [
-      { title: 'دبلوم هندسة المساحة والطرق', issuer: 'المعهد التقني — قسم المساحة والطرق', date: '2022', file: 'certificates/diploma.pdf', type: 'دبلوم', note: 'المؤهل الأساسي — سنتان' },
-      { title: 'شهادة AutoCAD — الرسم الهندسي', issuer: 'مركز تدريب هندسي', date: '2022', file: 'certificates/autocad.pdf', type: 'شهادة', note: 'تدريب على الرسم والإخراج' },
-      { title: 'شهادة حساب الكميات', issuer: 'مركز هندسي معتمد', date: '2023', file: 'certificates/quantity.pdf', type: 'شهادة', note: 'حصر الكميات والجداول' },
-      { title: 'بطاقة الهوية المهنية', issuer: 'جهة رسمية', date: '2024', file: 'certificates/id.pdf', type: 'وثيقة', note: 'إثبات هوية مهني' },
-    ],
-    cvTitle: 'السيرة الذاتية — نسخة كاملة',
-    cvDesc: 'ملف PDF منسّق للتقديم على الوظائف: الملخص، القدرات، الخبرة، المهارات، الشهادات، وطرق التواصل — أو استخدم زر الطباعة للحصول على نسخة محدثة فوراً.',
-    cvBtn: 'تحميل ملف PDF',
-    printBtn: 'طباعة / حفظ PDF',
-    docsNote: 'يمكن طلب خطابات الخبرة والتوصيات ومراجع العمل مباشرة عند التقديم.',
-  },
-
   contact: {
     badge: 'التواصل',
     title: 'جاهز لبدء العمل — اختر أسرع طريقة لك',
-    desc: 'للوظائف: أُرسل السيرة الذاتية والشهادات فوراً. للعمل الحر: أُرسل نطاق العمل والعرض في نفس اليوم غالباً.',
+    desc: 'للوظائف أو العمل الحر: أرسل تفاصيل الفرصة أو نطاق العمل، وسأرد عليك في أسرع وقت.',
     email: 'Mohammedalbkhyty@gmail.com',
-    phone: '+967772791169',
-    phoneDisplay: '+967 772 791 169',
+    phone: '+966566743293',
+    phoneDisplay: '+966566743293',
     location: 'المملكة العربية السعودية',
     availability: 'متاح للعمل: ميداني ومكتبي — تنقّل داخل المملكة، وبدء فوري.',
     responseNote: 'الرد عادة خلال 24 ساعة · واتساب أسرع طريقة',
     channels: [
-      { id: 'wa', label: 'واتساب', value: '+967 772 791 169', note: 'الرد الأسرع — أرسل تفاصيل الموقع أو الوظيفة', href: '' },
+      { id: 'wa', label: 'واتساب', value: '+966566743293', note: 'الرد الأسرع — أرسل تفاصيل الموقع أو الوظيفة', href: '' },
       { id: 'mail', label: 'البريد الإلكتروني', value: 'Mohammedalbkhyty@gmail.com', note: 'لإرسال طلبات التوظيف والعقود', href: '' },
       { id: 'x', label: 'منصة X', value: '@engalbukhaiti', note: 'حسابي العام وللتواصل السريع', href: 'https://x.com/engalbukhaiti' },
+      { id: 'li', label: 'LinkedIn', value: 'mohammed-albukhaiti', note: 'الملف المهني والتواصل', href: 'https://www.linkedin.com/in/mohammed-albukhaiti-215a41302/' },
       { id: 'gh', label: 'GitHub', value: 'engmohammeda', note: 'الملفات التقنية والموقع', href: 'https://github.com/engmohammeda' },
     ],
     form: {
@@ -758,7 +601,7 @@ const ar: Copy = {
     stepsTitle: 'ما يحدث بعد التواصل',
     steps: [
       { title: 'الرد والتوضيح', desc: 'أرد خلال 24 ساعة (غالباً أسرع) بأسئلة محددة إن احتجت.' },
-      { title: 'العرض أو الملف', desc: 'للوظائف: أُرسل السيرة والشهادات. للمشاريع: أُرسل النطاق والمدة والسعر.' },
+      { title: 'الاتفاق على التفاصيل', desc: 'للوظائف: نوضّح تفاصيل الدور. للمشاريع: أُرسل النطاق والمدة والسعر.' },
       { title: 'البدء', desc: 'بعد الاتفاق: أبدأ ميدانياً أو مكتبياً حسب طبيعة العمل.' },
     ],
   },
@@ -789,10 +632,7 @@ const en: Copy = {
     capabilities: 'Capabilities',
     services: 'Services',
     projects: 'Projects',
-    experience: 'Experience',
-    credentials: 'Credentials',
     contact: 'Contact',
-    cv: 'Download CV',
     menu: 'Menu',
     theme: 'Theme',
     language: 'العربية',
@@ -809,14 +649,13 @@ const en: Copy = {
     subhead:
       'I work along one unbroken chain: precise field survey and setting-out, then processing and drafting, then quantity take-off, then GIS mapping, then execution reports — so a task never has to be handed between three different people.',
     chain: ['Field survey', 'Processing & drafting', 'Quantities', 'GIS mapping', 'Reports & execution'],
-    ctaPrimary: 'Download CV',
     ctaSecondary: 'WhatsApp',
     ctaTertiary: 'See capabilities',
     stats: [
       { value: '6', label: 'Professional tracks', note: 'Survey · Roads · Quantities · CAD · Site · GIS' },
       { value: '24', label: 'Executable capabilities', note: 'Classified under each track' },
       { value: '14', label: 'Working tools', note: 'Field instruments & software' },
-      { value: '2022', label: 'Practising since', note: 'Continuous field & office work' },
+      { value: '7', label: 'Project samples', note: 'Presented in detail in the projects section' },
     ],
     console: {
       title: 'Deliverables console',
@@ -827,7 +666,7 @@ const en: Copy = {
           id: 'survey',
           code: 'TRK-01',
           title: 'Surveying',
-          desc: 'Topographic and cadastral survey, control points, with full documentation of coordinates, levels and tolerances.',
+          desc: 'Topographic and cadastral survey, control points, with complete records of coordinates, levels and tolerances.',
           deliverables: ['Survey drawing DWG + scaled PDF', 'Coordinate & level schedule (XLSX)', 'Signed field book', 'Survey report with site conditions'],
           metric: { label: 'Reference', value: 'Benchmark + closure' },
           stack: ['Total Station', 'Digital Level', 'GNSS/RTK'],
@@ -845,7 +684,7 @@ const en: Copy = {
           id: 'quantities',
           code: 'TRK-03',
           title: 'Quantities & BOQ',
-          desc: 'Verifiable take-off: from sections or areas, with documented formulas and explicit compaction/bulking factors.',
+          desc: 'Verifiable take-off: from sections or areas, with stated formulas and explicit compaction/bulking factors.',
           deliverables: ['BOQ (XLSX + PDF)', 'Calculation method memo', 'Progress-based payment quantities', 'Design vs as-built comparison'],
           metric: { label: 'Output', value: 'Approved BOQ' },
           stack: ['Advanced Excel', 'AutoCAD', 'Civil 3D'],
@@ -885,11 +724,10 @@ const en: Copy = {
   profile: {
     badge: 'Professional profile',
     title: 'I work in surveying and roads, and I cover the whole chain: from the field measurement to the approved file.',
-    p1: 'I have worked in surveying and roads since 2022, continuously across field and office. I run work through connected tracks: field survey and setting-out, then processing and drafting in the technical office, then quantity take-off and schedules, then GIS maps and data, and finally execution follow-up and reporting.',
+    p1: 'I work in surveying and roads through connected tracks: field survey and setting-out, then processing and drafting in the technical office, then quantity take-off and schedules, then GIS maps and data, and finally execution follow-up and reporting.',
     p2: 'My advantage is not one track — it is completing a task end to end without handing it between three parties: I set out on site, draft in AutoCAD, take off quantities and issue the report. That saves the project time and removes the errors created when data is retyped between teams.',
     facts: [
       { label: 'Core specialization', value: 'Surveying & Roads' },
-      { label: 'Education', value: 'Diploma in Surveying & Roads — 2 years' },
       { label: 'Current work location', value: 'Saudi Arabia' },
       { label: 'Languages', value: 'Arabic (native) · English (technical reading)' },
       { label: 'Work type available', value: 'Field & office · full-time or project' },
@@ -902,7 +740,7 @@ const en: Copy = {
       { title: 'Reports in site language', desc: 'A report must read clearly to the site inspector and the office engineer: observation, location, coordinates, impact.' },
     ],
     searchTitle: 'The role I am looking for now',
-    searchNote: 'I apply for these roles in Saudi Arabia, with CV and certificates ready to attach immediately.',
+    searchNote: 'I apply for these roles in Saudi Arabia and am available to discuss work opportunities and projects directly.',
     searchRoles: [
       'Land / Site Surveyor',
       'Quantity Surveyor',
@@ -974,11 +812,11 @@ const en: Copy = {
           'Concrete and plain concrete quantities',
           'Asphalt, base course and kerb quantities',
           'Structured bill of quantities (BOQ)',
-          'Progress-based payment certificates',
+          'Progress payment statements',
           'Take-off memos and preliminary rate analysis',
         ],
         tools: ['Advanced Excel', 'AutoCAD', 'Civil 3D', 'Take-off tools'],
-        deliverables: ['BOQ schedule', 'Calculation memo', 'Payment certificate', 'Quantity comparison'],
+        deliverables: ['BOQ schedule', 'Calculation memo', 'Progress payment statement', 'Quantity comparison'],
         roles: ['Quantity Surveyor', 'Technical Office Engineer', 'Cost/Measurement Specialist'],
         accent: 'teal',
       },
@@ -1115,7 +953,7 @@ const en: Copy = {
   projects: {
     badge: 'Selected work',
     title: 'Projects that end with a file, not a presentation',
-    desc: 'Samples of my work: each project shows its track, scope and outputs. Full documentation (DWG/XLSX/reports) available on request.',
+    desc: 'Samples of my work: each project shows its track, scope and outputs. Source files (DWG/XLSX/reports) available on request.',
     filters: [
       { id: 'all', label: 'All' },
       { id: 'survey', label: 'Survey' },
@@ -1126,7 +964,7 @@ const en: Copy = {
       { id: 'site', label: 'Supervision' },
     ],
     deliverLabel: 'Outputs',
-    footnote: 'Figures above come from project records · more documentation (DWG · XLSX · PDF · reports) available on request.',
+    footnote: 'Figures above come from project records · more project files (DWG · XLSX · PDF · reports) available on request.',
     empty: 'No projects in this track yet.',
     items: [
       {
@@ -1182,7 +1020,7 @@ const en: Copy = {
           { label: 'Base course', value: '9,400 m²' },
           { label: 'BOQ items', value: '26' },
         ],
-        deliverables: ['BOQ XLSX', 'Calculation memo', 'Preliminary certificate'],
+        deliverables: ['BOQ XLSX', 'Calculation memo', 'Preliminary payment statement'],
         preview: 'quantities',
       },
       {
@@ -1230,141 +1068,21 @@ const en: Copy = {
     ],
   },
 
-  experience: {
-    badge: 'Experience & path',
-    title: 'A connected path — not described jumps',
-    desc: 'A clear progression: from the field, to the technical office, to managing the full set of project outputs.',
-    jobs: [
-      {
-        role: 'Surveying & engineering works — field and office',
-        org: 'Contracting & infrastructure projects — execution & supervision',
-        period: '2023 — present',
-        location: 'Saudi Arabia / Yemen',
-        type: 'work',
-        bullets: [
-          'Carrying out survey, setting-out and level work across different execution sites.',
-          'Producing AutoCAD drawings and issuing files ready for approval.',
-          'Quantity take-off, BOQ schedules and payment certificates by progress.',
-          'Field follow-up of execution with daily and weekly reporting.',
-        ],
-      },
-      {
-        role: 'Surveying & roads works',
-        org: 'Roads & contracting projects — field works',
-        period: '2022 — 2023',
-        location: 'Yemen',
-        type: 'work',
-        bullets: [
-          'Topographic and cadastral survey, land division and boundary definition.',
-          'Setting out road routes, transferring levels and computing slopes.',
-          'Longitudinal and cross levelling with sections issued for execution.',
-        ],
-      },
-      {
-        role: 'Diploma in Surveying & Roads Engineering',
-        org: 'Technical Institute — Surveying & Roads Department',
-        period: '2020 — 2022',
-        location: 'Yemen',
-        type: 'education',
-        bullets: [
-          'Plane and applied surveying with coordinate computation.',
-          'Road engineering: curves, levels and sections.',
-          'Engineering drawing, quantity calculation and civil engineering software.',
-        ],
-      },
-      {
-        role: 'Continuous development — courses & training',
-        org: 'AutoCAD · Quantity surveying · GIS · Site safety',
-        period: '2022 — present',
-        location: 'Certified courses and self-training',
-        type: 'training',
-        bullets: [
-          'Certificates in AutoCAD drafting and quantity surveying.',
-          'Developing QGIS and Google Earth Pro skills on real projects.',
-          'Reading technical specifications and field inspection checklists.',
-        ],
-      },
-    ],
-    skillsTitle: 'Skills matrix',
-    skillsDesc: 'An explicit proficiency rating — every level can be proven with a real deliverable.',
-    groups: [
-      {
-        id: 'field',
-        title: 'Field instruments',
-        items: [
-          { name: 'Total Station', level: 4, label: 'Proficient' },
-          { name: 'Digital Level', level: 4, label: 'Proficient' },
-          { name: 'GNSS / RTK', level: 3, label: 'Good' },
-          { name: 'Control point networks', level: 4, label: 'Proficient' },
-        ],
-      },
-      {
-        id: 'office',
-        title: 'Technical office & drafting',
-        items: [
-          { name: 'AutoCAD (2D)', level: 4, label: 'Advanced' },
-          { name: 'Civil 3D', level: 3, label: 'Good' },
-          { name: 'Plans, sections & dimensions', level: 4, label: 'Advanced' },
-          { name: 'As-built & submissions', level: 4, label: 'Proficient' },
-        ],
-      },
-      {
-        id: 'data',
-        title: 'Quantities & data',
-        items: [
-          { name: 'Excel (quantities & schedules)', level: 4, label: 'Advanced' },
-          { name: 'BOQ & payment certificates', level: 4, label: 'Proficient' },
-          { name: 'QGIS', level: 3, label: 'Good' },
-          { name: 'Google Earth Pro / KML', level: 4, label: 'Advanced' },
-        ],
-      },
-      {
-        id: 'site',
-        title: 'Site & coordination',
-        items: [
-          { name: 'Drawing & spec reading', level: 4, label: 'Advanced' },
-          { name: 'Site reports & observations', level: 4, label: 'Proficient' },
-          { name: 'Inspection checklists & QA', level: 3, label: 'Good' },
-          { name: 'Coordination with crews', level: 4, label: 'Proficient' },
-        ],
-      },
-    ],
-    skillsNote: '“In development” is not listed as proficiency: I do not add a skill I cannot deliver an output with.',
-  },
-
-  credentials: {
-    badge: 'Credentials',
-    title: 'Documents that can be verified',
-    desc: 'Core certificates and professional documents are available to view and download directly as PDF.',
-    download: 'Download',
-    view: 'Preview',
-    items: [
-      { title: 'Diploma in Surveying & Roads Engineering', issuer: 'Technical Institute — Surveying & Roads Dept.', date: '2022', file: 'certificates/diploma.pdf', type: 'Diploma', note: 'Primary qualification — 2 years' },
-      { title: 'AutoCAD — Engineering Drawing certificate', issuer: 'Engineering training centre', date: '2022', file: 'certificates/autocad.pdf', type: 'Certificate', note: 'Drafting and plotting training' },
-      { title: 'Quantity Surveying certificate', issuer: 'Certified engineering centre', date: '2023', file: 'certificates/quantity.pdf', type: 'Certificate', note: 'Take-off and schedules' },
-      { title: 'Professional ID card', issuer: 'Official authority', date: '2024', file: 'certificates/id.pdf', type: 'Document', note: 'Professional identity proof' },
-    ],
-    cvTitle: 'Curriculum Vitae — full version',
-    cvDesc: 'A formatted PDF for job applications: summary, capabilities, experience, skills, certificates and contact details — or use the print button to generate an always-current copy instantly.',
-    cvBtn: 'Download PDF',
-    printBtn: 'Print / save PDF',
-    docsNote: 'Experience letters, recommendations and work references can be requested directly when applying.',
-  },
-
   contact: {
     badge: 'Contact',
     title: 'Ready to start — pick your fastest channel',
-    desc: 'For hiring: I send the CV and certificates immediately. For freelance work: scope and offer usually go out the same day.',
+    desc: 'For hiring or freelance work, send the opportunity details or project scope and I will reply as soon as possible.',
     email: 'Mohammedalbkhyty@gmail.com',
-    phone: '+967772791169',
-    phoneDisplay: '+967 772 791 169',
+    phone: '+966566743293',
+    phoneDisplay: '+966566743293',
     location: 'Saudi Arabia',
     availability: 'Available: field and office — travel within KSA, immediate start.',
     responseNote: 'Usually replies within 24 hours · WhatsApp is fastest',
     channels: [
-      { id: 'wa', label: 'WhatsApp', value: '+967 772 791 169', note: 'Fastest reply — send site or role details', href: '' },
+      { id: 'wa', label: 'WhatsApp', value: '+966566743293', note: 'Fastest reply — send site or role details', href: '' },
       { id: 'mail', label: 'Email', value: 'Mohammedalbkhyty@gmail.com', note: 'For job offers and contracts', href: '' },
       { id: 'x', label: 'X', value: '@engalbukhaiti', note: 'Public profile and quick messages', href: 'https://x.com/engalbukhaiti' },
+      { id: 'li', label: 'LinkedIn', value: 'mohammed-albukhaiti', note: 'Professional profile and direct contact', href: 'https://www.linkedin.com/in/mohammed-albukhaiti-215a41302/' },
       { id: 'gh', label: 'GitHub', value: 'engmohammeda', note: 'Technical files and this site', href: 'https://github.com/engmohammeda' },
     ],
     form: {
@@ -1388,7 +1106,7 @@ const en: Copy = {
     stepsTitle: 'What happens after you reach out',
     steps: [
       { title: 'Reply & clarification', desc: 'I reply within 24 hours (usually faster), asking specific questions if needed.' },
-      { title: 'Offer or documents', desc: 'For hiring: CV and certificates. For projects: scope, duration and price.' },
+      { title: 'Agree on details', desc: 'For hiring: we clarify the role. For projects: I send the scope, duration and price.' },
       { title: 'Start', desc: 'Once agreed, I start on site or in the office depending on the work type.' },
     ],
   },
@@ -1397,7 +1115,7 @@ const en: Copy = {
     rights: 'All rights reserved',
     role: 'Surveying & Roads Engineer — Saudi Arabia',
     titleBlock: [
-      { label: 'Document', value: 'Professional sheet — v3.0' },
+      { label: 'File', value: 'Professional sheet — v3.0' },
       { label: 'Drawn by', value: 'Mohammed Al-Bakhity Ali' },
       { label: 'Discipline', value: 'Survey · Roads · Quantities · CAD · GIS' },
       { label: 'Location', value: 'Saudi Arabia' },
@@ -1413,13 +1131,14 @@ const en: Copy = {
 
 export const portfolioData: Record<Language, Copy> = { ar, en };
 
-/** Quick facts used by the print-ready CV sheet and the vCard. */
+/** Shared identity details used by contact links and the vCard. */
 export const identity = {
   nameAr: 'محمد البخيتي علي',
   nameEn: 'Mohammed Al-Bakhity Ali',
   email: 'Mohammedalbkhyty@gmail.com',
-  phone: '+967772791169',
+  phone: '+966566743293',
   x: 'https://x.com/engalbukhaiti',
+  linkedin: 'https://www.linkedin.com/in/mohammed-albukhaiti-215a41302/',
   github: 'https://github.com/engmohammeda',
   site: 'https://engmohammeda.github.io/portfolio/',
   locationAr: 'المملكة العربية السعودية',

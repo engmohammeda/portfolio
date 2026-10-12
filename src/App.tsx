@@ -7,12 +7,9 @@ import { Profile } from './components/Profile';
 import { Capabilities } from './components/Capabilities';
 import { Services } from './components/Services';
 import { Projects } from './components/Projects';
-import { Experience } from './components/Experience';
-import { Credentials } from './components/Credentials';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { FloatingWA } from './components/FloatingWA';
-import { ResumeSheet } from './components/ResumeSheet';
 
 export default function App() {
   return (
@@ -26,16 +23,11 @@ export default function App() {
             <Capabilities />
             <Services />
             <Projects />
-            <Experience />
-            <Credentials />
             <Contact />
           </main>
           <Footer />
           <FloatingWA />
         </div>
-
-        {/* print-only CV sheet (shown by the "Print / save PDF" action) */}
-        <ResumeSheet />
       </LanguageProvider>
     </ThemeProvider>
   );

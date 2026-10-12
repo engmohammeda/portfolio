@@ -7,6 +7,7 @@ import { assetUrl } from '../lib/utils';
 import { mailLink, telLink, vcardUri, waLink } from '../lib/links';
 import {
   MessageCircle, Mail, MapPin, Send, CheckCircle2, AlertCircle, QrCode, Contact as ContactIcon, Clock,
+  Linkedin,
 } from 'lucide-react';
 
 const XIcon: React.FC<{ className?: string }> = ({ className }) => (
@@ -31,6 +32,7 @@ export const Contact: React.FC = () => {
     if (id === 'wa') return MessageCircle;
     if (id === 'mail') return Mail;
     if (id === 'x') return XIcon;
+    if (id === 'li') return Linkedin;
     return ContactIcon;
   };
 
@@ -68,7 +70,7 @@ export const Contact: React.FC = () => {
   return (
     <SectionShell id="contact">
       <SectionHeader
-        no={`07 / ${language === 'ar' ? 'التواصل' : 'CONTACT'}`}
+        no={`05 / ${language === 'ar' ? 'التواصل' : 'CONTACT'}`}
         title={t.title}
         desc={t.desc}
       />
@@ -93,7 +95,7 @@ export const Contact: React.FC = () => {
                   <a
                     key={c.id}
                     href={channelHref(c.id, c.href)}
-                    target={c.id === 'wa' || c.id === 'x' || c.id === 'gh' ? '_blank' : undefined}
+                    target={c.id === 'wa' || c.id === 'x' || c.id === 'li' || c.id === 'gh' ? '_blank' : undefined}
                     rel="noopener noreferrer"
                     className="flex items-center gap-4 px-5 py-4 transition-colors hover:bg-(--panel-2)"
                     style={{ borderColor: 'var(--line)' }}
