@@ -35,6 +35,7 @@ export function vcardUri(lang: 'ar' | 'en'): string {
     `TEL;TYPE=CELL:${identity.phone}`,
     `EMAIL;TYPE=INTERNET:${identity.email}`,
     `URL:${identity.site}`,
+    `X-SOCIALPROFILE;TYPE=linkedin:${identity.linkedin}`,
     `ADR;TYPE=WORK:;;${location};;;;`,
     `NOTE:${title} — ${identity.site}`,
     'END:VCARD',
@@ -46,19 +47,4 @@ export function vcardUri(lang: 'ar' | 'en'): string {
 export function updatedLabel(lang: 'ar' | 'en', iso = identity.updated): string {
   const [y, m] = iso.split('-');
   return lang === 'ar' ? `${m}/${y}` : `${y}-${m}`;
-}
-
-/** Sets `data-print` on <html>, triggers print, then cleans up. */
-export function printResume(): void {
-  const root = document.documentElement;
-  root.setAttribute('data-print', 'resume');
-  const cleanup = () => {
-    root.removeAttribute('data-print');
-    window.removeEventListener('afterprint', cleanup);
-  };
-  window.addEventListener('afterprint', cleanup);
-  // Give the browser a frame to apply the print layout before opening the dialog.
-  window.setTimeout(() => window.print(), 60);
-  // Safari/Firefox fallback when afterprint does not fire.
-  window.setTimeout(cleanup, 4000);
 }

@@ -7,8 +7,8 @@ export function cn(...inputs: ClassValue[]) {
 
 /**
  * Resolves a public asset path against Vite's configured BASE_URL so links
- * (CV, certificates, etc.) keep working regardless of the deployment base
- * path (e.g. GitHub Pages project subpaths).
+ * keep working regardless of the deployment base path (for example, GitHub
+ * Pages project subpaths).
  */
 export function assetUrl(path: string): string {
   const base = import.meta.env.BASE_URL || '/';

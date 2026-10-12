@@ -5,14 +5,12 @@ import { motion } from 'framer-motion';
 import { Chip, FigureLabel, StatCell, reveal } from './ui';
 import { Console } from './Console';
 import { waLink, updatedLabel } from '../lib/links';
-import { Download, FileText, MapPin, ArrowLeft, ArrowRight, Ruler } from 'lucide-react';
-import { downloadCv } from '../lib/cv';
+import { FileText, MapPin, ArrowLeft, ArrowRight, Ruler } from 'lucide-react';
 
 export const Hero: React.FC = () => {
   const { language, dir } = useLanguage();
   const t = portfolioData[language].hero;
   const contact = portfolioData[language].contact;
-  const cv = portfolioData[language].credentials;
   const Arrow = dir === 'rtl' ? ArrowLeft : ArrowRight;
 
   return (
@@ -80,10 +78,6 @@ export const Hero: React.FC = () => {
 
             {/* CTAs */}
             <motion.div {...reveal} className="mt-9 flex flex-wrap items-center gap-3">
-              <button type="button" onClick={() => downloadCv(language)} className="btn btn-primary btn-lg">
-                <Download className="h-4 w-4" />
-                {t.ctaPrimary}
-              </button>
               <a
                 href={waLink(`${contact.waText}: ${language === 'ar' ? 'أرغب بالتواصل بخصوص عمل' : 'I would like to discuss work'}`)}
                 target="_blank"
@@ -146,11 +140,6 @@ export const Hero: React.FC = () => {
                     WhatsApp
                   </a>
                 </div>
-
-                <button type="button" onClick={() => downloadCv(language)} className="link-rule mt-5 text-[13px]">
-                  <Download className="h-3.5 w-3.5" />
-                  {cv.cvBtn} · {language === 'ar' ? 'محدّث' : 'current'}
-                </button>
               </div>
             </div>
           </motion.aside>

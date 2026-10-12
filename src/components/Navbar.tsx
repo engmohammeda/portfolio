@@ -2,12 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { useTheme } from '../context/ThemeContext';
 import { portfolioData } from '../data';
-import { assetUrl, cn } from '../lib/utils';
-import { downloadCv } from '../lib/cv';
-import { Menu, X, Sun, Moon, Globe, Download, Compass } from 'lucide-react';
+import { cn } from '../lib/utils';
+import { Menu, X, Sun, Moon, Globe, Compass } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
 
-const SECTIONS = ['profile', 'capabilities', 'services', 'projects', 'experience', 'credentials', 'contact'] as const;
+const SECTIONS = ['profile', 'capabilities', 'services', 'projects', 'contact'] as const;
 
 export const Navbar: React.FC = () => {
   const { language, toggleLanguage } = useLanguage();
@@ -126,15 +125,6 @@ export const Navbar: React.FC = () => {
 
             <button
               type="button"
-              onClick={() => downloadCv(language)}
-              className="btn btn-primary btn-sm hidden md:inline-flex"
-            >
-              <Download className="h-3.5 w-3.5" />
-              {t.cv}
-            </button>
-
-            <button
-              type="button"
               onClick={() => setOpen(true)}
               className="btn btn-outline btn-sm lg:hidden px-2.5!"
               aria-label={t.menu}
@@ -183,10 +173,6 @@ export const Navbar: React.FC = () => {
                   <span className="label">{String(i + 1).padStart(2, '0')}</span>
                 </a>
               ))}
-              <button type="button" onClick={() => { setOpen(false); downloadCv(language); }} className="btn btn-primary mt-6">
-                <Download className="h-4 w-4" />
-                {t.cv}
-              </button>
             </nav>
           </motion.div>
         )}
